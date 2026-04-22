@@ -1,0 +1,28 @@
+[project]
+name = "helix"
+version = "0.1.0"
+description = "Psychological self-exploration platform — backend"
+requires-python = ">=3.9"
+dependencies = [
+    "fastapi>=0.111.0",
+    "uvicorn[standard]>=0.29.0",
+    "sqlalchemy>=2.0",
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "httpx>=0.27.0",
+]
+
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["helix*"]
+
+[tool.pytest.ini_options]
+testpaths = ["helix/tests"]

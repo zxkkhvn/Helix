@@ -8,6 +8,30 @@ import pytest
 DEFINITIONS_DIR = Path(__file__).resolve().parent.parent / "scoring" / "instruments" / "definitions"
 
 
+@pytest.fixture(scope="session", autouse=True)
+def _bootstrap_registry():
+    """Auto-discover all scorers once per test session."""
+    from helix.scoring import registry
+    registry.auto_discover(DEFINITIONS_DIR)
+
+
+@pytest.fixture
+def score():
+    """Factory fixture: score an instrument by instrument_id.
+
+    Usage::
+
+        result = score("phq9", responses, carried_responses={...})
+    """
+    from helix.scoring import registry
+
+    def _score(instrument_id: str, responses: dict, **kwargs):
+        scorer = registry.get_scorer(instrument_id)
+        return scorer.score(responses, **kwargs)
+
+    return _score
+
+
 @pytest.fixture
 def definitions_dir():
     """Path to instrument JSON definitions directory."""
@@ -62,3 +86,17 @@ def make_min_responses(definition: dict) -> dict:
         options = definition["response_option_sets"][key]
         responses[item["item_id"]] = min(o["value"] for o in options)
     return responses
+
+
+def make_specific_responses(definition: dict, item_values: dict[str, int]) -> dict:
+    """Build a response dict using make_min_responses as base, then override specific items.
+
+    Args:
+        definition: Parsed instrument definition.
+        item_values: {item_id: value} overrides applied on top of the min-response base.
+
+    Useful for threshold and safety-flag tests where only a few items need specific values.
+    """
+    base = make_min_responses(definition)
+    base.update(item_values)
+    return base
