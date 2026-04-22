@@ -18,3 +18,6 @@ Non-obvious decisions and gotchas. Read before modifying scoring or instrument l
 ## Safety
 
 - **Safety flags persist in the database.** Closing the browser does not clear SAFETY_PAUSED state. On session resume, unacknowledged safety flags must display crisis resources before any other content.
+- **PHQ-9 item 9 has a neurodivergent non-invariance exception (Section 37.1).** When Uranus (Neurodivergence) is AVAILABLE or higher, item 9 > 0 shows a clarification screen ("urgent/frightening" vs "passing/philosophical") instead of immediate SAFETY_PROTOCOL. "Yes, urgent" fires full protocol. "No, passing" shows crisis resources as information but allows continuation. `item9_clarified_passive: bool` stored on AssessmentInstance. For all users without Uranus activation, item 9 > 0 fires full SAFETY_PROTOCOL unconditionally.
+- **Accessible instrument presentation mode (Section 37.3).** When Uranus reaches SCANNED or intake intent = "neurodivergent", framing text is simplified and idioms removed. Validated item text is NEVER changed — only surrounding instructions and AI narration adapt.
+

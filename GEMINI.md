@@ -64,7 +64,8 @@ backend/
         ├── test_composite.py      # Composite index computation
         └── test_api.py            # FastAPI endpoint integration tests
 frontend/                          # Next.js — Phase 5, not started
-Tests/                             # PDF source instruments (git-ignored)
+Documents/                         # Implementation state doc (versioned)
+Test Battery/                      # PDF source instruments (git-ignored)
 ```
 
 ## Testing
@@ -100,7 +101,7 @@ pytest backend/helix/tests/ -k "phq9"     # single instrument
 - **Scoring is deterministic.** AI never computes scores, never diagnoses.
 - **Instrument definitions are declarative JSON.** GenericScorer handles ~40 instruments. 8 custom scorers for non-trivial logic.
 - **Carry-forward pattern:** PHQ-2 → PHQ-9, GAD-2 → GAD-7, PAQ-S → PAQ. Parent responses map to child items via `carry_forward_items` in JSON def. User sees only new items.
-- **Safety protocol is non-negotiable.** PHQ-9 item 9 > 0 or PC-PTSD-5 >= 3: immediate pause, crisis resources, no bypass.
+- **Safety protocol is non-negotiable.** PHQ-9 item 9 > 0 or PC-PTSD-5 >= 3: immediate pause, crisis resources, no bypass. Exception: if Uranus (Neurodivergence) is activated, item 9 shows a clarification screen (urgent vs passive/philosophical) per Section 37.1.
 - **Composite indices are platform-derived.** Always labelled "n of N components". Never treated as validated clinical measures. Mean of z-scores, not sum.
 - **Planet states are computed projections**, not stored tables. Memoised on Session, invalidated on every score submission.
 - **No pandas in scoring path.** pandas scoped to `reports/` only.
@@ -116,9 +117,10 @@ Phase 1 in progress. Venus vertical slice definitions complete (PHQ-2, PHQ-9, GA
 
 ## Key References
 
-- **Implementation state:** `~/Downloads/helix-implementation-state.md` (2000-line spec, Sections 1–36)
+- **Implementation state:** `Documents/helix-implementation-state-7.md` (2100-line spec, Sections 1–37)
 - **Battery:** 48 instruments, 8 planets, frozen. See Section 31.5.
 - **8 custom scorers:** PBAT, VLQ, MSS-YSQ, PAQ, LSAS-SR, ECR-RS, MEQ, PSQI
+- **Section 37:** AASPIRE/REALS research integration — PHQ-9 item 9 ND non-invariance, accessible presentation mode, v2 candidates (AASPIRE Burnout, REALS scales)
 
 ## LEARNINGS.md
 
