@@ -1,0 +1,149 @@
+{
+  "instrument_id": "erq",
+  "version": "1.0.0",
+  "name": "Emotion Regulation Questionnaire",
+  "abbreviation": "ERQ",
+  "planet": "venus",
+  "tier": "deep_dive",
+  "time_window": "current",
+  "time_window_text": "We would like to ask you some questions about your emotional life, in particular, how you control (that is, regulate and manage) your emotions.",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "free",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "erq_likert": [
+      {"value": 1, "label": "Strongly disagree"},
+      {"value": 2, "label": "Disagree"},
+      {"value": 3, "label": "Somewhat disagree"},
+      {"value": 4, "label": "Neutral"},
+      {"value": 5, "label": "Somewhat agree"},
+      {"value": 6, "label": "Agree"},
+      {"value": 7, "label": "Strongly agree"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "erq_01",
+      "text": "When I want to feel more positive emotion (such as joy or amusement), I change what I’m thinking about.",
+      "response_options_key": "erq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "erq_02",
+      "text": "I keep my emotions to myself.",
+      "response_options_key": "erq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "erq_03",
+      "text": "When I want to feel less negative emotion (such as sadness or anger), I change what I’m thinking about.",
+      "response_options_key": "erq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "erq_04",
+      "text": "When I am feeling positive emotions, I am careful not to express them.",
+      "response_options_key": "erq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "erq_05",
+      "text": "When I’m faced with a stressful situation, I make myself think about it in a way that helps me stay calm.",
+      "response_options_key": "erq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "erq_06",
+      "text": "I control my emotions by not expressing them.",
+      "response_options_key": "erq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "erq_07",
+      "text": "When I want to feel more positive emotion, I change the way I’m thinking about the situation.",
+      "response_options_key": "erq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "erq_08",
+      "text": "I control my emotions by changing the way I think about the situation I’m in.",
+      "response_options_key": "erq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "erq_09",
+      "text": "When I am feeling negative emotions, I make sure not to express them.",
+      "response_options_key": "erq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "erq_10",
+      "text": "When I want to feel less negative emotion, I change the way I’m thinking about the situation.",
+      "response_options_key": "erq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [10, 70],
+    "bands": null,
+    "subscales": {
+      "cognitive_reappraisal": {
+        "method": "mean",
+        "items": ["erq_01", "erq_03", "erq_05", "erq_07", "erq_08", "erq_10"]
+      },
+      "expressive_suppression": {
+        "method": "mean",
+        "items": ["erq_02", "erq_04", "erq_06", "erq_09"]
+      }
+    }
+  },
+
+  "routing": {
+    "parent_instrument": null,
+    "carry_forward_items": null,
+    "on_completion": []
+  }
+}

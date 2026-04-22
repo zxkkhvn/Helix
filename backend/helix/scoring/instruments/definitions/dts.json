@@ -1,0 +1,203 @@
+{
+  "instrument_id": "dts",
+  "version": "1.0.0",
+  "name": "Distress Tolerance Scale",
+  "abbreviation": "DTS",
+  "planet": "venus",
+  "tier": "deep_dive",
+  "time_window": "current",
+  "time_window_text": "Think of times that you feel distressed or upset. Select the item from the menu that best describes your beliefs about feeling distressed or upset.",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "free",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "dts_likert": [
+      {"value": 1, "label": "Strongly agree"},
+      {"value": 2, "label": "Mildly agree"},
+      {"value": 3, "label": "Agree and disagree equally"},
+      {"value": 4, "label": "Mildly disagree"},
+      {"value": 5, "label": "Strongly disagree"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "dts_01",
+      "text": "Feeling distressed or upset is unbearable to me.",
+      "response_options_key": "dts_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dts_02",
+      "text": "When I feel distressed or upset, all I can think about is how bad I feel.",
+      "response_options_key": "dts_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dts_03",
+      "text": "I can’t handle feeling distressed or upset.",
+      "response_options_key": "dts_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dts_04",
+      "text": "My feelings of distress are so intense that they completely take over.",
+      "response_options_key": "dts_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dts_05",
+      "text": "There’s nothing worse than feeling distressed or upset.",
+      "response_options_key": "dts_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dts_06",
+      "text": "I can tolerate being distressed or upset as well as most people.",
+      "response_options_key": "dts_likert",
+      "valence": "positive",
+      "reverse_scored": true,
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dts_07",
+      "text": "My feelings of distress or being upset are not acceptable.",
+      "response_options_key": "dts_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dts_08",
+      "text": "I’ll do anything to avoid feeling distressed or upset.",
+      "response_options_key": "dts_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dts_09",
+      "text": "Other people seem to be able to tolerate feeling distressed or upset better that I can.",
+      "response_options_key": "dts_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dts_10",
+      "text": "Being distressed or upset is always a major ordeal for me.",
+      "response_options_key": "dts_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dts_11",
+      "text": "I am ashamed of myself when I feel distressed or upset.",
+      "response_options_key": "dts_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dts_12",
+      "text": "My feelings of distress or being upset scare me.",
+      "response_options_key": "dts_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dts_13",
+      "text": "I’ll do anything to stop feeling distressed or upset.",
+      "response_options_key": "dts_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dts_14",
+      "text": "When I feel distressed or upset, I must do something about it immediately.",
+      "response_options_key": "dts_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dts_15",
+      "text": "When I feel distressed or upset, I cannot help but concentrate on how bad the distress actually feels.",
+      "response_options_key": "dts_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [15, 75],
+    "bands": null,
+    "subscales": {
+      "tolerance": {
+        "method": "sum",
+        "items": ["dts_01", "dts_03", "dts_05"]
+      },
+      "absorption": {
+        "method": "sum",
+        "items": ["dts_02", "dts_04", "dts_15"]
+      },
+      "appraisal": {
+        "method": "sum",
+        "items": ["dts_06", "dts_07", "dts_09", "dts_10", "dts_11", "dts_12"]
+      },
+      "regulation": {
+        "method": "sum",
+        "items": ["dts_08", "dts_13", "dts_14"]
+      }
+    }
+  },
+
+  "routing": {
+    "parent_instrument": null,
+    "carry_forward_items": null,
+    "on_completion": [
+      {"condition": "score <= 30", "action": "flag_elevated"}
+    ]
+  }
+}

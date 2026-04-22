@@ -1,0 +1,148 @@
+{
+  "instrument_id": "pss10",
+  "version": "1.0.0",
+  "name": "Perceived Stress Scale 10-Item",
+  "abbreviation": "PSS-10",
+  "planet": "venus",
+  "tier": "deep_dive",
+  "time_window": "past_month",
+  "time_window_text": "The questions in this scale ask about your feelings and thoughts during the last month. In each case, please indicate how often you felt or thought a certain way.",
+  "time_window_days": 30,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "free",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "pss_likert": [
+      {"value": 0, "label": "Never"},
+      {"value": 1, "label": "Almost never"},
+      {"value": 2, "label": "Sometimes"},
+      {"value": 3, "label": "Fairly often"},
+      {"value": 4, "label": "Very often"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "pss10_01",
+      "text": "In the last month, how often have you been upset because of something that happened unexpectedly?",
+      "response_options_key": "pss_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pss10_02",
+      "text": "In the last month, how often have you felt that you were unable to control the important things in your life?",
+      "response_options_key": "pss_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pss10_03",
+      "text": "In the last month, how often have you felt nervous and stressed?",
+      "response_options_key": "pss_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pss10_04",
+      "text": "In the last month, how often have you felt confident about your ability to handle your personal problems?",
+      "response_options_key": "pss_likert",
+      "valence": "positive",
+      "reverse_scored": true,
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pss10_05",
+      "text": "In the last month, how often have you felt that things were going your way?",
+      "response_options_key": "pss_likert",
+      "valence": "positive",
+      "reverse_scored": true,
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pss10_06",
+      "text": "In the last month, how often have you found that you could not cope with all the things that you had to do?",
+      "response_options_key": "pss_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pss10_07",
+      "text": "In the last month, how often have you been able to control irritations in your life?",
+      "response_options_key": "pss_likert",
+      "valence": "positive",
+      "reverse_scored": true,
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pss10_08",
+      "text": "In the last month, how often have you felt that you were on top of things?",
+      "response_options_key": "pss_likert",
+      "valence": "positive",
+      "reverse_scored": true,
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pss10_09",
+      "text": "In the last month, how often have you been angered because of things that happened that were outside of your control?",
+      "response_options_key": "pss_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pss10_10",
+      "text": "In the last month, how often have you felt difficulties were piling up so high that you could not overcome them?",
+      "response_options_key": "pss_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [0, 40],
+    "bands": [
+      {"min": 0, "max": 13, "label": "low", "source": "Cohen & Williamson 1988"},
+      {"min": 14, "max": 26, "label": "moderate", "source": "Cohen & Williamson 1988"},
+      {"min": 27, "max": 40, "label": "high", "source": "Cohen & Williamson 1988"}
+    ],
+    "subscales": null
+  },
+
+  "routing": {
+    "parent_instrument": null,
+    "carry_forward_items": null,
+    "on_completion": [
+      {"condition": "score >= 27", "action": "flag_elevated"}
+    ]
+  }
+}

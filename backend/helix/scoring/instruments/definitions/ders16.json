@@ -1,0 +1,215 @@
+{
+  "instrument_id": "ders16",
+  "version": "1.0.0",
+  "name": "Difficulties in Emotion Regulation Scale 16-Item",
+  "abbreviation": "DERS-16",
+  "planet": "venus",
+  "tier": "deep_dive",
+  "time_window": "current",
+  "time_window_text": "Please indicate how often the following statements apply to you.",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "easy_moderate",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": ["regulatory_burden"],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "ders_likert": [
+      {"value": 1, "label": "Almost never (0-10%)"},
+      {"value": 2, "label": "Sometimes (11-35%)"},
+      {"value": 3, "label": "About half the time (36-65%)"},
+      {"value": 4, "label": "Most of the time (66-90%)"},
+      {"value": 5, "label": "Almost always (91-100%)"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "ders16_01",
+      "text": "I have difficulty making sense out of my feelings.",
+      "response_options_key": "ders_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ders16_02",
+      "text": "I am confused about how I feel.",
+      "response_options_key": "ders_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ders16_03",
+      "text": "When I am upset, I have difficulty getting work done.",
+      "response_options_key": "ders_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ders16_04",
+      "text": "When I am upset, I become out of control.",
+      "response_options_key": "ders_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ders16_05",
+      "text": "When I am upset, I believe that I will remain that way for a long time.",
+      "response_options_key": "ders_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ders16_06",
+      "text": "When I am upset, I believe that I'll end up feeling very depressed.",
+      "response_options_key": "ders_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ders16_07",
+      "text": "When I am upset, I have difficulty focusing on other things.",
+      "response_options_key": "ders_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ders16_08",
+      "text": "When I am upset, I feel out of control.",
+      "response_options_key": "ders_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ders16_09",
+      "text": "When I am upset, I feel ashamed with myself for feeling that way.",
+      "response_options_key": "ders_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ders16_10",
+      "text": "When I am upset, I feel like I am weak.",
+      "response_options_key": "ders_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ders16_11",
+      "text": "When I am upset, I have difficulty controlling my behaviors.",
+      "response_options_key": "ders_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ders16_12",
+      "text": "When I am upset, I believe that there is nothing I can do to make myself feel better.",
+      "response_options_key": "ders_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ders16_13",
+      "text": "When I am upset, I become irritated with myself for feeling that way.",
+      "response_options_key": "ders_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ders16_14",
+      "text": "When I am upset, I start to feel very bad about myself.",
+      "response_options_key": "ders_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ders16_15",
+      "text": "When I am upset, I have difficulty thinking about anything else.",
+      "response_options_key": "ders_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ders16_16",
+      "text": "When I am upset, my emotions feel overwhelming.",
+      "response_options_key": "ders_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [16, 80],
+    "bands": null,
+    "subscales": {
+      "clarity": {
+        "method": "sum",
+        "items": ["ders16_01", "ders16_02"]
+      },
+      "goals": {
+        "method": "sum",
+        "items": ["ders16_03", "ders16_07", "ders16_15"]
+      },
+      "impulse": {
+        "method": "sum",
+        "items": ["ders16_04", "ders16_08", "ders16_11"]
+      },
+      "strategies": {
+        "method": "sum",
+        "items": ["ders16_05", "ders16_06", "ders16_12", "ders16_14", "ders16_16"]
+      },
+      "nonacceptance": {
+        "method": "sum",
+        "items": ["ders16_09", "ders16_10", "ders16_13"]
+      }
+    }
+  },
+
+  "routing": {
+    "parent_instrument": null,
+    "carry_forward_items": null,
+    "on_completion": [
+      {"condition": "score >= 48", "action": "flag_elevated"}
+    ]
+  }
+}
