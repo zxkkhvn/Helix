@@ -1,0 +1,285 @@
+{
+  "instrument_id": "paq",
+  "version": "1.0.0",
+  "name": "Perth Alexithymia Questionnaire",
+  "abbreviation": "PAQ",
+  "planet": "venus",
+  "tier": "deep_dive",
+  "time_window": "general",
+  "time_window_text": "Please indicate how much you agree or disagree with each statement.",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "free",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": "alexithymia",
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "paq_likert": [
+      {"value": 1, "label": "Strongly disagree"},
+      {"value": 2, "label": "Disagree"},
+      {"value": 3, "label": "Somewhat disagree"},
+      {"value": 4, "label": "Neither agree nor disagree"},
+      {"value": 5, "label": "Somewhat agree"},
+      {"value": 6, "label": "Agree"},
+      {"value": 7, "label": "Strongly agree"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "paq_01",
+      "text": "When I am feeling bad (feeling an unpleasant emotion), I am confused about what emotion I am feeling.",
+      "response_options_key": "paq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_02",
+      "text": "When I am feeling bad (feeling an unpleasant emotion), I can't tell whether I'm sad, angry, or scared.",
+      "response_options_key": "paq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_03",
+      "text": "When I am feeling bad (feeling an unpleasant emotion), I am not sure what exactly is making me feel that way.",
+      "response_options_key": "paq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_04",
+      "text": "When I am feeling bad (feeling an unpleasant emotion), my physical sensations confuse me.",
+      "response_options_key": "paq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_05",
+      "text": "When I am feeling good (feeling a pleasant emotion), I am confused about what emotion I am feeling.",
+      "response_options_key": "paq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_06",
+      "text": "When I am feeling good (feeling a pleasant emotion), I can't tell whether I'm happy, excited, or amused.",
+      "response_options_key": "paq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_07",
+      "text": "When I am feeling good (feeling a pleasant emotion), I am not sure what exactly is making me feel that way.",
+      "response_options_key": "paq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_08",
+      "text": "When I am feeling good (feeling a pleasant emotion), my physical sensations confuse me.",
+      "response_options_key": "paq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_09",
+      "text": "When I am feeling bad (feeling an unpleasant emotion), I can't find the right words to describe those feelings.",
+      "response_options_key": "paq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_10",
+      "text": "When I am feeling bad (feeling an unpleasant emotion), I have a hard time describing how I feel.",
+      "response_options_key": "paq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_11",
+      "text": "When I am feeling bad (feeling an unpleasant emotion), I struggle to express my emotions to others.",
+      "response_options_key": "paq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_12",
+      "text": "When I am feeling bad (feeling an unpleasant emotion), I don't know how to talk about what is going on inside me.",
+      "response_options_key": "paq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_13",
+      "text": "When I am feeling good (feeling a pleasant emotion), I can't find the right words to describe those feelings.",
+      "response_options_key": "paq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_14",
+      "text": "When I am feeling good (feeling a pleasant emotion), I have a hard time describing how I feel.",
+      "response_options_key": "paq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_15",
+      "text": "When I am feeling good (feeling a pleasant emotion), I struggle to express my emotions to others.",
+      "response_options_key": "paq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_16",
+      "text": "When I am feeling good (feeling a pleasant emotion), I don't know how to talk about what is going on inside me.",
+      "response_options_key": "paq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_17",
+      "text": "I prefer to just let things happen rather than to understand why they turned out that way.",
+      "response_options_key": "paq_likert",
+      "valence": "general",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_18",
+      "text": "I tend to ignore how I feel.",
+      "response_options_key": "paq_likert",
+      "valence": "general",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_19",
+      "text": "I prefer to focus on factual events rather than the deeper meaning of things.",
+      "response_options_key": "paq_likert",
+      "valence": "general",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_20",
+      "text": "I prefer talking to people about their daily activities rather than their feelings.",
+      "response_options_key": "paq_likert",
+      "valence": "general",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_21",
+      "text": "I find examinations of feelings to be a waste of time.",
+      "response_options_key": "paq_likert",
+      "valence": "general",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_22",
+      "text": "I don't pay much attention to my emotions.",
+      "response_options_key": "paq_likert",
+      "valence": "general",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_23",
+      "text": "Looking for hidden meanings in movies or plays distracts from their enjoyment.",
+      "response_options_key": "paq_likert",
+      "valence": "general",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_24",
+      "text": "It is better to just push through situations rather than analyze how you feel about them.",
+      "response_options_key": "paq_likert",
+      "valence": "general",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "custom",
+    "range": [24, 168],
+    "bands": [
+      {"min": 24, "max": 60, "label": "low_alexithymia", "source": "Preece et al. 2018"},
+      {"min": 61, "max": 110, "label": "moderate_alexithymia", "source": "Preece et al. 2018"},
+      {"min": 111, "max": 168, "label": "high_alexithymia", "source": "Preece et al. 2018"}
+    ],
+    "subscales": {
+      "N_DIF": {"method": "sum", "items": ["paq_01", "paq_02", "paq_03", "paq_04"]},
+      "P_DIF": {"method": "sum", "items": ["paq_05", "paq_06", "paq_07", "paq_08"]},
+      "N_DDF": {"method": "sum", "items": ["paq_09", "paq_10", "paq_11", "paq_12"]},
+      "P_DDF": {"method": "sum", "items": ["paq_13", "paq_14", "paq_15", "paq_16"]},
+      "G_EOT": {"method": "sum", "items": ["paq_17", "paq_18", "paq_19", "paq_20", "paq_21", "paq_22", "paq_23", "paq_24"]}
+    }
+  },
+
+  "routing": {
+    "parent_instrument": "paq_s",
+    "carry_forward_items": {
+      "paq_s_01": "paq_09",
+      "paq_s_02": "paq_01",
+      "paq_s_03": "paq_13",
+      "paq_s_04": "paq_05",
+      "paq_s_05": "paq_17",
+      "paq_s_06": "paq_18"
+    },
+    "on_completion": [
+      {"condition": "score >= 111", "action": "flag_alexithymia_calibration"}
+    ]
+  }
+}

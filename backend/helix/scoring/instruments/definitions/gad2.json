@@ -1,0 +1,70 @@
+{
+  "instrument_id": "gad2",
+  "version": "1.0.0",
+  "name": "Generalized Anxiety Disorder-2",
+  "abbreviation": "GAD-2",
+  "planet": "venus",
+  "tier": "quick_scan",
+  "time_window": "past_2_weeks",
+  "time_window_text": "Over the last 2 weeks, how often have you been bothered by the following?",
+  "time_window_days": 14,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "gad_likert": [
+      {"value": 0, "label": "Not at all"},
+      {"value": 1, "label": "Several days"},
+      {"value": 2, "label": "More than half the days"},
+      {"value": 3, "label": "Nearly every day"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "gad2_01",
+      "text": "Feeling nervous, anxious, or on edge",
+      "response_options_key": "gad_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "gad2_02",
+      "text": "Not being able to stop or control worrying",
+      "response_options_key": "gad_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [0, 6],
+    "bands": [
+      {"min": 0, "max": 2, "label": "minimal_or_none", "source": "Kroenke et al. 2007"},
+      {"min": 3, "max": 6, "label": "elevated_symptoms", "source": "Kroenke et al. 2007"}
+    ],
+    "subscales": null
+  },
+
+  "routing": {
+    "parent_instrument": null,
+    "carry_forward_items": null,
+    "on_completion": [
+      {"condition": "score >= 3", "action": "trigger_expansion", "target": "gad7"}
+    ]
+  }
+}

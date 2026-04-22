@@ -1,0 +1,120 @@
+{
+  "instrument_id": "gad7",
+  "version": "1.0.0",
+  "name": "Generalized Anxiety Disorder-7",
+  "abbreviation": "GAD-7",
+  "planet": "venus",
+  "tier": "deep_dive",
+  "time_window": "past_2_weeks",
+  "time_window_text": "Over the last 2 weeks, how often have you been bothered by the following?",
+  "time_window_days": 14,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": ["distress_index"],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "gad_likert": [
+      {"value": 0, "label": "Not at all"},
+      {"value": 1, "label": "Several days"},
+      {"value": 2, "label": "More than half the days"},
+      {"value": 3, "label": "Nearly every day"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "gad7_01",
+      "text": "Feeling nervous, anxious, or on edge",
+      "response_options_key": "gad_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "gad7_02",
+      "text": "Not being able to stop or control worrying",
+      "response_options_key": "gad_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "gad7_03",
+      "text": "Worrying too much about different things",
+      "response_options_key": "gad_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "gad7_04",
+      "text": "Trouble relaxing",
+      "response_options_key": "gad_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "gad7_05",
+      "text": "Being so restless that it is hard to sit still",
+      "response_options_key": "gad_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "gad7_06",
+      "text": "Becoming easily annoyed or irritable",
+      "response_options_key": "gad_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "gad7_07",
+      "text": "Feeling afraid as if something awful might happen",
+      "response_options_key": "gad_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [0, 21],
+    "bands": [
+      {"min": 0, "max": 4, "label": "minimal", "source": "Spitzer et al. 2006"},
+      {"min": 5, "max": 9, "label": "mild", "source": "Spitzer et al. 2006"},
+      {"min": 10, "max": 14, "label": "moderate", "source": "Spitzer et al. 2006"},
+      {"min": 15, "max": 21, "label": "severe", "source": "Spitzer et al. 2006"}
+    ],
+    "subscales": null
+  },
+
+  "routing": {
+    "parent_instrument": "gad2",
+    "carry_forward_items": {
+      "gad2_01": "gad7_01",
+      "gad2_02": "gad7_02"
+    },
+    "on_completion": [
+      {"condition": "score >= 10", "action": "flag_elevated"}
+    ]
+  }
+}

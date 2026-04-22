@@ -1,0 +1,110 @@
+{
+  "instrument_id": "paq_s",
+  "version": "1.0.0",
+  "name": "Perth Alexithymia Questionnaire - Short Form",
+  "abbreviation": "PAQ-S",
+  "planet": "venus",
+  "tier": "quick_scan",
+  "time_window": "general",
+  "time_window_text": "Please indicate how much you agree or disagree with each statement.",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "free",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": "alexithymia",
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "paq_likert": [
+      {"value": 1, "label": "Strongly disagree"},
+      {"value": 2, "label": "Disagree"},
+      {"value": 3, "label": "Somewhat disagree"},
+      {"value": 4, "label": "Neither agree nor disagree"},
+      {"value": 5, "label": "Somewhat agree"},
+      {"value": 6, "label": "Agree"},
+      {"value": 7, "label": "Strongly agree"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "paq_s_01",
+      "text": "When I am feeling bad (feeling an unpleasant emotion), I can't find the right words to describe those feelings.",
+      "response_options_key": "paq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_s_02",
+      "text": "When I am feeling bad (feeling an unpleasant emotion), I am confused about what emotion I am feeling.",
+      "response_options_key": "paq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_s_03",
+      "text": "When I am feeling good (feeling a pleasant emotion), I can't find the right words to describe those feelings.",
+      "response_options_key": "paq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_s_04",
+      "text": "When I am feeling good (feeling a pleasant emotion), I am confused about what emotion I am feeling.",
+      "response_options_key": "paq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_s_05",
+      "text": "I prefer to just let things happen rather than to understand why they turned out that way.",
+      "response_options_key": "paq_likert",
+      "valence": "general",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "paq_s_06",
+      "text": "I tend to ignore how I feel.",
+      "response_options_key": "paq_likert",
+      "valence": "general",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [6, 42],
+    "bands": [
+      {"min": 6, "max": 18, "label": "low_alexithymia", "source": "Preece et al. 2020"},
+      {"min": 19, "max": 29, "label": "moderate_alexithymia", "source": "Preece et al. 2020"},
+      {"min": 30, "max": 42, "label": "high_alexithymia", "source": "Preece et al. 2020"}
+    ],
+    "subscales": null
+  },
+
+  "routing": {
+    "parent_instrument": null,
+    "carry_forward_items": null,
+    "on_completion": [
+      {"condition": "score >= 30", "action": "trigger_expansion", "target": "paq"}
+    ]
+  }
+}
