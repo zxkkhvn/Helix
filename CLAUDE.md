@@ -57,9 +57,43 @@ backend/
     ├── db/                        # Database abstraction + migrations
     ├── reports/                   # PDF/JSON export (pandas allowed here only)
     └── tests/
+        ├── conftest.py            # Shared fixtures: load_definition(), score(), mock responses
+        ├── test_scoring.py        # GenericScorer + custom scorer tests
+        ├── test_definitions.py    # JSON schema validation for all definitions
+        ├── test_routing.py        # Expansion triggers, carry-forward, safety flags
+        ├── test_composite.py      # Composite index computation
+        └── test_api.py            # FastAPI endpoint integration tests
 frontend/                          # Next.js — Phase 5, not started
 Tests/                             # PDF source instruments (git-ignored)
 ```
+
+## Testing
+
+**Test-driven development is mandatory.** Write tests before or alongside implementation — never after.
+
+```bash
+pytest backend/helix/tests/ -q            # all tests
+pytest backend/helix/tests/ -q -x         # stop on first failure
+pytest backend/helix/tests/ -k "phq9"     # single instrument
+```
+
+### Test categories
+
+| Category | File | What it covers |
+|---|---|---|
+| Definition validation | `test_definitions.py` | Every JSON def loads, conforms to schema, items match response_option_sets, score ranges are consistent |
+| Scoring correctness | `test_scoring.py` | Known test vectors per instrument. Min/max/mid/edge scores. Band assignment. Subscale computation. |
+| Routing logic | `test_routing.py` | Expansion triggers fire at correct thresholds. Carry-forward maps correct items. Safety flags trigger SAFETY_PROTOCOL. |
+| Composite indices | `test_composite.py` | mean_z computation. required_core enforcement. Partial composite labelling. Sign inversions. |
+| API integration | `test_api.py` | Submit responses → get scores. Session management. Safety pause flow. |
+
+### Test rules
+
+- **Every scorer (generic or custom) must have test vectors.** Minimum: all-min, all-max, midpoint, threshold boundaries (e.g. PHQ-2 score=2 vs score=3).
+- **Safety flag tests are mandatory.** PHQ-9 item 9 at every value (0, 1, 2, 3). PC-PTSD-5 at threshold.
+- **Carry-forward tests must verify item mapping.** Submit PHQ-2, expand to PHQ-9, confirm items 1-2 are pre-filled and score includes them.
+- **Never mock the scorer in scoring tests.** Test the real computation path. Mocking is for API/DB layers only.
+- **Run `pytest -q` before every commit.** No broken tests in main.
 
 ## Architecture Rules
 
