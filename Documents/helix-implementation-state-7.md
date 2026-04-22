@@ -32,7 +32,7 @@ These decisions are finalised across planning. They are not open for re-evaluati
 | Frontend | Next.js (React) + Tailwind CSS | Thin client. Zero business logic. Rendering + chat UI + solar system canvas only. |
 | Solar system renderer | Decision deferred | D3.js baseline. Will prototype alternatives (PixiJS, SVG + Framer Motion) before committing. |
 | Backend | Python FastAPI | All business logic: scoring, routing, AI orchestration, report generation. |
-| Scoring engine | Pure Python + numpy | No pandas in scoring path. Strict JSON in / JSON out. |
+| Scoring engine | Pure Python (stdlib) | numpy deferred to composite engine only. No pandas in scoring path. Strict JSON in / JSON out. |
 | Reports / export | Python + pandas + WeasyPrint | pandas scoped to `reports/` only. WeasyPrint for PDF v1. |
 | Database (v1) | SQLite | UUIDs as PKs, JSON columns for flexible payloads. Designed for Postgres migration. |
 | Database (scale) | PostgreSQL | Migration path, not v1. |
@@ -56,18 +56,25 @@ These decisions are finalised across planning. They are not open for re-evaluati
 
 ## 2. Current Build Status
 
-**Nothing has been built.** All components below are at planning stage only. The scoring engine design, instrument architecture, routing rules, and data model have been fully specified in the planning threads but no code exists in any repository.
+Phase 2 Venus vertical slice complete. 169 tests passing. API is runnable with `uvicorn helix.main:app --reload` from `backend/`.
 
 | Component | Status |
 |---|---|
-| Scoring engine (BaseScorer, registry, composite engine) | NOT STARTED — designed, not coded |
-| All instrument scorers (48 instruments — see Sections 17, 25, 30, 31 for definitive list) | NOT STARTED |
-| Instrument JSON definitions | NOT STARTED |
-| Routing engine | NOT STARTED — rules defined, not coded |
+| Scoring engine — BaseScorer + ScoreResult | COMPLETE — `scoring/base.py`. Longstring detection, rapid-response flagging, band assignment, restrictive safety condition parser (no eval). |
+| Scoring engine — GenericScorer | COMPLETE — `scoring/generic.py`. Handles sum/mean instruments. Carry-forward merge. Reverse scoring and subscale computation support. |
+| Scoring engine — Scorer registry | COMPLETE — `scoring/registry.py`. Auto-discovers definitions on startup. Routes custom instruments to their module via `create_scorer()` factory. |
+| Scoring engine — PAQ custom scorer | COMPLETE — `scoring/instruments/paq.py`. 5 subscales (N_DIF, P_DIF, N_DDF, P_DDF, G_EOT), total = sum of subscales. |
+| Scoring engine — composite engine | NOT STARTED — designed, not coded |
+| All instrument scorers (48 instruments) | IN PROGRESS — Venus 9 generic (PHQ-2, PHQ-9, GAD-2, GAD-7, PAQ-S, DERS-16, PSS-10, DTS, ERQ) + 1 custom (PAQ) complete. Remaining 38 not started. |
+| Instrument JSON definitions | IN PROGRESS — Venus fully complete (10/10). Remaining 38 not started. |
+| Routing engine (Venus) | COMPLETE — `routing/engine.py`. Evaluates `on_completion` rules from JSON definitions. `evaluate_routing()` + `compute_available_instruments()`. PHQ-2→PHQ-9, GAD-2→GAD-7, PAQ-S→PAQ, PHQ-9 flag_elevated, safety_pause. |
+| Database schema | COMPLETE — `models/models.py`. Session, AssessmentInstance (with parent_instance_id), Score. UUID PKs, JSON columns, designed for Postgres migration. SQLite v1 via `db/database.py`. |
+| FastAPI application | COMPLETE — `main.py`. Lifespan handler bootstraps DB + scorer registry. CORS configured for dev. |
+| Assessment submission API | COMPLETE — `POST /sessions/{id}/assessments/{instrument_id}/submit`. Server-side carry-forward. Scores, persists, routes, handles safety in one endpoint. |
+| Session management API | COMPLETE — `POST /sessions`, `GET /sessions/{id}`, `POST /sessions/{id}/acknowledge-safety`. Available instruments computed from Score rows (not stored state). |
+| Safety protocol | COMPLETE — PHQ-9 item 9 > 0 → SAFETY_PAUSED state. 409 on all further submissions. Structured safety flag (instrument_id, item_id, reason, timestamp). Acknowledge endpoint resumes EXPLORING. |
+| Test suite | IN PROGRESS — 169/169 passing. Definition + scoring + routing + API integration. |
 | Planet state calculator | NOT STARTED — designed, not coded |
-| FastAPI application | NOT STARTED |
-| Database schema + migrations | NOT STARTED |
-| Assessment session management | NOT STARTED |
 | Intake flow | NOT STARTED |
 | AI pipeline (prompt builder, LLM wrapper) | NOT STARTED |
 | Formulation narrative engine | NOT STARTED |
@@ -82,96 +89,80 @@ These decisions are finalised across planning. They are not open for re-evaluati
 
 ## 3. Repository Structure
 
-Monorepo layout. Backend-first development sequence.
+Monorepo layout. Backend-first development sequence. Files marked ✓ exist; unmarked are planned.
 
 ```
 helix/
 ├── backend/
-│   ├── pyproject.toml
-│   ├── uv.lock
+│   ├── pyproject.toml                       ✓ FastAPI, SQLAlchemy, Pydantic v2, uvicorn, httpx
 │   └── helix/
-│       ├── __init__.py
-│       ├── main.py                    ← FastAPI app entry
-│       ├── config.py                  ← Settings, env vars, model config
+│       ├── __init__.py                      ✓
+│       ├── main.py                          ✓ FastAPI app entry, lifespan handler
+│       ├── config.py                          Settings, env vars, model config
 │       ├── models/
-│       │   ├── __init__.py
-│       │   ├── user.py
-│       │   ├── session.py
-│       │   ├── assessment.py
-│       │   └── formulation.py
+│       │   ├── __init__.py                  ✓
+│       │   └── models.py                    ✓ Session, AssessmentInstance, Score (SQLAlchemy ORM)
 │       ├── scoring/
-│       │   ├── __init__.py
-│       │   ├── base.py                ← BaseScorer, ScoreResult
-│       │   ├── registry.py            ← Scorer registry
-│       │   ├── generic.py             ← GenericScorer (loads JSON defs)
-│       │   ├── composite.py           ← Composite index engine
-│       │   ├── planet_state.py        ← Planet state calculator
+│       │   ├── __init__.py                  ✓
+│       │   ├── base.py                      ✓ BaseScorer, ScoreResult, condition parser
+│       │   ├── registry.py                  ✓ Scorer registry, auto-discovery
+│       │   ├── generic.py                   ✓ GenericScorer (sum/mean)
+│       │   ├── composite.py                   Composite index engine (mean_z)
+│       │   ├── planet_state.py                Planet state calculator
 │       │   └── instruments/
-│       │       ├── vlq.py             ← Custom: gap scoring
-│       │       ├── besq.py            ← REMOVED: replaced by MSS-YSQ
-│       │       ├── mss_ysq.py         ← Custom: 19 schemas, 6 clusters
-│       │       ├── catq.py            ← Custom: subscale weighting
-│       │       ├── pbat.py            ← Custom: formative, item-profile output
-│       │       ├── paq.py             ← Custom: 5 subscales, valence-specific
-│       │       ├── lsas_sr.py         ← Custom: paired fear+avoidance ratings
-│       │       ├── ecr_rs.py          ← Custom: multi-target (4 relationships)
-│       │       ├── meq.py             ← Custom: non-standard per-item weighting, chronotype classification
-│       │       └── ...
-│       ├── instruments/
-│       │   └── definitions/
-│       │       ├── phq2.json
-│       │       ├── phq9.json
-│       │       ├── gad2.json
-│       │       ├── gad7.json
-│       │       ├── pbat.json
-│       │       ├── paq_s.json
-│       │       ├── paq.json
-│       │       ├── mss_ysq.json
-│       │       ├── maia2_brief.json
-│       │       ├── mlq.json
-│       │       ├── cpq.json
-│       │       ├── des_b.json
-│       │       ├── rses.json
-│       │       ├── ecr_rs.json
-│       │       ├── compact10.json
-│       │       ├── composites.json    ← Versioned composite index definitions
-│       │       └── ...                ← All 48 instrument definitions
+│       │       ├── __init__.py              ✓ Exposes _DEFINITIONS_DIR
+│       │       ├── definitions/
+│       │       │   ├── phq2.json            ✓
+│       │       │   ├── phq9.json            ✓
+│       │       │   ├── gad2.json            ✓
+│       │       │   ├── gad7.json            ✓
+│       │       │   ├── paq_s.json           ✓
+│       │       │   ├── paq.json             ✓
+│       │       │   ├── composites.json        Versioned composite index definitions
+│       │       │   └── ...                    Remaining 42 instrument definitions
+│       │       ├── paq.py                   ✓ Custom: 5 subscales, valence-specific
+│       │       ├── vlq.py                     Custom: gap scoring
+│       │       ├── mss_ysq.py                 Custom: 19 schemas, 6 clusters
+│       │       ├── pbat.py                    Custom: formative, item-profile output
+│       │       ├── lsas_sr.py                 Custom: paired fear+avoidance ratings
+│       │       ├── ecr_rs.py                  Custom: multi-target (4 relationships)
+│       │       ├── meq.py                     Custom: chronotype classification
+│       │       └── psqi.py                    Custom: 7-component derivation
 │       ├── routing/
-│       │   ├── __init__.py
-│       │   ├── engine.py              ← Routing engine
-│       │   └── rules.py               ← Rule definitions
+│       │   ├── __init__.py                  ✓
+│       │   └── engine.py                    ✓ evaluate_routing, compute_available_instruments
 │       ├── ai/
-│       │   ├── __init__.py
-│       │   ├── prompt_builder.py      ← Structured prompt assembly
-│       │   ├── formulation.py         ← FormulationEngine class
-│       │   └── llm_client.py          ← Ollama / cloud abstraction
+│       │   ├── prompt_builder.py              Structured prompt assembly
+│       │   ├── formulation.py                 FormulationEngine class
+│       │   └── llm_client.py                  Ollama / cloud abstraction
 │       ├── api/
-│       │   ├── __init__.py
-│       │   ├── routes_assessment.py
-│       │   ├── routes_session.py
-│       │   ├── routes_formulation.py
-│       │   ├── routes_auth.py
-│       │   └── routes_debug.py         ← Debug-only endpoints (DEBUG_MODE=true only, returns 404 in production)
+│       │   ├── __init__.py                  ✓
+│       │   ├── routes_assessment.py         ✓ POST .../submit (server-side carry-forward)
+│       │   ├── routes_session.py            ✓ POST/GET /sessions, acknowledge-safety
+│       │   ├── routes_formulation.py          Formulation generation
+│       │   ├── routes_auth.py                 Google OAuth validation
+│       │   └── routes_debug.py                Debug-only endpoints (DEBUG_MODE=true)
 │       ├── db/
-│       │   ├── __init__.py
-│       │   ├── database.py            ← SQLite/Postgres abstraction
-│       │   └── migrations/
+│       │   ├── __init__.py                  ✓
+│       │   ├── database.py                  ✓ SQLite engine, SessionLocal, get_db, create_tables
+│       │   └── migrations/                    Alembic (deferred to Postgres migration)
 │       ├── reports/
-│       │   ├── __init__.py
-│       │   ├── pdf_generator.py       ← WeasyPrint + pandas
-│       │   └── json_export.py
+│       │   ├── pdf_generator.py               WeasyPrint + pandas
+│       │   └── json_export.py                 JSON report export
 │       └── tests/
-│           ├── test_scoring.py
-│           ├── test_routing.py
-│           ├── test_composite.py
-│           └── test_api.py
-├── frontend/
-│   ├── package.json
-│   ├── next.config.js
-│   └── src/                           ← Not started. Shell only.
-├── .github/
-│   └── workflows/
-├── .gitignore
+│           ├── __init__.py                  ✓
+│           ├── conftest.py                  ✓ Shared fixtures, score() helper, make_specific_responses()
+│           ├── test_definitions.py          ✓ 16 JSON schema validation tests
+│           ├── test_scoring.py              ✓ 78 scoring tests (Venus instruments)
+│           ├── test_routing.py              ✓ 34 routing unit tests
+│           ├── test_api.py                  ✓ 26 API integration tests
+│           └── test_composite.py              Composite index tests
+├── frontend/                                  Next.js — Phase 5, not started
+├── Documents/
+│   └── helix-implementation-state-7.md      ✓ This document
+├── LEARNINGS.md                             ✓ Non-obvious decisions and gotchas
+├── GEMINI.md                                ✓ Agent context
+├── .gitignore                               ✓
 └── README.md
 ```
 
@@ -185,42 +176,42 @@ Backend-first. Each phase produces a testable, working vertical slice.
 
 **Goal:** Every instrument has a JSON definition and a working scorer. The generic scorer handles standard instruments; custom subclasses exist for non-trivial logic. Full test coverage.
 
-| Task | Detail | Depends On |
+| Task | Detail | Status |
 |---|---|---|
-| 1.0 Audit all instruments against JSON schema | Check which of the 48 instruments fit the generic scorer (sum/mean) vs need custom handling. Expect ~50/50 split. See red team finding #2. | Nothing |
-| 1.1 Define JSON schema for instrument definitions | Finalise the contract: items, response_options, scoring_rules, subscales, thresholds, routing_triggers, cultural_validity, time_window. Revise based on audit findings. | 1.0 |
-| 1.2 Build BaseScorer + ScoreResult | Abstract base class with longstring detection, rapid-response checking, cultural caveat injection. ScoreResult dataclass. | Nothing |
-| 1.3 Build GenericScorer class | Loads any conforming JSON definition. Applies sum/mean/subscale algorithms. Extends BaseScorer. | 1.1, 1.2 |
-| 1.4 Build scorer registry | Dynamic instrument registration and lookup. | 1.2 |
-| 1.5 Write JSON definitions -- Mercury | ISI, WEMWBS, Brief MAIA-2, MEQ, PSQI, FFMQ-15. | 1.1 |
-| 1.6 Write JSON definitions -- Venus | PHQ-2, PHQ-9, GAD-2, GAD-7, PAQ-S, PAQ, DERS-16. | 1.1 |
-| 1.7 Write JSON definitions -- Earth | BFI-S, IPIP-50, SCS-SF, BRS, RSES. | 1.1 |
-| 1.8 Write JSON definitions -- Mars | ASRS Part A, ASRS Full, BDEFS-SF. | 1.1 |
-| 1.9 Write JSON definitions -- Jupiter | VLQ, AAQ-II, CompACT-10, MLQ. | 1.1 |
-| 1.10 Write JSON definitions -- Saturn | LSAS-SR (short + full), ECR-S, ECR-RS. | 1.1 |
-| 1.11 Write JSON definitions -- Neptune | IUS-12, MSS-YSQ, PTQ-10, CPQ, Brief DES-B, PSWQ, OCI-R. | 1.1 |
-| 1.12 Write JSON definitions -- Uranus | AQ-10, CAT-Q, RAADS-R. | 1.1 |
-| 1.13 Write JSON definitions -- Cohesion + Safety | PBAT Section 1, PC-PTSD-5. Optional: AUDIT-C, DAST-10. | 1.1 |
-| 1.14 Build custom scorers | PBAT (formative/item-profile), VLQ (gap scoring), MSS-YSQ (19 schemas/6 clusters), PAQ (5 subscales/valence-specific), LSAS-SR (paired fear+avoidance), ECR-RS (multi-target), MEQ (non-standard weighting/chronotype classification), PSQI (7-component derivation). 8 custom scorers total. | 1.3 |
-| 1.15 Build composite index engine | mean_z computation, required_core and required_minimum enforcement, partial composite labelling (n of N components). Composite definitions versioned in composites.json. Resolve z-score norms per composite using norms table. | 1.3 |
-| 1.16 Build routing engine | Deterministic rule evaluation. Expansion triggers (PHQ-2 to PHQ-9, GAD-2 to GAD-7, ASRS-A to full, LSAS short to full, BFI-S to IPIP-50, PAQ-S to PAQ). Safety protocols. Deep dive unlock triggers. Test-retest interval enforcement. | 1.4 |
-| 1.17 Build planet state calculator | Derives planet opacity, moon unlocks, ring assignments from assessment completion state. Planet-centric model (AVAILABLE, SCANNED, DEEP_DIVE_AVAILABLE, DEEP_DIVE_COMPLETE). | 1.15, 1.16 |
-| 1.18 Full test suite | Every instrument scored against known test vectors. Edge cases for routing triggers, expansion carry-forward, safety flags. Composite index validation. | 1.5-1.17 |
+| 1.0 Audit all instruments against JSON schema | Check which of the 48 instruments fit the generic scorer (sum/mean) vs need custom handling. ~40 generic, 8 custom. | **✓ DONE** |
+| 1.1 Define JSON schema for instrument definitions | Contract: items, response_options, scoring_rules, subscales, thresholds, routing_triggers, cultural_validity, time_window. | **✓ DONE** — 16 schema validation tests passing. |
+| 1.2 Build BaseScorer + ScoreResult | Abstract base class with longstring detection, rapid-response checking, band assignment, safety condition parser. ScoreResult dataclass. | **✓ DONE** — `scoring/base.py` |
+| 1.3 Build GenericScorer class | Loads any conforming JSON definition. Applies sum/mean/subscale algorithms. Extends BaseScorer. Carry-forward merge. | **✓ DONE** — `scoring/generic.py` |
+| 1.4 Build scorer registry | Dynamic instrument registration and lookup. Auto-discovers definitions from directory. | **✓ DONE** — `scoring/registry.py` |
+| 1.5 Write JSON definitions — Mercury | ISI, WEMWBS, Brief MAIA-2, MEQ, PSQI, FFMQ-15. | Not started |
+| 1.6 Write JSON definitions — Venus | PHQ-2, PHQ-9, GAD-2, GAD-7, PAQ-S, PAQ, DERS-16, PSS-10, DTS, ERQ. | **✓ DONE** |
+| 1.7 Write JSON definitions — Earth | BFI-S, IPIP-50, SCS-SF, BRS, RSES, ACEs, VIA-IS-P. | Not started |
+| 1.8 Write JSON definitions — Mars | ASRS Part A, ASRS Full, BDEFS-SF, CFQ-25. | Not started |
+| 1.9 Write JSON definitions — Jupiter | VLQ, AAQ-II, CompACT, MLQ, SWLS. | Not started |
+| 1.10 Write JSON definitions — Saturn | LSAS-SR (short + full), ECR-S, ECR-RS, De Jong Gierveld. | Not started |
+| 1.11 Write JSON definitions — Neptune | IUS-12, MSS-YSQ, PTQ-10, CPQ, DSS-B, PSWQ, OCI-R. | Not started |
+| 1.12 Write JSON definitions — Uranus | AQ-10, CAT-Q, RAADS-R. | Not started |
+| 1.13 Write JSON definitions — Core Flow + Safety | PBAT, WSAS, PC-PTSD-5, PCL-5. Optional: AUDIT-C, DAST-10. | Not started |
+| 1.14 Build custom scorers | PAQ (5 subscales/valence-specific). Remaining 7: PBAT, VLQ, MSS-YSQ, LSAS-SR, ECR-RS, MEQ, PSQI. | **Partial** — PAQ complete (1/8). |
+| 1.15 Build composite index engine | mean_z computation, required_core and required_minimum enforcement, partial composite labelling. | Not started |
+| 1.16 Build routing engine | Deterministic rule evaluation. Expansion triggers. Safety protocols. Deep dive unlock triggers. | **Partial** — Venus slice complete. Full multi-planet routing not started. |
+| 1.17 Build planet state calculator | Derives planet opacity, moon unlocks, ring assignments from completion state. | Not started |
+| 1.18 Full test suite | Every instrument scored against known test vectors. Edge cases for routing, carry-forward, safety. | **Partial** — 152/152 passing. Venus fully covered. |
 
 ### Phase 2: Data Layer + API Shell
 
 **Goal:** SQLite database with complete schema. FastAPI app serving assessment endpoints. Sessions, responses, and scores persisting correctly.
 
-| Task | Detail | Depends On |
+| Task | Detail | Status |
 |---|---|---|
-| 2.1 Database schema design | User, Profile, Session, StateAnchors, AssessmentInstance (with `parent_instance_id`), ItemResponse, Score, ConsistencyCheckResult. UUIDs as PKs. JSON columns for flexible payloads. | Phase 1 |
-| 2.2 SQLAlchemy models + Alembic migrations | ORM models matching schema. Initial migration. SQLite for v1 with Postgres-compatible column types. | 2.1 |
-| 2.3 FastAPI app shell | Application factory, CORS config, health check, dependency injection for DB sessions. | Nothing |
-| 2.4 Assessment submission endpoints | `POST /assessments/{instrument_id}/submit` — accepts item responses, runs scorer, persists results, evaluates routing rules, returns score + next action. | 2.2, 2.3, Phase 1 |
-| 2.5 Session management endpoints | `POST /sessions/create`, `GET /sessions/{id}`, `GET /sessions/{id}/state` (returns planet states, completion status, available instruments). | 2.2, 2.3 |
-| 2.6 Intake flow endpoints | `POST /intake` — captures presenting concerns, red-thread question, cultural background, existing reports, session-state anchors, exclusion screen. | 2.2, 2.3 |
-| 2.7 Safety protocol handler | Middleware/hook that intercepts safety triggers (PHQ-9 item 9, PC-PTSD-5 threshold), pauses session, returns crisis resource payload. | 2.4 |
-| 2.8 Integration tests | Full flow: create session → intake → submit PHQ-2 → expansion to PHQ-9 → score → routing → next instrument. | 2.4–2.7 |
+| 2.1 Database schema design | Session, AssessmentInstance (with `parent_instance_id`), Score. UUIDs as PKs. JSON columns for flexible payloads. Designed for Postgres migration. | **✓ DONE** — `models/models.py` |
+| 2.2 SQLAlchemy models + create_tables | ORM models matching schema. `create_tables()` via `Base.metadata.create_all()`. Alembic deferred to Postgres migration. | **✓ DONE** — `db/database.py` |
+| 2.3 FastAPI app shell | Application factory, lifespan handler, CORS config, health check, dependency injection for DB sessions. | **✓ DONE** — `main.py` |
+| 2.4 Assessment submission endpoint | `POST /sessions/{id}/assessments/{instrument_id}/submit` — accepts responses + optional parent_instance_id, computes carry-forward server-side, runs scorer, persists results, evaluates routing, returns score + routing action + session_state. | **✓ DONE** — `api/routes_assessment.py` |
+| 2.5 Session management endpoints | `POST /sessions` (create), `GET /sessions/{id}` (state + completed + available). Available instruments computed from Score rows (not stored state). | **✓ DONE** — `api/routes_session.py` |
+| 2.6 Intake flow endpoints | Captures presenting concerns, red-thread question, cultural background, state anchors, exclusion screen. | Not started |
+| 2.7 Safety protocol handler | PHQ-9 item 9 > 0 → SAFETY_PAUSED. 409 on all further submissions. Structured safety flags (instrument_id, item_id, reason, timestamp). `POST /sessions/{id}/acknowledge-safety` resumes EXPLORING. | **✓ DONE** — integrated into routes_assessment.py + routes_session.py |
+| 2.8 Integration tests | Full flow: create session → submit PHQ-2 → expansion to PHQ-9 → carry-forward → score → safety pause → acknowledge → resume. | **✓ DONE** — `tests/test_api.py` (26 tests). |
 
 ### Phase 3: AI Pipeline
 
@@ -516,7 +507,7 @@ Items that need resolution but do not block Phase 1 work unless noted.
 | 2 | Build BaseScorer + ScoreResult + GenericScorer | Core scoring abstractions | 1 session |
 | 3 | Build scorer registry | Dynamic registration/lookup | 0.5 sessions |
 | 4 | Write all Layer 1 instrument definitions | 11 JSON files | 2 sessions |
-| 5 | Write Layer 2 instrument definitions | 6 JSON files (VLQ, Readiness, AAQ-II, CompACT-10, SCS-SF, BRS) | 1 session |
+| 5 | Write Layer 2 instrument definitions | 6 JSON files (VLQ, Readiness, AAQ-II, CompACT, SCS-SF, BRS) | 1 session |
 | 6 | Write Layer 3 instrument definitions | 6 JSON files | 1–2 sessions |
 | 7 | Write Layer 4 instrument definitions + custom scorers | 3 JSON files + custom scorer classes (VLQ, BESQ, CAT-Q, Readiness, PBAT) | 1–2 sessions |
 | 8 | Build composite index engine | z-standardisation, all 6 indices | 1 session |
@@ -677,16 +668,16 @@ Generalise the PHQ-2 to PHQ-9 expansion pattern across the battery. Every planet
 | Venus (Mood, emotion, awareness) | PHQ-2 + GAD-2 + PAQ-S (10 items) | PHQ-9 + GAD-7 + DERS-16 + PAQ full (24) |
 | Earth (Core self) | BFI-S (15 items) + VIA-IS-P (24 items) | IPIP-50 + SCS-SF + BRS + RSES (10) + ACEs (10) + VIA-120 (standalone session) |
 | Mars (Attention and drive) | ASRS Part A (6 items) | ASRS Full + BDEFS-SF |
-| Jupiter (Values, motivation, meaning) | VLQ (10 domains) | + AAQ-II + CompACT-10 + MLQ (10) |
+| Jupiter (Values, motivation, meaning) | VLQ (10 domains) | + AAQ-II + CompACT + MLQ (10) |
 | Saturn (Social and relational) | LSAS-SR short (~12 items) | LSAS-SR full + ECR-S + ECR-RS (36) + De Jong Gierveld (6) |
-| Neptune (Deep patterns) | IUS-12 (12 items) | + MSS-YSQ (76) + PTQ-10 + CPQ (12) + Brief DES-B (8) + PSWQ (16) + OCI-R (18) |
+| Neptune (Deep patterns) | IUS-12 (12 items) | + MSS-YSQ (76) + PTQ-10 + CPQ (12) + DSS-B (10) + PSWQ (16) + OCI-R (18) |
 | Uranus (Neurodivergence) | AQ-10 (10 items, conditional) | + CAT-Q + RAADS-R (80, standalone session) |
 
 **Note — SDS:** Moved to core flow (administered universally as functional impairment baseline).
 
 **Note — Uranus (Neurodivergence):** LOCKED by default. Not in default quick scan. Activates via: (a) intake intent "I think I might be neurodivergent", (b) ASRS Part A >= 4 routing trigger from Mars, or (c) explicit user opt-in. Uranus is visible in the solar system but dim/locked until activated.
 
-**Note — Readiness Rulers:** CUT from v1. Redundant with VLQ gap, AAQ-II, CompACT-10 valued action subscale. v2 candidate.
+**Note — Readiness Rulers:** CUT from v1. Redundant with VLQ gap, AAQ-II, CompACT valued action subscale. v2 candidate.
 
 **Routing rule change:** Quick scans are available from the start (after core flow). Deep dives unlock based on either (a) routing triggers from quick scan scores, or (b) user choice ("I want to explore this more"). This replaces the rigid Layer 1 to Layer 2 to Layer 3 sequence with a planet-centric exploration model.
 
@@ -902,12 +893,12 @@ This is the definitive instrument list incorporating all planning decisions, red
 |---|---|---|---|---|---|
 | Quick scan | VLQ | 10 domains x 2 | 1-10 Likert | Valued living: importance vs consistency per domain | Moderate-hard licence |
 | Deep dive | AAQ-II | 7 | 1-7 Likert | Psychological inflexibility / experiential avoidance | Moderate-hard licence |
-| Deep dive | CompACT-10 | 10 | 0-6 Likert | Psychological flexibility (3 subscales: openness, awareness, valued action) | Free for clinical and research use |
+| Deep dive | CompACT | 23 | 0-6 Likert | Psychological flexibility (3 subscales: openness to experience, behavioral awareness, valued action) | Free for clinical and research use |
 | Deep dive | MLQ | 10 | 1-7 Likert | Meaning in Life: Presence vs Search subscales | Free from author website |
 
 **Rationale for MLQ addition:** Values (VLQ) and meaning (MLQ) are distinct constructs. A user with clear values but no felt sense of meaning is a fundamentally different profile from one who has both or neither. 10 items, freely available.
 
-**Rationale for CompACT-10 alongside AAQ-II:** AAQ-II measures inflexibility (the problem). CompACT-10 measures flexibility (the resource), with three subscales that map to PBT process domains. Together they give the richest available picture of the central PBT construct. Both are free.
+**Rationale for CompACT alongside AAQ-II:** AAQ-II measures inflexibility (the problem). CompACT measures flexibility (the resource), with three subscales that map to PBT process domains. Together they give the richest available picture of the central PBT construct. Both are free. Full 23-item version used (Atkins et al.) — no validated brief form exists.
 
 ### 17.8 Planet: Saturn -- Social and Relational
 
@@ -928,13 +919,13 @@ This is the definitive instrument list incorporating all planning decisions, red
 | Deep dive | MSS-YSQ | 76 | 1-6 Likert | Maladaptive schemas (19 schemas, 6 unmet needs clusters) | Open source, no permission needed |
 | Deep dive | PTQ-10 | 10 | 0-4 Likert | Perseverative thinking (content-independent rumination) | Moderate licence |
 | Deep dive | CPQ | 12 | 1-4 Likert | Clinical perfectionism (maintaining factor) | Free for research/clinical |
-| Deep dive | Brief DES-B | 8 | 0-100 VAS | Dissociative experiences screen | Free |
+| Deep dive | DSS-B | 10 | 0-4 Likert | Dissociative experiences screen (DSM-5 Level 2 Cross-Cutting) | Free (APA) |
 
 **BESQ replaced by MSS-YSQ:** The MSS-YSQ has superior psychometric properties (Rasch-validated, 2024), covers 19 schemas vs BESQ's 18 with better item quality, maps to childhood unmet needs clusters (clinically actionable), is open source with no licence required, and has an adaptive version (MSS-YSQ-Dynamic) that reduces administration by ~36%.
 
 **Rationale for CPQ addition:** Clinical perfectionism is one of the most transdiagnostic maintaining factors. It drives anxiety (GAD-7), depression (PHQ-9), schema activation (Failure, Unrelenting Standards), and social avoidance (LSAS). 12 items, free. Measuring it directly is cleaner than inferring from cross-instrument patterns.
 
-**Rationale for Brief DES-B addition:** Dissociation is relevant in trauma (PC-PTSD-5), ADHD (attentional dissociation), and autism. 8 items, free. Flags a clinically important dimension currently invisible in the battery.
+**Rationale for DSS-B addition:** Dissociation is relevant in trauma (PC-PTSD-5), ADHD (attentional dissociation), and autism. 10 items, free (APA DSM-5 Level 2 Cross-Cutting Symptom Measure). Flags a clinically important dimension currently invisible in the battery.
 
 ### 17.10 Planet: Neptune -- Deep Patterns and Hidden Depths
 
@@ -984,11 +975,11 @@ These are the key cross-instrument relationships the formulation engine should s
 | Values x Schemas | VLQ x MSS-YSQ | Value gaps x schema-driven avoidance patterns |
 | Meaning x Values | MLQ x VLQ | Felt meaningfulness vs specific value alignment |
 | Avoidance x Dysregulation | AAQ-II x DERS-16 | Experiential avoidance x emotion dysregulation |
-| Flexibility x Inflexibility | CompACT-10 x AAQ-II | Resource (flexibility) vs problem (inflexibility) |
+| Flexibility x Inflexibility | CompACT x AAQ-II | Resource (flexibility) vs problem (inflexibility) |
 | Self-compassion x Schemas | SCS-SF x MSS-YSQ | Compassion moderates failure/defectiveness schemas |
 | Personality x Schemas | IPIP-50 x MSS-YSQ | Trait context for schema thresholds |
 | Trauma x Dysregulation | PC-PTSD-5 x DERS-16 | Trauma amplifies dysregulation interpretation |
-| Trauma x Dissociation | PC-PTSD-5 x Brief DES-B | Trauma x dissociative coping |
+| Trauma x Dissociation | PC-PTSD-5 x DSS-B | Trauma x dissociative coping |
 | Sleep x ADHD | ISI x ASRS | Sleep deprivation compounds ADHD severity |
 | Wellbeing x Resources | WEMWBS x BRS + SCS-SF | Calibrates protective factor meaning |
 | Alexithymia x Emotion measures | PAQ x PHQ-9 + GAD-7 + DERS-16 + PBAT | Calibration: low emotional literacy may distort all emotion self-report |
@@ -1039,16 +1030,16 @@ Two instruments serve as calibration signals that modify interpretation of the e
 | Default quick scan total | ~135 |
 | Neptune quick scan (conditional) | 10 |
 | Mercury deep dive | 91 (WEMWBS 14 + Brief MAIA-2 24 + MEQ 19 + PSQI 19 + FFMQ-15 15) |
-| Venus deep dive | 47 (PHQ-9 7 new + GAD-7 5 new + DERS-16 16 + PAQ 18 new after carry-forward) |
+| Venus deep dive | 74 (PHQ-9 7 new + GAD-7 5 new + DERS-16 16 + PAQ 18 new after carry-forward + PSS-10 10 + DTS 15 + ERQ 10) |
 | Earth deep dive | 88 (IPIP-50 50 + SCS-SF 12 + BRS 6 + RSES 10 + ACEs 10) |
-| Mars deep dive | 32 (ASRS Full 12 new + BDEFS-SF 20) |
-| Jupiter deep dive | 27 (AAQ-II 7 + CompACT-10 10 + MLQ 10) |
+| Mars deep dive | 57 (ASRS Full 12 new + BDEFS-SF 20 + CFQ-25 25) |
+| Jupiter deep dive | 45 (AAQ-II 7 + CompACT 23 + MLQ 10 + SWLS 5) |
 | Saturn deep dive | 90 (LSAS full ~36 new + ECR-S 12 + ECR-RS 36 + De Jong Gierveld 6) |
 | Uranus deep dive | 105 (CAT-Q 25 + RAADS-R 80, standalone session) |
-| Neptune deep dive | 140 (MSS-YSQ 76 + PTQ-10 10 + CPQ 12 + Brief DES-B 8 + PSWQ 16 + OCI-R 18) |
+| Neptune deep dive | 142 (MSS-YSQ 76 + PTQ-10 10 + CPQ 12 + DSS-B 10 + PSWQ 16 + OCI-R 18) |
 | VIA-120 (standalone session) | 120 |
 | Optional substance | 13 (AUDIT-C 3 + DAST-10 10) |
-| **Total full battery** | **~1,008 items** (excluding cognitive tasks) |
+| **Total full battery** | **~1,063 items** (excluding cognitive tasks) |
 
 This is a comprehensive battery comparable in breadth to a full clinical assessment. No user is expected to complete everything -- the quick scan to deep dive architecture means users explore at their own depth.
 
@@ -1155,23 +1146,34 @@ The following tasks are added to Phase 2 based on the gap analysis.
 
 ## 24. Updated Immediate Next Actions
 
-Revised from Section 10, incorporating all gap analysis findings.
+Revised from Section 10, incorporating all gap analysis findings. Status updated after Phase 1 + Phase 2 completion.
 
-| # | Action | Output | Est. Effort | Notes |
+| # | Action | Output | Status | Notes |
 |---|---|---|---|---|
-| 1 | Audit all 48 instruments against JSON schema | List of generic vs custom scorer split | 1 session | Red team finding #2. Do this BEFORE building GenericScorer. |
-| 2 | Finalise instrument definition JSON schema | Schema spec + example (phq9.json) | 1 session | May need revision based on audit findings. |
-| 3 | Build BaseScorer + ScoreResult + GenericScorer | Core scoring abstractions | 1 session | |
-| 4 | Build scorer registry | Dynamic registration/lookup | 0.5 sessions | |
-| 5 | Write all instrument JSON definitions | ~29 generic JSON files | 3-4 sessions | Planet by planet. |
-| 6 | Build custom scorers | PBAT, VLQ, MSS-YSQ, PAQ, LSAS-SR, ECR-RS, MEQ, PSQI | 2-3 sessions | 8 custom scorers. |
-| 7 | Build composite index engine | z-standardisation, all 6 indices. Resolve z-score norms per composite. | 1 session | Blocking issue #1 from red team. |
-| 8 | Build routing engine | Deterministic rules + test-retest interval enforcement | 1 session | |
-| 9 | Build planet state calculator | Derived projection from completion state | 0.5 sessions | |
-| 10 | Full test suite | pytest with known test vectors for all instruments | 1-2 sessions | |
-| 11 | Database schema design | SQL DDL + SQLAlchemy models. Include: cascading delete, item-level persistence, longitudinal fields. | 1-2 sessions | |
-| 12 | FastAPI app shell + assessment endpoints | Working API with session management, intake flow, safety protocol handler | 2-3 sessions | |
-| 13 | Clinical intake packet export | PDF report via WeasyPrint. Therapist-facing format. | 1-2 sessions | First post-formulation pathway. |
+| 1 | Audit all 48 instruments against JSON schema | List of generic vs custom scorer split | **DONE** | Completed pre-Phase 1. 40 generic, 8 custom. |
+| 2 | Finalise instrument definition JSON schema | Schema spec + phq9.json example | **DONE** | Schema locked. 16 definition tests passing. |
+| 3 | Build BaseScorer + ScoreResult + GenericScorer | Core scoring abstractions | **DONE** | `scoring/base.py`, `scoring/generic.py`. |
+| 4 | Build scorer registry | Dynamic registration/lookup | **DONE** | `scoring/registry.py`. Auto-discovers from definitions dir. |
+| 5 | Write all instrument JSON definitions | ~40 generic JSON files | **IN PROGRESS** | Venus complete (6/48). Remaining 42 not started. |
+| 6 | Build custom scorers | PBAT, VLQ, MSS-YSQ, PAQ, LSAS-SR, ECR-RS, MEQ, PSQI | **IN PROGRESS** | PAQ complete (1/8). 7 custom scorers not started. |
+| 7 | Build composite index engine | z-standardisation, all 6 indices. | **NOT STARTED** | numpy needed. Blocking for full planet formulation. |
+| 8 | Build routing engine (Venus) | Deterministic rules for Venus slice | **DONE** | `routing/engine.py`. PHQ-2→PHQ-9, GAD-2→GAD-7, PAQ-S→PAQ, safety_pause. Full routing engine (all planets) not started. |
+| 9 | Build planet state calculator | Derived projection from completion state | **NOT STARTED** | Venus available instruments computation done as part of routing engine. Full planet state (LOCKED/AVAILABLE/SCANNED/DEEP_DIVE) not started. |
+| 10 | Full test suite | pytest with known test vectors for all instruments | **IN PROGRESS** | 152/152 passing. Venus fully covered (definitions, scoring, routing, API). Remaining 42 instruments not started. |
+| 11 | Database schema + SQLAlchemy models | Session, AssessmentInstance, Score. Cascade delete, longitudinal fields. | **DONE** | `models/models.py`, `db/database.py`. UUID PKs, JSON columns, designed for Postgres migration. |
+| 12 | FastAPI app shell + assessment endpoints | Session management, assessment submission, safety protocol handler | **DONE** | `main.py`, `api/routes_session.py`, `api/routes_assessment.py`. Server-side carry-forward. 409 safety block. Acknowledge-safety endpoint. |
+| 13 | Clinical intake packet export | PDF report via WeasyPrint. Therapist-facing format. | **NOT STARTED** | First post-formulation pathway. High priority after AI pipeline. |
+
+### Remaining priority order (post-Phase 2)
+
+| Priority | Action | Rationale |
+|---|---|---|
+| Next | Intake flow endpoints | Red-thread question, state anchors, PBAT, exclusion screen. Unblocks full session lifecycle. |
+| Next | Remaining Venus JSON definitions complete (already done) — expand to Mercury | ISI, WEMWBS, MAIA-2 Brief, MEQ, PSQI definitions + custom scorers for MEQ + PSQI. |
+| Later | Composite index engine | Needs numpy z-score norms. Blocked until ≥2 instruments per composite are scored. |
+| Later | AI formulation experiments | Can start with hardcoded Venus scores in a notebook to de-risk prompt quality early. |
+| Later | Auth (Google OAuth) | Phase 4. Not needed until multi-user / persistence across devices. |
+
 
 
 ---
@@ -1238,13 +1240,13 @@ The following instruments were identified as gaps in the battery and are added t
 | Planet | Quick Scan | Deep Dive (updated) |
 |---|---|---|
 | Mercury (Sleep, function, body) | ISI (7) | + WEMWBS (14) + Brief MAIA-2 (24) + MEQ (19) + PSQI (19) + FFMQ-15 (15) |
-| Venus (Mood, emotion, awareness) | PHQ-2 + GAD-2 + PAQ-S (10) | PHQ-9 + GAD-7 + DERS-16 + PAQ (24) |
+| Venus (Mood, emotion, awareness) | PHQ-2 + GAD-2 + PAQ-S (10) | PHQ-9 + GAD-7 + DERS-16 + PAQ (24) + PSS-10 (10) + DTS (15) + ERQ (10) |
 | Earth (Core self) | BFI-S (15) + **VIA-IS-P (24)** | IPIP-50 + SCS-SF + BRS + RSES + **ACEs (10)** + **VIA-120 (120, standalone session)** |
-| Mars (Attention and drive) | ASRS Part A (6) | ASRS Full + BDEFS-SF |
-| Jupiter (Values, motivation, meaning) | VLQ (10 domains) | + AAQ-II + CompACT-10 + MLQ (10) |
+| Mars (Attention and drive) | ASRS Part A (6) | ASRS Full + BDEFS-SF + CFQ-25 (25) |
+| Jupiter (Values, motivation, meaning) | VLQ (10 domains) | + AAQ-II + CompACT (23) + MLQ (10) + SWLS (5) |
 | Saturn (Social and relational) | LSAS-SR short (~12) | LSAS-SR full + ECR-S + ECR-RS (36) + **De Jong Gierveld (6)** |
 | Uranus (Neurodivergence) | AQ-10 (10, conditional) | + CAT-Q + RAADS-R (80, standalone) |
-| Neptune (Deep patterns) | IUS-12 (12) | + MSS-YSQ (76) + PTQ-10 + CPQ (12) + Brief DES-B (8) + PSWQ (16) + OCI-R (18) |
+| Neptune (Deep patterns) | IUS-12 (12) | + MSS-YSQ (76) + PTQ-10 + CPQ (12) + DSS-B (10) + PSWQ (16) + OCI-R (18) |
 
 ### 25.6 Updated Battery Statistics
 
@@ -1253,7 +1255,7 @@ The following instruments were identified as gaps in the battery and are added t
 | Total instruments (incl. short forms) | 31 | 37 (+ ACEs, De Jong Gierveld, MEQ, VIA-IS-P, VIA-120) |
 | Custom scorers needed | 7 | 8 (+ MEQ) |
 | Quick scan items | ~118 | ~142 (+ VIA-IS-P 24 on Earth) |
-| Full battery items (all deep dives) | ~571 | **~1,008 (see Section 31.5 for definitive count)** |
+| Full battery items (all deep dives) | ~571 | **~1,063 (see Section 31.5 for definitive count)** |
 | Free / public domain instruments | 19 | 24 |
 
 ### 25.7 Updated Interlinkage Map Additions
@@ -1390,12 +1392,12 @@ ACEs requires dedicated UX handling (sensitive_content flag added to JSON schema
 
 ### Item 7 — Readiness Rulers Cut (APPLIED)
 
-Cut from v1. Redundant with VLQ gap, AAQ-II, CompACT-10 valued action. Removed from:
+Cut from v1. Redundant with VLQ gap, AAQ-II, CompACT valued action. Removed from:
 - Section 14.2 Jupiter deep dive
 - Repository structure (readiness.py removed)
 - Custom scorer count reduced from 8 to 7
 
-Jupiter deep dive is now: VLQ -> AAQ-II -> CompACT-10 -> MLQ. v2 candidate.
+Jupiter deep dive is now: VLQ -> AAQ-II -> CompACT -> MLQ -> SWLS. v2 candidate.
 
 ### Item 8 — Session State Anchor Longitudinal Model
 
@@ -1701,10 +1703,10 @@ The following instruments are added to the battery based on the validation repor
 | Venus (Mood, emotion, awareness) | PHQ-2 + GAD-2 + PAQ-S (10) | PHQ-9 + GAD-7 + DERS-16 + PAQ (24) + **PSS-10 (10)** + **DTS (15)** + **ERQ (10)** |
 | Earth (Core self) | BFI-S (15) + VIA-IS-P (24) | IPIP-50 + SCS-SF + BRS + RSES + ACEs (10) + VIA-120 (standalone) |
 | Mars (Attention and drive) | ASRS Part A (6) | ASRS Full + BDEFS-SF + **CFQ-25 (25)** |
-| Jupiter (Values, motivation, meaning) | VLQ (10 domains) | AAQ-II + CompACT-10 + MLQ (10) + **SWLS (5)** |
+| Jupiter (Values, motivation, meaning) | VLQ (10 domains) | AAQ-II + CompACT (23) + MLQ (10) + **SWLS (5)** |
 | Saturn (Social and relational) | LSAS-SR short (~12) | LSAS-SR full + ECR-S + ECR-RS (36) + De Jong Gierveld (6) |
 | Uranus (Neurodivergence) | AQ-10 (10, conditional) | CAT-Q + **RAADS-R (80, standalone)** |
-| Neptune (Deep patterns) | IUS-12 (12) | MSS-YSQ (76) + PTQ-10 + CPQ (12) + Brief DES-B (8) + **PSWQ (16)** + **OCI-R (18)** |
+| Neptune (Deep patterns) | IUS-12 (12) | MSS-YSQ (76) + PTQ-10 + CPQ (12) + DSS-B (10) + **PSWQ (16)** + **OCI-R (18)** |
 | Asteroid belt (safety) | PC-PTSD-5 (5, core flow) | **PCL-5 (20, unlocks on PC-PTSD-5 >= 3)** |
 
 ### 30.6 Core Flow Update
@@ -1726,7 +1728,7 @@ Core flow total: ~34 items.
 |---|---|---|
 | Total instruments | 37 | 46 (+ WSAS, PSWQ, PCL-5, PSS-10, OCI-R, RAADS-R, CFQ-25, DTS, ERQ, SWLS; - SDS) |
 | Quick scan items (default) | ~135 | ~137 (WSAS 5 replaces SDS 3 in core flow = +2 net) |
-| Full battery items | ~750 | ~1,008 (+ PSWQ 16 + PCL-5 20 + PSS-10 10 + OCI-R 18 + RAADS-R 80 + CFQ-25 25 + DTS 15 + ERQ 10 + SWLS 5 + PSQI 19 + FFMQ-15 15 - SDS 3 + WSAS 5) |
+| Full battery items | ~750 | ~1,063 (+ PSWQ 16 + PCL-5 20 + PSS-10 10 + OCI-R 18 + RAADS-R 80 + CFQ-25 25 + DTS 15 + ERQ 10 + SWLS 5 + PSQI 19 + FFMQ-15 15 - SDS 3 + WSAS 5 + CompACT 23 vs old 10 = +13) |
 | Custom scorers | 7 | 7 (no new custom scorers needed — all new instruments are generic sum/mean) |
 | Free / public domain | 24 | 33 |
 
@@ -1815,7 +1817,7 @@ PSQI requires a custom scorer (non-standard component derivation). Total custom 
 | Total instruments (including short forms) | 48 |
 | Quick scan items (default, excluding conditional Neptune) | ~137 |
 | Core flow items (intake + PBAT + anchors + WSAS + PC-PTSD-5) | ~34 |
-| Full battery items (all deep dives + standalone sessions) | ~1,008 |
+| Full battery items (all deep dives + standalone sessions) | ~1,063 |
 | Custom scorers | 8 |
 | Generic scorers | ~40 |
 | Free / public domain | 35 |
@@ -1839,11 +1841,9 @@ Any proposal to add a new instrument must demonstrate that it fills a gap not co
 
 ## 33. Reality Check — Build Priorities
 
-### What to build first (vertical slice)
+### What to build first (vertical slice) — ✓ COMPLETE
 
-Before completing all 48 instrument definitions, build one planet end-to-end:
-
-**Venus (Mood, emotion, awareness)** is the best candidate because:
+Venus (Mood, emotion, awareness) was the first planet built because:
 - PHQ-2 -> PHQ-9 expansion exercises the carry-forward pattern
 - GAD-2 -> GAD-7 exercises a second carry-forward
 - PAQ-S -> PAQ exercises a third carry-forward
@@ -1851,9 +1851,9 @@ Before completing all 48 instrument definitions, build one planet end-to-end:
 - Venus feeds the Distress Index composite
 - Multiple deep dive instruments test the depth-tier architecture
 
-**Vertical slice deliverable:** JSON definitions for PHQ-2, PHQ-9, GAD-2, GAD-7, PAQ-S, PAQ -> GenericScorer + PAQ custom scorer -> SQLite schema -> FastAPI endpoint that accepts responses and returns scores -> basic HTML form that renders instruments -> basic result display.
+**Vertical slice delivered:** JSON definitions for 10 Venus instruments (PHQ-2, PHQ-9, GAD-2, GAD-7, PAQ-S, PAQ, DERS-16, PSS-10, DTS, ERQ) -> GenericScorer + PAQ custom scorer -> SQLite schema -> FastAPI endpoints that accept responses, persist scores, route expansions, and enforce safety protocol. 169 tests passing. API runnable with `uvicorn helix.main:app --reload` from `backend/`. Frontend (basic HTML form / result display) deferred to Phase 5.
 
-This proves the entire architecture works before investing in the remaining 42 instruments.
+This proves the entire architecture works before investing in the remaining 38 instruments.
 
 ### What to de-risk early
 
@@ -1896,7 +1896,7 @@ Uranus (Neurodivergence) remains LOCKED by default, conditional on intake intent
 | 5 | Jupiter | Values, motivation, meaning, life satisfaction, flexibility | King of gods: purpose, big picture, what matters. Largest planet for largest questions. |
 | 6 | Saturn | Social, relational, attachment, loneliness | Boundaries, structure, rings as relationship patterns. |
 | 7 | Uranus | Neurodivergence (AQ-10, CAT-Q, RAADS-R) | The unconventional, the different, the revolutionary. Conditional/locked by default. |
-| 8 | Neptune | Deep patterns (IUS-12, MSS-YSQ, OCI-R, PSWQ, CPQ, DES-B) | Deep sea, hidden depths, what lies beneath conscious awareness. |
+| 8 | Neptune | Deep patterns (IUS-12, MSS-YSQ, OCI-R, PSWQ, CPQ, DSS-B) | Deep sea, hidden depths, what lies beneath conscious awareness. |
 | -- | Kuiper belt | Cognitive tasks (Layer 5, jsPsych) | Outermost ring — furthest from subjective self-report core. |
 
 ---
