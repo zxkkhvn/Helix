@@ -1,0 +1,117 @@
+{
+  "instrument_id": "aaq2",
+  "version": "1.0.0",
+  "name": "Acceptance and Action Questionnaire - II",
+  "abbreviation": "AAQ-II",
+  "planet": "jupiter",
+  "tier": "deep_dive",
+  "time_window": "general",
+  "time_window_text": "Below you will find a list of statements. Please rate how true each statement is for you.",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "free",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": ["regulatory_burden"],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "aaq_likert": [
+      {"value": 1, "label": "Never true"},
+      {"value": 2, "label": "Very seldom true"},
+      {"value": 3, "label": "Seldom true"},
+      {"value": 4, "label": "Sometimes true"},
+      {"value": 5, "label": "Frequently true"},
+      {"value": 6, "label": "Almost always true"},
+      {"value": 7, "label": "Always true"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "aaq2_01",
+      "text": "My painful experiences and memories make it difficult for me to live a life that I would value.",
+      "response_options_key": "aaq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "aaq2_02",
+      "text": "I'm afraid of my feelings.",
+      "response_options_key": "aaq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "aaq2_03",
+      "text": "I worry about not being able to control my worries and feelings.",
+      "response_options_key": "aaq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "aaq2_04",
+      "text": "My painful memories prevent me from having a fulfilling life.",
+      "response_options_key": "aaq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "aaq2_05",
+      "text": "Emotions cause problems in my life.",
+      "response_options_key": "aaq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "aaq2_06",
+      "text": "It seems like most people are handling their lives better than I am.",
+      "response_options_key": "aaq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "aaq2_07",
+      "text": "Worries get in the way of my success.",
+      "response_options_key": "aaq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [7, 49],
+    "bands": [
+      {"min": 7, "max": 17, "label": "low_inflexibility"},
+      {"min": 18, "max": 27, "label": "moderate"},
+      {"min": 28, "max": 49, "label": "high_inflexibility"}
+    ],
+    "subscales": null
+  },
+
+  "routing": {
+    "parent_instrument": null,
+    "carry_forward_items": null,
+    "on_completion": []
+  }
+}

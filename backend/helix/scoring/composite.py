@@ -61,17 +61,23 @@ def compute_composite(composite_def: dict, score_results: List[ScoreResult], nor
     # Valued Living Gap is a custom computation based on VLQ gap scores
     if composite_def.get("computation") == "custom":
         if composite_def["index_id"] == "valued_living_gap":
-            vlq_score = find_score(score_results, "vlq")
-            if vlq_score is not None:
-                return CompositeResult(
-                    index_id=composite_def["index_id"],
-                    version=composite_def["version"],
-                    score=vlq_score,
-                    components_present=["vlq"],
-                    components_total=["vlq"],
-                    label="1 of 1 components",
-                    is_partial=False,
-                )
+            # VLQ scorer stores mean_gap in metadata and as total_score
+            for sr in score_results:
+                if sr.instrument_id == "vlq":
+                    mean_gap = (
+                        sr.metadata.get("mean_gap", sr.total_score)
+                        if sr.metadata
+                        else sr.total_score
+                    )
+                    return CompositeResult(
+                        index_id=composite_def["index_id"],
+                        version=composite_def["version"],
+                        score=mean_gap,
+                        components_present=["vlq"],
+                        components_total=["vlq"],
+                        label="1 of 1 components",
+                        is_partial=False,
+                    )
         return None
 
     available_z = {}

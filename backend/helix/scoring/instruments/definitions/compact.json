@@ -1,0 +1,91 @@
+{
+  "instrument_id": "compact",
+  "version": "1.0.0",
+  "name": "Comprehensive Assessment of ACT Processes",
+  "abbreviation": "CompACT",
+  "planet": "jupiter",
+  "tier": "deep_dive",
+  "time_window": "general",
+  "time_window_text": "Please rate the extent to which each of the following statements applies to you.",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "free",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "compact_likert": [
+      {"value": 0, "label": "Strongly Disagree"},
+      {"value": 1, "label": "Disagree"},
+      {"value": 2, "label": "Slightly Disagree"},
+      {"value": 3, "label": "Neither Agree nor Disagree"},
+      {"value": 4, "label": "Slightly Agree"},
+      {"value": 5, "label": "Agree"},
+      {"value": 6, "label": "Strongly Agree"}
+    ]
+  },
+
+  "items": [
+    {"item_id": "compact_01", "text": "I can identify the things that really matter to me in life and pursue them.", "response_options_key": "compact_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_02", "text": "I try to distract myself when I feel unpleasant emotions.", "response_options_key": "compact_likert", "valence": "negative", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_03", "text": "I rush through meaningful activities without being really attentive to them.", "response_options_key": "compact_likert", "valence": "negative", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_04", "text": "I go out of my way to avoid situations that might bring up unpleasant thoughts and feelings in me.", "response_options_key": "compact_likert", "valence": "negative", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_05", "text": "I act in ways that are consistent with how I wish to live my life.", "response_options_key": "compact_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_06", "text": "I work hard to keep out upsetting feelings.", "response_options_key": "compact_likert", "valence": "negative", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_07", "text": "I undertake things that are meaningful to me, even when I find it hard to do so.", "response_options_key": "compact_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_08", "text": "I try to suppress thoughts and feelings that I don't like by just not thinking about them.", "response_options_key": "compact_likert", "valence": "negative", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_09", "text": "I tend to get very entangled in my thoughts.", "response_options_key": "compact_likert", "valence": "negative", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_10", "text": "I behave in line with my personal values.", "response_options_key": "compact_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_11", "text": "I get so caught up in my thoughts that I am unable to do the things that I most want to do.", "response_options_key": "compact_likert", "valence": "negative", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_12", "text": "I find it difficult to stay focused on what's happening in the present.", "response_options_key": "compact_likert", "valence": "negative", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_13", "text": "I try to stay busy to keep thoughts and feelings from coming.", "response_options_key": "compact_likert", "valence": "negative", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_14", "text": "I make choices based on what is important to me, even if it is stressful.", "response_options_key": "compact_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_15", "text": "One of my big goals is to be free from painful emotions.", "response_options_key": "compact_likert", "valence": "negative", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_16", "text": "I do jobs or tasks automatically, without being aware of what I'm doing.", "response_options_key": "compact_likert", "valence": "negative", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_17", "text": "I am able to follow my long-term plans including times when progress is slow.", "response_options_key": "compact_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_18", "text": "Even when something is important to me, I'll rarely do it if there is a chance it will upset me.", "response_options_key": "compact_likert", "valence": "negative", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_19", "text": "It seems I am 'running on automatic' without much awareness of what I'm doing.", "response_options_key": "compact_likert", "valence": "negative", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_20", "text": "I am willing to suffer for the things that matter to me.", "response_options_key": "compact_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_21", "text": "I persevere with a task in order to get closer to what I want in life.", "response_options_key": "compact_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_22", "text": "I tell myself that I shouldn't have certain thoughts.", "response_options_key": "compact_likert", "valence": "negative", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "compact_23", "text": "I continue working toward my goals even when I doubt I can succeed.", "response_options_key": "compact_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null}
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [0, 138],
+    "bands": [
+      {"min": 0, "max": 46, "label": "low_flexibility"},
+      {"min": 47, "max": 91, "label": "moderate"},
+      {"min": 92, "max": 138, "label": "high_flexibility"}
+    ],
+    "reverse_items": ["compact_02", "compact_03", "compact_04", "compact_06", "compact_08", "compact_09", "compact_11", "compact_12", "compact_13", "compact_15", "compact_16", "compact_18", "compact_19", "compact_22"],
+    "subscales": {
+      "openness_to_experience": {
+        "items": ["compact_02", "compact_04", "compact_06", "compact_08", "compact_11", "compact_13", "compact_15", "compact_18", "compact_20", "compact_22"],
+        "method": "sum"
+      },
+      "behavioral_awareness": {
+        "items": ["compact_03", "compact_09", "compact_12", "compact_16", "compact_19"],
+        "method": "sum"
+      },
+      "valued_action": {
+        "items": ["compact_01", "compact_05", "compact_07", "compact_10", "compact_14", "compact_17", "compact_21", "compact_23"],
+        "method": "sum"
+      }
+    }
+  },
+
+  "routing": {
+    "parent_instrument": null,
+    "carry_forward_items": null,
+    "on_completion": []
+  }
+}

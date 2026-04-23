@@ -30,10 +30,14 @@ class GenericScorer(BaseScorer):
         self._subscales: Optional[dict[str, dict]] = self._scoring.get("subscales")
 
         # Pre-calculate min/max for reverse scoring
+        # Supports both per-item "reverse_scored": true AND scoring-level
+        # "reverse_items": ["item_id1", ...] list
         self._response_sets = definition.get("response_option_sets", {})
+        reverse_items_list = set(self._scoring.get("reverse_items", []))
         self._item_reverse_info: dict[str, tuple[int | float, int | float]] = {}
         for item in self._items:
-            if item.get("reverse_scored", False):
+            is_reversed = item.get("reverse_scored", False) or item["item_id"] in reverse_items_list
+            if is_reversed:
                 opt_key = item.get("response_options_key")
                 if opt_key and opt_key in self._response_sets:
                     options = self._response_sets[opt_key]

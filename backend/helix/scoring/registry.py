@@ -21,6 +21,7 @@ CUSTOM_SCORER_MODULES: dict[str, str] = {
     "pbat": "helix.scoring.instruments.pbat",
     "meq": "helix.scoring.instruments.meq",
     "psqi": "helix.scoring.instruments.psqi",
+    "vlq": "helix.scoring.instruments.vlq",
 }
 
 _registry: dict[str, BaseScorer] = {}

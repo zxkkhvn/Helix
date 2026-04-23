@@ -1,0 +1,63 @@
+{
+  "instrument_id": "swls",
+  "version": "1.0.0",
+  "name": "Satisfaction With Life Scale",
+  "abbreviation": "SWLS",
+  "planet": "jupiter",
+  "tier": "deep_dive",
+  "time_window": "general",
+  "time_window_text": "Below are five statements that you may agree or disagree with. Please indicate your agreement with each item.",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "free",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "swls_likert": [
+      {"value": 1, "label": "Strongly Disagree"},
+      {"value": 2, "label": "Disagree"},
+      {"value": 3, "label": "Slightly Disagree"},
+      {"value": 4, "label": "Neither Agree nor Disagree"},
+      {"value": 5, "label": "Slightly Agree"},
+      {"value": 6, "label": "Agree"},
+      {"value": 7, "label": "Strongly Agree"}
+    ]
+  },
+
+  "items": [
+    {"item_id": "swls_01", "text": "In most ways my life is close to my ideal.", "response_options_key": "swls_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "swls_02", "text": "The conditions of my life are excellent.", "response_options_key": "swls_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "swls_03", "text": "I am satisfied with my life.", "response_options_key": "swls_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "swls_04", "text": "So far I have gotten the important things I want in life.", "response_options_key": "swls_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "swls_05", "text": "If I could live my life over, I would change almost nothing.", "response_options_key": "swls_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null}
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [5, 35],
+    "bands": [
+      {"min": 5, "max": 9, "label": "extremely_dissatisfied"},
+      {"min": 10, "max": 14, "label": "dissatisfied"},
+      {"min": 15, "max": 19, "label": "slightly_dissatisfied"},
+      {"min": 20, "max": 20, "label": "neutral"},
+      {"min": 21, "max": 25, "label": "slightly_satisfied"},
+      {"min": 26, "max": 30, "label": "satisfied"},
+      {"min": 31, "max": 35, "label": "extremely_satisfied"}
+    ],
+    "subscales": null
+  },
+
+  "routing": {
+    "parent_instrument": null,
+    "carry_forward_items": null,
+    "on_completion": []
+  }
+}

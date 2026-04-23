@@ -1,0 +1,70 @@
+{
+  "instrument_id": "mlq",
+  "version": "1.0.0",
+  "name": "Meaning in Life Questionnaire",
+  "abbreviation": "MLQ",
+  "planet": "jupiter",
+  "tier": "deep_dive",
+  "time_window": "general",
+  "time_window_text": "Please take a moment to think about what makes your life feel important to you. Please respond to the following statements as truthfully as possible.",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "free",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "mlq_likert": [
+      {"value": 1, "label": "Absolutely Untrue"},
+      {"value": 2, "label": "Mostly Untrue"},
+      {"value": 3, "label": "Somewhat Untrue"},
+      {"value": 4, "label": "Can't Say True or False"},
+      {"value": 5, "label": "Somewhat True"},
+      {"value": 6, "label": "Mostly True"},
+      {"value": 7, "label": "Absolutely True"}
+    ]
+  },
+
+  "items": [
+    {"item_id": "mlq_01", "text": "I understand my life's meaning.", "response_options_key": "mlq_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "mlq_02", "text": "I am looking for something that makes my life feel meaningful.", "response_options_key": "mlq_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "mlq_03", "text": "I am always looking to find my life's purpose.", "response_options_key": "mlq_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "mlq_04", "text": "My life has a clear sense of purpose.", "response_options_key": "mlq_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "mlq_05", "text": "I have a good sense of what makes my life meaningful.", "response_options_key": "mlq_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "mlq_06", "text": "I have discovered a satisfying life purpose.", "response_options_key": "mlq_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "mlq_07", "text": "I am always searching for something that makes my life feel significant.", "response_options_key": "mlq_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "mlq_08", "text": "I am seeking a purpose or mission for my life.", "response_options_key": "mlq_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "mlq_09", "text": "My life has no clear purpose.", "response_options_key": "mlq_likert", "valence": "negative", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
+    {"item_id": "mlq_10", "text": "I am searching for meaning in my life.", "response_options_key": "mlq_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null}
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [10, 70],
+    "bands": null,
+    "reverse_items": ["mlq_09"],
+    "subscales": {
+      "presence": {
+        "items": ["mlq_01", "mlq_04", "mlq_05", "mlq_06", "mlq_09"],
+        "method": "sum"
+      },
+      "search": {
+        "items": ["mlq_02", "mlq_03", "mlq_07", "mlq_08", "mlq_10"],
+        "method": "sum"
+      }
+    }
+  },
+
+  "routing": {
+    "parent_instrument": null,
+    "carry_forward_items": null,
+    "on_completion": []
+  }
+}

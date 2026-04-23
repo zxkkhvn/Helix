@@ -9,7 +9,7 @@ Supported condition patterns:
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Optional
+from typing import Any, Optional
 
 from helix.scoring.base import ScoreResult
 
@@ -159,13 +159,8 @@ def compute_available_instruments(session: Any, completed_scores: list) -> list[
     Returns:
         List of instrument_ids available to submit next (in display order).
 
-    Availability rules (Venus only — hardcoded until multi-planet routing exists):
-        - phq2 available unless already completed
-        - phq9 available if phq2 completed with score >= 3 AND phq9 not yet done
-        - gad2 available unless already completed
-        - gad7 available if gad2 completed with score >= 3 AND gad7 not yet done
-        - paq_s available unless already completed
-        - paq available if paq_s completed with score >= 30 AND paq not yet done
+    Availability rules are still hardcoded, but now cover the implemented
+    core-flow, Venus, Mercury, Earth, Mars, and Jupiter slices.
     """
     completed_by_id = {s.instrument_id: s for s in completed_scores}
     available = []
@@ -224,5 +219,35 @@ def compute_available_instruments(session: Any, completed_scores: list) -> list[
         available.append("paq_s")
     elif completed_by_id["paq_s"].total_score >= 30 and "paq" not in completed_by_id:
         available.append("paq")
+
+    # Venus deep dives (always available)
+    venus_deep_dives = ["ders16", "pss10", "dts", "erq"]
+    for inst in venus_deep_dives:
+        if inst not in completed_by_id:
+            available.append(inst)
+
+    # Mercury instruments (always available)
+    mercury_instruments = ["isi", "wemwbs", "ffmq15", "maia2_brief", "meq", "psqi"]
+    for inst in mercury_instruments:
+        if inst not in completed_by_id:
+            available.append(inst)
+
+    # Mars — ASRS chain
+    if "asrs_a" not in completed_by_id:
+        available.append("asrs_a")
+    elif completed_by_id["asrs_a"].total_score >= 12 and "asrs_full" not in completed_by_id:
+        available.append("asrs_full")
+
+    # Mars deep dives (always available)
+    mars_deep_dives = ["bdefs_sf", "cfq25"]
+    for inst in mars_deep_dives:
+        if inst not in completed_by_id:
+            available.append(inst)
+
+    # Jupiter instruments (always available)
+    jupiter_instruments = ["vlq", "aaq2", "compact", "mlq", "swls"]
+    for inst in jupiter_instruments:
+        if inst not in completed_by_id:
+            available.append(inst)
 
     return available

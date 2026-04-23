@@ -1,0 +1,235 @@
+{
+  "instrument_id": "vlq",
+  "version": "1.0.0",
+  "name": "Valued Living Questionnaire",
+  "abbreviation": "VLQ",
+  "planet": "jupiter",
+  "tier": "quick_scan",
+  "time_window": "past_week",
+  "time_window_text": "Below are areas of life that are valued by some people. For each area, rate how IMPORTANT it is to you and how CONSISTENTLY you have lived in accord with that value during the past week.",
+  "time_window_days": 7,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "check_rights",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": ["valued_living_gap"],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "vlq_scale": [
+      {"value": 1, "label": "1 — Not at all important/consistent"},
+      {"value": 2, "label": "2"},
+      {"value": 3, "label": "3"},
+      {"value": 4, "label": "4"},
+      {"value": 5, "label": "5"},
+      {"value": 6, "label": "6"},
+      {"value": 7, "label": "7"},
+      {"value": 8, "label": "8"},
+      {"value": 9, "label": "9"},
+      {"value": 10, "label": "10 — Extremely important/consistent"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "vlq_01_imp",
+      "text": "Family (other than marriage or parenting) — How IMPORTANT is this area to you?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_01_con",
+      "text": "Family (other than marriage or parenting) — How CONSISTENTLY have you lived in accord with this value during the past week?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_02_imp",
+      "text": "Marriage/couples/intimate relations — How IMPORTANT is this area to you?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_02_con",
+      "text": "Marriage/couples/intimate relations — How CONSISTENTLY have you lived in accord with this value during the past week?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_03_imp",
+      "text": "Parenting — How IMPORTANT is this area to you?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_03_con",
+      "text": "Parenting — How CONSISTENTLY have you lived in accord with this value during the past week?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_04_imp",
+      "text": "Friends/social life — How IMPORTANT is this area to you?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_04_con",
+      "text": "Friends/social life — How CONSISTENTLY have you lived in accord with this value during the past week?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_05_imp",
+      "text": "Work — How IMPORTANT is this area to you?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_05_con",
+      "text": "Work — How CONSISTENTLY have you lived in accord with this value during the past week?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_06_imp",
+      "text": "Education/training — How IMPORTANT is this area to you?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_06_con",
+      "text": "Education/training — How CONSISTENTLY have you lived in accord with this value during the past week?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_07_imp",
+      "text": "Recreation/fun — How IMPORTANT is this area to you?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_07_con",
+      "text": "Recreation/fun — How CONSISTENTLY have you lived in accord with this value during the past week?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_08_imp",
+      "text": "Spirituality — How IMPORTANT is this area to you?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_08_con",
+      "text": "Spirituality — How CONSISTENTLY have you lived in accord with this value during the past week?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_09_imp",
+      "text": "Citizenship/community life — How IMPORTANT is this area to you?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_09_con",
+      "text": "Citizenship/community life — How CONSISTENTLY have you lived in accord with this value during the past week?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_10_imp",
+      "text": "Physical self-care (diet, exercise, sleep) — How IMPORTANT is this area to you?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "vlq_10_con",
+      "text": "Physical self-care (diet, exercise, sleep) — How CONSISTENTLY have you lived in accord with this value during the past week?",
+      "response_options_key": "vlq_scale",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "custom",
+    "range": [1, 100],
+    "bands": null,
+    "subscales": null
+  },
+
+  "routing": {
+    "parent_instrument": null,
+    "carry_forward_items": null,
+    "on_completion": [
+      {"condition": "score >= 3", "action": "flag_elevated"}
+    ]
+  }
+}
