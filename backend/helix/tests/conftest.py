@@ -43,7 +43,7 @@ def all_definitions(definitions_dir):
     """Load and return all instrument definitions as a dict keyed by instrument_id."""
     defs = {}
     for path in sorted(definitions_dir.glob("*.json")):
-        if path.name == "composites.json":
+        if path.name in ("composites.json", "norms.json"):
             continue
         with open(path) as f:
             defn = json.load(f)

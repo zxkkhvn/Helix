@@ -1,0 +1,186 @@
+{
+  "instrument_id": "scs_sf",
+  "version": "1.0",
+  "name": "Self-Compassion Scale - Short Form",
+  "abbreviation": "SCS-SF",
+  "planet": "earth",
+  "tier": "deep_dive",
+  "time_window": "current",
+  "time_window_text": "In difficult times",
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "notes": "Extensively validated cross-culturally."
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "calibration_signal": false,
+  "min_trials_for_partial_scoring": 12,
+  "composite_contributions": [
+    "protective_resources"
+  ],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "likert5": [
+      {
+        "value": 1,
+        "text": "Almost never"
+      },
+      {
+        "value": 2,
+        "text": "Rarely"
+      },
+      {
+        "value": 3,
+        "text": "Sometimes"
+      },
+      {
+        "value": 4,
+        "text": "Frequently"
+      },
+      {
+        "value": 5,
+        "text": "Almost always"
+      }
+    ],
+    "likert5_rev": [
+      {
+        "value": 5,
+        "text": "Almost never"
+      },
+      {
+        "value": 4,
+        "text": "Rarely"
+      },
+      {
+        "value": 3,
+        "text": "Sometimes"
+      },
+      {
+        "value": 2,
+        "text": "Frequently"
+      },
+      {
+        "value": 1,
+        "text": "Almost always"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "scs_sf_01",
+      "text": "When I fail at something important to me I become consumed by feelings of inadequacy.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "scs_sf_02",
+      "text": "I try to be understanding and patient towards those aspects of my personality I don't like.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "scs_sf_03",
+      "text": "When something painful happens I try to take a balanced view of the situation.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "scs_sf_04",
+      "text": "When I'm feeling down, I tend to feel like most other people are probably happier than I am.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "scs_sf_05",
+      "text": "I try to see my failings as part of the human condition.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "scs_sf_06",
+      "text": "When I'm going through a very hard time, I give myself the caring and tenderness I need.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "scs_sf_07",
+      "text": "When something upsets me I try to keep my emotions in balance.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "scs_sf_08",
+      "text": "When I'm really struggling, I tend to feel like other people must be having an easier time of it.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "scs_sf_09",
+      "text": "When something upsets me I get carried away with my feelings.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "scs_sf_10",
+      "text": "When I feel inadequate in some way, I try to remind myself that feelings of inadequacy are shared by most people.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "scs_sf_11",
+      "text": "I'm disapproving and judgmental about my own flaws and inadequacies.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "scs_sf_12",
+      "text": "I'm intolerant and impatient towards those aspects of my personality I don't like.",
+      "response_options_key": "likert5_rev"
+    }
+  ],
+  "scoring": {
+    "method": "mean",
+    "range": [
+      1.0,
+      5.0
+    ],
+    "subscales": {
+      "self_kindness": {
+        "method": "mean",
+        "items": [
+          "scs_sf_02",
+          "scs_sf_06"
+        ]
+      },
+      "self_judgment": {
+        "method": "mean",
+        "items": [
+          "scs_sf_11",
+          "scs_sf_12"
+        ]
+      },
+      "common_humanity": {
+        "method": "mean",
+        "items": [
+          "scs_sf_05",
+          "scs_sf_10"
+        ]
+      },
+      "isolation": {
+        "method": "mean",
+        "items": [
+          "scs_sf_04",
+          "scs_sf_08"
+        ]
+      },
+      "mindfulness": {
+        "method": "mean",
+        "items": [
+          "scs_sf_03",
+          "scs_sf_07"
+        ]
+      },
+      "over_identification": {
+        "method": "mean",
+        "items": [
+          "scs_sf_01",
+          "scs_sf_09"
+        ]
+      }
+    }
+  },
+  "routing": {
+    "on_completion": []
+  },
+  "time_window_days": null,
+  "sensitive_content_warning": null
+}

@@ -1,0 +1,141 @@
+{
+  "instrument_id": "rses",
+  "version": "1.0",
+  "name": "Rosenberg Self-Esteem Scale",
+  "abbreviation": "RSES",
+  "planet": "earth",
+  "tier": "deep_dive",
+  "time_window": "current",
+  "time_window_text": "In general",
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "notes": "Extensively validated cross-culturally."
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "calibration_signal": false,
+  "min_trials_for_partial_scoring": 10,
+  "composite_contributions": [
+    "protective_resources"
+  ],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "likert4": [
+      {
+        "value": 0,
+        "text": "Strongly disagree"
+      },
+      {
+        "value": 1,
+        "text": "Disagree"
+      },
+      {
+        "value": 2,
+        "text": "Agree"
+      },
+      {
+        "value": 3,
+        "text": "Strongly agree"
+      }
+    ],
+    "likert4_rev": [
+      {
+        "value": 3,
+        "text": "Strongly disagree"
+      },
+      {
+        "value": 2,
+        "text": "Disagree"
+      },
+      {
+        "value": 1,
+        "text": "Agree"
+      },
+      {
+        "value": 0,
+        "text": "Strongly agree"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "rses_01",
+      "text": "I feel that I'm a person of worth, at least on an equal plane with others.",
+      "response_options_key": "likert4"
+    },
+    {
+      "item_id": "rses_02",
+      "text": "I feel that I have a number of good qualities.",
+      "response_options_key": "likert4_rev"
+    },
+    {
+      "item_id": "rses_03",
+      "text": "All in all, I am inclined to feel that I am a failure.",
+      "response_options_key": "likert4"
+    },
+    {
+      "item_id": "rses_04",
+      "text": "I am able to do things as well as most other people.",
+      "response_options_key": "likert4"
+    },
+    {
+      "item_id": "rses_05",
+      "text": "I feel I do not have much to be proud of.",
+      "response_options_key": "likert4_rev"
+    },
+    {
+      "item_id": "rses_06",
+      "text": "I take a positive attitude toward myself.",
+      "response_options_key": "likert4_rev"
+    },
+    {
+      "item_id": "rses_07",
+      "text": "On the whole, I am satisfied with myself.",
+      "response_options_key": "likert4"
+    },
+    {
+      "item_id": "rses_08",
+      "text": "I wish I could have more respect for myself.",
+      "response_options_key": "likert4_rev"
+    },
+    {
+      "item_id": "rses_09",
+      "text": "I certainly feel useless at times.",
+      "response_options_key": "likert4_rev"
+    },
+    {
+      "item_id": "rses_10",
+      "text": "At times I think I am no good at all.",
+      "response_options_key": "likert4"
+    }
+  ],
+  "scoring": {
+    "method": "sum",
+    "range": [
+      0,
+      30
+    ],
+    "bands": [
+      {
+        "min": 0,
+        "max": 14,
+        "label": "low"
+      },
+      {
+        "min": 15,
+        "max": 25,
+        "label": "normal"
+      },
+      {
+        "min": 26,
+        "max": 30,
+        "label": "high"
+      }
+    ]
+  },
+  "routing": {
+    "on_completion": []
+  },
+  "time_window_days": null,
+  "sensitive_content_warning": null
+}

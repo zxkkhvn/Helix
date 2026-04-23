@@ -1,0 +1,407 @@
+{
+  "instrument_id": "ipip50",
+  "version": "1.0",
+  "name": "International Personality Item Pool - 50",
+  "abbreviation": "IPIP-50",
+  "planet": "earth",
+  "tier": "deep_dive",
+  "time_window": "current",
+  "time_window_text": "In general",
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "notes": "Validated across multiple populations."
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "calibration_signal": false,
+  "min_trials_for_partial_scoring": 50,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "likert5": [
+      {
+        "value": 1,
+        "text": "Very inaccurate"
+      },
+      {
+        "value": 2,
+        "text": "Moderately inaccurate"
+      },
+      {
+        "value": 3,
+        "text": "Neither accurate nor inaccurate"
+      },
+      {
+        "value": 4,
+        "text": "Moderately accurate"
+      },
+      {
+        "value": 5,
+        "text": "Very accurate"
+      }
+    ],
+    "likert5_rev": [
+      {
+        "value": 5,
+        "text": "Very inaccurate"
+      },
+      {
+        "value": 4,
+        "text": "Moderately inaccurate"
+      },
+      {
+        "value": 3,
+        "text": "Neither accurate nor inaccurate"
+      },
+      {
+        "value": 2,
+        "text": "Moderately accurate"
+      },
+      {
+        "value": 1,
+        "text": "Very accurate"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "ipip_01",
+      "text": "Am the life of the party.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_02",
+      "text": "Feel little concern for others.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_03",
+      "text": "Am always prepared.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_04",
+      "text": "Get stressed out easily.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_05",
+      "text": "Have a rich vocabulary.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_06",
+      "text": "Don't talk a lot.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_07",
+      "text": "Am interested in people.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_08",
+      "text": "Leave my belongings around.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_09",
+      "text": "Am relaxed most of the time.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_10",
+      "text": "Have difficulty understanding abstract ideas.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_11",
+      "text": "Feel comfortable around people.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_12",
+      "text": "Insult people.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_13",
+      "text": "Pay attention to details.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_14",
+      "text": "Worry about things.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_15",
+      "text": "Have a vivid imagination.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_16",
+      "text": "Keep in the background.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_17",
+      "text": "Sympathize with others' feelings.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_18",
+      "text": "Make a mess of things.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_19",
+      "text": "Seldom feel blue.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_20",
+      "text": "Am not interested in abstract ideas.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_21",
+      "text": "Start conversations.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_22",
+      "text": "Am not interested in other people's problems.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_23",
+      "text": "Get chores done right away.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_24",
+      "text": "Am easily disturbed.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_25",
+      "text": "Have excellent ideas.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_26",
+      "text": "Have little to say.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_27",
+      "text": "Have a soft heart.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_28",
+      "text": "Often forget to put things back in their proper place.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_29",
+      "text": "Am easily offended.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_30",
+      "text": "Do not have a good imagination.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_31",
+      "text": "Talk to a lot of different people at parties.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_32",
+      "text": "Am not really interested in others.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_33",
+      "text": "Like order.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_34",
+      "text": "Change my mood a lot.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_35",
+      "text": "Am quick to understand things.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_36",
+      "text": "Don't like to draw attention to myself.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_37",
+      "text": "Take time out for others.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_38",
+      "text": "Shirk my duties.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_39",
+      "text": "Have frequent mood swings.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_40",
+      "text": "Use difficult words.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_41",
+      "text": "Don't mind being the center of attention.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_42",
+      "text": "Feel others' emotions.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_43",
+      "text": "Follow a schedule.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_44",
+      "text": "Get irritated easily.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_45",
+      "text": "Spend time reflecting on things.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_46",
+      "text": "Am quiet around strangers.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "ipip_47",
+      "text": "Make people feel at ease.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_48",
+      "text": "Am exacting in my work.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_49",
+      "text": "Often feel blue.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "ipip_50",
+      "text": "Am full of ideas.",
+      "response_options_key": "likert5"
+    }
+  ],
+  "scoring": {
+    "method": "sum",
+    "range": [
+      50,
+      250
+    ],
+    "subscales": {
+      "extraversion": {
+        "method": "sum",
+        "items": [
+          "ipip_01",
+          "ipip_06",
+          "ipip_11",
+          "ipip_16",
+          "ipip_21",
+          "ipip_26",
+          "ipip_31",
+          "ipip_36",
+          "ipip_41",
+          "ipip_46"
+        ]
+      },
+      "agreeableness": {
+        "method": "sum",
+        "items": [
+          "ipip_02",
+          "ipip_07",
+          "ipip_12",
+          "ipip_17",
+          "ipip_22",
+          "ipip_27",
+          "ipip_32",
+          "ipip_37",
+          "ipip_42",
+          "ipip_47"
+        ]
+      },
+      "conscientiousness": {
+        "method": "sum",
+        "items": [
+          "ipip_03",
+          "ipip_08",
+          "ipip_13",
+          "ipip_18",
+          "ipip_23",
+          "ipip_28",
+          "ipip_33",
+          "ipip_38",
+          "ipip_43",
+          "ipip_48"
+        ]
+      },
+      "neuroticism": {
+        "method": "sum",
+        "items": [
+          "ipip_04",
+          "ipip_09",
+          "ipip_14",
+          "ipip_19",
+          "ipip_24",
+          "ipip_29",
+          "ipip_34",
+          "ipip_39",
+          "ipip_44",
+          "ipip_49"
+        ]
+      },
+      "openness": {
+        "method": "sum",
+        "items": [
+          "ipip_05",
+          "ipip_10",
+          "ipip_15",
+          "ipip_20",
+          "ipip_25",
+          "ipip_30",
+          "ipip_35",
+          "ipip_40",
+          "ipip_45",
+          "ipip_50"
+        ]
+      }
+    }
+  },
+  "routing": {
+    "on_completion": []
+  },
+  "time_window_days": null,
+  "sensitive_content_warning": null
+}

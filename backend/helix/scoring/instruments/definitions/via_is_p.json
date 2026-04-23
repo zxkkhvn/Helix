@@ -1,0 +1,324 @@
+{
+  "instrument_id": "via_is_p",
+  "version": "1.0",
+  "name": "Values in Action Inventory of Strengths - Brief",
+  "abbreviation": "VIA-IS-P",
+  "planet": "earth",
+  "tier": "quick_scan",
+  "time_window": "current",
+  "time_window_text": "In general",
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "notes": "Validated across multiple populations."
+  },
+  "licence_status": "licensing_risk",
+  "sensitive_content": false,
+  "calibration_signal": false,
+  "min_trials_for_partial_scoring": 24,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "likert5": [
+      {
+        "value": 1,
+        "text": "Very much unlike me"
+      },
+      {
+        "value": 2,
+        "text": "Unlike me"
+      },
+      {
+        "value": 3,
+        "text": "Neutral"
+      },
+      {
+        "value": 4,
+        "text": "Like me"
+      },
+      {
+        "value": 5,
+        "text": "Very much like me"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "via_01",
+      "text": "I am always coming up with new ways to do things.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_02",
+      "text": "I am always curious about the world.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_03",
+      "text": "I always weigh the pros and cons before making a decision.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_04",
+      "text": "I love learning new things.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_05",
+      "text": "I can always see the big picture.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_06",
+      "text": "I always act bravely when faced with fear.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_07",
+      "text": "I never quit a task before it is done.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_08",
+      "text": "I always keep my promises.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_09",
+      "text": "I am full of energy and zest.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_10",
+      "text": "I am a capacity to love and be loved.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_11",
+      "text": "I am always kind to others.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_12",
+      "text": "I am aware of my own and others' motives and feelings.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_13",
+      "text": "I always work well as a member of a team.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_14",
+      "text": "I always treat all people fairly.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_15",
+      "text": "I am always able to take charge.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_16",
+      "text": "I am always willing to forgive others.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_17",
+      "text": "I never seek the spotlight.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_18",
+      "text": "I am always careful in my choices.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_19",
+      "text": "I am very good at regulating my emotions.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_20",
+      "text": "I always appreciate beauty and excellence.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_21",
+      "text": "I am always grateful for the good things in my life.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_22",
+      "text": "I am always hopeful about the future.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_23",
+      "text": "I have a great sense of humor.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "via_24",
+      "text": "My religious or spiritual beliefs are very important to me.",
+      "response_options_key": "likert5"
+    }
+  ],
+  "scoring": {
+    "method": "mean",
+    "range": [
+      1.0,
+      5.0
+    ],
+    "subscales": {
+      "creativity": {
+        "method": "mean",
+        "items": [
+          "via_01"
+        ]
+      },
+      "curiosity": {
+        "method": "mean",
+        "items": [
+          "via_02"
+        ]
+      },
+      "judgment": {
+        "method": "mean",
+        "items": [
+          "via_03"
+        ]
+      },
+      "love_of_learning": {
+        "method": "mean",
+        "items": [
+          "via_04"
+        ]
+      },
+      "perspective": {
+        "method": "mean",
+        "items": [
+          "via_05"
+        ]
+      },
+      "bravery": {
+        "method": "mean",
+        "items": [
+          "via_06"
+        ]
+      },
+      "perseverance": {
+        "method": "mean",
+        "items": [
+          "via_07"
+        ]
+      },
+      "honesty": {
+        "method": "mean",
+        "items": [
+          "via_08"
+        ]
+      },
+      "zest": {
+        "method": "mean",
+        "items": [
+          "via_09"
+        ]
+      },
+      "love": {
+        "method": "mean",
+        "items": [
+          "via_10"
+        ]
+      },
+      "kindness": {
+        "method": "mean",
+        "items": [
+          "via_11"
+        ]
+      },
+      "social_intelligence": {
+        "method": "mean",
+        "items": [
+          "via_12"
+        ]
+      },
+      "teamwork": {
+        "method": "mean",
+        "items": [
+          "via_13"
+        ]
+      },
+      "fairness": {
+        "method": "mean",
+        "items": [
+          "via_14"
+        ]
+      },
+      "leadership": {
+        "method": "mean",
+        "items": [
+          "via_15"
+        ]
+      },
+      "forgiveness": {
+        "method": "mean",
+        "items": [
+          "via_16"
+        ]
+      },
+      "humility": {
+        "method": "mean",
+        "items": [
+          "via_17"
+        ]
+      },
+      "prudence": {
+        "method": "mean",
+        "items": [
+          "via_18"
+        ]
+      },
+      "self_regulation": {
+        "method": "mean",
+        "items": [
+          "via_19"
+        ]
+      },
+      "appreciation_of_beauty": {
+        "method": "mean",
+        "items": [
+          "via_20"
+        ]
+      },
+      "gratitude": {
+        "method": "mean",
+        "items": [
+          "via_21"
+        ]
+      },
+      "hope": {
+        "method": "mean",
+        "items": [
+          "via_22"
+        ]
+      },
+      "humor": {
+        "method": "mean",
+        "items": [
+          "via_23"
+        ]
+      },
+      "spirituality": {
+        "method": "mean",
+        "items": [
+          "via_24"
+        ]
+      }
+    }
+  },
+  "routing": {
+    "on_completion": []
+  },
+  "time_window_days": null,
+  "sensitive_content_warning": null
+}

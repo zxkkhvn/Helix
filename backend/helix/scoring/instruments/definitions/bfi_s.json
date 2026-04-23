@@ -1,0 +1,197 @@
+{
+  "instrument_id": "bfi_s",
+  "version": "1.0",
+  "name": "Big Five Inventory - Short",
+  "abbreviation": "BFI-S",
+  "planet": "earth",
+  "tier": "quick_scan",
+  "time_window": "current",
+  "time_window_text": "In general",
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "notes": "Validated across multiple populations."
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "calibration_signal": false,
+  "min_trials_for_partial_scoring": 15,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "likert5": [
+      {
+        "value": 1,
+        "text": "Disagree strongly"
+      },
+      {
+        "value": 2,
+        "text": "Disagree a little"
+      },
+      {
+        "value": 3,
+        "text": "Neither agree nor disagree"
+      },
+      {
+        "value": 4,
+        "text": "Agree a little"
+      },
+      {
+        "value": 5,
+        "text": "Agree strongly"
+      }
+    ],
+    "likert5_rev": [
+      {
+        "value": 5,
+        "text": "Disagree strongly"
+      },
+      {
+        "value": 4,
+        "text": "Disagree a little"
+      },
+      {
+        "value": 3,
+        "text": "Neither agree nor disagree"
+      },
+      {
+        "value": 2,
+        "text": "Agree a little"
+      },
+      {
+        "value": 1,
+        "text": "Agree strongly"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "bfi_s_01",
+      "text": "I see myself as someone who is outgoing, sociable.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "bfi_s_02",
+      "text": "I see myself as someone who is reserved.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "bfi_s_03",
+      "text": "I see myself as someone who is full of energy.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "bfi_s_04",
+      "text": "I see myself as someone who is generally trusting.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "bfi_s_05",
+      "text": "I see myself as someone who tends to find fault with others.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "bfi_s_06",
+      "text": "I see myself as someone who is considerate and kind to almost everyone.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "bfi_s_07",
+      "text": "I see myself as someone who does a thorough job.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "bfi_s_08",
+      "text": "I see myself as someone who tends to be lazy.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "bfi_s_09",
+      "text": "I see myself as someone who does things efficiently.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "bfi_s_10",
+      "text": "I see myself as someone who gets nervous easily.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "bfi_s_11",
+      "text": "I see myself as someone who is relaxed, handles stress well.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "bfi_s_12",
+      "text": "I see myself as someone who worries a lot.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "bfi_s_13",
+      "text": "I see myself as someone who has an active imagination.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "bfi_s_14",
+      "text": "I see myself as someone who has few artistic interests.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "bfi_s_15",
+      "text": "I see myself as someone who is original, comes up with new ideas.",
+      "response_options_key": "likert5"
+    }
+  ],
+  "scoring": {
+    "method": "mean",
+    "range": [
+      1.0,
+      5.0
+    ],
+    "subscales": {
+      "extraversion": {
+        "method": "mean",
+        "items": [
+          "bfi_s_01",
+          "bfi_s_02",
+          "bfi_s_03"
+        ]
+      },
+      "agreeableness": {
+        "method": "mean",
+        "items": [
+          "bfi_s_04",
+          "bfi_s_05",
+          "bfi_s_06"
+        ]
+      },
+      "conscientiousness": {
+        "method": "mean",
+        "items": [
+          "bfi_s_07",
+          "bfi_s_08",
+          "bfi_s_09"
+        ]
+      },
+      "neuroticism": {
+        "method": "mean",
+        "items": [
+          "bfi_s_10",
+          "bfi_s_11",
+          "bfi_s_12"
+        ]
+      },
+      "openness": {
+        "method": "mean",
+        "items": [
+          "bfi_s_13",
+          "bfi_s_14",
+          "bfi_s_15"
+        ]
+      }
+    }
+  },
+  "routing": {
+    "on_completion": []
+  },
+  "time_window_days": null,
+  "sensitive_content_warning": null
+}

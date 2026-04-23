@@ -1,0 +1,62 @@
+[
+    {
+        "index_id": "distress_index",
+        "version": "1.0",
+        "components": ["phq9", "gad7", "lsas_sr", "wemwbs"],
+        "required_core": ["phq9", "gad7"],
+        "required_minimum": 2,
+        "computation": "mean_z",
+        "sign_inversions": ["wemwbs"],
+        "planet_ring": "venus"
+    },
+    {
+        "index_id": "regulatory_burden",
+        "version": "1.0",
+        "components": ["ders16", "aaq2", "ius12"],
+        "required_core": [],
+        "required_minimum": 2,
+        "computation": "mean_z",
+        "sign_inversions": [],
+        "planet_ring": "neptune"
+    },
+    {
+        "index_id": "social_friction",
+        "version": "1.0",
+        "components": ["lsas_sr", "ecr_s_avoidance", "mss_ysq_disconnection"],
+        "required_core": [],
+        "required_minimum": 1,
+        "computation": "mean_z",
+        "sign_inversions": [],
+        "planet_ring": "saturn"
+    },
+    {
+        "index_id": "executive_load",
+        "version": "1.0",
+        "components": ["asrs_full", "bdefs_sf", "isi"],
+        "required_core": ["asrs_full", "bdefs_sf"],
+        "required_minimum": 2,
+        "computation": "mean_z",
+        "sign_inversions": ["isi"],
+        "planet_ring": "mars"
+    },
+    {
+        "index_id": "valued_living_gap",
+        "version": "1.0",
+        "components": ["vlq"],
+        "required_core": ["vlq"],
+        "required_minimum": 1,
+        "computation": "custom",
+        "sign_inversions": [],
+        "planet_ring": "jupiter"
+    },
+    {
+        "index_id": "protective_resources",
+        "version": "1.0",
+        "components": ["scs_sf", "brs", "wemwbs", "rses"],
+        "required_core": [],
+        "required_minimum": 2,
+        "computation": "mean_z",
+        "sign_inversions": [],
+        "planet_ring": "earth"
+    }
+]

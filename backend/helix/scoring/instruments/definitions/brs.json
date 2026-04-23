@@ -1,0 +1,129 @@
+{
+  "instrument_id": "brs",
+  "version": "1.0",
+  "name": "Brief Resilience Scale",
+  "abbreviation": "BRS",
+  "planet": "earth",
+  "tier": "deep_dive",
+  "time_window": "current",
+  "time_window_text": "In general",
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "notes": "Validated across multiple populations."
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "calibration_signal": false,
+  "min_trials_for_partial_scoring": 6,
+  "composite_contributions": [
+    "protective_resources"
+  ],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "likert5": [
+      {
+        "value": 1,
+        "text": "Strongly disagree"
+      },
+      {
+        "value": 2,
+        "text": "Disagree"
+      },
+      {
+        "value": 3,
+        "text": "Neutral"
+      },
+      {
+        "value": 4,
+        "text": "Agree"
+      },
+      {
+        "value": 5,
+        "text": "Strongly agree"
+      }
+    ],
+    "likert5_rev": [
+      {
+        "value": 5,
+        "text": "Strongly disagree"
+      },
+      {
+        "value": 4,
+        "text": "Disagree"
+      },
+      {
+        "value": 3,
+        "text": "Neutral"
+      },
+      {
+        "value": 2,
+        "text": "Agree"
+      },
+      {
+        "value": 1,
+        "text": "Strongly agree"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "brs_01",
+      "text": "I tend to bounce back quickly after hard times.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "brs_02",
+      "text": "I have a hard time making it through stressful events.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "brs_03",
+      "text": "It does not take me long to recover from a stressful event.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "brs_04",
+      "text": "It is hard for me to snap back when something bad happens.",
+      "response_options_key": "likert5_rev"
+    },
+    {
+      "item_id": "brs_05",
+      "text": "I usually come through difficult times with little trouble.",
+      "response_options_key": "likert5"
+    },
+    {
+      "item_id": "brs_06",
+      "text": "I tend to take a long time to get over set-backs in my life.",
+      "response_options_key": "likert5_rev"
+    }
+  ],
+  "scoring": {
+    "method": "mean",
+    "range": [
+      1.0,
+      5.0
+    ],
+    "bands": [
+      {
+        "min": 1.0,
+        "max": 2.99,
+        "label": "low"
+      },
+      {
+        "min": 3.0,
+        "max": 4.3,
+        "label": "normal"
+      },
+      {
+        "min": 4.31,
+        "max": 5.0,
+        "label": "high"
+      }
+    ]
+  },
+  "routing": {
+    "on_completion": []
+  },
+  "time_window_days": null,
+  "sensitive_content_warning": null
+}

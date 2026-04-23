@@ -1,0 +1,114 @@
+{
+  "instrument_id": "aces",
+  "version": "1.0",
+  "name": "Adverse Childhood Experiences Questionnaire",
+  "abbreviation": "ACEs",
+  "planet": "earth",
+  "tier": "deep_dive",
+  "time_window": "lifetime",
+  "time_window_text": "Prior to your 18th birthday",
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "notes": "Validated across multiple populations."
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": true,
+  "sensitive_content_warning": "This section asks about experiences from your childhood. Some people find these questions difficult. You can skip this section at any time \u2014 it won't affect your exploration elsewhere.",
+  "calibration_signal": false,
+  "min_trials_for_partial_scoring": 10,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+  "suppress_band_from_user": true,
+  "response_option_sets": {
+    "binary": [
+      {
+        "value": 0,
+        "text": "No"
+      },
+      {
+        "value": 1,
+        "text": "Yes"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "aces_01",
+      "text": "Did a parent or other adult in the household often or very often swear at you, insult you, put you down, or act in a way that made you afraid that you might be physically hurt?",
+      "response_options_key": "binary"
+    },
+    {
+      "item_id": "aces_02",
+      "text": "Did a parent or other adult in the household often or very often push, grab, slap, or throw something at you, or ever hit you so hard that you had marks or were injured?",
+      "response_options_key": "binary"
+    },
+    {
+      "item_id": "aces_03",
+      "text": "Did an adult or person at least 5 years older than you ever touch or fondle you or have you touch their body in a sexual way, or attempt or actually have oral, anal, or vaginal intercourse with you?",
+      "response_options_key": "binary"
+    },
+    {
+      "item_id": "aces_04",
+      "text": "Did you often or very often feel that no one in your family loved you or thought you were important or special, or your family didn't look out for each other, feel close to each other, or support each other?",
+      "response_options_key": "binary"
+    },
+    {
+      "item_id": "aces_05",
+      "text": "Did you often or very often feel that you didn't have enough to eat, had to wear dirty clothes, and had no one to protect you, or your parents were too drunk or high to take care of you or take you to the doctor if you needed it?",
+      "response_options_key": "binary"
+    },
+    {
+      "item_id": "aces_06",
+      "text": "Were your parents ever separated or divorced?",
+      "response_options_key": "binary"
+    },
+    {
+      "item_id": "aces_07",
+      "text": "Was your mother or stepmother often or very often pushed, grabbed, slapped, or had something thrown at her, or sometimes, often, or very often kicked, bitten, hit with a fist, or hit with something hard, or ever repeatedly hit over at least a few minutes or threatened with a gun or knife?",
+      "response_options_key": "binary"
+    },
+    {
+      "item_id": "aces_08",
+      "text": "Did you live with anyone who was a problem drinker or alcoholic, or who used street drugs?",
+      "response_options_key": "binary"
+    },
+    {
+      "item_id": "aces_09",
+      "text": "Was a household member depressed or mentally ill, or did a household member attempt suicide?",
+      "response_options_key": "binary"
+    },
+    {
+      "item_id": "aces_10",
+      "text": "Did a household member go to prison?",
+      "response_options_key": "binary"
+    }
+  ],
+  "scoring": {
+    "method": "sum",
+    "range": [
+      0,
+      10
+    ],
+    "bands": [
+      {
+        "min": 0,
+        "max": 0,
+        "label": "0"
+      },
+      {
+        "min": 1,
+        "max": 3,
+        "label": "1-3"
+      },
+      {
+        "min": 4,
+        "max": 10,
+        "label": "4+"
+      }
+    ]
+  },
+  "routing": {
+    "on_completion": []
+  },
+  "time_window_days": null
+}
