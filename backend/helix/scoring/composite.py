@@ -64,9 +64,11 @@ def compute_composite(composite_def: dict, score_results: List[ScoreResult], nor
             # VLQ scorer stores mean_gap in metadata and as total_score
             for sr in score_results:
                 if sr.instrument_id == "vlq":
+                    meta = sr.score_metadata if hasattr(sr, "score_metadata") else sr.metadata
+                    meta = meta or {}
                     mean_gap = (
-                        sr.metadata.get("mean_gap", sr.total_score)
-                        if sr.metadata
+                        meta.get("mean_gap", sr.total_score)
+                        if meta
                         else sr.total_score
                     )
                     return CompositeResult(
