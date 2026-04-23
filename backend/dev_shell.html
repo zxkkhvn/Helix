@@ -446,28 +446,52 @@ async function loadInstrument(instId) {
         label.textContent = item.text;
         label.setAttribute('for', item.item_id);
         
-        const select = document.createElement('select');
-        select.id = item.item_id;
-        select.name = item.item_id;
-        select.required = true;
-        
-        const emptyOpt = document.createElement('option');
-        emptyOpt.value = "";
-        emptyOpt.textContent = "Select an option...";
-        emptyOpt.disabled = true;
-        emptyOpt.selected = true;
-        select.appendChild(emptyOpt);
-        
         const options = data.response_option_sets[item.response_options_key];
-        options.forEach(opt => {
-            const option = document.createElement('option');
-            option.value = opt.value;
-            option.textContent = opt.label || opt.text;
-            select.appendChild(option);
-        });
         
-        group.appendChild(label);
-        group.appendChild(select);
+        if (item.response_options_key.includes('time')) {
+            const input = document.createElement('input');
+            input.type = 'time';
+            input.id = item.item_id;
+            input.name = item.item_id;
+            input.required = true;
+            input.style.width = '100%';
+            input.style.padding = '0.5rem';
+            group.appendChild(label);
+            group.appendChild(input);
+        } else if (item.response_options_key.includes('number') || item.response_options_key.includes('free_text')) {
+            const input = document.createElement('input');
+            input.type = item.response_options_key.includes('number') ? 'number' : 'text';
+            input.id = item.item_id;
+            input.name = item.item_id;
+            input.required = true;
+            input.style.width = '100%';
+            input.style.padding = '0.5rem';
+            if (input.type === 'number') input.min = 0;
+            group.appendChild(label);
+            group.appendChild(input);
+        } else {
+            const select = document.createElement('select');
+            select.id = item.item_id;
+            select.name = item.item_id;
+            select.required = true;
+            
+            const emptyOpt = document.createElement('option');
+            emptyOpt.value = "";
+            emptyOpt.textContent = "Select an option...";
+            emptyOpt.disabled = true;
+            emptyOpt.selected = true;
+            select.appendChild(emptyOpt);
+            
+            options.forEach(opt => {
+                const option = document.createElement('option');
+                option.value = opt.value;
+                option.textContent = opt.label || opt.text;
+                select.appendChild(option);
+            });
+            
+            group.appendChild(label);
+            group.appendChild(select);
+        }
         dom.formItems.appendChild(group);
     });
 }
