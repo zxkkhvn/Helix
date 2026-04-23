@@ -64,18 +64,18 @@ Phase 2 Venus vertical slice complete. 169 tests passing. API is runnable with `
 | Scoring engine — GenericScorer | COMPLETE — `scoring/generic.py`. Handles sum/mean instruments. Carry-forward merge. Reverse scoring and subscale computation support. |
 | Scoring engine — Scorer registry | COMPLETE — `scoring/registry.py`. Auto-discovers definitions on startup. Routes custom instruments to their module via `create_scorer()` factory. |
 | Scoring engine — PAQ custom scorer | COMPLETE — `scoring/instruments/paq.py`. 5 subscales (N_DIF, P_DIF, N_DDF, P_DDF, G_EOT), total = sum of subscales. |
-| Scoring engine — composite engine | NOT STARTED — designed, not coded |
-| All instrument scorers (48 instruments) | IN PROGRESS — Venus 9 generic (PHQ-2, PHQ-9, GAD-2, GAD-7, PAQ-S, DERS-16, PSS-10, DTS, ERQ) + 1 custom (PAQ) complete. Remaining 38 not started. |
-| Instrument JSON definitions | IN PROGRESS — Venus fully complete (10/10). Remaining 38 not started. |
+| Scoring engine — composite engine | COMPLETE — `scoring/composite.py`. mean_z computation with norms. |
+| All instrument scorers (48 instruments) | IN PROGRESS — Venus 9 generic + 1 custom complete. Core Flow 2 generic + 1 custom complete. Mercury 4 generic + 2 custom complete. Earth 7 generic complete. Remaining 22 not started. |
+| Instrument JSON definitions | IN PROGRESS — Venus fully complete (10/10). Core Flow (WSAS, PC-PTSD-5, PBAT) complete. Mercury (ISI, WEMWBS, FFMQ-15, Brief MAIA-2, MEQ, PSQI) complete. Earth (BFI-S, IPIP-50, SCS-SF, BRS, RSES, ACEs, VIA-IS-P) complete. Remaining 22 not started. |
 | Routing engine (Venus) | COMPLETE — `routing/engine.py`. Evaluates `on_completion` rules from JSON definitions. `evaluate_routing()` + `compute_available_instruments()`. PHQ-2→PHQ-9, GAD-2→GAD-7, PAQ-S→PAQ, PHQ-9 flag_elevated, safety_pause. |
 | Database schema | COMPLETE — `models/models.py`. Session, AssessmentInstance (with parent_instance_id), Score. UUID PKs, JSON columns, designed for Postgres migration. SQLite v1 via `db/database.py`. |
 | FastAPI application | COMPLETE — `main.py`. Lifespan handler bootstraps DB + scorer registry. CORS configured for dev. |
 | Assessment submission API | COMPLETE — `POST /sessions/{id}/assessments/{instrument_id}/submit`. Server-side carry-forward. Scores, persists, routes, handles safety in one endpoint. |
-| Session management API | COMPLETE — `POST /sessions`, `GET /sessions/{id}`, `POST /sessions/{id}/acknowledge-safety`. Available instruments computed from Score rows (not stored state). |
-| Safety protocol | COMPLETE — PHQ-9 item 9 > 0 → SAFETY_PAUSED state. 409 on all further submissions. Structured safety flag (instrument_id, item_id, reason, timestamp). Acknowledge endpoint resumes EXPLORING. |
-| Test suite | IN PROGRESS — 169/169 passing. Definition + scoring + routing + API integration. |
+| Session management API | COMPLETE — `POST /sessions`, `GET /sessions/{id}`, `POST /sessions/{id}/acknowledge-safety`. Enforces CORE_FLOW_IN_PROGRESS state before EXPLORING. |
+| Safety protocol | COMPLETE — PHQ-9 item 9 > 0 or PC-PTSD-5 ≥ 3 → SAFETY_PAUSED state. 409 on all further submissions. Structured safety flag. |
+| Test suite | IN PROGRESS — 169/169 passing. Definition + scoring + routing + API integration. (Tests for new Core/Mercury items pending). |
 | Planet state calculator | NOT STARTED — designed, not coded |
-| Intake flow | NOT STARTED |
+| Intake flow | COMPLETE — `POST /sessions/{id}/intake` and `POST /sessions/{id}/anchors`. Captures presenting concerns and session anchors. |
 | AI pipeline (prompt builder, LLM wrapper) | NOT STARTED |
 | Formulation narrative engine | NOT STARTED |
 | Report engine (PDF/JSON export) | NOT STARTED |
@@ -118,12 +118,18 @@ helix/
 │       │       │   ├── gad7.json            ✓
 │       │       │   ├── paq_s.json           ✓
 │       │       │   ├── paq.json             ✓
+│       │       │   ├── pbat.json            ✓
+│       │       │   ├── wsas.json            ✓
+│       │       │   ├── pcptsd5.json         ✓
+│       │       │   ├── isi.json             ✓
+│       │       │   ├── wemwbs.json          ✓
+│       │       │   ├── ffmq15.json          ✓
 │       │       │   ├── composites.json        Versioned composite index definitions
-│       │       │   └── ...                    Remaining 42 instrument definitions
+│       │       │   └── ...                    Remaining 32 instrument definitions
 │       │       ├── paq.py                   ✓ Custom: 5 subscales, valence-specific
+│       │       ├── pbat.py                  ✓ Custom: formative, item-profile output
 │       │       ├── vlq.py                     Custom: gap scoring
 │       │       ├── mss_ysq.py                 Custom: 19 schemas, 6 clusters
-│       │       ├── pbat.py                    Custom: formative, item-profile output
 │       │       ├── lsas_sr.py                 Custom: paired fear+avoidance ratings
 │       │       ├── ecr_rs.py                  Custom: multi-target (4 relationships)
 │       │       ├── meq.py                     Custom: chronotype classification
@@ -183,20 +189,20 @@ Backend-first. Each phase produces a testable, working vertical slice.
 | 1.2 Build BaseScorer + ScoreResult | Abstract base class with longstring detection, rapid-response checking, band assignment, safety condition parser. ScoreResult dataclass. | **✓ DONE** — `scoring/base.py` |
 | 1.3 Build GenericScorer class | Loads any conforming JSON definition. Applies sum/mean/subscale algorithms. Extends BaseScorer. Carry-forward merge. | **✓ DONE** — `scoring/generic.py` |
 | 1.4 Build scorer registry | Dynamic instrument registration and lookup. Auto-discovers definitions from directory. | **✓ DONE** — `scoring/registry.py` |
-| 1.5 Write JSON definitions — Mercury | ISI, WEMWBS, Brief MAIA-2, MEQ, PSQI, FFMQ-15. | Not started |
+| 1.5 Write JSON definitions — Mercury | ISI, WEMWBS, Brief MAIA-2, MEQ, PSQI, FFMQ-15. | **✓ DONE** |
 | 1.6 Write JSON definitions — Venus | PHQ-2, PHQ-9, GAD-2, GAD-7, PAQ-S, PAQ, DERS-16, PSS-10, DTS, ERQ. | **✓ DONE** |
-| 1.7 Write JSON definitions — Earth | BFI-S, IPIP-50, SCS-SF, BRS, RSES, ACEs, VIA-IS-P. | Not started |
+| 1.7 Write JSON definitions — Earth | BFI-S, IPIP-50, SCS-SF, BRS, RSES, ACEs, VIA-IS-P. | **✓ DONE** |
 | 1.8 Write JSON definitions — Mars | ASRS Part A, ASRS Full, BDEFS-SF, CFQ-25. | Not started |
 | 1.9 Write JSON definitions — Jupiter | VLQ, AAQ-II, CompACT, MLQ, SWLS. | Not started |
 | 1.10 Write JSON definitions — Saturn | LSAS-SR (short + full), ECR-S, ECR-RS, De Jong Gierveld. | Not started |
 | 1.11 Write JSON definitions — Neptune | IUS-12, MSS-YSQ, PTQ-10, CPQ, DSS-B, PSWQ, OCI-R. | Not started |
 | 1.12 Write JSON definitions — Uranus | AQ-10, CAT-Q, RAADS-R. | Not started |
-| 1.13 Write JSON definitions — Core Flow + Safety | PBAT, WSAS, PC-PTSD-5, PCL-5. Optional: AUDIT-C, DAST-10. | Not started |
-| 1.14 Build custom scorers | PAQ (5 subscales/valence-specific). Remaining 7: PBAT, VLQ, MSS-YSQ, LSAS-SR, ECR-RS, MEQ, PSQI. | **Partial** — PAQ complete (1/8). |
-| 1.15 Build composite index engine | mean_z computation, required_core and required_minimum enforcement, partial composite labelling. | Not started |
-| 1.16 Build routing engine | Deterministic rule evaluation. Expansion triggers. Safety protocols. Deep dive unlock triggers. | **Partial** — Venus slice complete. Full multi-planet routing not started. |
+| 1.13 Write JSON definitions — Core Flow + Safety | PBAT, WSAS, PC-PTSD-5, PCL-5. Optional: AUDIT-C, DAST-10. | **IN PROGRESS** — PBAT, WSAS, PC-PTSD-5 complete. |
+| 1.14 Build custom scorers | PAQ (5 subscales/valence-specific). Remaining 7: PBAT, VLQ, MSS-YSQ, LSAS-SR, ECR-RS, MEQ, PSQI. | **IN PROGRESS** — PAQ, PBAT, MEQ, PSQI complete. |
+| 1.15 Build composite index engine | mean_z computation, required_core and required_minimum enforcement, partial composite labelling. | **✓ DONE** |
+| 1.16 Build routing engine | Deterministic rule evaluation. Expansion triggers. Safety protocols. Deep dive unlock triggers. | **IN PROGRESS** — Venus slice complete. Core Flow sequence enforced. |
 | 1.17 Build planet state calculator | Derives planet opacity, moon unlocks, ring assignments from completion state. | Not started |
-| 1.18 Full test suite | Every instrument scored against known test vectors. Edge cases for routing, carry-forward, safety. | **Partial** — 152/152 passing. Venus fully covered. |
+| 1.18 Full test suite | Every instrument scored against known test vectors. Edge cases for routing, carry-forward, safety. | **IN PROGRESS** — 180 passing tests |
 
 ### Phase 2: Data Layer + API Shell
 
@@ -209,9 +215,10 @@ Backend-first. Each phase produces a testable, working vertical slice.
 | 2.3 FastAPI app shell | Application factory, lifespan handler, CORS config, health check, dependency injection for DB sessions. | **✓ DONE** — `main.py` |
 | 2.4 Assessment submission endpoint | `POST /sessions/{id}/assessments/{instrument_id}/submit` — accepts responses + optional parent_instance_id, computes carry-forward server-side, runs scorer, persists results, evaluates routing, returns score + routing action + session_state. | **✓ DONE** — `api/routes_assessment.py` |
 | 2.5 Session management endpoints | `POST /sessions` (create), `GET /sessions/{id}` (state + completed + available). Available instruments computed from Score rows (not stored state). | **✓ DONE** — `api/routes_session.py` |
-| 2.6 Intake flow endpoints | Captures presenting concerns, red-thread question, cultural background, state anchors, exclusion screen. | Not started |
-| 2.7 Safety protocol handler | PHQ-9 item 9 > 0 → SAFETY_PAUSED. 409 on all further submissions. Structured safety flags (instrument_id, item_id, reason, timestamp). `POST /sessions/{id}/acknowledge-safety` resumes EXPLORING. | **✓ DONE** — integrated into routes_assessment.py + routes_session.py |
-| 2.8 Integration tests | Full flow: create session → submit PHQ-2 → expansion to PHQ-9 → carry-forward → score → safety pause → acknowledge → resume. | **✓ DONE** — `tests/test_api.py` (26 tests). |
+| 2.6 Intake flow endpoints | Captures presenting concerns, red-thread question, cultural background, state anchors, exclusion screen. | **✓ DONE** — Implemented `/intake` and `/anchors`. |
+| 2.7 Safety protocol handler | PHQ-9 item 9 > 0 or PC-PTSD-5 ≥ 3 → SAFETY_PAUSED. 409 on all further submissions. Structured safety flags. `POST /sessions/{id}/acknowledge-safety` resumes EXPLORING. | **✓ DONE** |
+| 2.8 Integration tests | Full flow: create session → submit PHQ-2 → expansion to PHQ-9 → carry-forward → score → safety pause → acknowledge → resume. | **✓ DONE** — `tests/test_api.py` |
+| 2.9 Dev Shell | Vanilla HTML/JS thin client to drive session testing locally without Swagger. Includes `GET /sessions/{id}/instruments/{id}` session-aware render payload to enforce zero-logic frontend. | **✓ DONE** — `dev_shell.html` + `api/routes_session.py` |
 
 ### Phase 3: AI Pipeline
 
