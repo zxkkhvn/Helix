@@ -192,7 +192,7 @@ Backend-first. Each phase produces a testable, working vertical slice.
 | 1.5 Write JSON definitions — Mercury | ISI, WEMWBS, Brief MAIA-2, MEQ, PSQI, FFMQ-15. | **✓ DONE** |
 | 1.6 Write JSON definitions — Venus | PHQ-2, PHQ-9, GAD-2, GAD-7, PAQ-S, PAQ, DERS-16, PSS-10, DTS, ERQ. | **✓ DONE** |
 | 1.7 Write JSON definitions — Earth | BFI-S, IPIP-50, SCS-SF, BRS, RSES, ACEs, VIA-IS-P. | **✓ DONE** |
-| 1.8 Write JSON definitions — Mars | ASRS Part A, ASRS Full, BDEFS-SF, CFQ-25. | **✓ DONE** — BDEFS-SF has TODO item text (proprietary). |
+| 1.8 Write JSON definitions — Mars | ASRS Part A, ASRS Full, BDEFS-SF, CFQ-25. | **✓ DONE** |
 | 1.9 Write JSON definitions — Jupiter | VLQ, AAQ-II, CompACT, MLQ, SWLS. | **✓ DONE** |
 | 1.10 Write JSON definitions — Saturn | LSAS-SR (short + full), ECR-S, ECR-RS, De Jong Gierveld. | Not started |
 | 1.11 Write JSON definitions — Neptune | IUS-12, MSS-YSQ, PTQ-10, CPQ, DSS-B, PSWQ, OCI-R. | Not started |
