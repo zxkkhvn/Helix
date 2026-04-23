@@ -103,17 +103,17 @@ class TestSessionLifecycle:
         assert r.status_code == 201
         body = r.json()
         assert "session_id" in body
-        assert body["state"] == "EXPLORING"
-        assert set(body["available"]) == {"phq2", "gad2", "paq_s"}
+        assert body["state"] == "CORE_FLOW_IN_PROGRESS"
+        assert body["available"] == ["intake"]
 
     def test_get_session_empty(self, client):
         sid = _create_session(client)
         r = client.get(f"/sessions/{sid}")
         assert r.status_code == 200
         body = r.json()
-        assert body["state"] == "EXPLORING"
+        assert body["state"] == "CORE_FLOW_IN_PROGRESS"
         assert body["completed"] == []
-        assert set(body["available"]) == {"phq2", "gad2", "paq_s"}
+        assert body["available"] == ["intake"]
 
     def test_get_session_not_found(self, client):
         r = client.get("/sessions/00000000-0000-0000-0000-000000000000")
@@ -144,7 +144,7 @@ class TestSubmitAssessment:
         assert body["score"]["band"] == "minimal_or_none"
         assert body["routing"]["action"] == "none"
         assert body["routing"]["next_instrument_id"] is None
-        assert body["session_state"] == "EXPLORING"
+        assert body["session_state"] == "CORE_FLOW_IN_PROGRESS"
 
     def test_submit_phq2_triggers_expansion(self, client):
         """PHQ-2 score >= 3 → expansion to PHQ-9 with carry-forward."""
@@ -389,7 +389,7 @@ class TestSafetyProtocol:
             f"/sessions/{sid}/assessments/phq9/submit",
             json={"responses": responses},
         )
-        assert r.json()["session_state"] == "EXPLORING"
+        assert r.json()["session_state"] == "CORE_FLOW_IN_PROGRESS"
 
 
 # ---------------------------------------------------------------------------
@@ -408,7 +408,7 @@ class TestAvailableInstruments:
         available = r.json()["available"]
         assert "phq2" not in available
         assert "phq9" not in available
-        assert "gad2" in available  # other chains unaffected
+        assert available == ["intake"]  # since core flow isn't done
 
     def test_phq2_expansion_makes_phq9_available(self, client):
         sid = _create_session(client)
@@ -417,7 +417,7 @@ class TestAvailableInstruments:
             json={"responses": _phq2_expansion_responses()},
         )
         r = client.get(f"/sessions/{sid}")
-        assert "phq9" in r.json()["available"]
+        assert r.json()["available"] == ["intake"]
 
     def test_all_chains_can_complete_independently(self, client):
         """All three Venus quick scans below threshold → all chains close, nothing available."""
@@ -432,5 +432,97 @@ class TestAvailableInstruments:
                 json={"responses": responses},
             )
         r = client.get(f"/sessions/{sid}")
-        assert r.json()["available"] == []
+        assert r.json()["available"] == ["intake"]
         assert len(r.json()["completed"]) == 3
+
+
+# ---------------------------------------------------------------------------
+# Instrument Render Payload
+# ---------------------------------------------------------------------------
+
+class TestInstrumentRenderEndpoint:
+
+    def test_get_phq2_no_carry_forward(self, client):
+        sid = _create_session(client)
+        r = client.get(f"/sessions/{sid}/instruments/phq2")
+        assert r.status_code == 200
+        body = r.json()
+        assert body["instrument_id"] == "phq2"
+        assert body["parent_instance_id"] is None
+        assert len(body["items_to_render"]) == 2
+        assert body["is_submittable"] is True
+
+    def test_get_phq9_with_carry_forward_filtered(self, client):
+        sid = _create_session(client)
+        # Take PHQ-2 first to trigger carry-forward
+        r1 = client.post(
+            f"/sessions/{sid}/assessments/phq2/submit",
+            json={"responses": {"phq2_01": 3, "phq2_02": 3}},
+        )
+        parent_id = r1.json()["assessment_instance_id"]
+        
+        # Request PHQ-9 render payload
+        r2 = client.get(f"/sessions/{sid}/instruments/phq9")
+        assert r2.status_code == 200
+        body = r2.json()
+        assert body["instrument_id"] == "phq9"
+        assert body["parent_instance_id"] == parent_id
+        
+        # PHQ-9 normally has 9 items. 2 are carried forward. 
+        # So items_to_render should have 7 items.
+        assert len(body["items_to_render"]) == 7
+        rendered_ids = [item["item_id"] for item in body["items_to_render"]]
+        assert "phq9_01" not in rendered_ids
+        assert "phq9_02" not in rendered_ids
+        assert "phq9_03" in rendered_ids
+
+    def test_get_instrument_safety_paused_not_submittable(self, client):
+        sid = _create_session(client)
+        # Trigger safety pause via PHQ-9
+        client.post(
+            f"/sessions/{sid}/assessments/phq9/submit",
+            json={"responses": {"phq9_09": 3}}
+        )
+        r = client.get(f"/sessions/{sid}/instruments/phq2")
+        assert r.status_code == 200
+        assert r.json()["is_submittable"] is False
+
+# ---------------------------------------------------------------------------
+# Composites
+# ---------------------------------------------------------------------------
+
+class TestComposites:
+
+    def test_distress_index_composite_appears(self, client):
+        sid = _create_session(client)
+        
+        # Submit instruments for Distress Index: PHQ-9, GAD-7, WEMWBS
+        # (simulating having progressed through core flow and venus/mercury)
+        r = client.post(
+            f"/sessions/{sid}/assessments/phq9/submit",
+            json={"responses": {f"phq9_0{i}": 1 if i < 9 else 0 for i in range(1, 10)}}
+        )
+        assert r.status_code == 200
+        r = client.post(
+            f"/sessions/{sid}/assessments/gad7/submit",
+            json={"responses": {f"gad7_0{i}": 1 for i in range(1, 8)}}
+        )
+        assert r.status_code == 200
+        r = client.post(
+            f"/sessions/{sid}/assessments/wemwbs/submit",
+            json={"responses": {f"wemwbs_{i:02d}": 3 for i in range(1, 15)}}
+        )
+        assert r.status_code == 200
+        
+        r = client.get(f"/sessions/{sid}")
+        assert r.status_code == 200
+        body = r.json()
+        
+        assert "composites" in body
+        distress = next((c for c in body["composites"] if c["index_id"] == "distress_index"), None)
+        assert distress is not None
+        assert distress["is_partial"] is True
+        assert distress["label"] == "3 of 4 components"
+        assert "phq9" in distress["components_present"]
+        assert "gad7" in distress["components_present"]
+        assert "wemwbs" in distress["components_present"]

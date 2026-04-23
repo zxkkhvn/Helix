@@ -29,6 +29,8 @@ class Session(Base):
     # JSON list of unacknowledged safety events:
     # [{"instrument_id", "item_id", "reason", "timestamp"}]
     safety_flags: Mapped[Optional[Any]] = mapped_column(JSON, nullable=True)
+    intake_data: Mapped[Optional[Any]] = mapped_column(JSON, nullable=True)
+    anchors: Mapped[Optional[Any]] = mapped_column(JSON, nullable=True)
     created_at: Mapped[datetime] = mapped_column(
         DateTime, default=datetime.utcnow
     )

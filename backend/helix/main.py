@@ -6,6 +6,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 
 from helix.api.routes_assessment import router as assessment_router
 from helix.api.routes_session import router as session_router
@@ -45,3 +46,11 @@ app.include_router(assessment_router)
 def health():
     """Health check."""
     return {"status": "ok"}
+
+
+@app.get("/dev", tags=["meta"], include_in_schema=False)
+def dev_shell():
+    """Serve the dev-only thin client shell."""
+    import os
+    file_path = os.path.join(os.path.dirname(__file__), "..", "dev_shell.html")
+    return FileResponse(file_path)

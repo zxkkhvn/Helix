@@ -194,12 +194,27 @@ def submit_assessment(
         session.state = "SAFETY_PAUSED"
         session.updated_at = datetime.utcnow()
 
+    # 10. Check if core flow is complete (transition to EXPLORING if not SAFETY_PAUSED)
+    if session.state == "CORE_FLOW_IN_PROGRESS":
+        all_scores = db.query(Score).join(AssessmentInstance).filter(AssessmentInstance.session_id == session_id).all()
+        completed_ids = {s.instrument_id for s in all_scores}
+        core_flow_complete = (
+            session.intake_data is not None and
+            session.anchors is not None and
+            "pbat" in completed_ids and
+            "wsas" in completed_ids and
+            "pcptsd5" in completed_ids
+        )
+        if core_flow_complete:
+            session.state = "EXPLORING"
+            session.updated_at = datetime.utcnow()
+
     return SubmitResponse(
         assessment_instance_id=instance_id,
         score=ScoreOut(
             instrument_id=score_result.instrument_id,
             total_score=score_result.total_score,
-            band=score_result.band,
+            band=None if definition.get("suppress_band_from_user") else score_result.band,
             subscale_scores=score_result.subscale_scores,
             safety_flags=score_result.safety_flags,
             validity_warnings=score_result.validity_warnings,

@@ -33,6 +33,8 @@ class RoutingAction:
     carry_forward_items: Optional[dict] = None
     safety_triggered: bool = False
     flags: list[str] = field(default_factory=list)
+    # Planets to unlock (e.g. ASRS Part A >= 12 → unlock uranus)
+    unlock_planets: list[str] = field(default_factory=list)
 
 
 def _parse_condition(condition: str, total_score: float, responses: dict) -> bool:
@@ -101,6 +103,7 @@ def evaluate_routing(
     next_instrument_id = None
     carry_forward_items = None
     flags: list[str] = []
+    unlock_planets: list[str] = []
 
     for rule in on_completion:
         condition = rule.get("condition", "")
@@ -114,6 +117,11 @@ def evaluate_routing(
 
         elif action == "trigger_expansion":
             next_instrument_id = rule.get("target")
+
+        elif action == "unlock_planet":
+            target = rule.get("target")
+            if target:
+                unlock_planets.append(target)
 
         elif action in ("flag_elevated", "flag_alexithymia_calibration"):
             flags.append(action)
@@ -137,13 +145,15 @@ def evaluate_routing(
         carry_forward_items=carry_forward_items,  # populated by caller from registry def
         safety_triggered=safety_triggered,
         flags=flags,
+        unlock_planets=unlock_planets,
     )
 
 
-def compute_available_instruments(completed_scores: list) -> list[str]:
-    """Compute which Venus instruments are currently available.
+def compute_available_instruments(session: Any, completed_scores: list) -> list[str]:
+    """Compute which instruments are currently available.
 
     Args:
+        session: Session ORM object.
         completed_scores: List of Score ORM objects for this session.
 
     Returns:
@@ -159,6 +169,43 @@ def compute_available_instruments(completed_scores: list) -> list[str]:
     """
     completed_by_id = {s.instrument_id: s for s in completed_scores}
     available = []
+
+    # Enforce Core Flow Sequence
+    if session.state == "CORE_FLOW_IN_PROGRESS":
+        if not session.intake_data:
+            return ["intake"]
+        elif "pbat" not in completed_by_id:
+            return ["pbat"]
+        elif not session.anchors:
+            return ["anchors"]
+        elif "wsas" not in completed_by_id:
+            return ["wsas"]
+        elif "pcptsd5" not in completed_by_id:
+            return ["pcptsd5"]
+        # If all above are complete, the core flow is technically done. 
+        # State transition will be handled by the route, but while the DB state 
+        # still says CORE_FLOW_IN_PROGRESS during the same request, return empty.
+        return []
+
+    if session.state not in ("EXPLORING", "SAFETY_ACKNOWLEDGED"):
+        return []
+
+    # Earth instruments (always available in EXPLORING)
+    earth_instruments = ["bfi_s", "ipip50", "scs_sf", "brs", "rses", "via_is_p"]
+    for inst in earth_instruments:
+        if inst not in completed_by_id:
+            available.append(inst)
+
+    # ACEs deferral logic
+    aces_deferred = False
+    if "pcptsd5" in completed_by_id and completed_by_id["pcptsd5"].total_score >= 3:
+        if session.state != "SAFETY_ACKNOWLEDGED":
+            aces_deferred = True
+    if session.intake_data and session.intake_data.get("red_thread_risk_flag"):
+        aces_deferred = True
+
+    if not aces_deferred and "aces" not in completed_by_id:
+        available.append("aces")
 
     # PHQ chain
     if "phq2" not in completed_by_id:

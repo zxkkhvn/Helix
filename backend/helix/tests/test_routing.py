@@ -185,21 +185,29 @@ class TestComputeAvailableInstruments:
         s.band = None
         return s
 
+    def _make_session(self):
+        class MockSession:
+            pass
+        s = MockSession()
+        s.state = "EXPLORING"
+        s.intake_data = None
+        return s
+
     def test_empty_session_all_quick_scans_available(self):
-        available = compute_available_instruments([])
+        available = compute_available_instruments(self._make_session(), [])
         assert "phq2" in available
         assert "gad2" in available
         assert "paq_s" in available
 
     def test_phq2_below_threshold_no_phq9(self):
         scores = [self._make_score("phq2", 2.0)]
-        available = compute_available_instruments(scores)
+        available = compute_available_instruments(self._make_session(), scores)
         assert "phq2" not in available
         assert "phq9" not in available
 
     def test_phq2_at_threshold_phq9_available(self):
         scores = [self._make_score("phq2", 3.0)]
-        available = compute_available_instruments(scores)
+        available = compute_available_instruments(self._make_session(), scores)
         assert "phq9" in available
         assert "phq2" not in available
 
@@ -208,25 +216,25 @@ class TestComputeAvailableInstruments:
             self._make_score("phq2", 3.0),
             self._make_score("phq9", 14.0, "inst-2"),
         ]
-        available = compute_available_instruments(scores)
+        available = compute_available_instruments(self._make_session(), scores)
         assert "phq9" not in available
         assert "phq2" not in available
 
     def test_gad2_expansion(self):
         scores = [self._make_score("gad2", 4.0)]
-        available = compute_available_instruments(scores)
+        available = compute_available_instruments(self._make_session(), scores)
         assert "gad7" in available
         assert "gad2" not in available
 
     def test_paq_s_expansion(self):
         scores = [self._make_score("paq_s", 30.0)]
-        available = compute_available_instruments(scores)
+        available = compute_available_instruments(self._make_session(), scores)
         assert "paq" in available
         assert "paq_s" not in available
 
     def test_parallel_chains_independent(self):
         """PHQ chain completion doesn't affect GAD or PAQ availability."""
         scores = [self._make_score("phq2", 2.0)]
-        available = compute_available_instruments(scores)
+        available = compute_available_instruments(self._make_session(), scores)
         assert "gad2" in available
         assert "paq_s" in available
