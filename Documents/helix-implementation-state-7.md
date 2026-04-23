@@ -65,9 +65,9 @@ Phase 2 Venus vertical slice complete. 169 tests passing. API is runnable with `
 | Scoring engine — Scorer registry | COMPLETE — `scoring/registry.py`. Auto-discovers definitions on startup. Routes custom instruments to their module via `create_scorer()` factory. |
 | Scoring engine — PAQ custom scorer | COMPLETE — `scoring/instruments/paq.py`. 5 subscales (N_DIF, P_DIF, N_DDF, P_DDF, G_EOT), total = sum of subscales. |
 | Scoring engine — composite engine | COMPLETE — `scoring/composite.py`. mean_z computation with norms. |
-| All instrument scorers (48 instruments) | IN PROGRESS — Venus 9 generic + 1 custom complete. Core Flow 2 generic + 1 custom complete. Mercury 4 generic + 2 custom complete. Earth 7 generic complete. Remaining 22 not started. |
-| Instrument JSON definitions | IN PROGRESS — Venus fully complete (10/10). Core Flow (WSAS, PC-PTSD-5, PBAT) complete. Mercury (ISI, WEMWBS, FFMQ-15, Brief MAIA-2, MEQ, PSQI) complete. Earth (BFI-S, IPIP-50, SCS-SF, BRS, RSES, ACEs, VIA-IS-P) complete. Remaining 22 not started. |
-| Routing engine (Venus) | COMPLETE — `routing/engine.py`. Evaluates `on_completion` rules from JSON definitions. `evaluate_routing()` + `compute_available_instruments()`. PHQ-2→PHQ-9, GAD-2→GAD-7, PAQ-S→PAQ, PHQ-9 flag_elevated, safety_pause. |
+| All instrument scorers (48 instruments) | IN PROGRESS — Venus 9 generic + 1 custom complete. Core Flow 2 generic + 1 custom complete. Mercury 4 generic + 2 custom complete. Earth 7 generic complete. Mars 4 generic complete. Jupiter 4 generic + 1 custom (VLQ) complete. Remaining 13 not started. |
+| Instrument JSON definitions | IN PROGRESS — Venus (10/10), Mercury (6/6), Earth (7/7), Mars (4/4), Jupiter (5/5), Core Flow (3/3) complete. Remaining: Saturn (5), Neptune (7), Uranus (3), Core Flow PCL-5 = 16 not started. |
+| Routing engine | COMPLETE — `routing/engine.py`. Evaluates `on_completion` rules from JSON definitions. `evaluate_routing()` + `compute_available_instruments()`. PHQ-2→PHQ-9, GAD-2→GAD-7, PAQ-S→PAQ, ASRS-A→ASRS-Full, PHQ-9 flag_elevated, safety_pause. `unlock_planet` action for cross-planet triggers (ASRS→Uranus). |
 | Database schema | COMPLETE — `models/models.py`. Session, AssessmentInstance (with parent_instance_id), Score. UUID PKs, JSON columns, designed for Postgres migration. SQLite v1 via `db/database.py`. |
 | FastAPI application | COMPLETE — `main.py`. Lifespan handler bootstraps DB + scorer registry. CORS configured for dev. |
 | Assessment submission API | COMPLETE — `POST /sessions/{id}/assessments/{instrument_id}/submit`. Server-side carry-forward. Scores, persists, routes, handles safety in one endpoint. |
@@ -192,17 +192,17 @@ Backend-first. Each phase produces a testable, working vertical slice.
 | 1.5 Write JSON definitions — Mercury | ISI, WEMWBS, Brief MAIA-2, MEQ, PSQI, FFMQ-15. | **✓ DONE** |
 | 1.6 Write JSON definitions — Venus | PHQ-2, PHQ-9, GAD-2, GAD-7, PAQ-S, PAQ, DERS-16, PSS-10, DTS, ERQ. | **✓ DONE** |
 | 1.7 Write JSON definitions — Earth | BFI-S, IPIP-50, SCS-SF, BRS, RSES, ACEs, VIA-IS-P. | **✓ DONE** |
-| 1.8 Write JSON definitions — Mars | ASRS Part A, ASRS Full, BDEFS-SF, CFQ-25. | Not started |
-| 1.9 Write JSON definitions — Jupiter | VLQ, AAQ-II, CompACT, MLQ, SWLS. | Not started |
+| 1.8 Write JSON definitions — Mars | ASRS Part A, ASRS Full, BDEFS-SF, CFQ-25. | **✓ DONE** — BDEFS-SF has TODO item text (proprietary). |
+| 1.9 Write JSON definitions — Jupiter | VLQ, AAQ-II, CompACT, MLQ, SWLS. | **✓ DONE** |
 | 1.10 Write JSON definitions — Saturn | LSAS-SR (short + full), ECR-S, ECR-RS, De Jong Gierveld. | Not started |
 | 1.11 Write JSON definitions — Neptune | IUS-12, MSS-YSQ, PTQ-10, CPQ, DSS-B, PSWQ, OCI-R. | Not started |
 | 1.12 Write JSON definitions — Uranus | AQ-10, CAT-Q, RAADS-R. | Not started |
 | 1.13 Write JSON definitions — Core Flow + Safety | PBAT, WSAS, PC-PTSD-5, PCL-5. Optional: AUDIT-C, DAST-10. | **IN PROGRESS** — PBAT, WSAS, PC-PTSD-5 complete. |
-| 1.14 Build custom scorers | PAQ (5 subscales/valence-specific). Remaining 7: PBAT, VLQ, MSS-YSQ, LSAS-SR, ECR-RS, MEQ, PSQI. | **IN PROGRESS** — PAQ, PBAT, MEQ, PSQI complete. |
-| 1.15 Build composite index engine | mean_z computation, required_core and required_minimum enforcement, partial composite labelling. | **✓ DONE** |
-| 1.16 Build routing engine | Deterministic rule evaluation. Expansion triggers. Safety protocols. Deep dive unlock triggers. | **IN PROGRESS** — Venus slice complete. Core Flow sequence enforced. |
+| 1.14 Build custom scorers | PAQ (5 subscales/valence-specific). Remaining 7: PBAT, VLQ, MSS-YSQ, LSAS-SR, ECR-RS, MEQ, PSQI. | **IN PROGRESS** — PAQ, PBAT, MEQ, PSQI, VLQ complete. Remaining: MSS-YSQ, LSAS-SR, ECR-RS. |
+| 1.15 Build composite index engine | mean_z computation, required_core and required_minimum enforcement, partial composite labelling. Custom delegation for VLQ gap. | **✓ DONE** |
+| 1.16 Build routing engine | Deterministic rule evaluation. Expansion triggers. Safety protocols. Deep dive unlock triggers. `unlock_planet` action. | **IN PROGRESS** — Venus + Mars + Jupiter slices complete. Core Flow sequence enforced. ASRS→Uranus unlock wired. |
 | 1.17 Build planet state calculator | Derives planet opacity, moon unlocks, ring assignments from completion state. | Not started |
-| 1.18 Full test suite | Every instrument scored against known test vectors. Edge cases for routing, carry-forward, safety. | **IN PROGRESS** — 180 passing tests |
+| 1.18 Full test suite | Every instrument scored against known test vectors. Edge cases for routing, carry-forward, safety. | **IN PROGRESS** — 195 passing tests |
 
 ### Phase 2: Data Layer + API Shell
 

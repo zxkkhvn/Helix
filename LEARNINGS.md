@@ -38,4 +38,14 @@ Non-obvious decisions and gotchas. Read before modifying scoring or instrument l
   )
   ```
 
+## Routing
 
+- **`unlock_planet` routing action.** Added for cross-planet triggers. When ASRS Part A scores >= 12, it fires both `trigger_expansion` (→ asrs_full) and `unlock_planet` (→ uranus). The routing engine collects unlock targets in `RoutingAction.unlock_planets: list[str]`. The API layer is responsible for persisting planet state changes.
+- **ASRS Part A threshold is 12** (Likert sum), not the original dichotomous "4 shaded boxes". Average of 2.0 per item = "Sometimes" frequency, chosen for sensitivity. Can be tuned with real data.
+
+## Instrument Definitions
+
+- **GenericScorer supports two reverse-scoring patterns.** Per-item `"reverse_scored": true` (used by PSS-10, DTS) and scoring-level `"reverse_items": ["item_id", ...]` list (used by CompACT, MLQ). The list approach is cleaner for instruments with many reversed items (CompACT has 14).
+- **VLQ scoring is custom.** The `total_score` is the mean gap (importance - consistency) across domains where importance >= 7. The composite score (mean of importance * consistency) is stored in `metadata["composite_score"]`. The `valued_living_gap` composite in `composites.json` uses `computation: "custom"` and delegates to the VLQ scorer output rather than z-standardising.
+- **BDEFS-SF item text is placeholder.** All 20 items have TODO markers. The instrument is proprietary (Guilford Press). Structural definition (subscales, scoring, range) is correct. Verbatim text needs to be transcribed from the licensed PDF in `Test Battery/Mars/`.
+- **CompACT is the full 23-item version** (Francis et al. 2016), not a 10-item brief. The implementation state spec explicitly says "Full 23-item version used — no validated brief form exists."
