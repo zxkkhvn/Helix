@@ -1,0 +1,228 @@
+{
+  "instrument_id": "psqi",
+  "version": "1.0.0",
+  "name": "Pittsburgh Sleep Quality Index",
+  "abbreviation": "PSQI",
+  "planet": "mercury",
+  "tier": "deep_dive",
+  "time_window": "past_month",
+  "time_window_text": "The following questions relate to your usual sleep habits during the past month only. Your answers should indicate the most accurate reply for the majority of days and nights in the past month.",
+  "time_window_days": 30,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "psqi_frequency": [
+      {"value": 0, "label": "Not during the past month"},
+      {"value": 1, "label": "Less than once a week"},
+      {"value": 2, "label": "Once or twice a week"},
+      {"value": 3, "label": "Three or more times a week"}
+    ],
+    "psqi_quality": [
+      {"value": 0, "label": "Very good"},
+      {"value": 1, "label": "Fairly good"},
+      {"value": 2, "label": "Fairly bad"},
+      {"value": 3, "label": "Very bad"}
+    ],
+    "psqi_problem": [
+      {"value": 0, "label": "No problem at all"},
+      {"value": 1, "label": "Only a very slight problem"},
+      {"value": 2, "label": "Somewhat of a problem"},
+      {"value": 3, "label": "A very big problem"}
+    ],
+    "free_text_time": [
+      {"value": -1, "label": "Time entry (e.g. 10:30 PM)"}
+    ],
+    "free_text_number": [
+      {"value": -1, "label": "Number entry"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "psqi_01",
+      "text": "During the past month, what time have you usually gone to bed at night?",
+      "response_options_key": "free_text_time",
+      "valence": "neutral",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "psqi_02",
+      "text": "During the past month, how long (in minutes) has it usually taken you to fall asleep each night?",
+      "response_options_key": "free_text_number",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "psqi_03",
+      "text": "During the past month, what time have you usually gotten up in the morning?",
+      "response_options_key": "free_text_time",
+      "valence": "neutral",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "psqi_04",
+      "text": "During the past month, how many hours of actual sleep did you get at night? (This may be different than the number of hours you spent in bed.)",
+      "response_options_key": "free_text_number",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "psqi_05a",
+      "text": "During the past month, how often have you had trouble sleeping because you cannot get to sleep within 30 minutes",
+      "response_options_key": "psqi_frequency",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "psqi_05b",
+      "text": "During the past month, how often have you had trouble sleeping because you wake up in the middle of the night or early morning",
+      "response_options_key": "psqi_frequency",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "psqi_05c",
+      "text": "During the past month, how often have you had trouble sleeping because you have to get up to use the bathroom",
+      "response_options_key": "psqi_frequency",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "psqi_05d",
+      "text": "During the past month, how often have you had trouble sleeping because you cannot breathe comfortably",
+      "response_options_key": "psqi_frequency",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "psqi_05e",
+      "text": "During the past month, how often have you had trouble sleeping because you cough or snore loudly",
+      "response_options_key": "psqi_frequency",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "psqi_05f",
+      "text": "During the past month, how often have you had trouble sleeping because you feel too cold",
+      "response_options_key": "psqi_frequency",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "psqi_05g",
+      "text": "During the past month, how often have you had trouble sleeping because you feel too hot",
+      "response_options_key": "psqi_frequency",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "psqi_05h",
+      "text": "During the past month, how often have you had trouble sleeping because you had bad dreams",
+      "response_options_key": "psqi_frequency",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "psqi_05i",
+      "text": "During the past month, how often have you had trouble sleeping because you have pain",
+      "response_options_key": "psqi_frequency",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "psqi_05j",
+      "text": "During the past month, how often have you had trouble sleeping because of other reason(s)",
+      "response_options_key": "psqi_frequency",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "psqi_06",
+      "text": "During the past month, how would you rate your sleep quality overall?",
+      "response_options_key": "psqi_quality",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "psqi_07",
+      "text": "During the past month, how often have you taken medicine to help you sleep (prescribed or \"over the counter\")?",
+      "response_options_key": "psqi_frequency",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "psqi_08",
+      "text": "During the past month, how often have you had trouble staying awake while driving, eating meals, or engaging in social activity?",
+      "response_options_key": "psqi_frequency",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "psqi_09",
+      "text": "During the past month, how much of a problem has it been for you to keep up enough enthusiasm to get things done?",
+      "response_options_key": "psqi_problem",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "custom",
+    "range": [0, 21],
+    "bands": [
+      {"min": 0, "max": 4, "label": "good_sleep_quality"},
+      {"min": 5, "max": 21, "label": "poor_sleep_quality"}
+    ],
+    "subscales": null
+  },
+
+  "routing": {
+    "on_completion": []
+  }
+}

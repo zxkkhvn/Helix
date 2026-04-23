@@ -1,0 +1,134 @@
+{
+  "instrument_id": "isi",
+  "version": "1.0.0",
+  "name": "Insomnia Severity Index",
+  "abbreviation": "ISI",
+  "planet": "mercury",
+  "tier": "quick_scan",
+  "time_window": "past_2_weeks",
+  "time_window_text": "Please rate the CURRENT (i.e. LAST 2 WEEKS) SEVERITY of your insomnia problem(s).",
+  "time_window_days": 14,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": ["executive_load"],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "isi_severity": [
+      {"value": 0, "label": "None"},
+      {"value": 1, "label": "Mild"},
+      {"value": 2, "label": "Moderate"},
+      {"value": 3, "label": "Severe"},
+      {"value": 4, "label": "Very Severe"}
+    ],
+    "isi_satisfaction": [
+      {"value": 0, "label": "Very Satisfied"},
+      {"value": 1, "label": "Satisfied"},
+      {"value": 2, "label": "Moderately Satisfied"},
+      {"value": 3, "label": "Dissatisfied"},
+      {"value": 4, "label": "Very Dissatisfied"}
+    ],
+    "isi_noticeable": [
+      {"value": 0, "label": "Not at all"},
+      {"value": 1, "label": "A Little"},
+      {"value": 2, "label": "Somewhat"},
+      {"value": 3, "label": "Much"},
+      {"value": 4, "label": "Very Much"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "isi_01",
+      "text": "Difficulty falling asleep",
+      "response_options_key": "isi_severity",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "isi_02",
+      "text": "Difficulty staying asleep",
+      "response_options_key": "isi_severity",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "isi_03",
+      "text": "Problems waking up too early",
+      "response_options_key": "isi_severity",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "isi_04",
+      "text": "How SATISFIED/DISSATISFIED are you with your CURRENT sleep pattern?",
+      "response_options_key": "isi_satisfaction",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "isi_05",
+      "text": "How NOTICEABLE to others do you think your sleep problem is in terms of impairing the quality of your life?",
+      "response_options_key": "isi_noticeable",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "isi_06",
+      "text": "How WORRIED/DISTRESSED are you about your current sleep problem?",
+      "response_options_key": "isi_noticeable",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "isi_07",
+      "text": "To what extent do you consider your sleep problem to INTERFERE with your daily functioning (e.g. daytime fatigue, mood, ability to function at work/daily chores, concentration, memory, mood, etc.) CURRENTLY?",
+      "response_options_key": "isi_noticeable",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [0, 28],
+    "bands": [
+      {"min": 0, "max": 7, "label": "none"},
+      {"min": 8, "max": 14, "label": "subthreshold"},
+      {"min": 15, "max": 21, "label": "moderate"},
+      {"min": 22, "max": 28, "label": "severe"}
+    ],
+    "subscales": null
+  },
+
+  "routing": {
+    "on_completion": [
+      {
+        "condition": "score >= 15",
+        "action": "trigger_expansion",
+        "target": "psqi"
+      }
+    ]
+  }
+}

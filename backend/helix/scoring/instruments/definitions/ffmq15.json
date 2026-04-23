@@ -1,0 +1,207 @@
+{
+  "instrument_id": "ffmq15",
+  "version": "1.0.0",
+  "name": "Five Facet Mindfulness Questionnaire - Short Form",
+  "abbreviation": "FFMQ-15",
+  "planet": "mercury",
+  "tier": "deep_dive",
+  "time_window": "general",
+  "time_window_text": "Please rate each of the following statements with the number that best describes your own opinion of what is generally true for you.",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "ffmq_likert": [
+      {"value": 1, "label": "Never or very rarely true"},
+      {"value": 2, "label": "Rarely true"},
+      {"value": 3, "label": "Sometimes true"},
+      {"value": 4, "label": "Often true"},
+      {"value": 5, "label": "Very often or always true"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "ffmq15_01",
+      "text": "When I do things, my mind wanders off and I’m easily distracted.",
+      "response_options_key": "ffmq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ffmq15_02",
+      "text": "I don’t pay attention to what I’m doing because I’m daydreaming, worrying, or otherwise distracted.",
+      "response_options_key": "ffmq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ffmq15_03",
+      "text": "I am easily distracted.",
+      "response_options_key": "ffmq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ffmq15_04",
+      "text": "I tell myself I shouldn’t be feeling the way I’m feeling.",
+      "response_options_key": "ffmq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ffmq15_05",
+      "text": "I believe some of my thoughts are abnormal or bad and I shouldn’t think that way.",
+      "response_options_key": "ffmq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ffmq15_06",
+      "text": "I think some of my emotions are bad or inappropriate and I shouldn’t feel them.",
+      "response_options_key": "ffmq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ffmq15_07",
+      "text": "I notice how foods and drinks affect my thoughts, bodily sensations, and emotions.",
+      "response_options_key": "ffmq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ffmq15_08",
+      "text": "I pay attention to sensations, such as the wind in my hair or sun on my face.",
+      "response_options_key": "ffmq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ffmq15_09",
+      "text": "I pay attention to sounds, such as clocks ticking, birds chirping, or cars passing.",
+      "response_options_key": "ffmq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ffmq15_10",
+      "text": "It’s hard for me to find the words to describe what I’m thinking.",
+      "response_options_key": "ffmq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ffmq15_11",
+      "text": "I have trouble thinking of the right words to express how I feel about things.",
+      "response_options_key": "ffmq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ffmq15_12",
+      "text": "When I have a sensation in my body, it’s difficult for me to describe it because I can’t find the right words.",
+      "response_options_key": "ffmq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ffmq15_13",
+      "text": "When I have distressing thoughts or images, I “step back” and am aware of the thought or image without getting taken over by it.",
+      "response_options_key": "ffmq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ffmq15_14",
+      "text": "In difficult situations, I can pause without immediately reacting.",
+      "response_options_key": "ffmq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ffmq15_15",
+      "text": "When I have distressing thoughts or images, I feel calm soon after.",
+      "response_options_key": "ffmq_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [15, 75],
+    "bands": null,
+    "subscales": {
+      "acting_with_awareness": {
+        "name": "Acting with Awareness",
+        "items": ["ffmq15_01", "ffmq15_02", "ffmq15_03"],
+        "range": [3, 15]
+      },
+      "nonjudging": {
+        "name": "Nonjudging of Inner Experience",
+        "items": ["ffmq15_04", "ffmq15_05", "ffmq15_06"],
+        "range": [3, 15]
+      },
+      "observing": {
+        "name": "Observing",
+        "items": ["ffmq15_07", "ffmq15_08", "ffmq15_09"],
+        "range": [3, 15]
+      },
+      "describing": {
+        "name": "Describing",
+        "items": ["ffmq15_10", "ffmq15_11", "ffmq15_12"],
+        "range": [3, 15]
+      },
+      "nonreactivity": {
+        "name": "Nonreactivity to Inner Experience",
+        "items": ["ffmq15_13", "ffmq15_14", "ffmq15_15"],
+        "range": [3, 15]
+      }
+    }
+  },
+
+  "routing": {
+    "on_completion": []
+  }
+}

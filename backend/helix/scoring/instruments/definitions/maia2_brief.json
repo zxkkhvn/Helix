@@ -1,0 +1,320 @@
+{
+  "instrument_id": "maia2_brief",
+  "version": "1.0.0",
+  "name": "Multidimensional Assessment of Interoceptive Awareness - Brief (24-item)",
+  "abbreviation": "Brief MAIA-2",
+  "planet": "mercury",
+  "tier": "deep_dive",
+  "time_window": "general",
+  "time_window_text": "Below you will find a list of statements. Please indicate how often each statement applies to you generally in daily life.",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "maia2_likert": [
+      {"value": 0, "label": "Never"},
+      {"value": 1, "label": "1"},
+      {"value": 2, "label": "2"},
+      {"value": 3, "label": "3"},
+      {"value": 4, "label": "4"},
+      {"value": 5, "label": "Always"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "maia2_brief_01",
+      "original_maia2_item": 2,
+      "text": "I notice when I am uncomfortable in my body.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_02",
+      "original_maia2_item": 3,
+      "text": "I notice where in my body I am comfortable.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_03",
+      "original_maia2_item": 4,
+      "text": "I notice changes in my breathing, such as whether it slows down or speeds up.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_04",
+      "original_maia2_item": 6,
+      "text": "I distract myself from sensations of discomfort.",
+      "response_options_key": "maia2_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_05",
+      "original_maia2_item": 9,
+      "text": "I push feelings of discomfort away by focusing on something",
+      "response_options_key": "maia2_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_06",
+      "original_maia2_item": 10,
+      "text": "When I feel unpleasant body sensations, I occupy myself with something else so I don’t have to feel them.",
+      "response_options_key": "maia2_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_07",
+      "original_maia2_item": 11,
+      "text": "When I feel physical pain, I become upset.",
+      "response_options_key": "maia2_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_08",
+      "original_maia2_item": 12,
+      "text": "I start to worry that something is wrong if I feel any discomfort.",
+      "response_options_key": "maia2_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_09",
+      "original_maia2_item": 15,
+      "text": "When I am in discomfort or pain I can’t get it out of my mind",
+      "response_options_key": "maia2_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_10",
+      "original_maia2_item": 17,
+      "text": "I can maintain awareness of my inner bodily sensations even when there is a lot going on around me.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_11",
+      "original_maia2_item": 19,
+      "text": "I can return awareness to my body if I am distracted.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_12",
+      "original_maia2_item": 20,
+      "text": "I can refocus my attention from thinking to sensing my body.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_13",
+      "original_maia2_item": 25,
+      "text": "I notice that my body feels different after a peaceful experience.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_14",
+      "original_maia2_item": 26,
+      "text": "I notice that my breathing becomes free and easy when I feel comfortable.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_15",
+      "original_maia2_item": 27,
+      "text": "I notice how my body changes when I feel happy / joyful.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_16",
+      "original_maia2_item": 29,
+      "text": "When I bring awareness to my body I feel a sense of calm.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_17",
+      "original_maia2_item": 30,
+      "text": "I can use my breath to reduce tension.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_18",
+      "original_maia2_item": 31,
+      "text": "When I am caught up in thoughts, I can calm my mind by focusing on my body/breathing.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_19",
+      "original_maia2_item": 32,
+      "text": "I listen for information from my body about my emotional state.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_20",
+      "original_maia2_item": 33,
+      "text": "When I am upset, I take time to explore how my body feels.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_21",
+      "original_maia2_item": 34,
+      "text": "I listen to my body to inform me about what to do.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_22",
+      "original_maia2_item": 35,
+      "text": "I am at home in my body.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_23",
+      "original_maia2_item": 36,
+      "text": "I feel my body is a safe place.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "maia2_brief_24",
+      "original_maia2_item": 37,
+      "text": "I trust my body sensations.",
+      "response_options_key": "maia2_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "mean",
+    "range": [0, 5],
+    "bands": null,
+    "subscales": {
+      "noticing": {
+        "name": "Noticing",
+        "items": ["maia2_brief_01", "maia2_brief_02", "maia2_brief_03"]
+      },
+      "not_distracting": {
+        "name": "Not Distracting",
+        "items": ["maia2_brief_04", "maia2_brief_05", "maia2_brief_06"]
+      },
+      "not_worrying": {
+        "name": "Not Worrying",
+        "items": ["maia2_brief_07", "maia2_brief_08", "maia2_brief_09"]
+      },
+      "attention_regulation": {
+        "name": "Attention Regulation",
+        "items": ["maia2_brief_10", "maia2_brief_11", "maia2_brief_12"]
+      },
+      "emotional_awareness": {
+        "name": "Emotional Awareness",
+        "items": ["maia2_brief_13", "maia2_brief_14", "maia2_brief_15"]
+      },
+      "self_regulation": {
+        "name": "Self Regulation",
+        "items": ["maia2_brief_16", "maia2_brief_17", "maia2_brief_18"]
+      },
+      "body_listening": {
+        "name": "Body Listening",
+        "items": ["maia2_brief_19", "maia2_brief_20", "maia2_brief_21"]
+      },
+      "trusting": {
+        "name": "Trusting",
+        "items": ["maia2_brief_22", "maia2_brief_23", "maia2_brief_24"]
+      }
+    }
+  },
+
+  "routing": {
+    "on_completion": []
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "instrument_id": "pbat",
+  "version": "1.0.0",
+  "name": "Process-Based Assessment Tool",
+  "abbreviation": "PBAT",
+  "planet": null,
+  "tier": "core_flow",
+  "time_window": "past_week",
+  "time_window_text": "In the last week, I...",
+  "time_window_days": 7,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "vas_100": [
+      {"value": 0, "label": "Strongly Disagree"},
+      {"value": 100, "label": "Strongly Agree"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "pbat_01",
+      "text": "Able to change behaviour when it helped my life",
+      "response_options_key": "vas_100",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pbat_02",
+      "text": "Did things that hurt connection with people who matter",
+      "response_options_key": "vas_100",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pbat_03",
+      "text": "Able to experience a range of emotions appropriate to the moment",
+      "response_options_key": "vas_100",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pbat_04",
+      "text": "Struggled to keep doing something good for me",
+      "response_options_key": "vas_100",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pbat_05",
+      "text": "Did not find a meaningful way to challenge myself",
+      "response_options_key": "vas_100",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pbat_06",
+      "text": "Acted in ways that helped my physical health",
+      "response_options_key": "vas_100",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pbat_07",
+      "text": "My thinking got in the way of things important to me",
+      "response_options_key": "vas_100",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pbat_08",
+      "text": "Paid attention to important things in my daily life",
+      "response_options_key": "vas_100",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pbat_09",
+      "text": "Did things only because complying with what others wanted",
+      "response_options_key": "vas_100",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pbat_10",
+      "text": "Stuck to strategies that seemed to have worked",
+      "response_options_key": "vas_100",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pbat_11",
+      "text": "Found personally important ways to challenge myself",
+      "response_options_key": "vas_100",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pbat_12",
+      "text": "Felt stuck and unable to change my ineffective behaviour",
+      "response_options_key": "vas_100",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pbat_13",
+      "text": "Used my thinking in ways that helped me live better",
+      "response_options_key": "vas_100",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pbat_14",
+      "text": "Struggled to connect with moments in day-to-day life",
+      "response_options_key": "vas_100",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pbat_15",
+      "text": "Did things to connect with people who are important to me",
+      "response_options_key": "vas_100",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pbat_16",
+      "text": "Chose to do things that were personally important to me",
+      "response_options_key": "vas_100",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pbat_17",
+      "text": "Acted in ways that hurt my physical health",
+      "response_options_key": "vas_100",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pbat_18",
+      "text": "Did not find an appropriate outlet for my emotions",
+      "response_options_key": "vas_100",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "custom",
+    "range": [0, 100],
+    "bands": null,
+    "subscales": null
+  },
+
+  "routing": {
+    "on_completion": []
+  }
+}

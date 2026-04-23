@@ -1,0 +1,96 @@
+{
+  "instrument_id": "pcptsd5",
+  "version": "1.0.0",
+  "name": "Primary Care PTSD Screen for DSM-5",
+  "abbreviation": "PC-PTSD-5",
+  "planet": "asteroid_belt",
+  "tier": "core_flow",
+  "time_window": "past_month",
+  "time_window_text": "In the past month, have you...",
+  "time_window_days": 30,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": true,
+  "sensitive_content_warning": "The next few questions ask about stressful experiences.",
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "binary_yes_no": [
+      {"value": 0, "label": "No"},
+      {"value": 1, "label": "Yes"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "pcptsd5_01",
+      "text": "Had nightmares about the event(s) or thought about the event(s) when you did not want to?",
+      "response_options_key": "binary_yes_no",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcptsd5_02",
+      "text": "Tried hard not to think about the event(s) or went out of your way to avoid situations that reminded you of the event(s)?",
+      "response_options_key": "binary_yes_no",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcptsd5_03",
+      "text": "Been constantly on guard, watchful, or easily startled?",
+      "response_options_key": "binary_yes_no",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcptsd5_04",
+      "text": "Felt numb or detached from people, activities, or your surroundings?",
+      "response_options_key": "binary_yes_no",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcptsd5_05",
+      "text": "Felt guilty or unable to stop blaming yourself or others for the event(s) or any problems the event(s) may have caused?",
+      "response_options_key": "binary_yes_no",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [0, 5],
+    "bands": [
+      {"min": 0, "max": 2, "label": "negative_screen"},
+      {"min": 3, "max": 5, "label": "positive_screen"}
+    ],
+    "subscales": null
+  },
+
+  "routing": {
+    "on_completion": [
+      {
+        "condition": "score >= 3",
+        "action": "SAFETY_PROTOCOL"
+      }
+    ]
+  }
+}

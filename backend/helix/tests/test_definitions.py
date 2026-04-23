@@ -15,7 +15,7 @@ REQUIRED_KEYS = {
     "response_option_sets", "items", "scoring", "routing",
 }
 
-VALID_TIERS = {"quick_scan", "deep_dive"}
+VALID_TIERS = {"quick_scan", "deep_dive", "core_flow", "core_exploration"}
 VALID_SCORING_METHODS = {"sum", "mean", "custom"}
 VALID_CULTURAL_TIERS = {
     "broadly_cross_cultural", "moderate_bias_risk",
@@ -36,7 +36,7 @@ class TestDefinitionSchema:
 
     def test_instrument_id_matches_filename(self, definitions_dir):
         for path in sorted(definitions_dir.glob("*.json")):
-            if path.name == "composites.json":
+            if path.name in ("composites.json", "norms.json"):
                 continue
             with open(path) as f:
                 defn = json.load(f)
@@ -127,9 +127,10 @@ class TestDefinitionSchema:
                 f"{inst_id}: last band max {bands[-1]['max']} != score range max {score_max}"
             )
             for i in range(1, len(bands)):
-                assert bands[i]["min"] == bands[i - 1]["max"] + 1, (
+                diff = round(bands[i]["min"] - bands[i - 1]["max"], 2)
+                assert diff in (1.0, 0.01), (
                     f"{inst_id}: gap or overlap between bands "
-                    f"'{bands[i-1]['label']}' and '{bands[i]['label']}'"
+                    f"'{bands[i-1]['label']}' and '{bands[i]['label']}'. Gap is {diff}"
                 )
 
     def test_safety_flag_items_have_trigger(self, all_definitions):

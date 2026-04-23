@@ -1,0 +1,177 @@
+{
+  "instrument_id": "wemwbs",
+  "version": "1.0.0",
+  "name": "Warwick-Edinburgh Mental Wellbeing Scale",
+  "abbreviation": "WEMWBS",
+  "planet": "mercury",
+  "tier": "quick_scan",
+  "time_window": "past_2_weeks",
+  "time_window_text": "Below are some statements about feelings and thoughts. Please tick the box that best describes your experience of each over the last 2 weeks.",
+  "time_window_days": 14,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "licence_required",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": ["protective_resources", "distress_index_inverted"],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "wemwbs_likert": [
+      {"value": 1, "label": "None of the time"},
+      {"value": 2, "label": "Rarely"},
+      {"value": 3, "label": "Some of the time"},
+      {"value": 4, "label": "Often"},
+      {"value": 5, "label": "All of the time"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "wemwbs_01",
+      "text": "I've been feeling optimistic about the future",
+      "response_options_key": "wemwbs_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "wemwbs_02",
+      "text": "I've been feeling useful",
+      "response_options_key": "wemwbs_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "wemwbs_03",
+      "text": "I've been feeling relaxed",
+      "response_options_key": "wemwbs_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "wemwbs_04",
+      "text": "I've been feeling interested in other people",
+      "response_options_key": "wemwbs_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "wemwbs_05",
+      "text": "I've had energy to spare",
+      "response_options_key": "wemwbs_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "wemwbs_06",
+      "text": "I've been dealing with problems well",
+      "response_options_key": "wemwbs_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "wemwbs_07",
+      "text": "I've been thinking clearly",
+      "response_options_key": "wemwbs_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "wemwbs_08",
+      "text": "I've been feeling good about myself",
+      "response_options_key": "wemwbs_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "wemwbs_09",
+      "text": "I've been feeling close to other people",
+      "response_options_key": "wemwbs_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "wemwbs_10",
+      "text": "I've been feeling confident",
+      "response_options_key": "wemwbs_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "wemwbs_11",
+      "text": "I've been able to make up my own mind about things",
+      "response_options_key": "wemwbs_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "wemwbs_12",
+      "text": "I've been feeling loved",
+      "response_options_key": "wemwbs_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "wemwbs_13",
+      "text": "I've been interested in new things",
+      "response_options_key": "wemwbs_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "wemwbs_14",
+      "text": "I've been feeling cheerful",
+      "response_options_key": "wemwbs_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [14, 70],
+    "bands": [
+      {"min": 14, "max": 40, "label": "very_low"},
+      {"min": 41, "max": 44, "label": "below_average"},
+      {"min": 45, "max": 59, "label": "average"},
+      {"min": 60, "max": 70, "label": "above_average"}
+    ],
+    "subscales": null
+  },
+
+  "routing": {
+    "on_completion": []
+  }
+}

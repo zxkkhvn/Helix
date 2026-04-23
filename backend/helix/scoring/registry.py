@@ -18,6 +18,9 @@ DEFINITIONS_DIR = (
 # Add entries here as custom scorers are implemented.
 CUSTOM_SCORER_MODULES: dict[str, str] = {
     "paq": "helix.scoring.instruments.paq",
+    "pbat": "helix.scoring.instruments.pbat",
+    "meq": "helix.scoring.instruments.meq",
+    "psqi": "helix.scoring.instruments.psqi",
 }
 
 _registry: dict[str, BaseScorer] = {}
@@ -56,7 +59,7 @@ def auto_discover(definitions_dir: Optional[Path] = None) -> None:
     """
     defs_dir = definitions_dir or DEFINITIONS_DIR
     for path in sorted(defs_dir.glob("*.json")):
-        if path.name == "composites.json":
+        if path.name in ("composites.json", "norms.json"):
             continue
         with open(path) as f:
             definition = json.load(f)
