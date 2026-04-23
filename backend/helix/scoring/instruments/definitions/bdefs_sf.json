@@ -1,0 +1,252 @@
+{
+  "instrument_id": "bdefs_sf",
+  "version": "1.0.0",
+  "name": "Barkley Deficits in Executive Functioning Scale - Short Form",
+  "abbreviation": "BDEFS-SF",
+  "planet": "mars",
+  "tier": "deep_dive",
+  "time_window": "past_6_months",
+  "time_window_text": "How often do each of the following things happen to you? Rate each item on the scale below, based on how you have been over the past 6 months.",
+  "time_window_days": 180,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "proprietary",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": ["executive_load"],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "bdefs_likert": [
+      {"value": 1, "label": "Never or Rarely"},
+      {"value": 2, "label": "Sometimes"},
+      {"value": 3, "label": "Often"},
+      {"value": 4, "label": "Very Often"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "bdefs_sf_01",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Management to Time item 1",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_02",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Management to Time item 2",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_03",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Management to Time item 3",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_04",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Management to Time item 4",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_05",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Organization item 1",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_06",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Organization item 2",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_07",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Organization item 3",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_08",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Organization item 4",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_09",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Restraint item 1",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_10",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Restraint item 2",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_11",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Restraint item 3",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_12",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Restraint item 4",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_13",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Motivation item 1",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_14",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Motivation item 2",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_15",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Motivation item 3",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_16",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Motivation item 4",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_17",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Regulation of Emotion item 1",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_18",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Regulation of Emotion item 2",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_19",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Regulation of Emotion item 3",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "bdefs_sf_20",
+      "text": "TODO: Verify verbatim text from licensed PDF — Self-Regulation of Emotion item 4",
+      "response_options_key": "bdefs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [20, 80],
+    "bands": [
+      {"min": 20, "max": 39, "label": "normal"},
+      {"min": 40, "max": 59, "label": "elevated"},
+      {"min": 60, "max": 80, "label": "clinical"}
+    ],
+    "subscales": {
+      "self_management_time": {
+        "items": ["bdefs_sf_01", "bdefs_sf_02", "bdefs_sf_03", "bdefs_sf_04"],
+        "method": "sum"
+      },
+      "self_organization": {
+        "items": ["bdefs_sf_05", "bdefs_sf_06", "bdefs_sf_07", "bdefs_sf_08"],
+        "method": "sum"
+      },
+      "self_restraint": {
+        "items": ["bdefs_sf_09", "bdefs_sf_10", "bdefs_sf_11", "bdefs_sf_12"],
+        "method": "sum"
+      },
+      "self_motivation": {
+        "items": ["bdefs_sf_13", "bdefs_sf_14", "bdefs_sf_15", "bdefs_sf_16"],
+        "method": "sum"
+      },
+      "self_regulation_emotion": {
+        "items": ["bdefs_sf_17", "bdefs_sf_18", "bdefs_sf_19", "bdefs_sf_20"],
+        "method": "sum"
+      }
+    }
+  },
+
+  "routing": {
+    "parent_instrument": null,
+    "carry_forward_items": null,
+    "on_completion": []
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "instrument_id": "cfq25",
+  "version": "1.0.0",
+  "name": "Cognitive Failures Questionnaire",
+  "abbreviation": "CFQ-25",
+  "planet": "mars",
+  "tier": "deep_dive",
+  "time_window": "past_6_months",
+  "time_window_text": "The following questions are about minor mistakes which everyone makes from time to time, but some of which happen more often than others. We want to know how often these things have happened to you in the past 6 months.",
+  "time_window_days": 180,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "cfq_likert": [
+      {"value": 0, "label": "Never"},
+      {"value": 1, "label": "Very Rarely"},
+      {"value": 2, "label": "Occasionally"},
+      {"value": 3, "label": "Quite Often"},
+      {"value": 4, "label": "Very Often"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "cfq_01",
+      "text": "Do you read something and find you haven't been thinking about it and must read it again?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_02",
+      "text": "Do you find you forget why you went from one part of the house to the other?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_03",
+      "text": "Do you fail to notice signposts on the road?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_04",
+      "text": "Do you find you confuse right and left when giving directions?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_05",
+      "text": "Do you bump into people?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_06",
+      "text": "Do you find you forget whether you've turned off a light or a fire or locked the door?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_07",
+      "text": "Do you fail to listen to people's names when you are meeting them?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_08",
+      "text": "Do you say something and realize afterwards that it might be taken as insulting?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_09",
+      "text": "Do you fail to hear people speaking to you when you are doing something else?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_10",
+      "text": "Do you lose your temper and regret it?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_11",
+      "text": "Do you leave important letters unanswered for days?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_12",
+      "text": "Do you find you forget which way to turn on a road you know well but rarely use?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_13",
+      "text": "Do you fail to see what you want in a supermarket (although it's there)?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_14",
+      "text": "Do you find yourself suddenly wondering whether you've used a word correctly?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_15",
+      "text": "Do you have trouble making up your mind?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_16",
+      "text": "Do you find you forget appointments?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_17",
+      "text": "Do you forget where you put something like a newspaper or a book?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_18",
+      "text": "Do you find you accidentally throw away the thing you want and keep what you meant to throw away — as in the example of throwing away the matchbox and putting the used match in your pocket?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_19",
+      "text": "Do you daydream when you ought to be listening to something?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_20",
+      "text": "Do you find you forget people's names?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_21",
+      "text": "Do you start doing one thing at home and get distracted into doing something else (unintentionally)?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_22",
+      "text": "Do you find you can't quite remember something although it's 'on the tip of your tongue'?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_23",
+      "text": "Do you find you forget what you came to the shops to buy?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_24",
+      "text": "Do you drop things?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cfq_25",
+      "text": "Do you find you can't think of anything to say?",
+      "response_options_key": "cfq_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [0, 100],
+    "bands": [
+      {"min": 0, "max": 24, "label": "low"},
+      {"min": 25, "max": 49, "label": "average"},
+      {"min": 50, "max": 74, "label": "elevated"},
+      {"min": 75, "max": 100, "label": "high"}
+    ],
+    "subscales": null
+  },
+
+  "routing": {
+    "parent_instrument": null,
+    "carry_forward_items": null,
+    "on_completion": []
+  }
+}

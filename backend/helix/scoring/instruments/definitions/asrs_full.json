@@ -1,0 +1,221 @@
+{
+  "instrument_id": "asrs_full",
+  "version": "1.0.0",
+  "name": "Adult ADHD Self-Report Scale - Full",
+  "abbreviation": "ASRS Full",
+  "planet": "mars",
+  "tier": "deep_dive",
+  "time_window": "past_6_months",
+  "time_window_text": "Please answer the questions below, rating yourself on each of the criteria shown. As you answer each question, select the response that best describes how you have felt and conducted yourself over the past 6 months.",
+  "time_window_days": 180,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "check_rights",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": ["executive_load"],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "asrs_likert": [
+      {"value": 0, "label": "Never"},
+      {"value": 1, "label": "Rarely"},
+      {"value": 2, "label": "Sometimes"},
+      {"value": 3, "label": "Often"},
+      {"value": 4, "label": "Very Often"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "asrs_full_01",
+      "text": "How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_full_02",
+      "text": "How often do you have difficulty getting things in order when you have to do a task that requires organization?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_full_03",
+      "text": "How often do you have problems remembering appointments or obligations?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_full_04",
+      "text": "When you have a task that requires a lot of thought, how often do you avoid or delay getting started?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_full_05",
+      "text": "How often do you fidget or squirm with your hands or feet when you have to sit down for a long time?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_full_06",
+      "text": "How often do you feel overly active and compelled to do things, like you were driven by a motor?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_full_07",
+      "text": "How often do you make careless mistakes when you have to work on a boring or difficult project?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_full_08",
+      "text": "How often do you have difficulty keeping your attention when you are doing boring or repetitive work?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_full_09",
+      "text": "How often do you have difficulty concentrating on what people say to you, even when they are speaking to you directly?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_full_10",
+      "text": "How often do you misplace or have difficulty finding things at home or at work?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_full_11",
+      "text": "How often are you distracted by activity or noise around you?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_full_12",
+      "text": "How often do you leave your seat in meetings or other situations in which you are expected to remain seated?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_full_13",
+      "text": "How often do you feel restless or fidgety?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_full_14",
+      "text": "How often do you have difficulty unwinding and relaxing when you have time to yourself?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_full_15",
+      "text": "How often do you find yourself talking too much when you are in social situations?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_full_16",
+      "text": "When you're in a conversation, how often do you find yourself finishing the sentences of the people you are talking to, before they can finish them themselves?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_full_17",
+      "text": "How often do you have difficulty waiting your turn in situations when turn-taking is required?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_full_18",
+      "text": "How often do you interrupt others when they are busy?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [0, 72],
+    "bands": [
+      {"min": 0, "max": 24, "label": "low"},
+      {"min": 25, "max": 44, "label": "moderate"},
+      {"min": 45, "max": 72, "label": "high"}
+    ],
+    "subscales": null
+  },
+
+  "routing": {
+    "parent_instrument": "asrs_a",
+    "carry_forward_items": {
+      "asrs_a_01": "asrs_full_01",
+      "asrs_a_02": "asrs_full_02",
+      "asrs_a_03": "asrs_full_03",
+      "asrs_a_04": "asrs_full_04",
+      "asrs_a_05": "asrs_full_05",
+      "asrs_a_06": "asrs_full_06"
+    },
+    "on_completion": []
+  }
+}

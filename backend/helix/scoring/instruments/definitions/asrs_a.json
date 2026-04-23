@@ -1,0 +1,108 @@
+{
+  "instrument_id": "asrs_a",
+  "version": "1.0.0",
+  "name": "Adult ADHD Self-Report Scale - Part A",
+  "abbreviation": "ASRS Part A",
+  "planet": "mars",
+  "tier": "quick_scan",
+  "time_window": "past_6_months",
+  "time_window_text": "Please answer the questions below, rating yourself on each of the criteria shown. As you answer each question, select the response that best describes how you have felt and conducted yourself over the past 6 months.",
+  "time_window_days": 180,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "check_rights",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+
+  "response_option_sets": {
+    "asrs_likert": [
+      {"value": 0, "label": "Never"},
+      {"value": 1, "label": "Rarely"},
+      {"value": 2, "label": "Sometimes"},
+      {"value": 3, "label": "Often"},
+      {"value": 4, "label": "Very Often"}
+    ]
+  },
+
+  "items": [
+    {
+      "item_id": "asrs_a_01",
+      "text": "How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_a_02",
+      "text": "How often do you have difficulty getting things in order when you have to do a task that requires organization?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_a_03",
+      "text": "How often do you have problems remembering appointments or obligations?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_a_04",
+      "text": "When you have a task that requires a lot of thought, how often do you avoid or delay getting started?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_a_05",
+      "text": "How often do you fidget or squirm with your hands or feet when you have to sit down for a long time?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "asrs_a_06",
+      "text": "How often do you feel overly active and compelled to do things, like you were driven by a motor?",
+      "response_options_key": "asrs_likert",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+
+  "scoring": {
+    "method": "sum",
+    "range": [0, 24],
+    "bands": [
+      {"min": 0, "max": 11, "label": "low"},
+      {"min": 12, "max": 24, "label": "elevated"}
+    ],
+    "subscales": null
+  },
+
+  "routing": {
+    "parent_instrument": null,
+    "carry_forward_items": null,
+    "on_completion": [
+      {"condition": "score >= 12", "action": "trigger_expansion", "target": "asrs_full"},
+      {"condition": "score >= 12", "action": "unlock_planet", "target": "uranus"}
+    ]
+  }
+}
