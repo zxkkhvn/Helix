@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -94,8 +94,8 @@ def create_session(db: DBSession = Depends(get_db)):
         safety_flags=None,
         intake_data=None,
         anchors=None,
-        created_at=datetime.utcnow(),
-        updated_at=datetime.utcnow(),
+        created_at=datetime.now(timezone.utc),
+        updated_at=datetime.now(timezone.utc),
     )
     db.add(session)
     db.flush()
@@ -158,7 +158,7 @@ def acknowledge_safety(session_id: str, db: DBSession = Depends(get_db)):
 
     session.state = "EXPLORING"
     session.safety_flags = None
-    session.updated_at = datetime.utcnow()
+    session.updated_at = datetime.now(timezone.utc)
     db.flush()
 
     scores = (
@@ -216,7 +216,7 @@ def submit_intake(session_id: str, body: IntakeRequest, db: DBSession = Depends(
         "categories": body.categories,
         "top3_ranked": body.top3_ranked,
     }
-    session.updated_at = datetime.utcnow()
+    session.updated_at = datetime.now(timezone.utc)
     db.flush()
 
     # Re-evaluate routing. In CORE_FLOW_IN_PROGRESS, we just need to compute availability.
@@ -261,7 +261,7 @@ def submit_anchors(session_id: str, body: AnchorsRequest, db: DBSession = Depend
         "energy": body.energy,
         "focus": body.focus,
     }
-    session.updated_at = datetime.utcnow()
+    session.updated_at = datetime.now(timezone.utc)
 
     # Check state transition? Wait, the state transition happens in routes_assessment.py
     # but what if anchors are the LAST thing submitted? (Normally WSAS and PC-PTSD-5 come after)

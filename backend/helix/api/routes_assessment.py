@@ -159,8 +159,8 @@ def submit_assessment(
         parent_instance_id=body.parent_instance_id,
         responses=all_responses,
         status="COMPLETED",
-        created_at=datetime.utcnow(),
-        completed_at=datetime.utcnow(),
+        created_at=datetime.now(timezone.utc),
+        completed_at=datetime.now(timezone.utc),
     )
     db.add(instance)
     db.flush()
@@ -176,7 +176,7 @@ def submit_assessment(
         safety_flags=score_result.safety_flags,
         validity_warnings=score_result.validity_warnings,
         score_metadata=score_result.metadata,
-        created_at=datetime.utcnow(),
+        created_at=datetime.now(timezone.utc),
     )
     db.add(score_row)
     db.flush()
@@ -187,12 +187,12 @@ def submit_assessment(
             "instrument_id": instrument_id,
             "item_id": score_result.safety_flags[0]["item_id"] if score_result.safety_flags else None,
             "reason": "safety_item_triggered",
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
         }
         existing_flags = session.safety_flags or []
         session.safety_flags = existing_flags + [safety_event]
         session.state = "SAFETY_PAUSED"
-        session.updated_at = datetime.utcnow()
+        session.updated_at = datetime.now(timezone.utc)
 
     # 10. Check if core flow is complete (transition to EXPLORING if not SAFETY_PAUSED)
     if session.state == "CORE_FLOW_IN_PROGRESS":
@@ -207,7 +207,7 @@ def submit_assessment(
         )
         if core_flow_complete:
             session.state = "EXPLORING"
-            session.updated_at = datetime.utcnow()
+            session.updated_at = datetime.now(timezone.utc)
 
     return SubmitResponse(
         assessment_instance_id=instance_id,
