@@ -1,0 +1,291 @@
+{
+  "instrument_id": "oci_r",
+  "version": "1.0.0",
+  "name": "Obsessive-Compulsive Inventory - Revised",
+  "abbreviation": "OCI-R",
+  "planet": "neptune",
+  "tier": "deep_dive",
+  "time_window": "past_month",
+  "time_window_text": "",
+  "time_window_days": 30,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "oci_5pt": [
+      {
+        "value": 0,
+        "label": "Not at all"
+      },
+      {
+        "value": 1,
+        "label": "A little"
+      },
+      {
+        "value": 2,
+        "label": "Moderately"
+      },
+      {
+        "value": 3,
+        "label": "A lot"
+      },
+      {
+        "value": 4,
+        "label": "Extremely"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "oci_r_01",
+      "text": "I have saved up so many things that they get in the way.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "oci_r_02",
+      "text": "I check things more often than necessary.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "oci_r_03",
+      "text": "I get upset if objects are not arranged properly.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "oci_r_04",
+      "text": "I feel compelled to count while I am doing things.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "oci_r_05",
+      "text": "I find it difficult to touch an object when I know it has been touched by strangers or certain people.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "oci_r_06",
+      "text": "I find it difficult to control my own thoughts.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "oci_r_07",
+      "text": "I collect things I don't need.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "oci_r_08",
+      "text": "I repeatedly check doors, windows, drawers, etc.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "oci_r_09",
+      "text": "I get upset if others change the way I have arranged things.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "oci_r_10",
+      "text": "I feel I have to repeat certain numbers.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "oci_r_11",
+      "text": "I sometimes have to wash or clean myself simply because I feel contaminated.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "oci_r_12",
+      "text": "I am upset by unpleasant thoughts that come into my mind against my will.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "oci_r_13",
+      "text": "I avoid throwing things away because I am afraid I might need them later.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "oci_r_14",
+      "text": "I repeatedly check gas and water taps and light switches after turning them off.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "oci_r_15",
+      "text": "I need things to be arranged in a particular order.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "oci_r_16",
+      "text": "I feel that there are good and bad numbers.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "oci_r_17",
+      "text": "I wash my hands more often and longer than necessary.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "oci_r_18",
+      "text": "I frequently get nasty thoughts and have difficulty in getting rid of them.",
+      "response_options_key": "oci_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+  "scoring": {
+    "method": "sum",
+    "range": [
+      0,
+      72
+    ],
+    "bands": [
+      {
+        "min": 0,
+        "max": 20,
+        "label": "subclinical"
+      },
+      {
+        "min": 21,
+        "max": 72,
+        "label": "clinical"
+      }
+    ],
+    "subscales": {
+      "washing": {
+        "items": [
+          "oci_r_05",
+          "oci_r_11",
+          "oci_r_17"
+        ],
+        "method": "sum"
+      },
+      "checking": {
+        "items": [
+          "oci_r_02",
+          "oci_r_08",
+          "oci_r_14"
+        ],
+        "method": "sum"
+      },
+      "ordering": {
+        "items": [
+          "oci_r_03",
+          "oci_r_09",
+          "oci_r_15"
+        ],
+        "method": "sum"
+      },
+      "obsessing": {
+        "items": [
+          "oci_r_06",
+          "oci_r_12",
+          "oci_r_18"
+        ],
+        "method": "sum"
+      },
+      "hoarding": {
+        "items": [
+          "oci_r_01",
+          "oci_r_07",
+          "oci_r_13"
+        ],
+        "method": "sum"
+      },
+      "neutralising": {
+        "items": [
+          "oci_r_04",
+          "oci_r_10",
+          "oci_r_16"
+        ],
+        "method": "sum"
+      }
+    }
+  },
+  "routing": {
+    "on_completion": [
+      {
+        "condition": "score >= 21",
+        "action": "flag_elevated"
+      }
+    ]
+  },
+  "band_descriptions": {
+    "subclinical": "Your responses suggest subclinical obsessive-compulsive traits over the past month. Most people experience occasional intrusive thoughts or urges, and your responses fall within the typical range.",
+    "clinical": "Your responses indicate a clinical level of obsessive-compulsive traits over the past month. The distress associated with these patterns is significant, and professional support is strongly recommended. If you'd like to talk to someone, Samaritans are available 24/7 on 116 123 (UK)."
+  }
+}

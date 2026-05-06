@@ -1,0 +1,946 @@
+{
+  "instrument_id": "raads_r",
+  "version": "1.0.0",
+  "name": "Ritvo Autism Asperger Diagnostic Scale-Revised",
+  "abbreviation": "RAADS-R",
+  "planet": "uranus",
+  "tier": "deep_dive",
+  "time_window": "general",
+  "time_window_text": "",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "raads_standard": [
+      {
+        "value": 3,
+        "label": "True now and when I was young"
+      },
+      {
+        "value": 1,
+        "label": "True only now"
+      },
+      {
+        "value": 1,
+        "label": "True only when I was younger than 16"
+      },
+      {
+        "value": 0,
+        "label": "Never true"
+      }
+    ],
+    "raads_reverse": [
+      {
+        "value": 0,
+        "label": "True now and when I was young"
+      },
+      {
+        "value": 2,
+        "label": "True only now"
+      },
+      {
+        "value": 2,
+        "label": "True only when I was younger than 16"
+      },
+      {
+        "value": 3,
+        "label": "Never true"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "raads_r_01",
+      "text": "I am a sympathetic person.",
+      "response_options_key": "raads_reverse",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_02",
+      "text": "I often use words and phrases from movies and television in conversations.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_03",
+      "text": "I am often surprised when others tell me I have been rude.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_04",
+      "text": "Sometimes I talk too loudly or too softly, and I am not aware of it.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_05",
+      "text": "I often don't know how to act in social situations.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_06",
+      "text": "I can \"put myself in other people's shoes.\"",
+      "response_options_key": "raads_reverse",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_07",
+      "text": "I have a hard time figuring out what some phrases mean, like \"you are the apple of my eye.\"",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_08",
+      "text": "I only like to talk to people who share my special interests.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_09",
+      "text": "I focus on details rather than the overall idea.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_10",
+      "text": "I always notice how food feels in my mouth. This is more important to me than how it tastes.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_11",
+      "text": "I miss my best friends or family when we are apart for a long time.",
+      "response_options_key": "raads_reverse",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_12",
+      "text": "Sometimes I offend others by saying what I am thinking, even if I don't mean to.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_13",
+      "text": "I only like to think and talk about a few things that interest me.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_14",
+      "text": "I'd rather go out to eat in a restaurant by myself than with someone I know.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_15",
+      "text": "I cannot imagine what it would be like to be someone else.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_16",
+      "text": "I have been told that I am clumsy or uncoordinated.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_17",
+      "text": "Others consider me odd or different.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_18",
+      "text": "I understand when friends need to be comforted.",
+      "response_options_key": "raads_reverse",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_19",
+      "text": "I am very sensitive to the way my clothes feel when I touch them. How they feel is more important to me than how they look.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_20",
+      "text": "I like to copy the way certain people speak and act. It helps me appear more normal.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_21",
+      "text": "It can be very intimidating for me to talk to more than one person at the same time.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_22",
+      "text": "I have to \"act normal\" to please other people and make them like me.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_23",
+      "text": "Meeting new people is usually easy for me.",
+      "response_options_key": "raads_reverse",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_24",
+      "text": "I get highly confused when someone interrupts me when I am talking about something I am very interested in.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_25",
+      "text": "It is difficult for me to understand how other people are feeling when we are talking.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_26",
+      "text": "I like having a conversation with several people, for instance around a dinner table, at school or at work.",
+      "response_options_key": "raads_reverse",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_27",
+      "text": "I take things too literally, so I often miss what people are trying to say.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_28",
+      "text": "It is very difficult for me to understand when someone is embarrassed or jealous.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_29",
+      "text": "Some ordinary textures that do not bother others feel very offensive when they touch my skin.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_30",
+      "text": "I get extremely upset when the way I like to do things is suddenly changed.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_31",
+      "text": "I have never wanted or needed to have what other people call an \"intimate relationship.\"",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_32",
+      "text": "It is difficult for me to start and stop a conversation. I need to keep going until I am finished.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_33",
+      "text": "I speak with a normal rhythm.",
+      "response_options_key": "raads_reverse",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_34",
+      "text": "The same sound, color or texture can suddenly change from very sensitive to very dull.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_35",
+      "text": "The phrase \"I've got you under my skin\" makes me very uncomfortable.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_36",
+      "text": "Sometimes the sound of a word or a high-pitched noise can be painful to my ears.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_37",
+      "text": "I am an understanding type of person.",
+      "response_options_key": "raads_reverse",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_38",
+      "text": "I do not connect with characters in movies and cannot feel what they feel.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_39",
+      "text": "I cannot tell when someone is flirting with me.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_40",
+      "text": "I can see in my mind in exact detail things that I am interested in.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_41",
+      "text": "I keep lists of things that interest me, even when they have no practical use (for example sports statistics, train schedules, calendar dates, historical dates and dates).",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_42",
+      "text": "When I feel overwhelmed by my senses, I have to isolate myself to shut them down.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_43",
+      "text": "I like to talk things over with my friends.",
+      "response_options_key": "raads_reverse",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_44",
+      "text": "I cannot tell if someone is interested or bored with what I am saying.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_45",
+      "text": "It can be very hard to read someone's face, hand and body movements when they are talking.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_46",
+      "text": "The same thing (like clothes or temperatures) can feel very different to me at different times.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_47",
+      "text": "I feel very comfortable with dating or being in social situations with others.",
+      "response_options_key": "raads_reverse",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_48",
+      "text": "I try to be as helpful as I can when other people tell me their personal problems.",
+      "response_options_key": "raads_reverse",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_49",
+      "text": "I have been told that I have an unusual voice (for example flat, monotone, childish, or high-pitched).",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_50",
+      "text": "Sometimes a thought or a subject gets stuck in my mind and I have to talk about it even if no one is interested.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_51",
+      "text": "I do certain things with my hands over and over again (like flapping, twirling sticks or strings, waving things by my eyes).",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_52",
+      "text": "I have never been interested in what most of the people I know consider interesting.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_53",
+      "text": "I am considered a compassionate type of person.",
+      "response_options_key": "raads_reverse",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_54",
+      "text": "I get along with other people by following a set of specific rules that help me look normal.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_55",
+      "text": "It is very difficult for me to work and function in groups.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_56",
+      "text": "When I am talking to someone, it is hard to change the subject. If the other person does so, I can get very upset and confused.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_57",
+      "text": "Sometimes I have to cover my ears to block out painful noises (like vacuum cleaners or people talking too much or too loudly).",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_58",
+      "text": "I can chat and make small talk with people.",
+      "response_options_key": "raads_reverse",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_59",
+      "text": "Sometimes things that should feel painful are not (for instance when I hurt myself or burn my hand on a stove).",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_60",
+      "text": "When talking to someone, I have a hard time telling when it is my turn to talk or to listen.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_61",
+      "text": "I am considered a loner by those who know me best.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_62",
+      "text": "I usually speak in a normal tone.",
+      "response_options_key": "raads_reverse",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_63",
+      "text": "I like things to be exactly the same day after day and even small changes in my routines upset me.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_64",
+      "text": "How to make friends and socialize is a mystery to me.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_65",
+      "text": "It calms me to spin around or to rock in a chair when I am feeling stressed.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_66",
+      "text": "The phrase, \"He wears his heart on his sleeve,\" does not make sense to me.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_67",
+      "text": "If I am in a place where there are many smells, textures to feel, noises or bright lights, I feel anxious or frightened.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_68",
+      "text": "I can tell when someone says one thing but means something else.",
+      "response_options_key": "raads_reverse",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_69",
+      "text": "I like to be by myself as much as I can.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_70",
+      "text": "I keep my thoughts stacked in my memory like they are on filing cards, and I pick out the ones I need by looking through the stack and finding the right one (or another unique way).",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_71",
+      "text": "The same sound sometimes seems very loud or very soft, even though I know it has not changed.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_72",
+      "text": "I enjoy spending time eating and talking with my family and friends.",
+      "response_options_key": "raads_reverse",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_73",
+      "text": "I can't tolerate things I dislike (like smells, textures, sounds or colors).",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_74",
+      "text": "I don't like to be hugged or held.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_75",
+      "text": "When I go somewhere, I have to follow a familiar route or I can get very confused and upset.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_76",
+      "text": "It is difficult to figure out what other people expect of me.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_77",
+      "text": "I like to have close friends.",
+      "response_options_key": "raads_reverse",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_78",
+      "text": "People tell me that I give too much detail.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_79",
+      "text": "I am often told that I ask embarrassing questions.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "raads_r_80",
+      "text": "I tend to point out other people's mistakes.",
+      "response_options_key": "raads_standard",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+  "scoring": {
+    "method": "sum",
+    "range": [
+      0,
+      240
+    ],
+    "bands": [
+      {
+        "min": 0,
+        "max": 105,
+        "label": "below_threshold"
+      },
+      {
+        "min": 106,
+        "max": 139,
+        "label": "consistent_with_autism"
+      },
+      {
+        "min": 140,
+        "max": 240,
+        "label": "pronounced_traits"
+      }
+    ],
+    "subscales": {
+      "language": {
+        "items": [
+          "raads_r_06",
+          "raads_r_12",
+          "raads_r_15",
+          "raads_r_23",
+          "raads_r_36",
+          "raads_r_46",
+          "raads_r_67"
+        ],
+        "method": "sum",
+        "bands": [
+          { "min": 0, "max": 3, "label": "typical" },
+          { "min": 4, "max": 21, "label": "elevated" }
+        ]
+      },
+      "social_relatedness": {
+        "items": [
+          "raads_r_01",
+          "raads_r_02",
+          "raads_r_04",
+          "raads_r_07",
+          "raads_r_08",
+          "raads_r_10",
+          "raads_r_11",
+          "raads_r_13",
+          "raads_r_16",
+          "raads_r_20",
+          "raads_r_22",
+          "raads_r_24",
+          "raads_r_25",
+          "raads_r_27",
+          "raads_r_28",
+          "raads_r_31",
+          "raads_r_32",
+          "raads_r_37",
+          "raads_r_38",
+          "raads_r_40",
+          "raads_r_41",
+          "raads_r_44",
+          "raads_r_45",
+          "raads_r_47",
+          "raads_r_48",
+          "raads_r_51",
+          "raads_r_54",
+          "raads_r_55",
+          "raads_r_57",
+          "raads_r_58",
+          "raads_r_63",
+          "raads_r_64",
+          "raads_r_66",
+          "raads_r_68",
+          "raads_r_72",
+          "raads_r_73",
+          "raads_r_74",
+          "raads_r_76",
+          "raads_r_77"
+        ],
+        "method": "sum",
+        "bands": [
+          { "min": 0, "max": 30, "label": "typical" },
+          { "min": 31, "max": 117, "label": "elevated" }
+        ]
+      },
+      "sensory_motor": {
+        "items": [
+          "raads_r_03",
+          "raads_r_05",
+          "raads_r_09",
+          "raads_r_14",
+          "raads_r_17",
+          "raads_r_18",
+          "raads_r_21",
+          "raads_r_29",
+          "raads_r_30",
+          "raads_r_33",
+          "raads_r_34",
+          "raads_r_39",
+          "raads_r_42",
+          "raads_r_50",
+          "raads_r_53",
+          "raads_r_56",
+          "raads_r_60",
+          "raads_r_62",
+          "raads_r_70",
+          "raads_r_71"
+        ],
+        "method": "sum",
+        "bands": [
+          { "min": 0, "max": 15, "label": "typical" },
+          { "min": 16, "max": 60, "label": "elevated" }
+        ]
+      },
+      "circumscribed_interests": {
+        "items": [
+          "raads_r_19",
+          "raads_r_26",
+          "raads_r_35",
+          "raads_r_43",
+          "raads_r_49",
+          "raads_r_52",
+          "raads_r_59",
+          "raads_r_61",
+          "raads_r_65",
+          "raads_r_69",
+          "raads_r_75",
+          "raads_r_78",
+          "raads_r_79",
+          "raads_r_80"
+        ],
+        "method": "sum",
+        "bands": [
+          { "min": 0, "max": 14, "label": "typical" },
+          { "min": 15, "max": 42, "label": "elevated" }
+        ]
+      }
+    }
+  },
+  "routing": {},
+  "band_descriptions": {
+    "below_threshold": "Your total score falls below the standard clinical threshold (65). This suggest a low level of autistic traits. Please note: this is a screening tool to help you understand your traits, not a clinical diagnosis.",
+    "consistent_with_autism": "Your total score is above the clinical threshold (65), which is consistent with patterns seen on the autism spectrum. This screening aid suggests that further exploration may be valuable. It is not a formal diagnosis.",
+    "pronounced_traits": "Your total score is significantly above the clinical threshold, suggesting pronounced traits consistent with the autism spectrum. This screening aid is designed for self-exploration and is not a clinical diagnosis.",
+    "language": {
+      "typical": "Your responses regarding language and communication fall within the typical range.",
+      "elevated": "Your responses suggest some differences in how you use and process language, such as a preference for verbatim phrases or literal interpretation."
+    },
+    "social_relatedness": {
+      "typical": "Your responses regarding social interaction and relationships fall within the typical range.",
+      "elevated": "Your responses suggest challenges or distinct patterns in social relatedness, such as a preference for solitary activities or difficulty navigating social expectations."
+    },
+    "sensory_motor": {
+      "typical": "Your responses regarding sensory processing and motor patterns fall within the typical range.",
+      "elevated": "Your responses indicate heightened sensory sensitivity or specific motor patterns, such as self-stimulatory behaviors or strong reactions to textures/sounds."
+    },
+    "circumscribed_interests": {
+      "typical": "Your responses regarding interests and routines fall within the typical range.",
+      "elevated": "Your responses suggest a strong preference for specific interests or highly consistent routines, which is a common trait on the autism spectrum."
+    }
+  }
+}

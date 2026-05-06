@@ -14,10 +14,12 @@ class ScoreResult:
     instrument_id: str
     total_score: float
     band: Optional[str]
-    subscale_scores: Optional[dict[str, float]]
-    safety_flags: list[dict]  # [{"item_id": str, "value": int, "action": str}]
-    validity_warnings: list[str]  # longstring, rapid-response
-    metadata: dict  # version, method, n_items_scored
+    band_description: Optional[str] = None
+    subscale_scores: Optional[dict[str, float]] = None
+    subscale_band_descriptions: Optional[dict[str, str]] = None
+    safety_flags: list[dict] = field(default_factory=list)  # [{"item_id": str, "value": int, "action": str}]
+    validity_warnings: list[str] = field(default_factory=list)  # longstring, rapid-response
+    metadata: dict = field(default_factory=dict)  # version, method, n_items_scored
 
 
 class BaseScorer(ABC):

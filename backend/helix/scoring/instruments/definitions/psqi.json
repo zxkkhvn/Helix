@@ -19,34 +19,74 @@
   "min_trials_for_partial_scoring": null,
   "composite_contributions": [],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "psqi_frequency": [
-      {"value": 0, "label": "Not during the past month"},
-      {"value": 1, "label": "Less than once a week"},
-      {"value": 2, "label": "Once or twice a week"},
-      {"value": 3, "label": "Three or more times a week"}
+      {
+        "value": 0,
+        "label": "Not during the past month"
+      },
+      {
+        "value": 1,
+        "label": "Less than once a week"
+      },
+      {
+        "value": 2,
+        "label": "Once or twice a week"
+      },
+      {
+        "value": 3,
+        "label": "Three or more times a week"
+      }
     ],
     "psqi_quality": [
-      {"value": 0, "label": "Very good"},
-      {"value": 1, "label": "Fairly good"},
-      {"value": 2, "label": "Fairly bad"},
-      {"value": 3, "label": "Very bad"}
+      {
+        "value": 0,
+        "label": "Very good"
+      },
+      {
+        "value": 1,
+        "label": "Fairly good"
+      },
+      {
+        "value": 2,
+        "label": "Fairly bad"
+      },
+      {
+        "value": 3,
+        "label": "Very bad"
+      }
     ],
     "psqi_problem": [
-      {"value": 0, "label": "No problem at all"},
-      {"value": 1, "label": "Only a very slight problem"},
-      {"value": 2, "label": "Somewhat of a problem"},
-      {"value": 3, "label": "A very big problem"}
+      {
+        "value": 0,
+        "label": "No problem at all"
+      },
+      {
+        "value": 1,
+        "label": "Only a very slight problem"
+      },
+      {
+        "value": 2,
+        "label": "Somewhat of a problem"
+      },
+      {
+        "value": 3,
+        "label": "A very big problem"
+      }
     ],
     "free_text_time": [
-      {"value": -1, "label": "Time entry (e.g. 10:30 PM)"}
+      {
+        "value": -1,
+        "label": "Time entry (e.g. 10:30 PM)"
+      }
     ],
     "free_text_number": [
-      {"value": -1, "label": "Number entry"}
+      {
+        "value": -1,
+        "label": "Number entry"
+      }
     ]
   },
-
   "items": [
     {
       "item_id": "psqi_01",
@@ -211,18 +251,31 @@
       "safety_trigger": null
     }
   ],
-
   "scoring": {
     "method": "custom",
-    "range": [0, 21],
+    "range": [
+      0,
+      21
+    ],
     "bands": [
-      {"min": 0, "max": 4, "label": "good_sleep_quality"},
-      {"min": 5, "max": 21, "label": "poor_sleep_quality"}
+      {
+        "min": 0,
+        "max": 4,
+        "label": "good_sleep_quality"
+      },
+      {
+        "min": 5,
+        "max": 21,
+        "label": "poor_sleep_quality"
+      }
     ],
     "subscales": null
   },
-
   "routing": {
     "on_completion": []
+  },
+  "band_descriptions": {
+    "good_sleep_quality": "Your responses suggest good sleep quality during the past month. Most people experience occasional disrupted nights, but your overall rest falls within the typical range.",
+    "poor_sleep_quality": "Your responses indicate poor sleep quality during the past month. This is worth paying attention to, and many people find it helpful to monitor their sleep patterns and hygiene."
   }
 }

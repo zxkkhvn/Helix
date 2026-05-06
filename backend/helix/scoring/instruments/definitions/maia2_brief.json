@@ -19,18 +19,34 @@
   "min_trials_for_partial_scoring": null,
   "composite_contributions": [],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "maia2_likert": [
-      {"value": 0, "label": "Never"},
-      {"value": 1, "label": "1"},
-      {"value": 2, "label": "2"},
-      {"value": 3, "label": "3"},
-      {"value": 4, "label": "4"},
-      {"value": 5, "label": "Always"}
+      {
+        "value": 0,
+        "label": "Never"
+      },
+      {
+        "value": 1,
+        "label": "1"
+      },
+      {
+        "value": 2,
+        "label": "2"
+      },
+      {
+        "value": 3,
+        "label": "3"
+      },
+      {
+        "value": 4,
+        "label": "4"
+      },
+      {
+        "value": 5,
+        "label": "Always"
+      }
     ]
   },
-
   "items": [
     {
       "item_id": "maia2_brief_01",
@@ -85,7 +101,7 @@
     {
       "item_id": "maia2_brief_06",
       "original_maia2_item": 10,
-      "text": "When I feel unpleasant body sensations, I occupy myself with something else so I don’t have to feel them.",
+      "text": "When I feel unpleasant body sensations, I occupy myself with something else so I don\u2019t have to feel them.",
       "response_options_key": "maia2_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -115,7 +131,7 @@
     {
       "item_id": "maia2_brief_09",
       "original_maia2_item": 15,
-      "text": "When I am in discomfort or pain I can’t get it out of my mind",
+      "text": "When I am in discomfort or pain I can\u2019t get it out of my mind",
       "response_options_key": "maia2_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -273,48 +289,102 @@
       "safety_trigger": null
     }
   ],
-
   "scoring": {
     "method": "mean",
-    "range": [0, 5],
-    "bands": null,
+    "range": [
+      0,
+      5
+    ],
+    "bands": [
+      {
+        "min": 0,
+        "max": 2.0,
+        "label": "below_average"
+      },
+      {
+        "min": 2.01,
+        "max": 3.99,
+        "label": "average"
+      },
+      {
+        "min": 4.0,
+        "max": 5.0,
+        "label": "above_average"
+      }
+    ],
     "subscales": {
       "noticing": {
         "name": "Noticing",
-        "items": ["maia2_brief_01", "maia2_brief_02", "maia2_brief_03"]
+        "items": [
+          "maia2_brief_01",
+          "maia2_brief_02",
+          "maia2_brief_03"
+        ]
       },
       "not_distracting": {
         "name": "Not Distracting",
-        "items": ["maia2_brief_04", "maia2_brief_05", "maia2_brief_06"]
+        "items": [
+          "maia2_brief_04",
+          "maia2_brief_05",
+          "maia2_brief_06"
+        ]
       },
       "not_worrying": {
         "name": "Not Worrying",
-        "items": ["maia2_brief_07", "maia2_brief_08", "maia2_brief_09"]
+        "items": [
+          "maia2_brief_07",
+          "maia2_brief_08",
+          "maia2_brief_09"
+        ]
       },
       "attention_regulation": {
         "name": "Attention Regulation",
-        "items": ["maia2_brief_10", "maia2_brief_11", "maia2_brief_12"]
+        "items": [
+          "maia2_brief_10",
+          "maia2_brief_11",
+          "maia2_brief_12"
+        ]
       },
       "emotional_awareness": {
         "name": "Emotional Awareness",
-        "items": ["maia2_brief_13", "maia2_brief_14", "maia2_brief_15"]
+        "items": [
+          "maia2_brief_13",
+          "maia2_brief_14",
+          "maia2_brief_15"
+        ]
       },
       "self_regulation": {
         "name": "Self Regulation",
-        "items": ["maia2_brief_16", "maia2_brief_17", "maia2_brief_18"]
+        "items": [
+          "maia2_brief_16",
+          "maia2_brief_17",
+          "maia2_brief_18"
+        ]
       },
       "body_listening": {
         "name": "Body Listening",
-        "items": ["maia2_brief_19", "maia2_brief_20", "maia2_brief_21"]
+        "items": [
+          "maia2_brief_19",
+          "maia2_brief_20",
+          "maia2_brief_21"
+        ]
       },
       "trusting": {
         "name": "Trusting",
-        "items": ["maia2_brief_22", "maia2_brief_23", "maia2_brief_24"]
+        "items": [
+          "maia2_brief_22",
+          "maia2_brief_23",
+          "maia2_brief_24"
+        ]
       }
     }
   },
-
   "routing": {
     "on_completion": []
+  },
+  "band_descriptions": {
+    "below_average": "Your responses suggest below average interoceptive awareness, indicating some difficulty noticing bodily sensations. Many people find it helpful to monitor this and practice tuning into their physical experiences.",
+    "average": "Your responses indicate an average level of interoceptive awareness. Most people experience this, and your responses fall within the typical range.",
+    "above_average": "Your responses suggest above average interoceptive awareness. This suggests you have strong resources in this area and are highly attuned to your body's signals."
   }
 }

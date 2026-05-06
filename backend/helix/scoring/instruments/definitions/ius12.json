@@ -1,0 +1,212 @@
+{
+  "instrument_id": "ius12",
+  "version": "1.0.0",
+  "name": "Intolerance of Uncertainty Scale - Short Form",
+  "abbreviation": "IUS-12",
+  "planet": "neptune",
+  "tier": "quick_scan",
+  "time_window": "general",
+  "time_window_text": "",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [
+    "regulatory_burden"
+  ],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "ius_5pt": [
+      {
+        "value": 1,
+        "label": "1"
+      },
+      {
+        "value": 2,
+        "label": "2"
+      },
+      {
+        "value": 3,
+        "label": "3"
+      },
+      {
+        "value": 4,
+        "label": "4"
+      },
+      {
+        "value": 5,
+        "label": "5"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "ius12_01",
+      "text": "Unforeseen events upset me greatly.",
+      "response_options_key": "ius_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ius12_02",
+      "text": "It frustrates me not having all the information I need.",
+      "response_options_key": "ius_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ius12_03",
+      "text": "Uncertainty keeps me from living a full life.",
+      "response_options_key": "ius_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ius12_04",
+      "text": "One should always look ahead so as to avoid surprises.",
+      "response_options_key": "ius_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ius12_05",
+      "text": "A small unforeseen event can spoil everything, even with the best of planning.",
+      "response_options_key": "ius_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ius12_06",
+      "text": "When it\u2019s time to act, uncertainty paralyses me.",
+      "response_options_key": "ius_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ius12_07",
+      "text": "When I am uncertain I can\u2019t function very well.",
+      "response_options_key": "ius_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ius12_08",
+      "text": "I always want to know what the future has in store for me.",
+      "response_options_key": "ius_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ius12_09",
+      "text": "I can\u2019t stand being taken by surprise.",
+      "response_options_key": "ius_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ius12_10",
+      "text": "The smallest doubt can stop me from acting.",
+      "response_options_key": "ius_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ius12_11",
+      "text": "I should be able to organize everything in advance.",
+      "response_options_key": "ius_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ius12_12",
+      "text": "I must get away from all uncertain situations.",
+      "response_options_key": "ius_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+  "scoring": {
+    "method": "sum",
+    "range": [
+      12,
+      60
+    ],
+    "bands": [
+      {
+        "min": 12,
+        "max": 27,
+        "label": "low"
+      },
+      {
+        "min": 28,
+        "max": 41,
+        "label": "moderate"
+      },
+      {
+        "min": 42,
+        "max": 60,
+        "label": "high"
+      }
+    ],
+    "subscales": {
+      "prospective_anxiety": {
+        "items": [
+          "ius12_01",
+          "ius12_02",
+          "ius12_04",
+          "ius12_05",
+          "ius12_08",
+          "ius12_09",
+          "ius12_11"
+        ],
+        "method": "sum"
+      },
+      "inhibitory_anxiety": {
+        "items": [
+          "ius12_03",
+          "ius12_06",
+          "ius12_07",
+          "ius12_10",
+          "ius12_12"
+        ],
+        "method": "sum"
+      }
+    }
+  },
+  "routing": {},
+  "band_descriptions": {
+    "low": "Your responses suggest a low intolerance of uncertainty. Most people experience this, and your responses fall within the typical range of comfort with the unknown.",
+    "moderate": "Your responses indicate a moderate intolerance of uncertainty. Many people find it helpful to monitor this and practise accepting ambiguous situations.",
+    "high": "Your responses suggest a high intolerance of uncertainty. This is worth paying attention to, as an intense need for predictability can often drive feelings of anxiety."
+  }
+}

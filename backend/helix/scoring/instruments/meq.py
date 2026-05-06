@@ -55,6 +55,12 @@ class MEQScorer(BaseScorer):
                 total_score += int(all_responses[item_id])
 
         band = self._assign_band(float(total_score), self._bands)
+        
+        band_description = None
+        band_desc_map = self._def.get("band_descriptions", {})
+        if band and band in band_desc_map:
+            band_description = band_desc_map[band]
+
         light_therapy_time = self._get_light_therapy_time(int(total_score))
 
         validity_warnings = []
@@ -67,6 +73,7 @@ class MEQScorer(BaseScorer):
             instrument_id=self.instrument_id,
             total_score=float(total_score),
             band=band,
+            band_description=band_description,
             subscale_scores=None,
             safety_flags=[],
             validity_warnings=validity_warnings,

@@ -17,19 +17,34 @@
   "sensitive_content_warning": null,
   "calibration_signal": null,
   "min_trials_for_partial_scoring": null,
-  "composite_contributions": ["regulatory_burden"],
+  "composite_contributions": [
+    "regulatory_burden"
+  ],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "ders_likert": [
-      {"value": 1, "label": "Almost never (0-10%)"},
-      {"value": 2, "label": "Sometimes (11-35%)"},
-      {"value": 3, "label": "About half the time (36-65%)"},
-      {"value": 4, "label": "Most of the time (66-90%)"},
-      {"value": 5, "label": "Almost always (91-100%)"}
+      {
+        "value": 1,
+        "label": "Almost never (0-10%)"
+      },
+      {
+        "value": 2,
+        "label": "Sometimes (11-35%)"
+      },
+      {
+        "value": 3,
+        "label": "About half the time (36-65%)"
+      },
+      {
+        "value": 4,
+        "label": "Most of the time (66-90%)"
+      },
+      {
+        "value": 5,
+        "label": "Almost always (91-100%)"
+      }
     ]
   },
-
   "items": [
     {
       "item_id": "ders16_01",
@@ -176,40 +191,98 @@
       "safety_trigger": null
     }
   ],
-
   "scoring": {
     "method": "sum",
-    "range": [16, 80],
-    "bands": null,
+    "range": [
+      16,
+      80
+    ],
+    "bands": [
+      {
+        "min": 16,
+        "max": 24,
+        "label": "very_low"
+      },
+      {
+        "min": 25,
+        "max": 36,
+        "label": "low"
+      },
+      {
+        "min": 37,
+        "max": 47,
+        "label": "average"
+      },
+      {
+        "min": 48,
+        "max": 60,
+        "label": "high"
+      },
+      {
+        "min": 61,
+        "max": 80,
+        "label": "very_high"
+      }
+    ],
     "subscales": {
       "clarity": {
         "method": "sum",
-        "items": ["ders16_01", "ders16_02"]
+        "items": [
+          "ders16_01",
+          "ders16_02"
+        ]
       },
       "goals": {
         "method": "sum",
-        "items": ["ders16_03", "ders16_07", "ders16_15"]
+        "items": [
+          "ders16_03",
+          "ders16_07",
+          "ders16_15"
+        ]
       },
       "impulse": {
         "method": "sum",
-        "items": ["ders16_04", "ders16_08", "ders16_11"]
+        "items": [
+          "ders16_04",
+          "ders16_08",
+          "ders16_11"
+        ]
       },
       "strategies": {
         "method": "sum",
-        "items": ["ders16_05", "ders16_06", "ders16_12", "ders16_14", "ders16_16"]
+        "items": [
+          "ders16_05",
+          "ders16_06",
+          "ders16_12",
+          "ders16_14",
+          "ders16_16"
+        ]
       },
       "nonacceptance": {
         "method": "sum",
-        "items": ["ders16_09", "ders16_10", "ders16_13"]
+        "items": [
+          "ders16_09",
+          "ders16_10",
+          "ders16_13"
+        ]
       }
     }
   },
-
   "routing": {
     "parent_instrument": null,
     "carry_forward_items": null,
     "on_completion": [
-      {"condition": "score >= 48", "action": "flag_elevated"}
+      {
+        "condition": "score >= 48",
+        "action": "flag_elevated"
+      }
     ]
+  },
+  "band_descriptions": {
+    "very_low": "Your responses suggest very low difficulty with emotion regulation. Your ability to manage and respond to your emotions falls within a highly typical and adaptive range.",
+    "low": "Your responses indicate low difficulty with emotion regulation. Most people experience occasional emotional challenges, but your responses fall within the typical range.",
+    "average": "Your responses suggest average emotional regulation patterns. Most people experience this, and your responses fall within the typical range.",
+    "high": "Your responses indicate high difficulty with emotion regulation. This is worth paying attention to, and many people find it helpful to monitor these emotional responses.",
+    "very_high": "Your responses suggest very high difficulty with emotion regulation. This pattern can be distressing to navigate, and speaking with a professional could be very beneficial."
   }
 }

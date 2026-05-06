@@ -125,5 +125,10 @@
     "on_completion": []
   },
   "time_window_days": null,
-  "sensitive_content_warning": null
+  "sensitive_content_warning": null,
+  "band_descriptions": {
+    "low": "Your responses suggest a low ability to bounce back from stress. This is worth paying attention to, and exploring what supports your recovery could be very beneficial.",
+    "normal": "Your responses indicate a normal level of resilience. Most people experience occasional difficulty recovering from stress, and your responses fall within the typical range.",
+    "high": "Your responses suggest a high level of resilience. This suggests you have strong resources in this area and can effectively recover from stressful events."
+  }
 }

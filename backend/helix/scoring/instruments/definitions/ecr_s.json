@@ -1,0 +1,253 @@
+{
+  "instrument_id": "ecr_s",
+  "version": "1.0.0",
+  "name": "Experiences in Close Relationships - Short Form",
+  "abbreviation": "ECR-S",
+  "planet": "saturn",
+  "tier": "deep_dive",
+  "time_window": "general",
+  "time_window_text": "Please read each of the following statements and rate the extent to which it describes your feelings about romantic relationships in general.",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [
+    "social_friction"
+  ],
+  "consistency_pairs": [],
+  "interpretation_mode": "attachment_profile",
+  "suppress_band_from_user": true,
+  "response_option_sets": {
+    "ecr_7pt": [
+      {
+        "value": 1,
+        "label": "Strongly Disagree"
+      },
+      {
+        "value": 2,
+        "label": "Disagree"
+      },
+      {
+        "value": 3,
+        "label": "Somewhat Disagree"
+      },
+      {
+        "value": 4,
+        "label": "Neutral/Mixed"
+      },
+      {
+        "value": 5,
+        "label": "Somewhat Agree"
+      },
+      {
+        "value": 6,
+        "label": "Agree"
+      },
+      {
+        "value": 7,
+        "label": "Strongly Agree"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "ecr_s_01",
+      "text": "It helps to turn to my romantic partner in times of need.",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_s_02",
+      "text": "I usually discuss my problems and concerns with my partner.",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_s_03",
+      "text": "I talk things over with my partner.",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_s_04",
+      "text": "I find it easy to depend on romantic partners.",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_s_05",
+      "text": "I don't feel comfortable opening up to romantic partners.",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_s_06",
+      "text": "I prefer not to show a partner how I feel deep down.",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_s_07",
+      "text": "I often worry that my partner will not want to stay with me.",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_s_08",
+      "text": "I often worry that my partner doesn't really love me.",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_s_09",
+      "text": "I worry that romantic partners won't care about me as much as I care about them.",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_s_10",
+      "text": "I often wish that my partner's feelings for me were as strong as my feelings for him or her.",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_s_11",
+      "text": "I worry a lot about my relationships.",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_s_12",
+      "text": "When my partner is out of sight, I worry that he or she might become interested in someone else.",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+  "scoring": {
+    "method": "mean",
+    "range": [
+      1.0,
+      7.0
+    ],
+    "bands": null,
+    "reverse_items": [
+      "ecr_s_01",
+      "ecr_s_02",
+      "ecr_s_03",
+      "ecr_s_04"
+    ],
+    "subscales": {
+      "avoidance": {
+        "items": [
+          "ecr_s_01",
+          "ecr_s_02",
+          "ecr_s_03",
+          "ecr_s_04",
+          "ecr_s_05",
+          "ecr_s_06"
+        ],
+        "method": "mean",
+        "bands": [
+          {
+            "min": 1.0,
+            "max": 3.5,
+            "label": "low"
+          },
+          {
+            "min": 3.6,
+            "max": 5.0,
+            "label": "average"
+          },
+          {
+            "min": 5.1,
+            "max": 7.0,
+            "label": "high"
+          }
+        ]
+      },
+      "anxiety": {
+        "items": [
+          "ecr_s_07",
+          "ecr_s_08",
+          "ecr_s_09",
+          "ecr_s_10",
+          "ecr_s_11",
+          "ecr_s_12"
+        ],
+        "method": "mean",
+        "bands": [
+          {
+            "min": 1.0,
+            "max": 3.5,
+            "label": "low"
+          },
+          {
+            "min": 3.6,
+            "max": 5.0,
+            "label": "average"
+          },
+          {
+            "min": 5.1,
+            "max": 7.0,
+            "label": "high"
+          }
+        ]
+      }
+    }
+  },
+  "routing": {},
+  "band_descriptions": {
+    "avoidance": {
+      "low": "Your responses suggest lower levels of attachment-related avoidance. Within this platform's interpretive framework, this typically reflects comfort with intimacy and an openness to mutual reliance.",
+      "average": "Your responses indicate average levels of attachment-related avoidance relative to our typical data. This suggests a balance between independence and intimacy in your relationships.",
+      "high": "Your responses suggest higher levels of attachment-related avoidance. This may indicate a tendency to prioritise self-reliance or maintain emotional distance in relationships."
+    },
+    "anxiety": {
+      "low": "Your responses suggest lower levels of attachment-related anxiety. This typically reflects a sense of security regarding your partner's availability and stability.",
+      "average": "Your responses indicate average levels of attachment-related anxiety relative to our typical data. You may occasionally worry about relationship stability, which is common.",
+      "high": "Your responses suggest higher levels of attachment-related anxiety. This may indicate a tendency to worry about your partner's feelings or the long-term stability of your relationships."
+    }
+  }
+}

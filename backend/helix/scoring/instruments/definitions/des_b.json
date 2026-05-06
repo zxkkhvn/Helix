@@ -1,0 +1,161 @@
+{
+  "instrument_id": "des_b",
+  "version": "1.0.0",
+  "name": "Brief Dissociative Experiences Scale (Modified)",
+  "abbreviation": "DES-B",
+  "planet": "neptune",
+  "tier": "deep_dive",
+  "time_window": "last_7_days",
+  "time_window_text": "For each statement below, please indicate how much each thing has happened to you in the past SEVEN (7) DAYS.",
+  "time_window_days": 7,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": 6,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "des_b_5pt": [
+      {
+        "value": 0,
+        "label": "Not at all"
+      },
+      {
+        "value": 1,
+        "label": "Once or twice"
+      },
+      {
+        "value": 2,
+        "label": "Almost every day"
+      },
+      {
+        "value": 3,
+        "label": "About once a day"
+      },
+      {
+        "value": 4,
+        "label": "More than once a day"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "des_b_01",
+      "text": "I find myself staring into space and thinking of nothing.",
+      "response_options_key": "des_b_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "des_b_02",
+      "text": "People, objects, or the world around me seem strange or unreal.",
+      "response_options_key": "des_b_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "des_b_03",
+      "text": "I find that I did things that I do not remember doing.",
+      "response_options_key": "des_b_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "des_b_04",
+      "text": "When I am alone, I talk out loud to myself.",
+      "response_options_key": "des_b_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "des_b_05",
+      "text": "I feel as though I were looking at the world through a fog so that people and things seem far away or unclear.",
+      "response_options_key": "des_b_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "des_b_06",
+      "text": "I am able to ignore pain.",
+      "response_options_key": "des_b_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "des_b_07",
+      "text": "I act so differently from one situation to another that it is almost as if I were two different people.",
+      "response_options_key": "des_b_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "des_b_08",
+      "text": "I can do things very easily that would usually be hard for me.",
+      "response_options_key": "des_b_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+  "scoring": {
+    "method": "mean",
+    "range": [
+      0,
+      4
+    ],
+    "bands": [
+      {
+        "min": 0,
+        "max": 0.99,
+        "label": "none"
+      },
+      {
+        "min": 1.0,
+        "max": 1.99,
+        "label": "mild"
+      },
+      {
+        "min": 2.0,
+        "max": 2.99,
+        "label": "moderate"
+      },
+      {
+        "min": 3.0,
+        "max": 3.99,
+        "label": "severe"
+      },
+      {
+        "min": 4.0,
+        "max": 4.0,
+        "label": "extreme"
+      }
+    ]
+  },
+  "routing": {},
+  "band_descriptions": {
+    "normal": "Your responses suggest a normal range of dissociative experiences over the past 7 days. Most people experience occasional spacing out, and your responses fall within the typical range.",
+    "mild": "Your responses indicate mild dissociative experiences over the past 7 days. Most people experience this occasionally, but it is worth paying attention to.",
+    "moderate": "Your responses suggest moderate dissociative experiences over the past 7 days. Many people find it helpful to monitor this and explore grounding techniques.",
+    "clinical": "Your responses indicate a high level of dissociative experiences over the past 7 days. This level of detachment is significant, and speaking with a mental health professional is strongly recommended."
+  }
+}

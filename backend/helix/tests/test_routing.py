@@ -238,3 +238,28 @@ class TestComputeAvailableInstruments:
         available = compute_available_instruments(self._make_session(), scores)
         assert "gad2" in available
         assert "paq_s" in available
+
+    def test_uranus_unlock_via_asrs(self):
+        scores = [self._make_score("asrs_a", 12.0)]
+        available = compute_available_instruments(self._make_session(), scores)
+        assert "aq10" in available
+        assert "catq" in available
+
+    def test_uranus_unlock_via_intake(self):
+        session = self._make_session()
+        session.intake_data = {"categories": "neurodivergence,something_else"}
+        available = compute_available_instruments(session, [])
+        assert "aq10" in available
+        assert "catq" in available
+
+    def test_uranus_raads_r_expansion(self):
+        scores = [self._make_score("asrs_a", 12.0), self._make_score("aq10", 6.0)]
+        available = compute_available_instruments(self._make_session(), scores)
+        assert "raads_r" in available
+
+    def test_asteroid_belt_unlock(self):
+        session = self._make_session()
+        session.state = "SAFETY_ACKNOWLEDGED"
+        scores = [self._make_score("pcptsd5", 3.0)]
+        available = compute_available_instruments(session, scores)
+        assert "pcl5" in available

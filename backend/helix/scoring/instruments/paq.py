@@ -64,6 +64,11 @@ class PAQScorer(BaseScorer):
 
         # 4. Band
         band = self._assign_band(total, self._bands)
+        
+        band_description = None
+        band_desc_map = self._def.get("band_descriptions", {})
+        if band and band in band_desc_map:
+            band_description = band_desc_map[band]
 
         # 5. Safety flags (PAQ has none, but evaluated for completeness)
         safety_flags = self._evaluate_safety_flags(all_responses, self._items)
@@ -89,6 +94,7 @@ class PAQScorer(BaseScorer):
             instrument_id=self._instrument_id,
             total_score=total,
             band=band,
+            band_description=band_description,
             subscale_scores=subscale_scores,
             safety_flags=safety_flags,
             validity_warnings=validity_warnings,

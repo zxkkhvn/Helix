@@ -137,5 +137,10 @@
     "on_completion": []
   },
   "time_window_days": null,
-  "sensitive_content_warning": null
+  "sensitive_content_warning": null,
+  "band_descriptions": {
+    "low": "Your responses suggest a low level of self-esteem. Many people find it helpful to monitor these feelings and explore ways to build a more positive self-view.",
+    "normal": "Your responses indicate a normal level of self-esteem. Most people experience occasional self-doubt, but your responses fall within the typical range.",
+    "high": "Your responses suggest a high level of self-esteem. This suggests you have strong resources in this area and generally hold a positive, healthy attitude toward yourself."
+  }
 }

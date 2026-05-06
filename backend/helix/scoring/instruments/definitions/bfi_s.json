@@ -140,12 +140,15 @@
       "response_options_key": "likert5"
     }
   ],
+  "interpretation_mode": "trait_profile",
+  "profile_summary_template": "Describe relative highs and lows across the Big Five domains without assigning an overall severity band.",
   "scoring": {
     "method": "mean",
     "range": [
       1.0,
       5.0
     ],
+    "bands": null,
     "subscales": {
       "extraversion": {
         "method": "mean",
@@ -193,5 +196,6 @@
     "on_completion": []
   },
   "time_window_days": null,
-  "sensitive_content_warning": null
+  "sensitive_content_warning": null,
+  "band_descriptions": null
 }

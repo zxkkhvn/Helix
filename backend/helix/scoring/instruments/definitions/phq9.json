@@ -17,18 +17,30 @@
   "sensitive_content_warning": null,
   "calibration_signal": null,
   "min_trials_for_partial_scoring": null,
-  "composite_contributions": ["distress_index"],
+  "composite_contributions": [
+    "distress_index"
+  ],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "phq_likert": [
-      {"value": 0, "label": "Not at all"},
-      {"value": 1, "label": "Several days"},
-      {"value": 2, "label": "More than half the days"},
-      {"value": 3, "label": "Nearly every day"}
+      {
+        "value": 0,
+        "label": "Not at all"
+      },
+      {
+        "value": 1,
+        "label": "Several days"
+      },
+      {
+        "value": 2,
+        "label": "More than half the days"
+      },
+      {
+        "value": 3,
+        "label": "Nearly every day"
+      }
     ]
   },
-
   "items": [
     {
       "item_id": "phq9_01",
@@ -109,23 +121,52 @@
       "valence": "negative",
       "exclude_from_score": false,
       "safety_flag": true,
-      "safety_trigger": {"condition": "value > 0", "action": "SAFETY_PROTOCOL"}
+      "safety_trigger": {
+        "condition": "value > 0",
+        "action": "SAFETY_PROTOCOL"
+      }
     }
   ],
-
   "scoring": {
     "method": "sum",
-    "range": [0, 27],
+    "range": [
+      0,
+      27
+    ],
     "bands": [
-      {"min": 0, "max": 4, "label": "minimal", "source": "Kroenke et al. 2001"},
-      {"min": 5, "max": 9, "label": "mild", "source": "Kroenke et al. 2001"},
-      {"min": 10, "max": 14, "label": "moderate", "source": "Kroenke et al. 2001"},
-      {"min": 15, "max": 19, "label": "moderately_severe", "source": "Kroenke et al. 2001"},
-      {"min": 20, "max": 27, "label": "severe", "source": "Kroenke et al. 2001"}
+      {
+        "min": 0,
+        "max": 4,
+        "label": "minimal",
+        "source": "Kroenke et al. 2001"
+      },
+      {
+        "min": 5,
+        "max": 9,
+        "label": "mild",
+        "source": "Kroenke et al. 2001"
+      },
+      {
+        "min": 10,
+        "max": 14,
+        "label": "moderate",
+        "source": "Kroenke et al. 2001"
+      },
+      {
+        "min": 15,
+        "max": 19,
+        "label": "moderately_severe",
+        "source": "Kroenke et al. 2001"
+      },
+      {
+        "min": 20,
+        "max": 27,
+        "label": "severe",
+        "source": "Kroenke et al. 2001"
+      }
     ],
     "subscales": null
   },
-
   "routing": {
     "parent_instrument": "phq2",
     "carry_forward_items": {
@@ -133,8 +174,21 @@
       "phq2_02": "phq9_02"
     },
     "on_completion": [
-      {"condition": "score >= 10", "action": "flag_elevated"},
-      {"condition": "item.phq9_09 > 0", "action": "SAFETY_PROTOCOL"}
+      {
+        "condition": "score >= 10",
+        "action": "flag_elevated"
+      },
+      {
+        "condition": "item.phq9_09 > 0",
+        "action": "SAFETY_PROTOCOL"
+      }
     ]
+  },
+  "band_descriptions": {
+    "minimal": "Your responses suggest minimal depressive symptoms over the past two weeks. Most people experience occasional low mood, and your responses fall within the typical range.",
+    "mild": "Your responses indicate mild depressive symptoms over the past two weeks. Most people experience this occasionally, but it is worth paying attention to if it persists.",
+    "moderate": "Your responses suggest moderate depressive symptoms over the past two weeks. Many people find it helpful to monitor this and consider speaking with a professional.",
+    "moderately_severe": "Your responses indicate moderately severe depressive symptoms over the past two weeks. This level of distress is significant, and seeking professional guidance can be very beneficial.",
+    "severe": "Your responses suggest severe depressive symptoms over the past two weeks. This level of difficulty is highly validating of your distress, and professional support is strongly recommended. If you'd like to talk to someone, Samaritans are available 24/7 on 116 123 (UK)."
   }
 }

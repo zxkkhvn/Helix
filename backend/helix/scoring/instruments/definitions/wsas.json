@@ -6,7 +6,7 @@
   "planet": null,
   "tier": "core_flow",
   "time_window": "current",
-  "time_window_text": "Please indicate how much your current problem affects the following areas:",
+  "time_window_text": "Please indicate how much your current feelings or experiences affect the following areas:",
   "time_window_days": null,
   "cultural_validity": {
     "tier": "broadly_cross_cultural",
@@ -19,25 +19,50 @@
   "min_trials_for_partial_scoring": null,
   "composite_contributions": [],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "wsas_likert": [
-      {"value": 0, "label": "Not at all"},
-      {"value": 1, "label": "1"},
-      {"value": 2, "label": "2"},
-      {"value": 3, "label": "3"},
-      {"value": 4, "label": "Slightly"},
-      {"value": 5, "label": "5"},
-      {"value": 6, "label": "6"},
-      {"value": 7, "label": "7"},
-      {"value": 8, "label": "Very severely"}
+      {
+        "value": 0,
+        "label": "Not at all"
+      },
+      {
+        "value": 1,
+        "label": "1"
+      },
+      {
+        "value": 2,
+        "label": "2"
+      },
+      {
+        "value": 3,
+        "label": "3"
+      },
+      {
+        "value": 4,
+        "label": "Slightly"
+      },
+      {
+        "value": 5,
+        "label": "5"
+      },
+      {
+        "value": 6,
+        "label": "6"
+      },
+      {
+        "value": 7,
+        "label": "7"
+      },
+      {
+        "value": 8,
+        "label": "Very severely"
+      }
     ]
   },
-
   "items": [
     {
       "item_id": "wsas_01",
-      "text": "Because of my [problem] my ability to work is impaired. '0' means 'not at all impaired' and '8' means 'very severely impaired to the point I can't work'.",
+      "text": "Because of how I have been feeling lately, my ability to work is impaired. '0' means 'not at all impaired' and '8' means 'very severely impaired to the point I can't work'.",
       "response_options_key": "wsas_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -46,7 +71,7 @@
     },
     {
       "item_id": "wsas_02",
-      "text": "Because of my [problem] my home management (cleaning, tidying, shopping, cooking, looking after home or children, paying bills) is impaired.",
+      "text": "Because of how I have been feeling lately, my home management (cleaning, tidying, shopping, cooking, looking after home or children, paying bills) is impaired.",
       "response_options_key": "wsas_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -55,7 +80,7 @@
     },
     {
       "item_id": "wsas_03",
-      "text": "Because of my [problem] my social leisure activities (with other people e.g. parties, bars, clubs, outings, visits, dating, home entertainment) are impaired.",
+      "text": "Because of how I have been feeling lately, my social leisure activities (with other people e.g. parties, bars, clubs, outings, visits, dating, home entertainment) are impaired.",
       "response_options_key": "wsas_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -64,7 +89,7 @@
     },
     {
       "item_id": "wsas_04",
-      "text": "Because of my [problem] my private leisure activities (done alone, such as reading, gardening, collecting, sewing, walking alone) are impaired.",
+      "text": "Because of how I have been feeling lately, my private leisure activities (done alone, such as reading, gardening, collecting, sewing, walking alone) are impaired.",
       "response_options_key": "wsas_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -73,7 +98,7 @@
     },
     {
       "item_id": "wsas_05",
-      "text": "Because of my [problem] my ability to form and maintain close relationships with others, including those I live with, is impaired.",
+      "text": "Because of how I have been feeling lately, my ability to form and maintain close relationships with others, including those I live with, is impaired.",
       "response_options_key": "wsas_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -81,19 +106,37 @@
       "safety_trigger": null
     }
   ],
-
   "scoring": {
     "method": "sum",
-    "range": [0, 40],
+    "range": [
+      0,
+      40
+    ],
     "bands": [
-      {"min": 0, "max": 9, "label": "low/subclinical"},
-      {"min": 10, "max": 19, "label": "moderate"},
-      {"min": 20, "max": 40, "label": "severe"}
+      {
+        "min": 0,
+        "max": 9,
+        "label": "low/subclinical"
+      },
+      {
+        "min": 10,
+        "max": 19,
+        "label": "moderate"
+      },
+      {
+        "min": 20,
+        "max": 40,
+        "label": "severe"
+      }
     ],
     "subscales": null
   },
-
   "routing": {
     "on_completion": []
+  },
+  "band_descriptions": {
+    "low": "Your responses suggest a low level of functional impairment over the past two weeks. Most people experience occasional difficulties managing daily tasks, and your responses fall within the typical range.",
+    "moderate": "Your responses indicate moderate functional impairment over the past two weeks. Many people find it helpful to monitor this and prioritise strategies to support their routines.",
+    "severe": "Your responses suggest severe functional impairment over the past two weeks. This level of disruption is significant, and speaking with your GP or a mental health professional could be a valuable next step."
   }
 }

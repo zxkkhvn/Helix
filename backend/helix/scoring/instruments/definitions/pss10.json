@@ -19,17 +19,30 @@
   "min_trials_for_partial_scoring": null,
   "composite_contributions": [],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "pss_likert": [
-      {"value": 0, "label": "Never"},
-      {"value": 1, "label": "Almost never"},
-      {"value": 2, "label": "Sometimes"},
-      {"value": 3, "label": "Fairly often"},
-      {"value": 4, "label": "Very often"}
+      {
+        "value": 0,
+        "label": "Never"
+      },
+      {
+        "value": 1,
+        "label": "Almost never"
+      },
+      {
+        "value": 2,
+        "label": "Sometimes"
+      },
+      {
+        "value": 3,
+        "label": "Fairly often"
+      },
+      {
+        "value": 4,
+        "label": "Very often"
+      }
     ]
   },
-
   "items": [
     {
       "item_id": "pss10_01",
@@ -126,23 +139,47 @@
       "safety_trigger": null
     }
   ],
-
   "scoring": {
     "method": "sum",
-    "range": [0, 40],
+    "range": [
+      0,
+      40
+    ],
     "bands": [
-      {"min": 0, "max": 13, "label": "low", "source": "Cohen & Williamson 1988"},
-      {"min": 14, "max": 26, "label": "moderate", "source": "Cohen & Williamson 1988"},
-      {"min": 27, "max": 40, "label": "high", "source": "Cohen & Williamson 1988"}
+      {
+        "min": 0,
+        "max": 13,
+        "label": "low",
+        "source": "Cohen & Williamson 1988"
+      },
+      {
+        "min": 14,
+        "max": 26,
+        "label": "moderate",
+        "source": "Cohen & Williamson 1988"
+      },
+      {
+        "min": 27,
+        "max": 40,
+        "label": "high",
+        "source": "Cohen & Williamson 1988"
+      }
     ],
     "subscales": null
   },
-
   "routing": {
     "parent_instrument": null,
     "carry_forward_items": null,
     "on_completion": [
-      {"condition": "score >= 27", "action": "flag_elevated"}
+      {
+        "condition": "score >= 27",
+        "action": "flag_elevated"
+      }
     ]
+  },
+  "band_descriptions": {
+    "low": "Your responses suggest a low level of perceived stress during the past month. Most people experience occasional stress, and your responses fall within the typical range.",
+    "moderate": "Your responses indicate a moderate level of perceived stress during the past month. Many people find it helpful to monitor this and prioritise time for rest and recovery.",
+    "high": "Your responses suggest a high level of perceived stress during the past month. This level of stress can be genuinely overwhelming, and speaking with your GP or a mental health professional could be a valuable next step."
   }
 }

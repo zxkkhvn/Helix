@@ -163,12 +163,15 @@
       "response_options_key": "likert5"
     }
   ],
+  "interpretation_mode": "strength_profile",
+  "profile_summary_template": "Highlight strongest and least expressed character strengths without assigning an overall band.",
   "scoring": {
     "method": "mean",
     "range": [
       1.0,
       5.0
     ],
+    "bands": null,
     "subscales": {
       "creativity": {
         "method": "mean",
@@ -320,5 +323,6 @@
     "on_completion": []
   },
   "time_window_days": null,
-  "sensitive_content_warning": null
+  "sensitive_content_warning": null,
+  "band_descriptions": null
 }

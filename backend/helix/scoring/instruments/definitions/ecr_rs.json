@@ -1,0 +1,504 @@
+{
+  "instrument_id": "ecr_rs",
+  "version": "1.0.0",
+  "name": "Experiences in Close Relationships - Relationship Structures",
+  "abbreviation": "ECR-RS",
+  "planet": "saturn",
+  "tier": "deep_dive",
+  "time_window": "general",
+  "time_window_text": "Please read each statement and rate how well it describes your feelings about these specific relationships.",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+  "interpretation_mode": "attachment_profile",
+  "suppress_band_from_user": true,
+  "response_option_sets": {
+    "ecr_7pt": [
+      {
+        "value": 1,
+        "label": "Strongly Disagree"
+      },
+      {
+        "value": 2,
+        "label": "Disagree"
+      },
+      {
+        "value": 3,
+        "label": "Somewhat Disagree"
+      },
+      {
+        "value": 4,
+        "label": "Neutral/Mixed"
+      },
+      {
+        "value": 5,
+        "label": "Somewhat Agree"
+      },
+      {
+        "value": 6,
+        "label": "Agree"
+      },
+      {
+        "value": 7,
+        "label": "Strongly Agree"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "ecr_rs_mother_01",
+      "text": "It helps to turn to this person in times of need. (Mother)",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_mother_02",
+      "text": "I usually discuss my problems and concerns with this person. (Mother)",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_mother_03",
+      "text": "I talk things over with this person. (Mother)",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_mother_04",
+      "text": "I find it easy to depend on this person. (Mother)",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_mother_05",
+      "text": "I don\"t feel comfortable opening up to this person. (Mother)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_mother_06",
+      "text": "I prefer not to show this person how I feel deep down. (Mother)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_mother_07",
+      "text": "I often worry that this person doesn\"t really care for me. (Mother)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_mother_08",
+      "text": "I\"m afraid that this person may abandon me. (Mother)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_mother_09",
+      "text": "I worry that this person won\"t care about me as much as I care about him or her. (Mother)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_father_01",
+      "text": "It helps to turn to this person in times of need. (Father)",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_father_02",
+      "text": "I usually discuss my problems and concerns with this person. (Father)",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_father_03",
+      "text": "I talk things over with this person. (Father)",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_father_04",
+      "text": "I find it easy to depend on this person. (Father)",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_father_05",
+      "text": "I don\"t feel comfortable opening up to this person. (Father)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_father_06",
+      "text": "I prefer not to show this person how I feel deep down. (Father)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_father_07",
+      "text": "I often worry that this person doesn\"t really care for me. (Father)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_father_08",
+      "text": "I\"m afraid that this person may abandon me. (Father)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_father_09",
+      "text": "I worry that this person won\"t care about me as much as I care about him or her. (Father)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_partner_01",
+      "text": "It helps to turn to this person in times of need. (Partner)",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_partner_02",
+      "text": "I usually discuss my problems and concerns with this person. (Partner)",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_partner_03",
+      "text": "I talk things over with this person. (Partner)",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_partner_04",
+      "text": "I find it easy to depend on this person. (Partner)",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_partner_05",
+      "text": "I don\"t feel comfortable opening up to this person. (Partner)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_partner_06",
+      "text": "I prefer not to show this person how I feel deep down. (Partner)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_partner_07",
+      "text": "I often worry that this person doesn\"t really care for me. (Partner)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_partner_08",
+      "text": "I\"m afraid that this person may abandon me. (Partner)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_partner_09",
+      "text": "I worry that this person won\"t care about me as much as I care about him or her. (Partner)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_friend_01",
+      "text": "It helps to turn to this person in times of need. (Friend)",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_friend_02",
+      "text": "I usually discuss my problems and concerns with this person. (Friend)",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_friend_03",
+      "text": "I talk things over with this person. (Friend)",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_friend_04",
+      "text": "I find it easy to depend on this person. (Friend)",
+      "response_options_key": "ecr_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_friend_05",
+      "text": "I don\"t feel comfortable opening up to this person. (Friend)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_friend_06",
+      "text": "I prefer not to show this person how I feel deep down. (Friend)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_friend_07",
+      "text": "I often worry that this person doesn\"t really care for me. (Friend)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_friend_08",
+      "text": "I\"m afraid that this person may abandon me. (Friend)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "ecr_rs_friend_09",
+      "text": "I worry that this person won\"t care about me as much as I care about him or her. (Friend)",
+      "response_options_key": "ecr_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+  "scoring": {
+    "method": "custom",
+    "range": [
+      1.0,
+      7.0
+    ],
+    "reverse_items": [
+      "ecr_rs_mother_01", "ecr_rs_mother_02", "ecr_rs_mother_03", "ecr_rs_mother_04",
+      "ecr_rs_father_01", "ecr_rs_father_02", "ecr_rs_father_03", "ecr_rs_father_04",
+      "ecr_rs_partner_01", "ecr_rs_partner_02", "ecr_rs_partner_03", "ecr_rs_partner_04",
+      "ecr_rs_friend_01", "ecr_rs_friend_02", "ecr_rs_friend_03", "ecr_rs_friend_04"
+    ],
+    "subscales": {
+      "mother_avoidance": {
+        "items": ["ecr_rs_mother_01", "ecr_rs_mother_02", "ecr_rs_mother_03", "ecr_rs_mother_04", "ecr_rs_mother_05", "ecr_rs_mother_06"],
+        "bands": [
+          { "min": 1.0, "max": 3.5, "label": "low" },
+          { "min": 3.6, "max": 5.0, "label": "average" },
+          { "min": 5.1, "max": 7.0, "label": "high" }
+        ]
+      },
+      "mother_anxiety": {
+        "items": ["ecr_rs_mother_07", "ecr_rs_mother_08", "ecr_rs_mother_09"],
+        "bands": [
+          { "min": 1.0, "max": 3.5, "label": "low" },
+          { "min": 3.6, "max": 5.0, "label": "average" },
+          { "min": 5.1, "max": 7.0, "label": "high" }
+        ]
+      },
+      "father_avoidance": {
+        "items": ["ecr_rs_father_01", "ecr_rs_father_02", "ecr_rs_father_03", "ecr_rs_father_04", "ecr_rs_father_05", "ecr_rs_father_06"],
+        "bands": [
+          { "min": 1.0, "max": 3.5, "label": "low" },
+          { "min": 3.6, "max": 5.0, "label": "average" },
+          { "min": 5.1, "max": 7.0, "label": "high" }
+        ]
+      },
+      "father_anxiety": {
+        "items": ["ecr_rs_father_07", "ecr_rs_father_08", "ecr_rs_father_09"],
+        "bands": [
+          { "min": 1.0, "max": 3.5, "label": "low" },
+          { "min": 3.6, "max": 5.0, "label": "average" },
+          { "min": 5.1, "max": 7.0, "label": "high" }
+        ]
+      },
+      "partner_avoidance": {
+        "items": ["ecr_rs_partner_01", "ecr_rs_partner_02", "ecr_rs_partner_03", "ecr_rs_partner_04", "ecr_rs_partner_05", "ecr_rs_partner_06"],
+        "bands": [
+          { "min": 1.0, "max": 3.5, "label": "low" },
+          { "min": 3.6, "max": 5.0, "label": "average" },
+          { "min": 5.1, "max": 7.0, "label": "high" }
+        ]
+      },
+      "partner_anxiety": {
+        "items": ["ecr_rs_partner_07", "ecr_rs_partner_08", "ecr_rs_partner_09"],
+        "bands": [
+          { "min": 1.0, "max": 3.5, "label": "low" },
+          { "min": 3.6, "max": 5.0, "label": "average" },
+          { "min": 5.1, "max": 7.0, "label": "high" }
+        ]
+      },
+      "friend_avoidance": {
+        "items": ["ecr_rs_friend_01", "ecr_rs_friend_02", "ecr_rs_friend_03", "ecr_rs_friend_04", "ecr_rs_friend_05", "ecr_rs_friend_06"],
+        "bands": [
+          { "min": 1.0, "max": 3.5, "label": "low" },
+          { "min": 3.6, "max": 5.0, "label": "average" },
+          { "min": 5.1, "max": 7.0, "label": "high" }
+        ]
+      },
+      "friend_anxiety": {
+        "items": ["ecr_rs_friend_07", "ecr_rs_friend_08", "ecr_rs_friend_09"],
+        "bands": [
+          { "min": 1.0, "max": 3.5, "label": "low" },
+          { "min": 3.6, "max": 5.0, "label": "average" },
+          { "min": 5.1, "max": 7.0, "label": "high" }
+        ]
+      }
+    }
+  },
+  "band_descriptions": {
+    "mother_avoidance": {
+      "low": "Your responses suggest lower levels of avoidance in your relationship with your mother. Within our interpretive framework, this may indicate comfort with closeness and emotional intimacy.",
+      "average": "Your responses fall within the average range for avoidance regarding your relationship with your mother, suggesting a typical balance of independence and closeness.",
+      "high": "Your responses suggest higher levels of avoidance in your relationship with your mother. This may indicate a tendency to maintain emotional distance or prioritise self-reliance."
+    },
+    "mother_anxiety": {
+      "low": "Your responses suggest lower levels of attachment-related anxiety regarding your mother. This may indicate a sense of security regarding her availability and support.",
+      "average": "Your responses fall within the average range for anxiety regarding your mother, reflecting occasional concerns common to many individuals.",
+      "high": "Your responses suggest higher levels of anxiety regarding your relationship with your mother. This may indicate more frequent worry about her availability or feelings."
+    },
+    "father_avoidance": {
+      "low": "Your responses suggest lower levels of avoidance in your relationship with your father. Within our interpretive framework, this may indicate comfort with closeness and emotional intimacy.",
+      "average": "Your responses fall within the average range for avoidance regarding your relationship with your father, suggesting a typical balance of independence and closeness.",
+      "high": "Your responses suggest higher levels of avoidance in your relationship with your father. This may indicate a tendency to maintain emotional distance or prioritise self-reliance."
+    },
+    "father_anxiety": {
+      "low": "Your responses suggest lower levels of attachment-related anxiety regarding your father. This may indicate a sense of security regarding his availability and support.",
+      "average": "Your responses fall within the average range for anxiety regarding your father, reflecting occasional concerns common to many individuals.",
+      "high": "Your responses suggest higher levels of anxiety regarding your relationship with your father. This may indicate more frequent worry about his availability or feelings."
+    },
+    "partner_avoidance": {
+      "low": "Your responses suggest lower levels of avoidance in your romantic relationship. Within our interpretive framework, this may indicate comfort with closeness and emotional intimacy.",
+      "average": "Your responses fall within the average range for avoidance regarding your romantic relationship, suggesting a typical balance of independence and closeness.",
+      "high": "Your responses suggest higher levels of avoidance in your romantic relationship. This may indicate a tendency to maintain emotional distance or prioritise self-reliance."
+    },
+    "partner_anxiety": {
+      "low": "Your responses suggest lower levels of attachment-related anxiety regarding your romantic partner. This may indicate a sense of security regarding their availability and support.",
+      "average": "Your responses fall within the average range for anxiety regarding your romantic partner, reflecting occasional concerns common to many individuals.",
+      "high": "Your responses suggest higher levels of anxiety regarding your romantic relationship. This may indicate more frequent worry about your partner's availability or feelings."
+    },
+    "friend_avoidance": {
+      "low": "Your responses suggest lower levels of avoidance in your relationship with your best friend. Within our interpretive framework, this may indicate comfort with closeness and emotional intimacy.",
+      "average": "Your responses fall within the average range for avoidance regarding your best friend, suggesting a typical balance of independence and closeness.",
+      "high": "Your responses suggest higher levels of avoidance in your relationship with your best friend. This may indicate a tendency to maintain emotional distance or prioritise self-reliance."
+    },
+    "friend_anxiety": {
+      "low": "Your responses suggest lower levels of attachment-related anxiety regarding your best friend. This may indicate a sense of security regarding their availability and support.",
+      "average": "Your responses fall within the average range for anxiety regarding your best friend, reflecting occasional concerns common to many individuals.",
+      "high": "Your responses suggest higher levels of anxiety regarding your relationship with your best friend. This may indicate more frequent worry about their availability or feelings."
+    }
+  },
+  "routing": {}
+}

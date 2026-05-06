@@ -19,14 +19,18 @@
   "min_trials_for_partial_scoring": null,
   "composite_contributions": [],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "binary_yes_no": [
-      {"value": 0, "label": "No"},
-      {"value": 1, "label": "Yes"}
+      {
+        "value": 0,
+        "label": "No"
+      },
+      {
+        "value": 1,
+        "label": "Yes"
+      }
     ]
   },
-
   "items": [
     {
       "item_id": "pcptsd5_01",
@@ -74,17 +78,26 @@
       "safety_trigger": null
     }
   ],
-
   "scoring": {
     "method": "sum",
-    "range": [0, 5],
+    "range": [
+      0,
+      5
+    ],
     "bands": [
-      {"min": 0, "max": 2, "label": "negative_screen"},
-      {"min": 3, "max": 5, "label": "positive_screen"}
+      {
+        "min": 0,
+        "max": 2,
+        "label": "negative_screen"
+      },
+      {
+        "min": 3,
+        "max": 5,
+        "label": "positive_screen"
+      }
     ],
     "subscales": null
   },
-
   "routing": {
     "on_completion": [
       {
@@ -92,5 +105,9 @@
         "action": "SAFETY_PROTOCOL"
       }
     ]
+  },
+  "band_descriptions": {
+    "negative_screen": "Your responses suggest a negative screen for post-traumatic stress symptoms over the past month. Most people experience occasional stress responses, and your responses fall within the typical range.",
+    "positive_screen": "Your responses indicate a positive screen for post-traumatic stress symptoms over the past month. This is worth paying attention to, and exploring supportive professional resources could be highly beneficial."
   }
 }

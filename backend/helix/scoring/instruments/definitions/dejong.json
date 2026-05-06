@@ -1,0 +1,156 @@
+{
+  "instrument_id": "dejong",
+  "version": "1.0.0",
+  "name": "De Jong Gierveld Loneliness Scale (6-item)",
+  "abbreviation": "DeJong",
+  "planet": "saturn",
+  "tier": "deep_dive",
+  "time_window": "general",
+  "time_window_text": "Please indicate for each of the statements, the extent to which they apply to your situation.",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "dejong_negative": [
+      {
+        "value": 1,
+        "label": "Yes"
+      },
+      {
+        "value": 1,
+        "label": "More or less"
+      },
+      {
+        "value": 0,
+        "label": "No"
+      }
+    ],
+    "dejong_positive": [
+      {
+        "value": 0,
+        "label": "Yes"
+      },
+      {
+        "value": 1,
+        "label": "More or less"
+      },
+      {
+        "value": 1,
+        "label": "No"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "dejong_01",
+      "text": "I experience a general sense of emptiness.",
+      "response_options_key": "dejong_negative",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dejong_02",
+      "text": "I miss having people around me.",
+      "response_options_key": "dejong_negative",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dejong_03",
+      "text": "I often feel rejected.",
+      "response_options_key": "dejong_negative",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dejong_04",
+      "text": "There are plenty of people I can rely on when I have problems.",
+      "response_options_key": "dejong_positive",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dejong_05",
+      "text": "There are many people I can trust completely.",
+      "response_options_key": "dejong_positive",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "dejong_06",
+      "text": "There are enough people I feel close to.",
+      "response_options_key": "dejong_positive",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+  "scoring": {
+    "method": "sum",
+    "range": [
+      0,
+      6
+    ],
+    "bands": [
+      {
+        "min": 0,
+        "max": 1,
+        "label": "not_lonely"
+      },
+      {
+        "min": 2,
+        "max": 4,
+        "label": "moderate"
+      },
+      {
+        "min": 5,
+        "max": 6,
+        "label": "severe"
+      }
+    ],
+    "subscales": {
+      "emotional_loneliness": {
+        "items": [
+          "dejong_01",
+          "dejong_02",
+          "dejong_03"
+        ],
+        "method": "sum"
+      },
+      "social_loneliness": {
+        "items": [
+          "dejong_04",
+          "dejong_05",
+          "dejong_06"
+        ],
+        "method": "sum"
+      }
+    }
+  },
+  "routing": {},
+  "band_descriptions": {
+    "not_lonely": "Your responses suggest you are not experiencing significant loneliness. Most people experience occasional feelings of isolation, but your responses fall within the typical range.",
+    "moderate": "Your responses indicate moderate loneliness. Many people find it helpful to monitor this and explore ways to build meaningful social connections.",
+    "severe": "Your responses suggest severe loneliness. This level of isolation can be deeply painful, and seeking out supportive communities or professional help is highly recommended."
+  }
+}

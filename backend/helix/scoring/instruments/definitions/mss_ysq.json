@@ -1,0 +1,744 @@
+{
+  "instrument_id": "mss_ysq",
+  "version": "1.0.0",
+  "name": "Maladaptive Schema Scale - Young Schema Questionnaire",
+  "abbreviation": "MSS-YSQ",
+  "planet": "neptune",
+  "tier": "deep_dive",
+  "time_window": "general",
+  "time_window_text": "Please read each statement and indicate your level of agreement based on what you intuitively feel.",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "open_source",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "mss_6pt": [
+      {
+        "value": 1,
+        "label": "Completely untrue of me"
+      },
+      {
+        "value": 2,
+        "label": "Mostly untrue of me"
+      },
+      {
+        "value": 3,
+        "label": "Slightly more true than untrue"
+      },
+      {
+        "value": 4,
+        "label": "Moderately true of me"
+      },
+      {
+        "value": 5,
+        "label": "Mostly true of me"
+      },
+      {
+        "value": 6,
+        "label": "Describes me perfectly"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "mss_ysq_01",
+      "text": "MSS-YSQ Item 1",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_02",
+      "text": "MSS-YSQ Item 2",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_03",
+      "text": "MSS-YSQ Item 3",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_04",
+      "text": "MSS-YSQ Item 4",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_05",
+      "text": "MSS-YSQ Item 5",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_06",
+      "text": "MSS-YSQ Item 6",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_07",
+      "text": "MSS-YSQ Item 7",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_08",
+      "text": "MSS-YSQ Item 8",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_09",
+      "text": "MSS-YSQ Item 9",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_10",
+      "text": "MSS-YSQ Item 10",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_11",
+      "text": "MSS-YSQ Item 11",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_12",
+      "text": "MSS-YSQ Item 12",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_13",
+      "text": "MSS-YSQ Item 13",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_14",
+      "text": "MSS-YSQ Item 14",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_15",
+      "text": "MSS-YSQ Item 15",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_16",
+      "text": "MSS-YSQ Item 16",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_17",
+      "text": "MSS-YSQ Item 17",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_18",
+      "text": "MSS-YSQ Item 18",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_19",
+      "text": "MSS-YSQ Item 19",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_20",
+      "text": "MSS-YSQ Item 20",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_21",
+      "text": "MSS-YSQ Item 21",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_22",
+      "text": "MSS-YSQ Item 22",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_23",
+      "text": "MSS-YSQ Item 23",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_24",
+      "text": "MSS-YSQ Item 24",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_25",
+      "text": "MSS-YSQ Item 25",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_26",
+      "text": "MSS-YSQ Item 26",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_27",
+      "text": "MSS-YSQ Item 27",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_28",
+      "text": "MSS-YSQ Item 28",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_29",
+      "text": "MSS-YSQ Item 29",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_30",
+      "text": "MSS-YSQ Item 30",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_31",
+      "text": "MSS-YSQ Item 31",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_32",
+      "text": "MSS-YSQ Item 32",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_33",
+      "text": "MSS-YSQ Item 33",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_34",
+      "text": "MSS-YSQ Item 34",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_35",
+      "text": "MSS-YSQ Item 35",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_36",
+      "text": "MSS-YSQ Item 36",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_37",
+      "text": "MSS-YSQ Item 37",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_38",
+      "text": "MSS-YSQ Item 38",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_39",
+      "text": "MSS-YSQ Item 39",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_40",
+      "text": "MSS-YSQ Item 40",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_41",
+      "text": "MSS-YSQ Item 41",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_42",
+      "text": "MSS-YSQ Item 42",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_43",
+      "text": "MSS-YSQ Item 43",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_44",
+      "text": "MSS-YSQ Item 44",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_45",
+      "text": "MSS-YSQ Item 45",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_46",
+      "text": "MSS-YSQ Item 46",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_47",
+      "text": "MSS-YSQ Item 47",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_48",
+      "text": "MSS-YSQ Item 48",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_49",
+      "text": "MSS-YSQ Item 49",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_50",
+      "text": "MSS-YSQ Item 50",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_51",
+      "text": "MSS-YSQ Item 51",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_52",
+      "text": "MSS-YSQ Item 52",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_53",
+      "text": "MSS-YSQ Item 53",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_54",
+      "text": "MSS-YSQ Item 54",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_55",
+      "text": "MSS-YSQ Item 55",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_56",
+      "text": "MSS-YSQ Item 56",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_57",
+      "text": "MSS-YSQ Item 57",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_58",
+      "text": "MSS-YSQ Item 58",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_59",
+      "text": "MSS-YSQ Item 59",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_60",
+      "text": "MSS-YSQ Item 60",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_61",
+      "text": "MSS-YSQ Item 61",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_62",
+      "text": "MSS-YSQ Item 62",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_63",
+      "text": "MSS-YSQ Item 63",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_64",
+      "text": "MSS-YSQ Item 64",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_65",
+      "text": "MSS-YSQ Item 65",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_66",
+      "text": "MSS-YSQ Item 66",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_67",
+      "text": "MSS-YSQ Item 67",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_68",
+      "text": "MSS-YSQ Item 68",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_69",
+      "text": "MSS-YSQ Item 69",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_70",
+      "text": "MSS-YSQ Item 70",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_71",
+      "text": "MSS-YSQ Item 71",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_72",
+      "text": "MSS-YSQ Item 72",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_73",
+      "text": "MSS-YSQ Item 73",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_74",
+      "text": "MSS-YSQ Item 74",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_75",
+      "text": "MSS-YSQ Item 75",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "mss_ysq_76",
+      "text": "MSS-YSQ Item 76",
+      "response_options_key": "mss_6pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+  "scoring": {
+    "method": "custom",
+    "range": [
+      1.0,
+      6.0
+    ]
+  },
+  "routing": {}
+}

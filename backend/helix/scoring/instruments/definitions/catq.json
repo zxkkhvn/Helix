@@ -1,0 +1,360 @@
+{
+  "instrument_id": "catq",
+  "version": "1.0.0",
+  "name": "Camouflaging Autistic Traits Questionnaire",
+  "abbreviation": "CAT-Q",
+  "planet": "uranus",
+  "tier": "deep_dive",
+  "time_window": "general",
+  "time_window_text": "",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "catq_7pt": [
+      {
+        "value": 1,
+        "label": "Strongly Disagree (1)"
+      },
+      {
+        "value": 2,
+        "label": "Disagree (2)"
+      },
+      {
+        "value": 3,
+        "label": "Somewhat Disagree (3)"
+      },
+      {
+        "value": 4,
+        "label": "Neither Agree nor Disagree (4)"
+      },
+      {
+        "value": 5,
+        "label": "Somewhat Agree (5)"
+      },
+      {
+        "value": 6,
+        "label": "Agree (6)"
+      },
+      {
+        "value": 7,
+        "label": "Strongly Agree (7)"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "catq_01",
+      "text": "When I am interacting with someone, I deliberately copy their body language or facial expressions",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_02",
+      "text": "I monitor my body language or facial expressions so that I appear relaxed",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_03",
+      "text": "I rarely feel the need to put on an act in order to get through a social situation",
+      "response_options_key": "catq_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_04",
+      "text": "I have developed a script to follow in social situations (for example, a list of questions or topics of conversation)",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_05",
+      "text": "I will repeat phrases that I have heard others say in the exact same way that I first heard them",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_06",
+      "text": "I adjust my body language or facial expressions so that I appear interested by the person I am interacting with",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_07",
+      "text": "In social situations, I feel like I'm 'performing' rather than being myself",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_08",
+      "text": "In my own social interactions, I use behaviours that I have learned from watching other people interacting",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_09",
+      "text": "I always think about the impression I make on other people",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_10",
+      "text": "I need the support of other people in order to socialise",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_11",
+      "text": "I practice my facial expressions and body language to make sure they look natural",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_12",
+      "text": "I don't feel the need to make eye contact with other people if I don't want to",
+      "response_options_key": "catq_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_13",
+      "text": "I have to force myself to interact with people when I am in social situations",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_14",
+      "text": "I have tried to improve my understanding of social skills by watching other people",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_15",
+      "text": "I monitor my body language or facial expressions so that I appear interested by the person I am interacting with",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_16",
+      "text": "When in social situations, I try to find ways to avoid interacting with others",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_17",
+      "text": "I have researched the rules of social interactions (for example, by studying psychology or reading books on human behaviour) to improve my own social skills",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_18",
+      "text": "I am always aware of the impression I make on other people",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_19",
+      "text": "I feel free to be myself when I am with other people",
+      "response_options_key": "catq_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_20",
+      "text": "I learn how people use their bodies and faces to interact by watching television or films, or by reading fiction",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_21",
+      "text": "I adjust my body language or facial expressions so that I appear relaxed",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_22",
+      "text": "When talking to other people, I feel like the conversation flows naturally",
+      "response_options_key": "catq_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_23",
+      "text": "I have spent time learning social skills from television shows and films, and try to use these in my interactions",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_24",
+      "text": "In social interactions, I do not pay attention to what my face or body are doing",
+      "response_options_key": "catq_7pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "catq_25",
+      "text": "In social situations, I feel like I am pretending to be 'normal'",
+      "response_options_key": "catq_7pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+  "scoring": {
+    "method": "sum",
+    "range": [
+      25,
+      175
+    ],
+    "reverse_items": [
+      "catq_03",
+      "catq_12",
+      "catq_19",
+      "catq_22",
+      "catq_24"
+    ],
+    "bands": [
+      {
+        "min": 25,
+        "max": 74,
+        "label": "low"
+      },
+      {
+        "min": 75,
+        "max": 124,
+        "label": "moderate"
+      },
+      {
+        "min": 125,
+        "max": 175,
+        "label": "high_camouflaging"
+      }
+    ],
+    "subscales": {
+      "compensation": {
+        "items": [
+          "catq_01",
+          "catq_04",
+          "catq_05",
+          "catq_08",
+          "catq_11",
+          "catq_14",
+          "catq_17",
+          "catq_20",
+          "catq_23"
+        ],
+        "method": "sum"
+      },
+      "masking": {
+        "items": [
+          "catq_02",
+          "catq_06",
+          "catq_09",
+          "catq_12",
+          "catq_15",
+          "catq_18",
+          "catq_21",
+          "catq_24"
+        ],
+        "method": "sum"
+      },
+      "assimilation": {
+        "items": [
+          "catq_03",
+          "catq_07",
+          "catq_10",
+          "catq_13",
+          "catq_16",
+          "catq_19",
+          "catq_22",
+          "catq_25"
+        ],
+        "method": "sum"
+      }
+    }
+  },
+  "routing": {},
+  "band_descriptions": {
+    "low": "Your responses suggest a low level of social camouflaging. Most people adapt their behaviour in social settings occasionally, and your responses fall within the typical range.",
+    "moderate": "Your responses indicate a moderate level of social camouflaging. Many people find it helpful to monitor how often they mask their natural behaviours to fit in.",
+    "high_camouflaging": "Your responses suggest high levels of traits consistent with social camouflaging or masking. Many people with these patterns find that understanding them helps make sense of their experiences and social fatigue."
+  }
+}

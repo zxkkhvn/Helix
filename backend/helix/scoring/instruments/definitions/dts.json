@@ -19,17 +19,30 @@
   "min_trials_for_partial_scoring": null,
   "composite_contributions": [],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "dts_likert": [
-      {"value": 1, "label": "Strongly agree"},
-      {"value": 2, "label": "Mildly agree"},
-      {"value": 3, "label": "Agree and disagree equally"},
-      {"value": 4, "label": "Mildly disagree"},
-      {"value": 5, "label": "Strongly disagree"}
+      {
+        "value": 1,
+        "label": "Strongly agree"
+      },
+      {
+        "value": 2,
+        "label": "Mildly agree"
+      },
+      {
+        "value": 3,
+        "label": "Agree and disagree equally"
+      },
+      {
+        "value": 4,
+        "label": "Mildly disagree"
+      },
+      {
+        "value": 5,
+        "label": "Strongly disagree"
+      }
     ]
   },
-
   "items": [
     {
       "item_id": "dts_01",
@@ -51,7 +64,7 @@
     },
     {
       "item_id": "dts_03",
-      "text": "I can’t handle feeling distressed or upset.",
+      "text": "I can\u2019t handle feeling distressed or upset.",
       "response_options_key": "dts_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -69,7 +82,7 @@
     },
     {
       "item_id": "dts_05",
-      "text": "There’s nothing worse than feeling distressed or upset.",
+      "text": "There\u2019s nothing worse than feeling distressed or upset.",
       "response_options_key": "dts_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -97,7 +110,7 @@
     },
     {
       "item_id": "dts_08",
-      "text": "I’ll do anything to avoid feeling distressed or upset.",
+      "text": "I\u2019ll do anything to avoid feeling distressed or upset.",
       "response_options_key": "dts_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -142,7 +155,7 @@
     },
     {
       "item_id": "dts_13",
-      "text": "I’ll do anything to stop feeling distressed or upset.",
+      "text": "I\u2019ll do anything to stop feeling distressed or upset.",
       "response_options_key": "dts_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -168,36 +181,80 @@
       "safety_trigger": null
     }
   ],
-
   "scoring": {
     "method": "sum",
-    "range": [15, 75],
-    "bands": null,
+    "range": [
+      15,
+      75
+    ],
+    "bands": [
+      {
+        "min": 15,
+        "max": 30,
+        "label": "low"
+      },
+      {
+        "min": 31,
+        "max": 50,
+        "label": "moderate"
+      },
+      {
+        "min": 51,
+        "max": 75,
+        "label": "high"
+      }
+    ],
     "subscales": {
       "tolerance": {
         "method": "sum",
-        "items": ["dts_01", "dts_03", "dts_05"]
+        "items": [
+          "dts_01",
+          "dts_03",
+          "dts_05"
+        ]
       },
       "absorption": {
         "method": "sum",
-        "items": ["dts_02", "dts_04", "dts_15"]
+        "items": [
+          "dts_02",
+          "dts_04",
+          "dts_15"
+        ]
       },
       "appraisal": {
         "method": "sum",
-        "items": ["dts_06", "dts_07", "dts_09", "dts_10", "dts_11", "dts_12"]
+        "items": [
+          "dts_06",
+          "dts_07",
+          "dts_09",
+          "dts_10",
+          "dts_11",
+          "dts_12"
+        ]
       },
       "regulation": {
         "method": "sum",
-        "items": ["dts_08", "dts_13", "dts_14"]
+        "items": [
+          "dts_08",
+          "dts_13",
+          "dts_14"
+        ]
       }
     }
   },
-
   "routing": {
     "parent_instrument": null,
     "carry_forward_items": null,
     "on_completion": [
-      {"condition": "score <= 30", "action": "flag_elevated"}
+      {
+        "condition": "score <= 30",
+        "action": "flag_elevated"
+      }
     ]
+  },
+  "band_descriptions": {
+    "low": "Your responses suggest a low tolerance for emotional distress. This is worth paying attention to, as exploring ways to navigate difficult feelings could be very beneficial.",
+    "moderate": "Your responses indicate a moderate tolerance for emotional distress. Many people find it helpful to monitor this and practice sitting with uncomfortable emotions.",
+    "high": "Your responses suggest a high tolerance for emotional distress. This indicates you have strong resources in this area and can effectively navigate aversive emotional states."
   }
 }

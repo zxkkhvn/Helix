@@ -19,17 +19,30 @@
   "min_trials_for_partial_scoring": null,
   "composite_contributions": [],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "cfq_likert": [
-      {"value": 0, "label": "Never"},
-      {"value": 1, "label": "Very Rarely"},
-      {"value": 2, "label": "Occasionally"},
-      {"value": 3, "label": "Quite Often"},
-      {"value": 4, "label": "Very Often"}
+      {
+        "value": 0,
+        "label": "Never"
+      },
+      {
+        "value": 1,
+        "label": "Very Rarely"
+      },
+      {
+        "value": 2,
+        "label": "Occasionally"
+      },
+      {
+        "value": 3,
+        "label": "Quite Often"
+      },
+      {
+        "value": 4,
+        "label": "Very Often"
+      }
     ]
   },
-
   "items": [
     {
       "item_id": "cfq_01",
@@ -186,7 +199,7 @@
     },
     {
       "item_id": "cfq_18",
-      "text": "Do you find you accidentally throw away the thing you want and keep what you meant to throw away — as in the example of throwing away the matchbox and putting the used match in your pocket?",
+      "text": "Do you find you accidentally throw away the thing you want and keep what you meant to throw away \u2014 as in the example of throwing away the matchbox and putting the used match in your pocket?",
       "response_options_key": "cfq_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -257,22 +270,45 @@
       "safety_trigger": null
     }
   ],
-
   "scoring": {
     "method": "sum",
-    "range": [0, 100],
+    "range": [
+      0,
+      100
+    ],
     "bands": [
-      {"min": 0, "max": 24, "label": "low"},
-      {"min": 25, "max": 49, "label": "average"},
-      {"min": 50, "max": 74, "label": "elevated"},
-      {"min": 75, "max": 100, "label": "high"}
+      {
+        "min": 0,
+        "max": 24,
+        "label": "low"
+      },
+      {
+        "min": 25,
+        "max": 49,
+        "label": "average"
+      },
+      {
+        "min": 50,
+        "max": 74,
+        "label": "elevated"
+      },
+      {
+        "min": 75,
+        "max": 100,
+        "label": "high"
+      }
     ],
     "subscales": null
   },
-
   "routing": {
     "parent_instrument": null,
     "carry_forward_items": null,
     "on_completion": []
+  },
+  "band_descriptions": {
+    "low": "Your responses suggest a low frequency of everyday cognitive slips over the past six months. Most people experience occasional forgetfulness, and your responses fall within the typical range.",
+    "average": "Your responses indicate an average frequency of cognitive failures over the past six months. Most people experience this occasionally, and your responses fall within the typical range.",
+    "elevated": "Your responses suggest an elevated frequency of cognitive slips over the past six months. Many people find it helpful to monitor this, as stress or fatigue can often increase these occurrences.",
+    "high": "Your responses indicate a high frequency of cognitive failures over the past six months. This is worth paying attention to, and exploring the impact of mental load or sleep on your cognition could be beneficial."
   }
 }

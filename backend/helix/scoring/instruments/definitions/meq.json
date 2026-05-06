@@ -19,129 +19,370 @@
   "min_trials_for_partial_scoring": null,
   "composite_contributions": [],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "meq_01": [
-      {"value": 5, "label": "5:00 AM – 6:30 AM"},
-      {"value": 4, "label": "6:30 AM – 7:45 AM"},
-      {"value": 3, "label": "7:45 AM – 9:45 AM"},
-      {"value": 2, "label": "9:45 AM – 11:00 AM"},
-      {"value": 1, "label": "11:00 AM – 12:00 noon"}
+      {
+        "value": 5,
+        "label": "5:00 AM \u2013 6:30 AM"
+      },
+      {
+        "value": 4,
+        "label": "6:30 AM \u2013 7:45 AM"
+      },
+      {
+        "value": 3,
+        "label": "7:45 AM \u2013 9:45 AM"
+      },
+      {
+        "value": 2,
+        "label": "9:45 AM \u2013 11:00 AM"
+      },
+      {
+        "value": 1,
+        "label": "11:00 AM \u2013 12:00 noon"
+      }
     ],
     "meq_02": [
-      {"value": 5, "label": "8:00 PM – 9:00 PM"},
-      {"value": 4, "label": "9:00 PM – 10:15 PM"},
-      {"value": 3, "label": "10:15 PM – 12:30 AM"},
-      {"value": 2, "label": "12:30 AM – 1:45 AM"},
-      {"value": 1, "label": "1:45 AM – 3:00 AM"}
+      {
+        "value": 5,
+        "label": "8:00 PM \u2013 9:00 PM"
+      },
+      {
+        "value": 4,
+        "label": "9:00 PM \u2013 10:15 PM"
+      },
+      {
+        "value": 3,
+        "label": "10:15 PM \u2013 12:30 AM"
+      },
+      {
+        "value": 2,
+        "label": "12:30 AM \u2013 1:45 AM"
+      },
+      {
+        "value": 1,
+        "label": "1:45 AM \u2013 3:00 AM"
+      }
     ],
     "meq_03": [
-      {"value": 4, "label": "Not at all"},
-      {"value": 3, "label": "Slightly"},
-      {"value": 2, "label": "Somewhat"},
-      {"value": 1, "label": "Very much"}
+      {
+        "value": 4,
+        "label": "Not at all"
+      },
+      {
+        "value": 3,
+        "label": "Slightly"
+      },
+      {
+        "value": 2,
+        "label": "Somewhat"
+      },
+      {
+        "value": 1,
+        "label": "Very much"
+      }
     ],
     "meq_04": [
-      {"value": 1, "label": "Very difficult"},
-      {"value": 2, "label": "Somewhat difficult"},
-      {"value": 3, "label": "Fairly easy"},
-      {"value": 4, "label": "Very easy"}
+      {
+        "value": 1,
+        "label": "Very difficult"
+      },
+      {
+        "value": 2,
+        "label": "Somewhat difficult"
+      },
+      {
+        "value": 3,
+        "label": "Fairly easy"
+      },
+      {
+        "value": 4,
+        "label": "Very easy"
+      }
     ],
     "meq_05": [
-      {"value": 1, "label": "Not at all alert"},
-      {"value": 2, "label": "Slightly alert"},
-      {"value": 3, "label": "Fairly alert"},
-      {"value": 4, "label": "Very alert"}
+      {
+        "value": 1,
+        "label": "Not at all alert"
+      },
+      {
+        "value": 2,
+        "label": "Slightly alert"
+      },
+      {
+        "value": 3,
+        "label": "Fairly alert"
+      },
+      {
+        "value": 4,
+        "label": "Very alert"
+      }
     ],
     "meq_06": [
-      {"value": 1, "label": "Not at all hungry"},
-      {"value": 2, "label": "Slightly hungry"},
-      {"value": 3, "label": "Fairly hungry"},
-      {"value": 4, "label": "Very hungry"}
+      {
+        "value": 1,
+        "label": "Not at all hungry"
+      },
+      {
+        "value": 2,
+        "label": "Slightly hungry"
+      },
+      {
+        "value": 3,
+        "label": "Fairly hungry"
+      },
+      {
+        "value": 4,
+        "label": "Very hungry"
+      }
     ],
     "meq_07": [
-      {"value": 1, "label": "Very tired"},
-      {"value": 2, "label": "Fairly tired"},
-      {"value": 3, "label": "Fairly refreshed"},
-      {"value": 4, "label": "Very refreshed"}
+      {
+        "value": 1,
+        "label": "Very tired"
+      },
+      {
+        "value": 2,
+        "label": "Fairly tired"
+      },
+      {
+        "value": 3,
+        "label": "Fairly refreshed"
+      },
+      {
+        "value": 4,
+        "label": "Very refreshed"
+      }
     ],
     "meq_08": [
-      {"value": 4, "label": "Seldom or never later"},
-      {"value": 3, "label": "Less than 1 hour later"},
-      {"value": 2, "label": "1-2 hours later"},
-      {"value": 1, "label": "More than 2 hours later"}
+      {
+        "value": 4,
+        "label": "Seldom or never later"
+      },
+      {
+        "value": 3,
+        "label": "Less than 1 hour later"
+      },
+      {
+        "value": 2,
+        "label": "1-2 hours later"
+      },
+      {
+        "value": 1,
+        "label": "More than 2 hours later"
+      }
     ],
     "meq_09": [
-      {"value": 4, "label": "Would be in good form"},
-      {"value": 3, "label": "Would be in reasonable form"},
-      {"value": 2, "label": "Would find it difficult"},
-      {"value": 1, "label": "Would find it very difficult"}
+      {
+        "value": 4,
+        "label": "Would be in good form"
+      },
+      {
+        "value": 3,
+        "label": "Would be in reasonable form"
+      },
+      {
+        "value": 2,
+        "label": "Would find it difficult"
+      },
+      {
+        "value": 1,
+        "label": "Would find it very difficult"
+      }
     ],
     "meq_10": [
-      {"value": 5, "label": "8:00 PM – 9:00 PM"},
-      {"value": 4, "label": "9:00 PM – 10:15 PM"},
-      {"value": 3, "label": "10:15 PM – 12:45 AM"},
-      {"value": 2, "label": "12:45 AM – 2:00 AM"},
-      {"value": 1, "label": "2:00 AM – 3:00 AM"}
+      {
+        "value": 5,
+        "label": "8:00 PM \u2013 9:00 PM"
+      },
+      {
+        "value": 4,
+        "label": "9:00 PM \u2013 10:15 PM"
+      },
+      {
+        "value": 3,
+        "label": "10:15 PM \u2013 12:45 AM"
+      },
+      {
+        "value": 2,
+        "label": "12:45 AM \u2013 2:00 AM"
+      },
+      {
+        "value": 1,
+        "label": "2:00 AM \u2013 3:00 AM"
+      }
     ],
     "meq_11": [
-      {"value": 6, "label": "8 AM – 10 AM"},
-      {"value": 4, "label": "11 AM – 1 PM"},
-      {"value": 2, "label": "3 PM – 5 PM"},
-      {"value": 0, "label": "7 PM – 9 PM"}
+      {
+        "value": 6,
+        "label": "8 AM \u2013 10 AM"
+      },
+      {
+        "value": 4,
+        "label": "11 AM \u2013 1 PM"
+      },
+      {
+        "value": 2,
+        "label": "3 PM \u2013 5 PM"
+      },
+      {
+        "value": 0,
+        "label": "7 PM \u2013 9 PM"
+      }
     ],
     "meq_12": [
-      {"value": 0, "label": "Not at all tired"},
-      {"value": 2, "label": "A little tired"},
-      {"value": 3, "label": "Fairly tired"},
-      {"value": 5, "label": "Very tired"}
+      {
+        "value": 0,
+        "label": "Not at all tired"
+      },
+      {
+        "value": 2,
+        "label": "A little tired"
+      },
+      {
+        "value": 3,
+        "label": "Fairly tired"
+      },
+      {
+        "value": 5,
+        "label": "Very tired"
+      }
     ],
     "meq_13": [
-      {"value": 4, "label": "Will wake up at usual time, but will not fall back asleep"},
-      {"value": 3, "label": "Will wake up at usual time and will doze thereafter"},
-      {"value": 2, "label": "Will wake up at usual time, but will fall asleep again"},
-      {"value": 1, "label": "Will not wake up until later than usual"}
+      {
+        "value": 4,
+        "label": "Will wake up at usual time, but will not fall back asleep"
+      },
+      {
+        "value": 3,
+        "label": "Will wake up at usual time and will doze thereafter"
+      },
+      {
+        "value": 2,
+        "label": "Will wake up at usual time, but will fall asleep again"
+      },
+      {
+        "value": 1,
+        "label": "Will not wake up until later than usual"
+      }
     ],
     "meq_14": [
-      {"value": 1, "label": "Would not go to bed until the watch is over"},
-      {"value": 2, "label": "Would take a nap before and sleep after"},
-      {"value": 3, "label": "Would take a good sleep before and nap after"},
-      {"value": 4, "label": "Would sleep only before the watch"}
+      {
+        "value": 1,
+        "label": "Would not go to bed until the watch is over"
+      },
+      {
+        "value": 2,
+        "label": "Would take a nap before and sleep after"
+      },
+      {
+        "value": 3,
+        "label": "Would take a good sleep before and nap after"
+      },
+      {
+        "value": 4,
+        "label": "Would sleep only before the watch"
+      }
     ],
     "meq_15": [
-      {"value": 4, "label": "8 AM – 10 AM"},
-      {"value": 3, "label": "11 AM – 1 PM"},
-      {"value": 2, "label": "3 PM – 5 PM"},
-      {"value": 1, "label": "7 PM – 9 PM"}
+      {
+        "value": 4,
+        "label": "8 AM \u2013 10 AM"
+      },
+      {
+        "value": 3,
+        "label": "11 AM \u2013 1 PM"
+      },
+      {
+        "value": 2,
+        "label": "3 PM \u2013 5 PM"
+      },
+      {
+        "value": 1,
+        "label": "7 PM \u2013 9 PM"
+      }
     ],
     "meq_16": [
-      {"value": 1, "label": "Would be in good form"},
-      {"value": 2, "label": "Would be in reasonable form"},
-      {"value": 3, "label": "Would find it difficult"},
-      {"value": 4, "label": "Would find it very difficult"}
+      {
+        "value": 1,
+        "label": "Would be in good form"
+      },
+      {
+        "value": 2,
+        "label": "Would be in reasonable form"
+      },
+      {
+        "value": 3,
+        "label": "Would find it difficult"
+      },
+      {
+        "value": 4,
+        "label": "Would find it very difficult"
+      }
     ],
     "meq_17": [
-      {"value": 5, "label": "5 hours starting between 4 – 8 AM"},
-      {"value": 4, "label": "5 hours starting between 8 – 9 AM"},
-      {"value": 3, "label": "5 hours starting between 9 AM – 2 PM"},
-      {"value": 2, "label": "5 hours starting between 2 – 5 PM"},
-      {"value": 1, "label": "5 hours starting between 5 PM – 4 AM"}
+      {
+        "value": 5,
+        "label": "5 hours starting between 4 \u2013 8 AM"
+      },
+      {
+        "value": 4,
+        "label": "5 hours starting between 8 \u2013 9 AM"
+      },
+      {
+        "value": 3,
+        "label": "5 hours starting between 9 AM \u2013 2 PM"
+      },
+      {
+        "value": 2,
+        "label": "5 hours starting between 2 \u2013 5 PM"
+      },
+      {
+        "value": 1,
+        "label": "5 hours starting between 5 PM \u2013 4 AM"
+      }
     ],
     "meq_18": [
-      {"value": 5, "label": "5 – 8 AM"},
-      {"value": 4, "label": "8 – 10 AM"},
-      {"value": 3, "label": "10 AM – 5 PM"},
-      {"value": 2, "label": "5 – 10 PM"},
-      {"value": 1, "label": "10 PM – 5 AM"}
+      {
+        "value": 5,
+        "label": "5 \u2013 8 AM"
+      },
+      {
+        "value": 4,
+        "label": "8 \u2013 10 AM"
+      },
+      {
+        "value": 3,
+        "label": "10 AM \u2013 5 PM"
+      },
+      {
+        "value": 2,
+        "label": "5 \u2013 10 PM"
+      },
+      {
+        "value": 1,
+        "label": "10 PM \u2013 5 AM"
+      }
     ],
     "meq_19": [
-      {"value": 6, "label": "Definitely a morning type"},
-      {"value": 4, "label": "Rather more a morning type than an evening type"},
-      {"value": 2, "label": "Rather more an evening type than a morning type"},
-      {"value": 1, "label": "Definitely an evening type"}
+      {
+        "value": 6,
+        "label": "Definitely a morning type"
+      },
+      {
+        "value": 4,
+        "label": "Rather more a morning type than an evening type"
+      },
+      {
+        "value": 2,
+        "label": "Rather more an evening type than a morning type"
+      },
+      {
+        "value": 1,
+        "label": "Definitely an evening type"
+      }
     ]
   },
-
   "items": [
     {
       "item_id": "meq_01",
@@ -217,7 +458,7 @@
     },
     {
       "item_id": "meq_09",
-      "text": "You have decided to do physical exercise. A friend suggests that you do this for one hour twice a week, and the best time for him is between 7-8 AM. Bearing in mind nothing but your own internal “clock,” how do you think you would perform?",
+      "text": "You have decided to do physical exercise. A friend suggests that you do this for one hour twice a week, and the best time for him is between 7-8 AM. Bearing in mind nothing but your own internal \u201cclock,\u201d how do you think you would perform?",
       "response_options_key": "meq_09",
       "valence": "positive",
       "exclude_from_score": false,
@@ -235,7 +476,7 @@
     },
     {
       "item_id": "meq_11",
-      "text": "You want to be at your peak performance for a test that you know is going to be mentally exhausting and will last two hours. You are entirely free to plan your day. Considering only your “internal clock,” which one of the four testing times would you choose?",
+      "text": "You want to be at your peak performance for a test that you know is going to be mentally exhausting and will last two hours. You are entirely free to plan your day. Considering only your \u201cinternal clock,\u201d which one of the four testing times would you choose?",
       "response_options_key": "meq_11",
       "valence": "positive",
       "exclude_from_score": false,
@@ -271,7 +512,7 @@
     },
     {
       "item_id": "meq_15",
-      "text": "You have two hours of hard physical work. You are entirely free to plan your day. Considering only your internal “clock,” which of the following times would you choose?",
+      "text": "You have two hours of hard physical work. You are entirely free to plan your day. Considering only your internal \u201cclock,\u201d which of the following times would you choose?",
       "response_options_key": "meq_15",
       "valence": "positive",
       "exclude_from_score": false,
@@ -280,7 +521,7 @@
     },
     {
       "item_id": "meq_16",
-      "text": "You have decided to do physical exercise. A friend suggests that you do this for one hour twice a week. The best time for her is between 10-11 PM. Bearing in mind only your internal “clock,” how well do you think you would perform?",
+      "text": "You have decided to do physical exercise. A friend suggests that you do this for one hour twice a week. The best time for her is between 10-11 PM. Bearing in mind only your internal \u201cclock,\u201d how well do you think you would perform?",
       "response_options_key": "meq_16",
       "valence": "positive",
       "exclude_from_score": false,
@@ -307,7 +548,7 @@
     },
     {
       "item_id": "meq_19",
-      "text": "One hears about “morning types” and “evening types.” Which one of these types do you consider yourself to be?",
+      "text": "One hears about \u201cmorning types\u201d and \u201cevening types.\u201d Which one of these types do you consider yourself to be?",
       "response_options_key": "meq_19",
       "valence": "positive",
       "exclude_from_score": false,
@@ -315,21 +556,49 @@
       "safety_trigger": null
     }
   ],
-
   "scoring": {
     "method": "custom",
-    "range": [16, 86],
+    "range": [
+      16,
+      86
+    ],
     "bands": [
-      {"min": 16, "max": 30, "label": "definite_evening"},
-      {"min": 31, "max": 41, "label": "moderate_evening"},
-      {"min": 42, "max": 58, "label": "intermediate"},
-      {"min": 59, "max": 69, "label": "moderate_morning"},
-      {"min": 70, "max": 86, "label": "definite_morning"}
+      {
+        "min": 16,
+        "max": 30,
+        "label": "definite_evening"
+      },
+      {
+        "min": 31,
+        "max": 41,
+        "label": "moderate_evening"
+      },
+      {
+        "min": 42,
+        "max": 58,
+        "label": "intermediate"
+      },
+      {
+        "min": 59,
+        "max": 69,
+        "label": "moderate_morning"
+      },
+      {
+        "min": 70,
+        "max": 86,
+        "label": "definite_morning"
+      }
     ],
     "subscales": null
   },
-
   "routing": {
     "on_completion": []
+  },
+  "band_descriptions": {
+    "definitely_morning": "Your responses indicate a definite morning chronotype. Your circadian rhythm naturally aligns with waking early and being most active in the morning hours.",
+    "moderately_morning": "Your responses suggest a moderate morning chronotype. You generally prefer earlier hours but retain some flexibility in your daily rhythms.",
+    "intermediate": "Your responses indicate an intermediate chronotype. You likely adapt reasonably well to both morning and evening schedules.",
+    "moderately_evening": "Your responses suggest a moderate evening chronotype. You generally prefer later hours and find your energy peaks later in the day.",
+    "definitely_evening": "Your responses indicate a definite evening chronotype. Your circadian rhythm naturally aligns with staying up later and being most active into the night."
   }
 }

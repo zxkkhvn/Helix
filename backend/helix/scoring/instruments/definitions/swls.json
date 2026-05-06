@@ -19,45 +19,142 @@
   "min_trials_for_partial_scoring": null,
   "composite_contributions": [],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "swls_likert": [
-      {"value": 1, "label": "Strongly Disagree"},
-      {"value": 2, "label": "Disagree"},
-      {"value": 3, "label": "Slightly Disagree"},
-      {"value": 4, "label": "Neither Agree nor Disagree"},
-      {"value": 5, "label": "Slightly Agree"},
-      {"value": 6, "label": "Agree"},
-      {"value": 7, "label": "Strongly Agree"}
+      {
+        "value": 1,
+        "label": "Strongly Disagree"
+      },
+      {
+        "value": 2,
+        "label": "Disagree"
+      },
+      {
+        "value": 3,
+        "label": "Slightly Disagree"
+      },
+      {
+        "value": 4,
+        "label": "Neither Agree nor Disagree"
+      },
+      {
+        "value": 5,
+        "label": "Slightly Agree"
+      },
+      {
+        "value": 6,
+        "label": "Agree"
+      },
+      {
+        "value": 7,
+        "label": "Strongly Agree"
+      }
     ]
   },
-
   "items": [
-    {"item_id": "swls_01", "text": "In most ways my life is close to my ideal.", "response_options_key": "swls_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
-    {"item_id": "swls_02", "text": "The conditions of my life are excellent.", "response_options_key": "swls_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
-    {"item_id": "swls_03", "text": "I am satisfied with my life.", "response_options_key": "swls_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
-    {"item_id": "swls_04", "text": "So far I have gotten the important things I want in life.", "response_options_key": "swls_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null},
-    {"item_id": "swls_05", "text": "If I could live my life over, I would change almost nothing.", "response_options_key": "swls_likert", "valence": "positive", "exclude_from_score": false, "safety_flag": false, "safety_trigger": null}
+    {
+      "item_id": "swls_01",
+      "text": "In most ways my life is close to my ideal.",
+      "response_options_key": "swls_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "swls_02",
+      "text": "The conditions of my life are excellent.",
+      "response_options_key": "swls_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "swls_03",
+      "text": "I am satisfied with my life.",
+      "response_options_key": "swls_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "swls_04",
+      "text": "So far I have gotten the important things I want in life.",
+      "response_options_key": "swls_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "swls_05",
+      "text": "If I could live my life over, I would change almost nothing.",
+      "response_options_key": "swls_likert",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
   ],
-
   "scoring": {
     "method": "sum",
-    "range": [5, 35],
+    "range": [
+      5,
+      35
+    ],
     "bands": [
-      {"min": 5, "max": 9, "label": "extremely_dissatisfied"},
-      {"min": 10, "max": 14, "label": "dissatisfied"},
-      {"min": 15, "max": 19, "label": "slightly_dissatisfied"},
-      {"min": 20, "max": 20, "label": "neutral"},
-      {"min": 21, "max": 25, "label": "slightly_satisfied"},
-      {"min": 26, "max": 30, "label": "satisfied"},
-      {"min": 31, "max": 35, "label": "extremely_satisfied"}
+      {
+        "min": 5,
+        "max": 9,
+        "label": "extremely_dissatisfied"
+      },
+      {
+        "min": 10,
+        "max": 14,
+        "label": "dissatisfied"
+      },
+      {
+        "min": 15,
+        "max": 19,
+        "label": "slightly_dissatisfied"
+      },
+      {
+        "min": 20,
+        "max": 20,
+        "label": "neutral"
+      },
+      {
+        "min": 21,
+        "max": 25,
+        "label": "slightly_satisfied"
+      },
+      {
+        "min": 26,
+        "max": 30,
+        "label": "satisfied"
+      },
+      {
+        "min": 31,
+        "max": 35,
+        "label": "extremely_satisfied"
+      }
     ],
     "subscales": null
   },
-
   "routing": {
     "parent_instrument": null,
     "carry_forward_items": null,
     "on_completion": []
+  },
+  "band_descriptions": {
+    "extremely_dissatisfied": "Your responses suggest you are extremely dissatisfied with your life. This is worth paying attention to, as these feelings highlight a significant need for change or support.",
+    "dissatisfied": "Your responses indicate you are dissatisfied with your life overall. Many people find it helpful to monitor this and identify specific areas they would like to improve.",
+    "slightly_dissatisfied": "Your responses suggest you are slightly dissatisfied with your life. Most people experience periods of dissatisfaction, and exploring these feelings can be a helpful first step.",
+    "neutral": "Your responses indicate a neutral level of life satisfaction. Your responses fall within the typical range for individuals experiencing a mix of fulfilling and challenging life areas.",
+    "slightly_satisfied": "Your responses suggest you are slightly satisfied with your life. Most people experience this, and your responses fall within the typical, healthy range.",
+    "satisfied": "Your responses indicate you are satisfied with your life. This suggests you have strong resources and are finding fulfilment in most of your daily experiences.",
+    "extremely_satisfied": "Your responses suggest you are extremely satisfied with your life. This suggests you have strong resources in this area and feel highly fulfilled."
   }
 }

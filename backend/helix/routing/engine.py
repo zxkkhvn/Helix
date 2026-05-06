@@ -9,9 +9,11 @@ Supported condition patterns:
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from datetime import datetime, timezone, timedelta
 from typing import Any, Optional
 
 from helix.scoring.base import ScoreResult
+from helix.scoring import registry
 
 _OPERATORS = {
     ">=": lambda a, b: a >= b,
@@ -185,7 +187,35 @@ def compute_available_instruments(session: Any, completed_scores: list) -> list[
     if session.state not in ("EXPLORING", "SAFETY_ACKNOWLEDGED"):
         return []
 
-    # Earth instruments (always available in EXPLORING)
+    # 1. Mercury
+    mercury_instruments = ["isi", "wemwbs", "ffmq15", "maia2_brief", "meq", "psqi"]
+    for inst in mercury_instruments:
+        if inst not in completed_by_id:
+            available.append(inst)
+
+    # 2. Venus
+    # PHQ chain
+    if "phq2" not in completed_by_id:
+        available.append("phq2")
+    elif completed_by_id["phq2"].total_score >= 3 and "phq9" not in completed_by_id:
+        available.append("phq9")
+    # GAD chain
+    if "gad2" not in completed_by_id:
+        available.append("gad2")
+    elif completed_by_id["gad2"].total_score >= 3 and "gad7" not in completed_by_id:
+        available.append("gad7")
+    # PAQ chain
+    if "paq_s" not in completed_by_id:
+        available.append("paq_s")
+    elif completed_by_id["paq_s"].total_score >= 30 and "paq" not in completed_by_id:
+        available.append("paq")
+    # Venus deep dives
+    venus_deep_dives = ["ders16", "pss10", "dts", "erq"]
+    for inst in venus_deep_dives:
+        if inst not in completed_by_id:
+            available.append(inst)
+
+    # 3. Earth
     earth_instruments = ["bfi_s", "ipip50", "scs_sf", "brs", "rses", "via_is_p"]
     for inst in earth_instruments:
         if inst not in completed_by_id:
@@ -198,56 +228,84 @@ def compute_available_instruments(session: Any, completed_scores: list) -> list[
             aces_deferred = True
     if session.intake_data and session.intake_data.get("red_thread_risk_flag"):
         aces_deferred = True
-
     if not aces_deferred and "aces" not in completed_by_id:
         available.append("aces")
 
-    # PHQ chain
-    if "phq2" not in completed_by_id:
-        available.append("phq2")
-    elif completed_by_id["phq2"].total_score >= 3 and "phq9" not in completed_by_id:
-        available.append("phq9")
-
-    # GAD chain
-    if "gad2" not in completed_by_id:
-        available.append("gad2")
-    elif completed_by_id["gad2"].total_score >= 3 and "gad7" not in completed_by_id:
-        available.append("gad7")
-
-    # PAQ chain
-    if "paq_s" not in completed_by_id:
-        available.append("paq_s")
-    elif completed_by_id["paq_s"].total_score >= 30 and "paq" not in completed_by_id:
-        available.append("paq")
-
-    # Venus deep dives (always available)
-    venus_deep_dives = ["ders16", "pss10", "dts", "erq"]
-    for inst in venus_deep_dives:
-        if inst not in completed_by_id:
-            available.append(inst)
-
-    # Mercury instruments (always available)
-    mercury_instruments = ["isi", "wemwbs", "ffmq15", "maia2_brief", "meq", "psqi"]
-    for inst in mercury_instruments:
-        if inst not in completed_by_id:
-            available.append(inst)
-
-    # Mars — ASRS chain
+    # 4. Mars
     if "asrs_a" not in completed_by_id:
         available.append("asrs_a")
     elif completed_by_id["asrs_a"].total_score >= 12 and "asrs_full" not in completed_by_id:
         available.append("asrs_full")
-
-    # Mars deep dives (always available)
     mars_deep_dives = ["bdefs_sf", "cfq25"]
     for inst in mars_deep_dives:
         if inst not in completed_by_id:
             available.append(inst)
 
-    # Jupiter instruments (always available)
+    # Asteroid belt (PCL-5 conditional)
+    if "pcptsd5" in completed_by_id and completed_by_id["pcptsd5"].total_score >= 3:
+        if session.state == "SAFETY_ACKNOWLEDGED" or (session.state == "EXPLORING" and "pcptsd5" in completed_by_id):
+            if "pcl5" not in completed_by_id:
+                available.append("pcl5")
+
+    # 5. Jupiter
     jupiter_instruments = ["vlq", "aaq2", "compact", "mlq", "swls"]
     for inst in jupiter_instruments:
         if inst not in completed_by_id:
             available.append(inst)
 
-    return available
+    # 6. Saturn
+    if "lsas_sr_short" not in completed_by_id:
+        available.append("lsas_sr_short")
+    elif completed_by_id["lsas_sr_short"].total_score >= 30 and "lsas_sr_full" not in completed_by_id:
+        available.append("lsas_sr_full")
+    saturn_deep = ["ecr_s", "ecr_rs", "dejong"]
+    for inst in saturn_deep:
+        if inst not in completed_by_id:
+            available.append(inst)
+
+    # 7. Uranus — conditional planet
+    uranus_unlocked = False
+    if "asrs_a" in completed_by_id and completed_by_id["asrs_a"].total_score >= 12:
+        uranus_unlocked = True
+    categories = session.intake_data.get("categories", "") if session.intake_data else ""
+    if "neurodivergence" in categories:
+        uranus_unlocked = True
+    if uranus_unlocked:
+        if "aq10" not in completed_by_id:
+            available.append("aq10")
+        if "catq" not in completed_by_id:
+            available.append("catq")
+        if "aq10" in completed_by_id:
+            if completed_by_id["aq10"].total_score >= 6 and "raads_r" not in completed_by_id:
+                available.append("raads_r")
+
+    # 8. Neptune
+    if "ius12" not in completed_by_id:
+        available.append("ius12")
+    neptune_deep = ["mss_ysq", "ptq10", "cpq", "des_b", "pswq", "oci_r"]
+    for inst in neptune_deep:
+        if inst not in completed_by_id:
+            available.append(inst)
+
+    # Enforce Test-Retest Interval
+    filtered_available = []
+    now = datetime.now(timezone.utc)
+    # Find most recent score for each instrument
+    most_recent_scores = {}
+    for score in completed_scores:
+        if score.instrument_id not in most_recent_scores or score.created_at > most_recent_scores[score.instrument_id].created_at:
+            most_recent_scores[score.instrument_id] = score
+
+    for inst in available:
+        scorer = registry.get_scorer(inst)
+        if not scorer:
+            continue
+        definition = scorer._def
+        time_window_days = definition.get("time_window_days")
+        if time_window_days is not None and inst in most_recent_scores:
+            last_completed = most_recent_scores[inst].created_at
+            if (now - last_completed) < timedelta(days=time_window_days):
+                continue
+        filtered_available.append(inst)
+
+    return filtered_available

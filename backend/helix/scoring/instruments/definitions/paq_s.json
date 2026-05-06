@@ -19,19 +19,38 @@
   "min_trials_for_partial_scoring": null,
   "composite_contributions": [],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "paq_likert": [
-      {"value": 1, "label": "Strongly disagree"},
-      {"value": 2, "label": "Disagree"},
-      {"value": 3, "label": "Somewhat disagree"},
-      {"value": 4, "label": "Neither agree nor disagree"},
-      {"value": 5, "label": "Somewhat agree"},
-      {"value": 6, "label": "Agree"},
-      {"value": 7, "label": "Strongly agree"}
+      {
+        "value": 1,
+        "label": "Strongly disagree"
+      },
+      {
+        "value": 2,
+        "label": "Disagree"
+      },
+      {
+        "value": 3,
+        "label": "Somewhat disagree"
+      },
+      {
+        "value": 4,
+        "label": "Neither agree nor disagree"
+      },
+      {
+        "value": 5,
+        "label": "Somewhat agree"
+      },
+      {
+        "value": 6,
+        "label": "Agree"
+      },
+      {
+        "value": 7,
+        "label": "Strongly agree"
+      }
     ]
   },
-
   "items": [
     {
       "item_id": "paq_s_01",
@@ -88,23 +107,48 @@
       "safety_trigger": null
     }
   ],
-
   "scoring": {
     "method": "sum",
-    "range": [6, 42],
+    "range": [
+      6,
+      42
+    ],
     "bands": [
-      {"min": 6, "max": 18, "label": "low_alexithymia", "source": "Preece et al. 2020"},
-      {"min": 19, "max": 29, "label": "moderate_alexithymia", "source": "Preece et al. 2020"},
-      {"min": 30, "max": 42, "label": "high_alexithymia", "source": "Preece et al. 2020"}
+      {
+        "min": 6,
+        "max": 18,
+        "label": "low_alexithymia",
+        "source": "Preece et al. 2020"
+      },
+      {
+        "min": 19,
+        "max": 29,
+        "label": "moderate_alexithymia",
+        "source": "Preece et al. 2020"
+      },
+      {
+        "min": 30,
+        "max": 42,
+        "label": "high_alexithymia",
+        "source": "Preece et al. 2020"
+      }
     ],
     "subscales": null
   },
-
   "routing": {
     "parent_instrument": null,
     "carry_forward_items": null,
     "on_completion": [
-      {"condition": "score >= 30", "action": "trigger_expansion", "target": "paq"}
+      {
+        "condition": "score >= 30",
+        "action": "trigger_expansion",
+        "target": "paq"
+      }
     ]
+  },
+  "band_descriptions": {
+    "low_alexithymia": "Your responses indicate low levels of difficulty in perceiving and experiencing emotions. Most people experience this occasionally, and your responses fall within the typical, healthy range of emotional awareness.",
+    "moderate_alexithymia": "Your responses suggest moderate challenges with identifying or describing your emotions. Many people find it helpful to monitor this and gently practice tuning into their feelings.",
+    "high_alexithymia": "Your responses indicate a high level of difficulty in identifying and describing emotions. Exploring these patterns further can be very beneficial for understanding how you process emotional experiences."
   }
 }

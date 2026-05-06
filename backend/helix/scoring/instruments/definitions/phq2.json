@@ -19,16 +19,26 @@
   "min_trials_for_partial_scoring": null,
   "composite_contributions": [],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "phq_likert": [
-      {"value": 0, "label": "Not at all"},
-      {"value": 1, "label": "Several days"},
-      {"value": 2, "label": "More than half the days"},
-      {"value": 3, "label": "Nearly every day"}
+      {
+        "value": 0,
+        "label": "Not at all"
+      },
+      {
+        "value": 1,
+        "label": "Several days"
+      },
+      {
+        "value": 2,
+        "label": "More than half the days"
+      },
+      {
+        "value": 3,
+        "label": "Nearly every day"
+      }
     ]
   },
-
   "items": [
     {
       "item_id": "phq2_01",
@@ -49,22 +59,40 @@
       "safety_trigger": null
     }
   ],
-
   "scoring": {
     "method": "sum",
-    "range": [0, 6],
+    "range": [
+      0,
+      6
+    ],
     "bands": [
-      {"min": 0, "max": 2, "label": "minimal_or_none", "source": "Kroenke et al. 2003"},
-      {"min": 3, "max": 6, "label": "elevated_symptoms", "source": "Kroenke et al. 2003"}
+      {
+        "min": 0,
+        "max": 2,
+        "label": "minimal_or_none",
+        "source": "Kroenke et al. 2003"
+      },
+      {
+        "min": 3,
+        "max": 6,
+        "label": "elevated_symptoms",
+        "source": "Kroenke et al. 2003"
+      }
     ],
     "subscales": null
   },
-
   "routing": {
     "parent_instrument": null,
     "carry_forward_items": null,
     "on_completion": [
-      {"condition": "score >= 3", "action": "trigger_expansion", "target": "phq9"}
+      {
+        "condition": "score >= 3",
+        "action": "trigger_expansion",
+        "target": "phq9"
+      }
     ]
+  },
+  "band_descriptions": {
+    "elevated_symptoms": "Your responses suggest elevated depressive symptoms over the past two weeks. This is worth paying attention to, and many people find it helpful to monitor this pattern or discuss it with a professional."
   }
 }

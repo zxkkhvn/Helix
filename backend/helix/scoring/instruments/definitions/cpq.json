@@ -1,0 +1,186 @@
+{
+  "instrument_id": "cpq",
+  "version": "1.0.0",
+  "name": "Cognitive Processing Questionnaire",
+  "abbreviation": "CPQ",
+  "planet": "neptune",
+  "tier": "deep_dive",
+  "time_window": "general",
+  "time_window_text": "",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "cpq_4pt": [
+      {
+        "value": 1,
+        "label": "Not at all"
+      },
+      {
+        "value": 2,
+        "label": "Some of the time"
+      },
+      {
+        "value": 3,
+        "label": "Most of the time"
+      },
+      {
+        "value": 4,
+        "label": "All of the time"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "cpq_01",
+      "text": "Over the past month, have you pushed yourself really hard to meet your goals?",
+      "response_options_key": "cpq_4pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cpq_02",
+      "text": "Over the past month, have you tended to focus on what you have achieved, rather than on what you have not achieved?",
+      "response_options_key": "cpq_4pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cpq_03",
+      "text": "Over the past month, have you been told that your standards are too high?",
+      "response_options_key": "cpq_4pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cpq_04",
+      "text": "Over the past month, have you felt a failure as a person because you have not succeeded in meeting your goals?",
+      "response_options_key": "cpq_4pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cpq_05",
+      "text": "Over the past month, have you been afraid that you might not reach your standards?",
+      "response_options_key": "cpq_4pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cpq_06",
+      "text": "Over the past month, have you raised your standards because you thought they were too easy?",
+      "response_options_key": "cpq_4pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cpq_07",
+      "text": "Over the past month, have you judged yourself on the basis of your ability to achieve high standards?",
+      "response_options_key": "cpq_4pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cpq_08",
+      "text": "Over the past month, have you done just enough to get by?",
+      "response_options_key": "cpq_4pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cpq_09",
+      "text": "Over the past month, have you repeatedly checked how well you are doing at meeting your standards (for example, by comparing your performance with that of others)?",
+      "response_options_key": "cpq_4pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cpq_10",
+      "text": "Over the past month, do you think that other people would have thought of you as a 'perfectionist'?",
+      "response_options_key": "cpq_4pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cpq_11",
+      "text": "Over the past month, have you kept trying to meet your standards, even if this has meant that you have missed out on things?",
+      "response_options_key": "cpq_4pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "cpq_12",
+      "text": "Over the past month, have you avoided any tests of your performance (at meeting your goals) in case you failed?",
+      "response_options_key": "cpq_4pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+  "scoring": {
+    "method": "sum",
+    "range": [
+      12,
+      48
+    ],
+    "reverse_items": [
+      "cpq_02",
+      "cpq_08"
+    ],
+    "bands": [
+      {
+        "min": 12,
+        "max": 23,
+        "label": "low"
+      },
+      {
+        "min": 24,
+        "max": 35,
+        "label": "moderate"
+      },
+      {
+        "min": 36,
+        "max": 48,
+        "label": "high"
+      }
+    ]
+  },
+  "routing": {},
+  "band_descriptions": {
+    "low": "Your responses suggest a low level of clinical perfectionism over the past month. Most people experience occasional self-criticism, and your responses fall within the typical range.",
+    "moderate": "Your responses indicate a moderate level of perfectionism over the past month. Many people find it helpful to monitor this and practise self-compassion when standards aren't met.",
+    "high": "Your responses suggest a high level of clinical perfectionism over the past month. This is worth paying attention to, as linking your self-worth entirely to achievement can be exhausting."
+  }
+}

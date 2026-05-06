@@ -19,17 +19,30 @@
   "min_trials_for_partial_scoring": null,
   "composite_contributions": [],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "asrs_likert": [
-      {"value": 0, "label": "Never"},
-      {"value": 1, "label": "Rarely"},
-      {"value": 2, "label": "Sometimes"},
-      {"value": 3, "label": "Often"},
-      {"value": 4, "label": "Very Often"}
+      {
+        "value": 0,
+        "label": "Never"
+      },
+      {
+        "value": 1,
+        "label": "Rarely"
+      },
+      {
+        "value": 2,
+        "label": "Sometimes"
+      },
+      {
+        "value": 3,
+        "label": "Often"
+      },
+      {
+        "value": 4,
+        "label": "Very Often"
+      }
     ]
   },
-
   "items": [
     {
       "item_id": "asrs_a_01",
@@ -86,23 +99,44 @@
       "safety_trigger": null
     }
   ],
-
   "scoring": {
     "method": "sum",
-    "range": [0, 24],
+    "range": [
+      0,
+      24
+    ],
     "bands": [
-      {"min": 0, "max": 11, "label": "low"},
-      {"min": 12, "max": 24, "label": "elevated"}
+      {
+        "min": 0,
+        "max": 11,
+        "label": "low"
+      },
+      {
+        "min": 12,
+        "max": 24,
+        "label": "elevated"
+      }
     ],
     "subscales": null
   },
-
   "routing": {
     "parent_instrument": null,
     "carry_forward_items": null,
     "on_completion": [
-      {"condition": "score >= 12", "action": "trigger_expansion", "target": "asrs_full"},
-      {"condition": "score >= 12", "action": "unlock_planet", "target": "uranus"}
+      {
+        "condition": "score >= 12",
+        "action": "trigger_expansion",
+        "target": "asrs_full"
+      },
+      {
+        "condition": "score >= 12",
+        "action": "unlock_planet",
+        "target": "uranus"
+      }
     ]
+  },
+  "band_descriptions": {
+    "low": "Your responses suggest a low level of traits associated with ADHD over the past 6 months. Most people experience occasional distractibility, and your responses fall within the typical range.",
+    "elevated": "Your responses indicate elevated traits consistent with ADHD over the past 6 months. Many people with these patterns find that understanding them helps make sense of their experiences, and it may be worth exploring further."
   }
 }

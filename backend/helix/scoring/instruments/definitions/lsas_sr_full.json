@@ -1,0 +1,573 @@
+{
+  "instrument_id": "lsas_sr_full",
+  "version": "1.0.0",
+  "name": "Liebowitz Social Anxiety Scale - Self-Report",
+  "abbreviation": "LSAS-SR",
+  "planet": "saturn",
+  "tier": "deep_dive",
+  "time_window": "past_week",
+  "time_window_text": "Read each situation carefully and answer two questions about it: how much fear or anxiety you felt, and how often you avoided it.",
+  "time_window_days": 7,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [
+    "distress_index",
+    "social_friction"
+  ],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "lsas_fear": [
+      {
+        "value": 0,
+        "label": "None"
+      },
+      {
+        "value": 1,
+        "label": "Mild"
+      },
+      {
+        "value": 2,
+        "label": "Moderate"
+      },
+      {
+        "value": 3,
+        "label": "Severe"
+      }
+    ],
+    "lsas_avoid": [
+      {
+        "value": 0,
+        "label": "Never (0%)"
+      },
+      {
+        "value": 1,
+        "label": "Occasionally (1-33%)"
+      },
+      {
+        "value": 2,
+        "label": "Often (33-67%)"
+      },
+      {
+        "value": 3,
+        "label": "Usually (67-100%)"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "lsas_f_01_fear",
+      "text": "Telephoning in public (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_01_avoid",
+      "text": "Telephoning in public (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_02_fear",
+      "text": "Participating in small groups (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_02_avoid",
+      "text": "Participating in small groups (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_03_fear",
+      "text": "Eating in public places (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_03_avoid",
+      "text": "Eating in public places (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_04_fear",
+      "text": "Drinking with others in public places (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_04_avoid",
+      "text": "Drinking with others in public places (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_05_fear",
+      "text": "Talking to people in authority (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_05_avoid",
+      "text": "Talking to people in authority (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_06_fear",
+      "text": "Acting, performing or giving a talk in front of an audience (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_06_avoid",
+      "text": "Acting, performing or giving a talk in front of an audience (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_07_fear",
+      "text": "Going to a party (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_07_avoid",
+      "text": "Going to a party (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_08_fear",
+      "text": "Working while being observed (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_08_avoid",
+      "text": "Working while being observed (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_09_fear",
+      "text": "Writing while being observed (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_09_avoid",
+      "text": "Writing while being observed (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_10_fear",
+      "text": "Calling someone you don't know very well (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_10_avoid",
+      "text": "Calling someone you don't know very well (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_11_fear",
+      "text": "Talking with people you don't know very well (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_11_avoid",
+      "text": "Talking with people you don't know very well (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_12_fear",
+      "text": "Meeting strangers (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_12_avoid",
+      "text": "Meeting strangers (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_13_fear",
+      "text": "Urinating in a public bathroom (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_13_avoid",
+      "text": "Urinating in a public bathroom (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_14_fear",
+      "text": "Entering a room when others are already seated (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_14_avoid",
+      "text": "Entering a room when others are already seated (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_15_fear",
+      "text": "Being the centre of attention (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_15_avoid",
+      "text": "Being the centre of attention (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_16_fear",
+      "text": "Speaking up at a meeting (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_16_avoid",
+      "text": "Speaking up at a meeting (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_17_fear",
+      "text": "Taking a test (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_17_avoid",
+      "text": "Taking a test (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_18_fear",
+      "text": "Expressing a disagreement or disapproval to people you don't know very well (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_18_avoid",
+      "text": "Expressing a disagreement or disapproval to people you don't know very well (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_19_fear",
+      "text": "Looking at people you don't know very well in the eyes (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_19_avoid",
+      "text": "Looking at people you don't know very well in the eyes (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_20_fear",
+      "text": "Giving a report to a group (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_20_avoid",
+      "text": "Giving a report to a group (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_21_fear",
+      "text": "Trying to pick up someone (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_21_avoid",
+      "text": "Trying to pick up someone (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_22_fear",
+      "text": "Returning goods to a store (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_22_avoid",
+      "text": "Returning goods to a store (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_23_fear",
+      "text": "Giving a party (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_23_avoid",
+      "text": "Giving a party (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_24_fear",
+      "text": "Resisting a high pressure salesperson (Fear)",
+      "response_options_key": "lsas_fear",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "lsas_f_24_avoid",
+      "text": "Resisting a high pressure salesperson (Avoidance)",
+      "response_options_key": "lsas_avoid",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+  "scoring": {
+    "method": "custom",
+    "range": [
+      0,
+      144
+    ],
+    "bands": [
+      {
+        "min": 0,
+        "max": 54,
+        "label": "none"
+      },
+      {
+        "min": 55,
+        "max": 64,
+        "label": "mild"
+      },
+      {
+        "min": 65,
+        "max": 79,
+        "label": "moderate"
+      },
+      {
+        "min": 80,
+        "max": 94,
+        "label": "marked"
+      },
+      {
+        "min": 95,
+        "max": 120,
+        "label": "severe"
+      },
+      {
+        "min": 121,
+        "max": 144,
+        "label": "very_severe"
+      }
+    ]
+  },
+  "routing": {
+    "parent_instrument": "lsas_sr_short",
+    "carry_forward_items": {
+      "lsas_s_01_fear": "lsas_f_01_fear",
+      "lsas_s_01_avoid": "lsas_f_01_avoid",
+      "lsas_s_02_fear": "lsas_f_02_fear",
+      "lsas_s_02_avoid": "lsas_f_02_avoid",
+      "lsas_s_03_fear": "lsas_f_03_fear",
+      "lsas_s_03_avoid": "lsas_f_03_avoid",
+      "lsas_s_04_fear": "lsas_f_04_fear",
+      "lsas_s_04_avoid": "lsas_f_04_avoid",
+      "lsas_s_05_fear": "lsas_f_05_fear",
+      "lsas_s_05_avoid": "lsas_f_05_avoid",
+      "lsas_s_06_fear": "lsas_f_06_fear",
+      "lsas_s_06_avoid": "lsas_f_06_avoid",
+      "lsas_s_07_fear": "lsas_f_07_fear",
+      "lsas_s_07_avoid": "lsas_f_07_avoid",
+      "lsas_s_08_fear": "lsas_f_08_fear",
+      "lsas_s_08_avoid": "lsas_f_08_avoid",
+      "lsas_s_09_fear": "lsas_f_09_fear",
+      "lsas_s_09_avoid": "lsas_f_09_avoid",
+      "lsas_s_10_fear": "lsas_f_10_fear",
+      "lsas_s_10_avoid": "lsas_f_10_avoid",
+      "lsas_s_11_fear": "lsas_f_11_fear",
+      "lsas_s_11_avoid": "lsas_f_11_avoid",
+      "lsas_s_12_fear": "lsas_f_12_fear",
+      "lsas_s_12_avoid": "lsas_f_12_avoid"
+    }
+  },
+  "band_descriptions": {
+    "none": "Your responses suggest no significant social anxiety. Most people experience occasional nervousness in social settings, and your responses fall within the typical range.",
+    "mild": "Your responses indicate mild social anxiety. Most people experience this occasionally, but it is worth paying attention to if it limits your daily life.",
+    "moderate": "Your responses suggest moderate social anxiety. Many people find it helpful to monitor this and practise gradual engagement with feared situations.",
+    "marked": "Your responses indicate marked social anxiety. This level of fear and avoidance is worth paying attention to, and exploring supportive strategies can be very helpful.",
+    "severe": "Your responses suggest severe social anxiety. The distress you are feeling in social situations is significant, and professional guidance could provide valuable support.",
+    "very_severe": "Your responses indicate very severe social anxiety. This level of difficulty is highly validating of your distress, and professional support is strongly recommended."
+  }
+}

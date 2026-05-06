@@ -17,33 +17,78 @@
   "sensitive_content_warning": null,
   "calibration_signal": null,
   "min_trials_for_partial_scoring": null,
-  "composite_contributions": ["executive_load"],
+  "composite_contributions": [
+    "executive_load"
+  ],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "isi_severity": [
-      {"value": 0, "label": "None"},
-      {"value": 1, "label": "Mild"},
-      {"value": 2, "label": "Moderate"},
-      {"value": 3, "label": "Severe"},
-      {"value": 4, "label": "Very Severe"}
+      {
+        "value": 0,
+        "label": "None"
+      },
+      {
+        "value": 1,
+        "label": "Mild"
+      },
+      {
+        "value": 2,
+        "label": "Moderate"
+      },
+      {
+        "value": 3,
+        "label": "Severe"
+      },
+      {
+        "value": 4,
+        "label": "Very Severe"
+      }
     ],
     "isi_satisfaction": [
-      {"value": 0, "label": "Very Satisfied"},
-      {"value": 1, "label": "Satisfied"},
-      {"value": 2, "label": "Moderately Satisfied"},
-      {"value": 3, "label": "Dissatisfied"},
-      {"value": 4, "label": "Very Dissatisfied"}
+      {
+        "value": 0,
+        "label": "Very Satisfied"
+      },
+      {
+        "value": 1,
+        "label": "Satisfied"
+      },
+      {
+        "value": 2,
+        "label": "Moderately Satisfied"
+      },
+      {
+        "value": 3,
+        "label": "Dissatisfied"
+      },
+      {
+        "value": 4,
+        "label": "Very Dissatisfied"
+      }
     ],
     "isi_noticeable": [
-      {"value": 0, "label": "Not at all"},
-      {"value": 1, "label": "A Little"},
-      {"value": 2, "label": "Somewhat"},
-      {"value": 3, "label": "Much"},
-      {"value": 4, "label": "Very Much"}
+      {
+        "value": 0,
+        "label": "Not at all"
+      },
+      {
+        "value": 1,
+        "label": "A Little"
+      },
+      {
+        "value": 2,
+        "label": "Somewhat"
+      },
+      {
+        "value": 3,
+        "label": "Much"
+      },
+      {
+        "value": 4,
+        "label": "Very Much"
+      }
     ]
   },
-
   "items": [
     {
       "item_id": "isi_01",
@@ -109,19 +154,36 @@
       "safety_trigger": null
     }
   ],
-
   "scoring": {
     "method": "sum",
-    "range": [0, 28],
+    "range": [
+      0,
+      28
+    ],
     "bands": [
-      {"min": 0, "max": 7, "label": "none"},
-      {"min": 8, "max": 14, "label": "subthreshold"},
-      {"min": 15, "max": 21, "label": "moderate"},
-      {"min": 22, "max": 28, "label": "severe"}
+      {
+        "min": 0,
+        "max": 7,
+        "label": "none"
+      },
+      {
+        "min": 8,
+        "max": 14,
+        "label": "subthreshold"
+      },
+      {
+        "min": 15,
+        "max": 21,
+        "label": "moderate"
+      },
+      {
+        "min": 22,
+        "max": 28,
+        "label": "severe"
+      }
     ],
     "subscales": null
   },
-
   "routing": {
     "on_completion": [
       {
@@ -130,5 +192,11 @@
         "target": "psqi"
       }
     ]
+  },
+  "band_descriptions": {
+    "no_insomnia": "Your responses suggest no clinically significant insomnia over the past two weeks. Most people experience occasional sleep disruptions, and your responses fall within the typical range.",
+    "subthreshold": "Your responses indicate subthreshold insomnia over the past two weeks. Most people experience this occasionally, but it is worth paying attention to if sleep issues continue.",
+    "moderate": "Your responses suggest moderate clinical insomnia over the past two weeks. Many people find it helpful to monitor this and explore strategies to improve sleep hygiene.",
+    "severe": "Your responses indicate severe clinical insomnia over the past two weeks. This level of sleep disruption is significant, and speaking with your GP or a sleep specialist could be a valuable next step."
   }
 }

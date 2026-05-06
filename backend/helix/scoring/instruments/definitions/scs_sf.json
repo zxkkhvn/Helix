@@ -133,6 +133,23 @@
       1.0,
       5.0
     ],
+    "bands": [
+      {
+        "min": 1.0,
+        "max": 2.49,
+        "label": "low"
+      },
+      {
+        "min": 2.5,
+        "max": 3.5,
+        "label": "average"
+      },
+      {
+        "min": 3.51,
+        "max": 5.0,
+        "label": "high"
+      }
+    ],
     "subscales": {
       "self_kindness": {
         "method": "mean",
@@ -182,5 +199,10 @@
     "on_completion": []
   },
   "time_window_days": null,
-  "sensitive_content_warning": null
+  "sensitive_content_warning": null,
+  "band_descriptions": {
+    "low": "Your responses suggest a low level of self-compassion during difficult times. This is worth paying attention to, as practising self-kindness can be a powerful resource for navigating challenges.",
+    "average": "Your responses indicate an average level of self-compassion. Most people experience fluctuations in how they treat themselves, and your responses fall within the typical range.",
+    "high": "Your responses suggest a high level of self-compassion. This suggests you have strong resources in this area and are adept at treating yourself with warmth and understanding."
+  }
 }

@@ -70,6 +70,22 @@ def _create_session(client) -> str:
     return r.json()["session_id"]
 
 
+def _force_exploring(sid: str):
+    from helix.main import app
+    from helix.db.database import get_db
+    from helix.models.models import Session as DBSession
+    
+    db_gen = app.dependency_overrides.get(get_db, get_db)()
+    db = next(db_gen)
+    s = db.get(DBSession, sid)
+    s.state = "EXPLORING"
+    db.commit()
+    try:
+        next(db_gen)
+    except StopIteration:
+        pass
+
+
 def _phq2_min_responses():
     return {"phq2_01": 0, "phq2_02": 0}
 
@@ -434,6 +450,37 @@ class TestAvailableInstruments:
         r = client.get(f"/sessions/{sid}")
         assert r.json()["available"] == ["intake"]
         assert len(r.json()["completed"]) == 3
+
+    def test_uranus_unlock_via_asrs(self, client):
+        sid = _create_session(client)
+        # score >= 12 triggers uranus unlock
+        r = client.post(
+            f"/sessions/{sid}/assessments/asrs_a/submit",
+            json={"responses": {f"asrs_a_0{i}": 2 for i in range(1, 7)}}
+        )
+        assert r.status_code == 200
+        _force_exploring(sid)
+        r_sess = client.get(f"/sessions/{sid}")
+        avail = r_sess.json()["available"]
+        assert "aq10" in avail
+        assert "catq" in avail
+
+    def test_asteroid_belt_unlock_via_pcptsd5(self, client):
+        sid = _create_session(client)
+        r = client.post(
+            f"/sessions/{sid}/assessments/pcptsd5/submit",
+            json={"responses": {f"pcptsd5_0{i}": 1 for i in range(1, 6)}} # score 5
+        )
+        assert r.status_code == 200
+        # This will trigger a safety pause
+        assert r.json()["session_state"] == "SAFETY_PAUSED"
+        
+        # Acknowledge safety to resume
+        client.post(f"/sessions/{sid}/acknowledge-safety")
+        
+        r_sess = client.get(f"/sessions/{sid}")
+        avail = r_sess.json()["available"]
+        assert "pcl5" in avail
 
 
 # ---------------------------------------------------------------------------

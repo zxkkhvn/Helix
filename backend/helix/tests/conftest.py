@@ -68,6 +68,13 @@ def make_responses(definition: dict, value: int) -> dict:
     return {item["item_id"]: value for item in definition["items"]}
 
 
+def _mock_responses(instrument_id: str, value: int) -> dict:
+    """Helper for legacy tests that generated mock responses by ID."""
+    from helix.scoring.registry import get_scorer
+    scorer = get_scorer(instrument_id)
+    return make_responses(scorer._def, value)
+
+
 def make_max_responses(definition: dict) -> dict:
     """Generate responses at the maximum value for each item."""
     responses = {}

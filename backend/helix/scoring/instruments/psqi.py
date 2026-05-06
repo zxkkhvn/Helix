@@ -162,6 +162,11 @@ class PSQIScorer(BaseScorer):
             
         global_score = comp_1 + comp_2 + comp_3 + comp_4 + comp_5 + comp_6 + comp_7
         band = self._assign_band(float(global_score), self._bands)
+        
+        band_description = None
+        band_desc_map = self._def.get("band_descriptions", {})
+        if band and band in band_desc_map:
+            band_description = band_desc_map[band]
 
         validity_warnings = []
         # Filter out text fields for longstring
@@ -175,6 +180,7 @@ class PSQIScorer(BaseScorer):
             instrument_id=self.instrument_id,
             total_score=float(global_score),
             band=band,
+            band_description=band_description,
             subscale_scores={
                 "subjective_sleep_quality": float(comp_1),
                 "sleep_latency": float(comp_2),

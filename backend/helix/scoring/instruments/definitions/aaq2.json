@@ -17,21 +17,42 @@
   "sensitive_content_warning": null,
   "calibration_signal": null,
   "min_trials_for_partial_scoring": null,
-  "composite_contributions": ["regulatory_burden"],
+  "composite_contributions": [
+    "regulatory_burden"
+  ],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "aaq_likert": [
-      {"value": 1, "label": "Never true"},
-      {"value": 2, "label": "Very seldom true"},
-      {"value": 3, "label": "Seldom true"},
-      {"value": 4, "label": "Sometimes true"},
-      {"value": 5, "label": "Frequently true"},
-      {"value": 6, "label": "Almost always true"},
-      {"value": 7, "label": "Always true"}
+      {
+        "value": 1,
+        "label": "Never true"
+      },
+      {
+        "value": 2,
+        "label": "Very seldom true"
+      },
+      {
+        "value": 3,
+        "label": "Seldom true"
+      },
+      {
+        "value": 4,
+        "label": "Sometimes true"
+      },
+      {
+        "value": 5,
+        "label": "Frequently true"
+      },
+      {
+        "value": 6,
+        "label": "Almost always true"
+      },
+      {
+        "value": 7,
+        "label": "Always true"
+      }
     ]
   },
-
   "items": [
     {
       "item_id": "aaq2_01",
@@ -97,21 +118,39 @@
       "safety_trigger": null
     }
   ],
-
   "scoring": {
     "method": "sum",
-    "range": [7, 49],
+    "range": [
+      7,
+      49
+    ],
     "bands": [
-      {"min": 7, "max": 17, "label": "low_inflexibility"},
-      {"min": 18, "max": 27, "label": "moderate"},
-      {"min": 28, "max": 49, "label": "high_inflexibility"}
+      {
+        "min": 7,
+        "max": 17,
+        "label": "low_inflexibility"
+      },
+      {
+        "min": 18,
+        "max": 27,
+        "label": "moderate"
+      },
+      {
+        "min": 28,
+        "max": 49,
+        "label": "high_inflexibility"
+      }
     ],
     "subscales": null
   },
-
   "routing": {
     "parent_instrument": null,
     "carry_forward_items": null,
     "on_completion": []
+  },
+  "band_descriptions": {
+    "low_inflexibility": "Your responses suggest a high degree of psychological flexibility. This suggests you have strong resources in this area and are able to stay engaged with your values even during difficult experiences.",
+    "moderate": "Your responses indicate moderate psychological inflexibility. Many people find it helpful to monitor this and gently practise acceptance of uncomfortable emotions.",
+    "high_inflexibility": "Your responses suggest high psychological inflexibility. This is worth paying attention to, as avoiding painful thoughts or feelings can sometimes make them harder to manage."
   }
 }

@@ -17,19 +17,34 @@
   "sensitive_content_warning": null,
   "calibration_signal": null,
   "min_trials_for_partial_scoring": null,
-  "composite_contributions": ["executive_load"],
+  "composite_contributions": [
+    "executive_load"
+  ],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "asrs_likert": [
-      {"value": 0, "label": "Never"},
-      {"value": 1, "label": "Rarely"},
-      {"value": 2, "label": "Sometimes"},
-      {"value": 3, "label": "Often"},
-      {"value": 4, "label": "Very Often"}
+      {
+        "value": 0,
+        "label": "Never"
+      },
+      {
+        "value": 1,
+        "label": "Rarely"
+      },
+      {
+        "value": 2,
+        "label": "Sometimes"
+      },
+      {
+        "value": 3,
+        "label": "Often"
+      },
+      {
+        "value": 4,
+        "label": "Very Often"
+      }
     ]
   },
-
   "items": [
     {
       "item_id": "asrs_full_01",
@@ -194,18 +209,31 @@
       "safety_trigger": null
     }
   ],
-
   "scoring": {
     "method": "sum",
-    "range": [0, 72],
+    "range": [
+      0,
+      72
+    ],
     "bands": [
-      {"min": 0, "max": 24, "label": "low"},
-      {"min": 25, "max": 44, "label": "moderate"},
-      {"min": 45, "max": 72, "label": "high"}
+      {
+        "min": 0,
+        "max": 24,
+        "label": "low"
+      },
+      {
+        "min": 25,
+        "max": 44,
+        "label": "moderate"
+      },
+      {
+        "min": 45,
+        "max": 72,
+        "label": "high"
+      }
     ],
     "subscales": null
   },
-
   "routing": {
     "parent_instrument": "asrs_a",
     "carry_forward_items": {
@@ -217,5 +245,10 @@
       "asrs_a_06": "asrs_full_06"
     },
     "on_completion": []
+  },
+  "band_descriptions": {
+    "low": "Your responses suggest a low level of traits associated with inattention or hyperactivity over the past 6 months. Most people experience occasional focus issues, and your responses fall within the typical range.",
+    "moderate": "Your responses indicate moderate traits consistent with ADHD over the past 6 months. Many people find it helpful to monitor these patterns to see how they impact daily life.",
+    "high": "Your responses suggest high levels of traits consistent with ADHD over the past 6 months. Many people with these patterns find that understanding them helps make sense of their experiences."
   }
 }

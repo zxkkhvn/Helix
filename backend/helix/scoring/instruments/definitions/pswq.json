@@ -1,0 +1,236 @@
+{
+  "instrument_id": "pswq",
+  "version": "1.0.0",
+  "name": "Penn State Worry Questionnaire",
+  "abbreviation": "PSWQ",
+  "planet": "neptune",
+  "tier": "deep_dive",
+  "time_window": "general",
+  "time_window_text": "",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "pswq_5pt": [
+      {
+        "value": 1,
+        "label": "Not at all typical of me"
+      },
+      {
+        "value": 2,
+        "label": "2"
+      },
+      {
+        "value": 3,
+        "label": "3"
+      },
+      {
+        "value": 4,
+        "label": "4"
+      },
+      {
+        "value": 5,
+        "label": "Very typical of me"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "pswq_01",
+      "text": "If I do not have enough time to do everything, I do not worry about it.",
+      "response_options_key": "pswq_5pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pswq_02",
+      "text": "My worries overwhelm me.",
+      "response_options_key": "pswq_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pswq_03",
+      "text": "I do not tend to worry about things.",
+      "response_options_key": "pswq_5pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pswq_04",
+      "text": "Many situations make me worry.",
+      "response_options_key": "pswq_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pswq_05",
+      "text": "I know I should not worry about things, but I just cannot help it.",
+      "response_options_key": "pswq_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pswq_06",
+      "text": "When I am under pressure I worry a lot.",
+      "response_options_key": "pswq_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pswq_07",
+      "text": "I am always worrying about something.",
+      "response_options_key": "pswq_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pswq_08",
+      "text": "I find it easy to dismiss worrisome thoughts.",
+      "response_options_key": "pswq_5pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pswq_09",
+      "text": "As soon as I finish one task, I start to worry about everything else I have to do.",
+      "response_options_key": "pswq_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pswq_10",
+      "text": "I never worry about anything.",
+      "response_options_key": "pswq_5pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pswq_11",
+      "text": "When there is nothing more I can do about a concern, I do not worry about it any more.",
+      "response_options_key": "pswq_5pt",
+      "valence": "positive",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pswq_12",
+      "text": "I have been a worrier all my life.",
+      "response_options_key": "pswq_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pswq_13",
+      "text": "I notice that I have been worrying about things.",
+      "response_options_key": "pswq_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pswq_14",
+      "text": "Once I start worrying, I cannot stop.",
+      "response_options_key": "pswq_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pswq_15",
+      "text": "I worry all the time.",
+      "response_options_key": "pswq_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pswq_16",
+      "text": "I worry about projects until they are all done.",
+      "response_options_key": "pswq_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+  "scoring": {
+    "method": "sum",
+    "range": [
+      16,
+      80
+    ],
+    "reverse_items": [
+      "pswq_01",
+      "pswq_03",
+      "pswq_08",
+      "pswq_10",
+      "pswq_11"
+    ],
+    "bands": [
+      {
+        "min": 16,
+        "max": 38,
+        "label": "low"
+      },
+      {
+        "min": 39,
+        "max": 49,
+        "label": "moderate"
+      },
+      {
+        "min": 50,
+        "max": 80,
+        "label": "high_worry"
+      }
+    ]
+  },
+  "routing": {
+    "on_completion": [
+      {
+        "condition": "score >= 50",
+        "action": "flag_elevated"
+      }
+    ]
+  },
+  "band_descriptions": {
+    "low": "Your responses suggest a low level of trait worry. Most people experience occasional worries, and your responses fall within the typical range.",
+    "moderate": "Your responses indicate a moderate level of worry. Many people find it helpful to monitor this and explore techniques to manage anxious thoughts.",
+    "high_worry": "Your responses suggest a high level of chronic, uncontrollable worry. This level of anxiety is highly validating of your distress, and professional support is strongly recommended. If you'd like to talk to someone, Samaritans are available 24/7 on 116 123 (UK)."
+  }
+}

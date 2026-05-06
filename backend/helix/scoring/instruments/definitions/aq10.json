@@ -1,0 +1,183 @@
+{
+  "instrument_id": "aq10",
+  "version": "1.0.0",
+  "name": "Autism Spectrum Quotient - 10 Item",
+  "abbreviation": "AQ-10",
+  "planet": "uranus",
+  "tier": "quick_scan",
+  "time_window": "general",
+  "time_window_text": "",
+  "time_window_days": null,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": false,
+  "sensitive_content_warning": null,
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "aq10_agree": [
+      {
+        "value": 1,
+        "label": "Definitely Agree"
+      },
+      {
+        "value": 1,
+        "label": "Slightly Agree"
+      },
+      {
+        "value": 0,
+        "label": "Slightly Disagree"
+      },
+      {
+        "value": 0,
+        "label": "Definitely Disagree"
+      }
+    ],
+    "aq10_disagree": [
+      {
+        "value": 0,
+        "label": "Definitely Agree"
+      },
+      {
+        "value": 0,
+        "label": "Slightly Agree"
+      },
+      {
+        "value": 1,
+        "label": "Slightly Disagree"
+      },
+      {
+        "value": 1,
+        "label": "Definitely Disagree"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "aq10_01",
+      "text": "I often notice small sounds when others do not.",
+      "response_options_key": "aq10_agree",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "aq10_02",
+      "text": "I usually concentrate more on the whole picture, rather than the small details.",
+      "response_options_key": "aq10_disagree",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "aq10_03",
+      "text": "I find it easy to do more than one thing at once.",
+      "response_options_key": "aq10_disagree",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "aq10_04",
+      "text": "If there is an interruption, I can switch back to what I was doing very quickly.",
+      "response_options_key": "aq10_disagree",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "aq10_05",
+      "text": "I find it easy to 'read between the lines' when someone is talking to me.",
+      "response_options_key": "aq10_disagree",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "aq10_06",
+      "text": "I know how to tell if someone listening to me is getting bored.",
+      "response_options_key": "aq10_disagree",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "aq10_07",
+      "text": "When I'm reading a story, I find it difficult to work out the characters' intentions.",
+      "response_options_key": "aq10_agree",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "aq10_08",
+      "text": "I like to collect information about categories of things (e.g. types of car, types of bird, types of train, types of plant etc).",
+      "response_options_key": "aq10_agree",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "aq10_09",
+      "text": "I find it easy to work out what someone is thinking or feeling just by looking at their face.",
+      "response_options_key": "aq10_disagree",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "aq10_10",
+      "text": "I find it difficult to work out people's intentions.",
+      "response_options_key": "aq10_agree",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+  "scoring": {
+    "method": "sum",
+    "range": [
+      0,
+      10
+    ],
+    "bands": [
+      {
+        "min": 0,
+        "max": 5,
+        "label": "below_threshold"
+      },
+      {
+        "min": 6,
+        "max": 10,
+        "label": "above_threshold"
+      }
+    ]
+  },
+  "routing": {
+    "on_completion": [
+      {
+        "condition": "score >= 6",
+        "action": "flag_elevated"
+      }
+    ]
+  },
+  "band_descriptions": {
+    "below_threshold": "Your responses suggest a low level of autistic traits. Most people experience occasional social or sensory differences, and your responses fall within the typical range.",
+    "above_threshold": "Your responses indicate traits consistent with the autism spectrum. Many people with these patterns find that understanding them helps make sense of their experiences, and you may find it helpful to explore this further."
+  }
+}

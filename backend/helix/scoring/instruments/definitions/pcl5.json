@@ -1,0 +1,294 @@
+{
+  "instrument_id": "pcl5",
+  "version": "1.0.0",
+  "name": "PTSD Checklist for DSM-5",
+  "abbreviation": "PCL-5",
+  "planet": "asteroid_belt",
+  "tier": "deep_dive",
+  "time_window": "past_month",
+  "time_window_text": "The table below lists problems that people sometimes have in response to extremely stressful experiences. Keeping your worst event in mind, please indicate how much you have been bothered by that problem in the past month.",
+  "time_window_days": 30,
+  "cultural_validity": {
+    "tier": "broadly_cross_cultural",
+    "caveat_text": null
+  },
+  "licence_status": "public_domain",
+  "sensitive_content": true,
+  "sensitive_content_warning": "This questionnaire asks about distressing experiences related to traumatic events. Please take your time and answer as honestly as you can.",
+  "calibration_signal": null,
+  "min_trials_for_partial_scoring": null,
+  "composite_contributions": [],
+  "consistency_pairs": [],
+  "response_option_sets": {
+    "pcl5_5pt": [
+      {
+        "value": 0,
+        "label": "Not at all"
+      },
+      {
+        "value": 1,
+        "label": "A little bit"
+      },
+      {
+        "value": 2,
+        "label": "Moderately"
+      },
+      {
+        "value": 3,
+        "label": "Quite a bit"
+      },
+      {
+        "value": 4,
+        "label": "Extremely"
+      }
+    ]
+  },
+  "items": [
+    {
+      "item_id": "pcl5_01",
+      "text": "Repeated, disturbing, and unwanted memories of the stressful experience?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_02",
+      "text": "Repeated, disturbing dreams of the stressful experience?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_03",
+      "text": "Suddenly feeling or acting as if the stressful experience were actually happening again (as if you were actually back there reliving it)?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_04",
+      "text": "Feeling very upset when something reminded you of the stressful experience?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_05",
+      "text": "Having strong physical reactions when something reminded you of the stressful experience (e.g., heart pounding, trouble breathing, sweating)?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_06",
+      "text": "Avoiding memories, thoughts, or feelings related to the stressful experience?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_07",
+      "text": "Avoiding external reminders of the stressful experience (e.g., people, places, conversations, activities, objects, or situations)?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_08",
+      "text": "Trouble remembering important parts of the stressful experience?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_09",
+      "text": "Having strong negative beliefs about yourself, other people, or the world (e.g., having thoughts such as: I am bad, there is something seriously wrong with me, no one can be trusted, the world is completely dangerous)?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_10",
+      "text": "Blaming yourself or someone else for the stressful experience or what happened after it?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_11",
+      "text": "Having strong negative feelings such as fear, horror, anger, guilt, or shame?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_12",
+      "text": "Loss of interest in activities that you used to enjoy?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_13",
+      "text": "Feeling distant or cut off from other people?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_14",
+      "text": "Trouble experiencing positive feelings (e.g., being unable to feel happiness or have loving feelings for people close to you)?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_15",
+      "text": "Irritable behavior, angry outbursts, or acting aggressively?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_16",
+      "text": "Taking too many risks or doing things that could cause you harm?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_17",
+      "text": "Being 'super-alert' or watchful or on guard?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_18",
+      "text": "Feeling jumpy or easily startled?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_19",
+      "text": "Having difficulty concentrating?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    },
+    {
+      "item_id": "pcl5_20",
+      "text": "Trouble falling or staying asleep?",
+      "response_options_key": "pcl5_5pt",
+      "valence": "negative",
+      "exclude_from_score": false,
+      "safety_flag": false,
+      "safety_trigger": null
+    }
+  ],
+  "scoring": {
+    "method": "sum",
+    "range": [
+      0,
+      80
+    ],
+    "bands": [
+      {
+        "min": 0,
+        "max": 30,
+        "label": "subthreshold"
+      },
+      {
+        "min": 31,
+        "max": 80,
+        "label": "probable_ptsd"
+      }
+    ],
+    "subscales": {
+      "intrusion": {
+        "items": [
+          "pcl5_01",
+          "pcl5_02",
+          "pcl5_03",
+          "pcl5_04",
+          "pcl5_05"
+        ],
+        "method": "sum"
+      },
+      "avoidance": {
+        "items": [
+          "pcl5_06",
+          "pcl5_07"
+        ],
+        "method": "sum"
+      },
+      "negative_cognitions_mood": {
+        "items": [
+          "pcl5_08",
+          "pcl5_09",
+          "pcl5_10",
+          "pcl5_11",
+          "pcl5_12",
+          "pcl5_13",
+          "pcl5_14"
+        ],
+        "method": "sum"
+      },
+      "arousal_reactivity": {
+        "items": [
+          "pcl5_15",
+          "pcl5_16",
+          "pcl5_17",
+          "pcl5_18",
+          "pcl5_19",
+          "pcl5_20"
+        ],
+        "method": "sum"
+      }
+    }
+  },
+  "routing": {},
+  "band_descriptions": {
+    "subthreshold": "Your responses suggest subthreshold symptoms of post-traumatic stress over the past month. Most people experience occasional distress following difficult events, and your responses fall within the typical range.",
+    "probable_ptsd": "Your responses indicate patterns consistent with probable post- traumatic stress over the past month. This level of distress is highly validating of your experiences, and professional support is strongly recommended. If you'd like to talk to someone, Samaritans are available 24/7 on 116 123 (UK)."
+  }
+}

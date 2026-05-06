@@ -19,21 +19,34 @@
   "min_trials_for_partial_scoring": null,
   "composite_contributions": [],
   "consistency_pairs": [],
-
   "response_option_sets": {
     "ffmq_likert": [
-      {"value": 1, "label": "Never or very rarely true"},
-      {"value": 2, "label": "Rarely true"},
-      {"value": 3, "label": "Sometimes true"},
-      {"value": 4, "label": "Often true"},
-      {"value": 5, "label": "Very often or always true"}
+      {
+        "value": 1,
+        "label": "Never or very rarely true"
+      },
+      {
+        "value": 2,
+        "label": "Rarely true"
+      },
+      {
+        "value": 3,
+        "label": "Sometimes true"
+      },
+      {
+        "value": 4,
+        "label": "Often true"
+      },
+      {
+        "value": 5,
+        "label": "Very often or always true"
+      }
     ]
   },
-
   "items": [
     {
       "item_id": "ffmq15_01",
-      "text": "When I do things, my mind wanders off and I’m easily distracted.",
+      "text": "When I do things, my mind wanders off and I\u2019m easily distracted.",
       "response_options_key": "ffmq_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -42,7 +55,7 @@
     },
     {
       "item_id": "ffmq15_02",
-      "text": "I don’t pay attention to what I’m doing because I’m daydreaming, worrying, or otherwise distracted.",
+      "text": "I don\u2019t pay attention to what I\u2019m doing because I\u2019m daydreaming, worrying, or otherwise distracted.",
       "response_options_key": "ffmq_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -60,7 +73,7 @@
     },
     {
       "item_id": "ffmq15_04",
-      "text": "I tell myself I shouldn’t be feeling the way I’m feeling.",
+      "text": "I tell myself I shouldn\u2019t be feeling the way I\u2019m feeling.",
       "response_options_key": "ffmq_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -69,7 +82,7 @@
     },
     {
       "item_id": "ffmq15_05",
-      "text": "I believe some of my thoughts are abnormal or bad and I shouldn’t think that way.",
+      "text": "I believe some of my thoughts are abnormal or bad and I shouldn\u2019t think that way.",
       "response_options_key": "ffmq_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -78,7 +91,7 @@
     },
     {
       "item_id": "ffmq15_06",
-      "text": "I think some of my emotions are bad or inappropriate and I shouldn’t feel them.",
+      "text": "I think some of my emotions are bad or inappropriate and I shouldn\u2019t feel them.",
       "response_options_key": "ffmq_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -114,7 +127,7 @@
     },
     {
       "item_id": "ffmq15_10",
-      "text": "It’s hard for me to find the words to describe what I’m thinking.",
+      "text": "It\u2019s hard for me to find the words to describe what I\u2019m thinking.",
       "response_options_key": "ffmq_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -132,7 +145,7 @@
     },
     {
       "item_id": "ffmq15_12",
-      "text": "When I have a sensation in my body, it’s difficult for me to describe it because I can’t find the right words.",
+      "text": "When I have a sensation in my body, it\u2019s difficult for me to describe it because I can\u2019t find the right words.",
       "response_options_key": "ffmq_likert",
       "valence": "negative",
       "exclude_from_score": false,
@@ -141,7 +154,7 @@
     },
     {
       "item_id": "ffmq15_13",
-      "text": "When I have distressing thoughts or images, I “step back” and am aware of the thought or image without getting taken over by it.",
+      "text": "When I have distressing thoughts or images, I \u201cstep back\u201d and am aware of the thought or image without getting taken over by it.",
       "response_options_key": "ffmq_likert",
       "valence": "positive",
       "exclude_from_score": false,
@@ -167,41 +180,98 @@
       "safety_trigger": null
     }
   ],
-
   "scoring": {
     "method": "sum",
-    "range": [15, 75],
-    "bands": null,
+    "range": [
+      15,
+      75
+    ],
+    "bands": [
+      {
+        "min": 15,
+        "max": 35,
+        "label": "low"
+      },
+      {
+        "min": 36,
+        "max": 55,
+        "label": "average"
+      },
+      {
+        "min": 56,
+        "max": 75,
+        "label": "high"
+      }
+    ],
     "subscales": {
       "acting_with_awareness": {
         "name": "Acting with Awareness",
-        "items": ["ffmq15_01", "ffmq15_02", "ffmq15_03"],
-        "range": [3, 15]
+        "items": [
+          "ffmq15_01",
+          "ffmq15_02",
+          "ffmq15_03"
+        ],
+        "range": [
+          3,
+          15
+        ]
       },
       "nonjudging": {
         "name": "Nonjudging of Inner Experience",
-        "items": ["ffmq15_04", "ffmq15_05", "ffmq15_06"],
-        "range": [3, 15]
+        "items": [
+          "ffmq15_04",
+          "ffmq15_05",
+          "ffmq15_06"
+        ],
+        "range": [
+          3,
+          15
+        ]
       },
       "observing": {
         "name": "Observing",
-        "items": ["ffmq15_07", "ffmq15_08", "ffmq15_09"],
-        "range": [3, 15]
+        "items": [
+          "ffmq15_07",
+          "ffmq15_08",
+          "ffmq15_09"
+        ],
+        "range": [
+          3,
+          15
+        ]
       },
       "describing": {
         "name": "Describing",
-        "items": ["ffmq15_10", "ffmq15_11", "ffmq15_12"],
-        "range": [3, 15]
+        "items": [
+          "ffmq15_10",
+          "ffmq15_11",
+          "ffmq15_12"
+        ],
+        "range": [
+          3,
+          15
+        ]
       },
       "nonreactivity": {
         "name": "Nonreactivity to Inner Experience",
-        "items": ["ffmq15_13", "ffmq15_14", "ffmq15_15"],
-        "range": [3, 15]
+        "items": [
+          "ffmq15_13",
+          "ffmq15_14",
+          "ffmq15_15"
+        ],
+        "range": [
+          3,
+          15
+        ]
       }
     }
   },
-
   "routing": {
     "on_completion": []
+  },
+  "band_descriptions": {
+    "low": "Your responses suggest a low level of mindful awareness over the past month. Many people find it helpful to monitor this and gently practice bringing attention to the present moment.",
+    "average": "Your responses indicate an average level of mindfulness over the past month. Most people experience this, and your responses fall within the typical range.",
+    "high": "Your responses suggest a high level of mindfulness over the past month. This suggests you have strong resources in this area and a great capacity for present-moment awareness."
   }
 }

@@ -122,6 +122,24 @@ class GenericScorer(BaseScorer):
         # 6. Band assignment
         band = self._assign_band(total, self._bands)
 
+        band_description = None
+        subscale_band_descriptions = None
+        band_desc_map = self._def.get("band_descriptions", {})
+
+        if band and band in band_desc_map:
+            band_description = band_desc_map[band]
+
+        if subscale_scores and band_desc_map:
+            subscale_band_descriptions = {}
+            for sub_id, score in subscale_scores.items():
+                if sub_id in self._subscales and sub_id in band_desc_map:
+                    sub_def = self._subscales[sub_id]
+                    # Only assign description if the subscale actually defines numeric bands
+                    if sub_def.get("bands"):
+                        sub_band = self._assign_band(score, sub_def["bands"])
+                        if sub_band and sub_band in band_desc_map[sub_id]:
+                            subscale_band_descriptions[sub_id] = band_desc_map[sub_id][sub_band]
+
         # 6. Safety flags
         safety_flags = self._evaluate_safety_flags(all_responses, self._items)
 
@@ -142,7 +160,9 @@ class GenericScorer(BaseScorer):
             instrument_id=self._instrument_id,
             total_score=total,
             band=band,
+            band_description=band_description,
             subscale_scores=subscale_scores,
+            subscale_band_descriptions=subscale_band_descriptions,
             safety_flags=safety_flags,
             validity_warnings=validity_warnings,
             metadata={
