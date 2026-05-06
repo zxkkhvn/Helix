@@ -15,6 +15,11 @@ from helix.models.models import AssessmentInstance, Score, Session
 from helix.routing.engine import compute_available_instruments
 from helix.scoring import registry
 from helix.scoring.composite import compute_all_composites
+from helix.scoring.planet_state import compute_planet_states
+from helix.ai.readiness import ReadinessEngine
+from helix.config import settings
+
+_readiness_engine = ReadinessEngine()
 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
 
@@ -52,6 +57,29 @@ class CompletedInstrument(BaseModel):
     assessment_instance_id: str
     total_score: float
     band: Optional[str]
+    band_description: Optional[str] = None
+
+def _build_completed_instruments(scores: List[Score]) -> List[CompletedInstrument]:
+    from helix.scoring import registry
+    completed = []
+    for s in scores:
+        band_desc = None
+        if s.band:
+            try:
+                scorer = registry.get_scorer(s.instrument_id)
+                band_desc = scorer._def.get("band_descriptions", {}).get(s.band)
+            except Exception:
+                pass
+        completed.append(
+            CompletedInstrument(
+                instrument_id=s.instrument_id,
+                assessment_instance_id=s.assessment_instance_id,
+                total_score=s.total_score,
+                band=s.band,
+                band_description=band_desc,
+            )
+        )
+    return completed
 
 
 class SessionStateResponse(BaseModel):
@@ -61,6 +89,9 @@ class SessionStateResponse(BaseModel):
     available: List[str]
     safety_flags: Optional[list]
     composites: List[dict] = []
+    planet_states: List[dict] = []
+    fatigue_nudge: Optional[bool] = False
+    ai_readiness: Optional[dict] = None
 
 
 class CreateSessionResponse(BaseModel):
@@ -106,6 +137,99 @@ def create_session(db: DBSession = Depends(get_db)):
     )
 
 
+@router.post("/dev", response_model=CreateSessionResponse, status_code=201)
+def create_dev_session(db: DBSession = Depends(get_db)):
+    """Create a session already in EXPLORING state, skipping core flow.
+    Only available when HELIX_DEV_MODE=1. Do not expose in production.
+    """
+    if not settings.debug_mode:
+        raise HTTPException(status_code=403, detail="Dev mode not enabled (set DEBUG_MODE=true)")
+    session = Session(
+        id=str(uuid.uuid4()),
+        state="EXPLORING",
+        safety_flags=None,
+        intake_data={"categories": [], "red_thread_question": "[dev]", "top3_ranked": None},
+        anchors={"mood": 5, "energy": 5, "focus": 5},
+        created_at=datetime.now(timezone.utc),
+        updated_at=datetime.now(timezone.utc),
+    )
+    db.add(session)
+    db.flush()
+    scores = []
+    return CreateSessionResponse(
+        session_id=session.id,
+        state=session.state,
+        available=compute_available_instruments(session, scores),
+    )
+
+
+@router.post("/quick-start", response_model=SessionStateResponse, status_code=201)
+def create_quick_start_session(db: DBSession = Depends(get_db)):
+    """Create a session that has genuinely completed the core flow.
+    Only available when HELIX_DEV_MODE=1.
+    """
+    if not settings.debug_mode:
+        raise HTTPException(status_code=403, detail="Dev mode not enabled (set DEBUG_MODE=true)")
+        
+    session = Session(
+        id=str(uuid.uuid4()),
+        state="EXPLORING",
+        safety_flags=None,
+        intake_data={"categories": ["general"], "red_thread_question": "Testing session", "top3_ranked": None},
+        anchors={"mood": 5, "energy": 5, "focus": 5},
+        created_at=datetime.now(timezone.utc),
+        updated_at=datetime.now(timezone.utc),
+    )
+    db.add(session)
+    db.flush()
+    
+    # Create fake scores for PBAT, WSAS, PCPTSD5
+    for inst_id, score_val, items_scored in [("pbat", 50, 18), ("wsas", 0, 5), ("pcptsd5", 0, 5)]:
+        inst = AssessmentInstance(
+            id=str(uuid.uuid4()),
+            session_id=session.id,
+            instrument_id=inst_id,
+            instrument_version="1.0.0",
+            responses={},
+            status="COMPLETED",
+        )
+        db.add(inst)
+        db.flush()
+        score = Score(
+            id=str(uuid.uuid4()),
+            assessment_instance_id=inst.id,
+            instrument_id=inst_id,
+            total_score=score_val,
+            score_metadata={"n_items_scored": items_scored}
+        )
+        db.add(score)
+        
+    db.flush()
+    
+    scores = (
+        db.query(Score)
+        .join(AssessmentInstance)
+        .filter(AssessmentInstance.session_id == session.id)
+        .all()
+    )
+    completed = _build_completed_instruments(scores)
+    
+    total_items_scored = sum(s.score_metadata.get("n_items_scored", 0) if s.score_metadata else 0 for s in scores)
+    fatigue_nudge = total_items_scored >= 150 and not session.fatigue_nudge_dismissed
+
+    return SessionStateResponse(
+        session_id=session.id,
+        state=session.state,
+        completed=completed,
+        available=compute_available_instruments(session, scores),
+        safety_flags=session.safety_flags,
+        composites=compute_all_composites(scores),
+        planet_states=compute_planet_states(session, scores),
+        fatigue_nudge=fatigue_nudge,
+    )
+
+
+
 @router.get("/{session_id}", response_model=SessionStateResponse)
 def get_session(session_id: str, db: DBSession = Depends(get_db)):
     """Return session state, completed instruments, and what's available next."""
@@ -120,15 +244,16 @@ def get_session(session_id: str, db: DBSession = Depends(get_db)):
         .all()
     )
 
-    completed = [
-        CompletedInstrument(
-            instrument_id=s.instrument_id,
-            assessment_instance_id=s.assessment_instance_id,
-            total_score=s.total_score,
-            band=s.band,
-        )
-        for s in scores
-    ]
+    completed = _build_completed_instruments(scores)
+    
+    total_items_scored = sum(s.score_metadata.get("n_items_scored", 0) if s.score_metadata else 0 for s in scores)
+    
+    if total_items_scored >= 150 and not session.fatigue_nudge_dismissed:
+        session.fatigue_nudge_shown = True
+        db.flush()
+        fatigue_nudge = True
+    else:
+        fatigue_nudge = False
 
     return SessionStateResponse(
         session_id=session.id,
@@ -137,8 +262,42 @@ def get_session(session_id: str, db: DBSession = Depends(get_db)):
         available=compute_available_instruments(session, scores),
         safety_flags=session.safety_flags,
         composites=compute_all_composites(scores),
+        planet_states=compute_planet_states(session, scores),
+        fatigue_nudge=fatigue_nudge,
+        ai_readiness=_readiness_engine.check_all(session),
     )
 
+
+
+@router.post("/{session_id}/dismiss-fatigue", response_model=SessionStateResponse)
+def dismiss_fatigue(session_id: str, db: DBSession = Depends(get_db)):
+    """Dismiss the fatigue nudge for this session."""
+    session = db.get(Session, session_id)
+    if session is None:
+        raise HTTPException(status_code=404, detail="Session not found")
+        
+    session.fatigue_nudge_dismissed = True
+    session.updated_at = datetime.now(timezone.utc)
+    db.flush()
+    
+    scores = (
+        db.query(Score)
+        .join(AssessmentInstance)
+        .filter(AssessmentInstance.session_id == session_id)
+        .all()
+    )
+    completed = _build_completed_instruments(scores)
+    
+    return SessionStateResponse(
+        session_id=session.id,
+        state=session.state,
+        completed=completed,
+        available=compute_available_instruments(session, scores),
+        safety_flags=session.safety_flags,
+        composites=compute_all_composites(scores),
+        planet_states=compute_planet_states(session, scores),
+        fatigue_nudge=False,
+    )
 
 @router.post("/{session_id}/acknowledge-safety", response_model=SessionStateResponse)
 def acknowledge_safety(session_id: str, db: DBSession = Depends(get_db)):
@@ -167,15 +326,10 @@ def acknowledge_safety(session_id: str, db: DBSession = Depends(get_db)):
         .filter(AssessmentInstance.session_id == session_id)
         .all()
     )
-    completed = [
-        CompletedInstrument(
-            instrument_id=s.instrument_id,
-            assessment_instance_id=s.assessment_instance_id,
-            total_score=s.total_score,
-            band=s.band,
-        )
-        for s in scores
-    ]
+    completed = _build_completed_instruments(scores)
+
+    total_items_scored = sum(s.score_metadata.get("n_items_scored", 0) if s.score_metadata else 0 for s in scores)
+    fatigue_nudge = total_items_scored >= 150 and not session.fatigue_nudge_dismissed
 
     return SessionStateResponse(
         session_id=session.id,
@@ -184,6 +338,8 @@ def acknowledge_safety(session_id: str, db: DBSession = Depends(get_db)):
         available=compute_available_instruments(session, scores),
         safety_flags=None,
         composites=compute_all_composites(scores),
+        planet_states=compute_planet_states(session, scores),
+        fatigue_nudge=fatigue_nudge,
     )
 
 @router.post("/{session_id}/intake", response_model=SessionStateResponse)
@@ -226,14 +382,11 @@ def submit_intake(session_id: str, body: IntakeRequest, db: DBSession = Depends(
         .filter(AssessmentInstance.session_id == session_id)
         .all()
     )
-    completed = [
-        CompletedInstrument(
-            instrument_id=s.instrument_id,
-            assessment_instance_id=s.assessment_instance_id,
-            total_score=s.total_score,
-            band=s.band,
-        ) for s in scores
-    ]
+    completed = _build_completed_instruments(scores)
+    
+    total_items_scored = sum(s.score_metadata.get("n_items_scored", 0) if s.score_metadata else 0 for s in scores)
+    fatigue_nudge = total_items_scored >= 150 and not session.fatigue_nudge_dismissed
+
     return SessionStateResponse(
         session_id=session.id,
         state=session.state,
@@ -241,6 +394,8 @@ def submit_intake(session_id: str, body: IntakeRequest, db: DBSession = Depends(
         available=compute_available_instruments(session, scores),
         safety_flags=session.safety_flags,
         composites=compute_all_composites(scores),
+        planet_states=compute_planet_states(session, scores),
+        fatigue_nudge=fatigue_nudge,
     )
 
 @router.post("/{session_id}/anchors", response_model=SessionStateResponse)
@@ -275,14 +430,11 @@ def submit_anchors(session_id: str, body: AnchorsRequest, db: DBSession = Depend
         .filter(AssessmentInstance.session_id == session_id)
         .all()
     )
-    completed = [
-        CompletedInstrument(
-            instrument_id=s.instrument_id,
-            assessment_instance_id=s.assessment_instance_id,
-            total_score=s.total_score,
-            band=s.band,
-        ) for s in scores
-    ]
+    completed = _build_completed_instruments(scores)
+    
+    total_items_scored = sum(s.score_metadata.get("n_items_scored", 0) if s.score_metadata else 0 for s in scores)
+    fatigue_nudge = total_items_scored >= 150 and not session.fatigue_nudge_dismissed
+
     return SessionStateResponse(
         session_id=session.id,
         state=session.state,
@@ -290,6 +442,8 @@ def submit_anchors(session_id: str, body: AnchorsRequest, db: DBSession = Depend
         available=compute_available_instruments(session, scores),
         safety_flags=session.safety_flags,
         composites=compute_all_composites(scores),
+        planet_states=compute_planet_states(session, scores),
+        fatigue_nudge=fatigue_nudge,
     )
 
 

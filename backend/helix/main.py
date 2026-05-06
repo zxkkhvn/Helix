@@ -7,9 +7,13 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
+import os
 from helix.api.routes_assessment import router as assessment_router
 from helix.api.routes_session import router as session_router
+from helix.api.routes_debug import router as debug_router
+from helix.api.routes_ai import router as ai_router
 from helix.db.database import create_tables
 from helix.scoring import registry
 from helix.scoring.instruments import _DEFINITIONS_DIR
@@ -40,6 +44,11 @@ app.add_middleware(
 
 app.include_router(session_router)
 app.include_router(assessment_router)
+app.include_router(ai_router)
+
+if os.environ.get("DEBUG_MODE") == "true":
+    app.include_router(debug_router)
+
 
 
 @app.get("/health", tags=["meta"])
@@ -47,6 +56,8 @@ def health():
     """Health check."""
     return {"status": "ok"}
 
+
+app.mount("/dev-assets", StaticFiles(directory=os.path.join(os.path.dirname(__file__), "..", "dev_shell_assets")), name="dev-assets")
 
 @app.get("/dev", tags=["meta"], include_in_schema=False)
 def dev_shell():

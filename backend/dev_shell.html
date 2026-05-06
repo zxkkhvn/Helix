@@ -3,587 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venus Debug Shell</title>
-    <style>
-        :root {
-            --bg: #f8fafc;
-            --surface: #ffffff;
-            --border: #e2e8f0;
-            --text: #0f172a;
-            --text-light: #64748b;
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --danger: #ef4444;
-            --danger-bg: #fee2e2;
-            --success: #10b981;
-            --radius: 6px;
-        }
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
-        header {
-            background: var(--surface);
-            border-bottom: 1px solid var(--border);
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .header-controls {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-        .status-badge {
-            padding: 0.25rem 0.5rem;
-            border-radius: var(--radius);
-            font-size: 0.875rem;
-            font-weight: 600;
-            background: #e2e8f0;
-        }
-        .status-badge.exploring { background: #dcfce7; color: #166534; }
-        .status-badge.paused { background: var(--danger-bg); color: var(--danger); }
-        
-        button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius);
-            font-weight: 500;
-            cursor: pointer;
-        }
-        button:hover { background: var(--primary-hover); }
-        button:disabled { background: #cbd5e1; cursor: not-allowed; }
-        
-        input[type="text"] {
-            padding: 0.5rem;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            width: 250px;
-        }
-
-        #safety-banner {
-            display: none;
-            background: var(--danger-bg);
-            color: var(--danger);
-            padding: 1rem;
-            text-align: center;
-            font-weight: bold;
-            border-bottom: 1px solid #fca5a5;
-        }
-        
-        main {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
-        .sidebar {
-            width: 250px;
-            background: var(--surface);
-            border-right: 1px solid var(--border);
-            padding: 1.5rem;
-            overflow-y: auto;
-        }
-        .content {
-            flex: 1;
-            padding: 1.5rem;
-            overflow-y: auto;
-            max-width: 800px;
-        }
-        .debug-panel {
-            width: 350px;
-            background: #1e293b;
-            color: #f8fafc;
-            padding: 1.5rem;
-            overflow-y: auto;
-            font-family: monospace;
-            font-size: 0.875rem;
-        }
-        
-        h2, h3 { margin-top: 0; }
-        
-        .instrument-btn {
-            display: block;
-            width: 100%;
-            text-align: left;
-            background: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        .instrument-btn:hover {
-            background: #eff6ff;
-            color: var(--primary-hover);
-        }
-
-        .completed-item {
-            font-size: 0.875rem;
-            color: var(--text-light);
-            margin-bottom: 0.25rem;
-        }
-
-        /* Form styles */
-        .form-group {
-            margin-bottom: 1.5rem;
-            background: var(--surface);
-            padding: 1rem;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-        }
-        .form-group label {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-        select {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-        }
-        
-        pre {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            margin: 0;
-        }
-        .debug-section { margin-bottom: 1.5rem; }
-        .debug-title {
-            color: #94a3b8;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
-        
-        #result-display {
-            display: none;
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background: #ecfdf5;
-            border: 1px solid #a7f3d0;
-            border-radius: var(--radius);
-        }
-    </style>
+    <title>Helix Dev Shell UX</title>
+    <link rel="stylesheet" href="/dev-assets/css/styles.css">
 </head>
 <body>
 
-<div id="safety-banner">
-    SAFETY PAUSED. Normal operations disabled. 
-    <button id="btn-ack-safety" style="background: white; color: var(--danger); margin-left: 1rem;">Acknowledge Safety</button>
+<div id="app-container">
+    <!-- SIDEBAR -->
+    <div id="sidebar">
+        <div class="header">
+            <h1>HELIX</h1>
+            <div style="display: flex; gap: 0.5rem;">
+                <button class="btn-outline" onclick="createQuickStartSession()" style="font-size: 0.8rem; padding: 0.3rem 0.6rem;" title="Quick Start Flow">⚡️</button>
+                <button class="btn-outline" onclick="document.getElementById('right-panel').classList.toggle('hidden')" style="font-size: 0.8rem; padding: 0.3rem 0.6rem;" title="Toggle Composites Panel">📊</button>
+            </div>
+        </div>
+        <div style="padding: 1rem; border-bottom: 1px solid var(--border);">
+            <div style="font-size: 0.8rem; color: var(--text-light); margin-bottom: 0.5rem; display: flex; justify-content: space-between;">
+                <span>Session ID</span>
+                <span id="copy-btn" style="cursor: pointer; color: var(--primary);" onclick="copySessionId()">Copy</span>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+                <input type="text" id="session-id-input" style="padding: 0.4rem; font-size: 0.8rem;">
+                <button onclick="loadSession()" style="padding: 0.4rem;">Load</button>
+            </div>
+            <button onclick="createSession()" style="width: 100%; margin-top: 0.5rem;">New Session</button>
+        </div>
+        <div id="planet-nav" style="flex: 1; overflow-y: auto; padding: 1rem;">
+            <!-- Planets rendered here -->
+        </div>
+    </div>
+    
+    <!-- MAIN CONTENT -->
+    <div id="main-content">
+        <!-- Top Nav Areas (Injected dynamically) -->
+        <div id="breadcrumb-area" style="display: none;"></div>
+        <div id="core-flow-progress-area" style="display: none;"></div>
+        
+        <div class="content-area" id="content-area">
+            <div style="text-align: center; margin-top: 20vh; color: var(--text-light);">
+                <h2>Welcome to Helix Dev Shell</h2>
+                <p>Create a New Session or Quick Start to begin testing the flow.</p>
+            </div>
+        </div>
+        
+        <!-- SAFETY OVERLAY -->
+        <div id="safety-overlay" class="overlay">
+            <div class="overlay-content">
+                <h2 style="color: var(--danger); margin-top: 0;">Safety Pause</h2>
+                <p>We noticed some of your responses suggest you may be experiencing distress.</p>
+                <div style="background: rgba(239,68,68,0.1); padding: 1.5rem; border-radius: var(--radius); margin: 1.5rem 0;">
+                    <p style="margin:0; font-weight: bold;">If you need immediate support:</p>
+                    <p style="font-size: 1.2rem; color: var(--danger);">Samaritans 116 123 (UK)</p>
+                    <p style="margin:0;">999 for emergencies</p>
+                </div>
+                <p style="color: var(--text-light); font-size: 0.9rem;">These resources are always available to you.</p>
+                <button onclick="acknowledgeSafety()" style="width: 100%; margin-top: 1rem; padding: 1rem;">I understand, continue exploring</button>
+            </div>
+        </div>
+        
+        <!-- FATIGUE OVERLAY -->
+        <div id="fatigue-overlay" class="overlay">
+            <div class="overlay-content">
+                <h2 style="margin-top: 0;">Take a break?</h2>
+                <p>You've been exploring for a while. Taking a break and coming back fresh will give you more accurate results. Your progress is saved.</p>
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button onclick="dismissFatigue()" class="btn-outline" style="flex: 1;">Continue exploring</button>
+                    <button onclick="document.getElementById('fatigue-overlay').style.display='none';" style="flex: 1;">Take a break</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ACES OPT-IN OVERLAY -->
+        <div id="aces-overlay" class="overlay">
+            <div class="overlay-content">
+                <h2 style="margin-top: 0;">Sensitive Content</h2>
+                <p>This section asks about experiences from your childhood. Some people find these questions difficult. You can skip this section at any time — it won't affect your exploration elsewhere.</p>
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button onclick="document.getElementById('aces-overlay').style.display='none'; renderInstrumentForm(currentInstData);" style="flex: 1;">I'm ready</button>
+                    <button onclick="document.getElementById('aces-overlay').style.display='none'; navigateTo('dashboard');" class="btn-outline" style="flex: 1;">Skip for now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI DEBUG OVERLAY -->
+        <div id="ai-debug-overlay" class="overlay">
+            <div class="overlay-content">
+                <h2>
+                    <span id="ai-debug-title">AI Debug Output</span>
+                    <button class="btn-outline" style="float: right; padding: 0.2rem 0.5rem;" onclick="closeAIDebugOverlay()">&times;</button>
+                </h2>
+                <pre id="ai-debug-output" style="text-align: left; max-height: 60vh; overflow-y: auto; background: var(--bg); padding: 1rem; border-radius: var(--radius); border: 1px solid var(--border); font-size: 0.8rem; white-space: pre-wrap; word-wrap: break-word;">Loading...</pre>
+            </div>
+        </div>
+    </div>
+    
+    <!-- RIGHT PANEL (Dev Tools Only) -->
+    <div id="right-panel">
+        <h3 style="margin-top: 0; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; color: var(--text-light);">Dev Tools</h3>
+        
+        <div class="switch-container">
+            <span style="font-size: 0.9rem;">Auto-narrate generation</span>
+            <label class="switch">
+                <input type="checkbox" id="auto-narrate-toggle" onchange="toggleAutoNarrate(this)">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="ai-debug-section">
+            <div style="background: rgba(255,255,255,0.05); padding: 0.75rem; border-radius: var(--radius); margin-bottom: 1rem; font-size: 0.8rem; border: 1px solid var(--border);">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                    <span style="color: var(--text-light);">Session ID:</span>
+                    <span id="ai-inv-session" style="font-family: monospace; color: var(--text);">None</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                    <span style="color: var(--text-light);">Completed Insts:</span>
+                    <span id="ai-inv-completed" style="color: var(--text);">0</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                    <span style="color: var(--text-light);">Composites:</span>
+                    <span id="ai-inv-composites" style="color: var(--text);">0</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                    <span style="color: var(--text-light);">Safety Markers:</span>
+                    <span id="ai-inv-safety" style="color: var(--text);">None</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span style="color: var(--text-light);">Narrative Engine:</span>
+                    <span id="ai-inv-ready" style="color: var(--text-light);">Insufficient Data</span>
+                </div>
+            </div>
+
+            <button class="narrate-btn" onclick="fetchAIDebug('context')">Inspect Context Payload</button>
+            <button class="narrate-btn" onclick="fetchAIDebug('mission-control')">Inspect Next-Step Prompt</button>
+            <button class="narrate-btn" onclick="fetchAIDebug('full-formulation')">Inspect Full Read Prompt</button>
+            
+            <div style="margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em;">Manual Inspection</div>
+            
+            <div class="ai-debug-input-group" style="margin-bottom: 1rem;">
+                <label style="font-size: 0.75rem; color: var(--text-light); display: block; margin-bottom: 0.2rem;">Prompt Preview (Raw)</label>
+                <div style="display: flex; gap: 0.5rem;">
+                    <select id="ai-debug-task-type" style="flex: 1; padding: 0.4rem; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 4px;">
+                        <option value="formulation">formulation</option>
+                        <option value="mission_control">mission_control</option>
+                        <option value="planet_summary">planet_summary</option>
+                        <option value="inter_instrument_narration">inter_instrument_narration</option>
+                    </select>
+                    <button class="btn-outline" style="padding: 0.4rem;" onclick="fetchAIDebug('prompt-preview')">View</button>
+                </div>
+            </div>
+            
+            <div class="ai-debug-input-group" style="margin-bottom: 1rem;">
+                <label style="font-size: 0.75rem; color: var(--text-light); display: block; margin-bottom: 0.2rem;">Planet Summary</label>
+                <div style="display: flex; gap: 0.5rem;">
+                    <input type="text" id="ai-debug-planet-id" placeholder="planet_id" style="flex: 1; padding: 0.4rem; font-size: 0.8rem;">
+                    <button class="btn-outline" style="padding: 0.4rem;" onclick="fetchAIDebug('planet-summary')">Generate</button>
+                </div>
+            </div>
+
+            <div class="ai-debug-input-group">
+                <label style="font-size: 0.75rem; color: var(--text-light); display: block; margin-bottom: 0.2rem;">Transition Narration</label>
+                <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <input type="text" id="ai-debug-prev-inst" placeholder="prev_id" style="flex: 1; padding: 0.4rem; font-size: 0.8rem;">
+                    <input type="text" id="ai-debug-next-inst" placeholder="next_id" style="flex: 1; padding: 0.4rem; font-size: 0.8rem;">
+                </div>
+                <button class="btn-outline" style="width: 100%; padding: 0.4rem;" onclick="fetchAIDebug('inter-instrument-narration')">Generate</button>
+            </div>
+        </div>
+    </div>
 </div>
 
-<header>
-    <div>
-        <strong>Venus Debug Shell</strong> <span style="color: var(--text-light); font-size: 0.875rem; margin-left: 1rem;">(Dev Only)</span>
-    </div>
-    <div class="header-controls">
-        <input type="text" id="session-id-input" placeholder="Enter session_id">
-        <button id="btn-load-session">Load</button>
-        <button id="btn-create-session">New Session</button>
-        <span id="session-status" class="status-badge">NONE</span>
-    </div>
-</header>
-
-<main>
-    <div class="sidebar">
-        <h3>Available</h3>
-        <div id="available-list">
-            <p style="color: var(--text-light); font-size: 0.875rem;">Create a session to begin.</p>
-        </div>
-        
-        <h3 style="margin-top: 2rem;">Completed</h3>
-        <div id="completed-list"></div>
-    </div>
-    
-    <div class="content">
-        <div id="welcome-msg">
-            <h2>Select an instrument</h2>
-            <p>Create or load a session, then choose an instrument from the sidebar.</p>
-        </div>
-
-        <div id="done-msg" style="display: none; padding: 2rem; text-align: center; background: var(--surface); border: 1px dashed #cbd5e1; border-radius: var(--radius); margin-top: 2rem;">
-            <h2 style="color: #475569; margin-bottom: 0.5rem;">Session Complete (For Now)</h2>
-            <p style="color: var(--text-light);">No further instruments are currently available.</p>
-            <p style="color: var(--text-light); font-size: 0.875rem;">This session has no unlocked next step right now.</p>
-            <div id="done-flags" style="margin-top: 1rem; font-family: monospace; font-size: 0.875rem; color: #b45309; font-weight: bold;"></div>
-        </div>
-        
-        <div id="instrument-container" style="display: none;">
-            <h2 id="inst-title"></h2>
-            <p id="inst-time" style="color: var(--text-light); font-style: italic; margin-bottom: 2rem;"></p>
-            
-            <form id="instrument-form">
-                <div id="form-items"></div>
-                <button type="submit" id="btn-submit" style="width: 100%; margin-top: 1rem; padding: 1rem; font-size: 1.1rem;">Submit Responses</button>
-            </form>
-            
-            <div id="result-display">
-                <h3 style="margin-top: 0; color: #065f46;">Result</h3>
-                <p><strong>Score:</strong> <span id="res-score"></span></p>
-                <p><strong>Band:</strong> <span id="res-band"></span></p>
-                <p><strong>Routing:</strong> <span id="res-routing"></span></p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="debug-panel">
-        <div class="debug-section">
-            <div class="debug-title">Session State</div>
-            <pre id="debug-session">No session.</pre>
-        </div>
-        <div class="debug-section">
-            <div class="debug-title">Last Form Payload</div>
-            <pre id="debug-form">None</pre>
-        </div>
-        <div class="debug-section">
-            <div class="debug-title">Last Submit Request</div>
-            <pre id="debug-req">None</pre>
-        </div>
-        <div class="debug-section">
-            <div class="debug-title">Last Submit Response</div>
-            <pre id="debug-res">None</pre>
-        </div>
-    </div>
-</main>
-
-<script>
-const API_BASE = ""; 
-let currentSessionId = null;
-let currentFormPayload = null;
-let lastSubmitResponse = null;
-
-const dom = {
-    sessionIdInput: document.getElementById('session-id-input'),
-    btnLoadSession: document.getElementById('btn-load-session'),
-    btnCreateSession: document.getElementById('btn-create-session'),
-    btnAckSafety: document.getElementById('btn-ack-safety'),
-    statusBadge: document.getElementById('session-status'),
-    safetyBanner: document.getElementById('safety-banner'),
-    availableList: document.getElementById('available-list'),
-    completedList: document.getElementById('completed-list'),
-    welcomeMsg: document.getElementById('welcome-msg'),
-    doneMsg: document.getElementById('done-msg'),
-    doneFlags: document.getElementById('done-flags'),
-    instContainer: document.getElementById('instrument-container'),
-    instTitle: document.getElementById('inst-title'),
-    instTime: document.getElementById('inst-time'),
-    formItems: document.getElementById('form-items'),
-    form: document.getElementById('instrument-form'),
-    btnSubmit: document.getElementById('btn-submit'),
-    resultDisplay: document.getElementById('result-display'),
-    debugSession: document.getElementById('debug-session'),
-    debugForm: document.getElementById('debug-form'),
-    debugReq: document.getElementById('debug-req'),
-    debugRes: document.getElementById('debug-res'),
-};
-
-async function api(path, options = {}) {
-    try {
-        const res = await fetch(API_BASE + path, {
-            ...options,
-            headers: {
-                'Content-Type': 'application/json',
-                ...options.headers
-            }
-        });
-        const data = await res.json();
-        return { ok: res.ok, status: res.status, data };
-    } catch (e) {
-        return { ok: false, status: 0, data: { error: e.message } };
-    }
-}
-
-async function createSession() {
-    const { ok, data } = await api('/sessions', { method: 'POST' });
-    if (ok) {
-        currentSessionId = data.session_id;
-        dom.sessionIdInput.value = currentSessionId;
-        await refreshSession();
-    } else {
-        alert("Failed to create session: " + JSON.stringify(data));
-    }
-}
-
-async function refreshSession() {
-    if (!currentSessionId) return;
-    const { ok, data } = await api(`/sessions/${currentSessionId}`);
-    if (ok) {
-        updateSessionUI(data);
-    } else {
-        alert("Failed to load session: " + JSON.stringify(data));
-    }
-}
-
-function updateSessionUI(session) {
-    dom.debugSession.textContent = JSON.stringify(session, null, 2);
-    dom.statusBadge.textContent = session.state;
-    dom.statusBadge.className = `status-badge ${session.state === 'SAFETY_PAUSED' ? 'paused' : 'exploring'}`;
-    
-    if (session.state === 'SAFETY_PAUSED') {
-        dom.safetyBanner.style.display = 'block';
-        dom.btnSubmit.disabled = true;
-    } else {
-        dom.safetyBanner.style.display = 'none';
-        dom.btnSubmit.disabled = false;
-    }
-    
-    // Render available
-    dom.availableList.innerHTML = '';
-    
-    // Reset views
-    dom.welcomeMsg.style.display = 'block';
-    dom.instContainer.style.display = 'none';
-    dom.doneMsg.style.display = 'none';
-
-    if (session.available.length === 0) {
-        dom.availableList.innerHTML = '<p style="color: var(--text-light); font-size: 0.875rem;">None available</p>';
-        
-        if (session.state === 'EXPLORING' && session.completed.length > 0) {
-            dom.welcomeMsg.style.display = 'none';
-            dom.doneMsg.style.display = 'block';
-            
-            if (lastSubmitResponse && lastSubmitResponse.routing && lastSubmitResponse.routing.flags.length > 0) {
-                dom.doneFlags.textContent = "Routing flags: " + lastSubmitResponse.routing.flags.join(", ");
-            } else {
-                dom.doneFlags.textContent = "";
-            }
-        }
-    } else {
-        session.available.forEach(instId => {
-            const btn = document.createElement('button');
-            btn.className = 'instrument-btn';
-            btn.textContent = instId;
-            btn.onclick = () => loadInstrument(instId);
-            dom.availableList.appendChild(btn);
-        });
-    }
-    
-    // Render completed
-    dom.completedList.innerHTML = '';
-    session.completed.forEach(comp => {
-        const div = document.createElement('div');
-        div.className = 'completed-item';
-        div.textContent = `${comp.instrument_id}: ${comp.total_score} (${comp.band || 'N/A'})`;
-        dom.completedList.appendChild(div);
-    });
-}
-
-async function loadInstrument(instId) {
-    dom.resultDisplay.style.display = 'none';
-
-    // Core Flow manual overrides
-    if (instId === 'intake') {
-        currentFormPayload = { instrument_id: 'intake', is_submittable: true };
-        dom.welcomeMsg.style.display = 'none';
-        dom.instContainer.style.display = 'block';
-        dom.instTitle.textContent = "Intake Categories & Red Thread";
-        dom.instTime.textContent = "";
-        dom.btnSubmit.style.display = '';
-        dom.btnSubmit.disabled = false;
-        dom.formItems.innerHTML = `
-            <div class="form-group">
-                <label>Red Thread Question</label>
-                <input type="text" name="red_thread_question" required style="width:100%; padding:0.5rem;" value="I want to understand myself better.">
-            </div>
-            <div class="form-group">
-                <label>Categories (comma separated IDs)</label>
-                <input type="text" name="categories" required style="width:100%; padding:0.5rem;" value="identity_personality,mood_anxiety">
-            </div>
-        `;
-        return;
-    }
-    
-    if (instId === 'anchors') {
-        currentFormPayload = { instrument_id: 'anchors', is_submittable: true };
-        dom.welcomeMsg.style.display = 'none';
-        dom.instContainer.style.display = 'block';
-        dom.instTitle.textContent = "Session Anchors (Mood, Energy, Focus)";
-        dom.instTime.textContent = "Scale 0-10";
-        dom.btnSubmit.style.display = '';
-        dom.btnSubmit.disabled = false;
-        dom.formItems.innerHTML = `
-            <div class="form-group"><label>Mood</label><input type="number" name="mood" min="0" max="10" value="5" required></div>
-            <div class="form-group"><label>Energy</label><input type="number" name="energy" min="0" max="10" value="5" required></div>
-            <div class="form-group"><label>Focus</label><input type="number" name="focus" min="0" max="10" value="5" required></div>
-        `;
-        return;
-    }
-
-    const { ok, data } = await api(`/sessions/${currentSessionId}/instruments/${instId}`);
-    if (!ok) {
-        alert("Failed to load instrument: " + JSON.stringify(data));
-        return;
-    }
-    
-    currentFormPayload = data;
-    dom.debugForm.textContent = JSON.stringify(data, null, 2);
-    
-    dom.welcomeMsg.style.display = 'none';
-    dom.instContainer.style.display = 'block';
-    
-    dom.instTitle.textContent = `${data.instrument_name} (${data.instrument_id})`;
-    dom.instTime.textContent = data.time_window_text || '';
-    
-    dom.btnSubmit.style.display = ''; // Reset display after previous submits
-    dom.btnSubmit.disabled = !data.is_submittable;
-    
-    // Render form items
-    dom.formItems.innerHTML = '';
-    data.items_to_render.forEach(item => {
-        const group = document.createElement('div');
-        group.className = 'form-group';
-        
-        const label = document.createElement('label');
-        label.textContent = item.text;
-        label.setAttribute('for', item.item_id);
-        
-        const options = data.response_option_sets[item.response_options_key];
-        
-        if (item.response_options_key.includes('time')) {
-            const input = document.createElement('input');
-            input.type = 'time';
-            input.id = item.item_id;
-            input.name = item.item_id;
-            input.required = true;
-            input.style.width = '100%';
-            input.style.padding = '0.5rem';
-            group.appendChild(label);
-            group.appendChild(input);
-        } else if (item.response_options_key.includes('number') || item.response_options_key.includes('free_text')) {
-            const input = document.createElement('input');
-            input.type = item.response_options_key.includes('number') ? 'number' : 'text';
-            input.id = item.item_id;
-            input.name = item.item_id;
-            input.required = true;
-            input.style.width = '100%';
-            input.style.padding = '0.5rem';
-            if (input.type === 'number') input.min = 0;
-            group.appendChild(label);
-            group.appendChild(input);
-        } else {
-            const select = document.createElement('select');
-            select.id = item.item_id;
-            select.name = item.item_id;
-            select.required = true;
-            
-            const emptyOpt = document.createElement('option');
-            emptyOpt.value = "";
-            emptyOpt.textContent = "Select an option...";
-            emptyOpt.disabled = true;
-            emptyOpt.selected = true;
-            select.appendChild(emptyOpt);
-            
-            options.forEach(opt => {
-                const option = document.createElement('option');
-                option.value = opt.value;
-                option.textContent = opt.label || opt.text;
-                select.appendChild(option);
-            });
-            
-            group.appendChild(label);
-            group.appendChild(select);
-        }
-        dom.formItems.appendChild(group);
-    });
-}
-
-dom.form.onsubmit = async (e) => {
-    e.preventDefault();
-    if (!currentSessionId || !currentFormPayload) return;
-    
-    const formData = new FormData(dom.form);
-    let reqBody, endpoint;
-
-    if (currentFormPayload.instrument_id === 'intake') {
-        reqBody = {
-            red_thread_question: formData.get('red_thread_question'),
-            categories: formData.get('categories').split(',').map(s => s.trim()).filter(Boolean)
-        };
-        endpoint = `/sessions/${currentSessionId}/intake`;
-    } else if (currentFormPayload.instrument_id === 'anchors') {
-        reqBody = {
-            mood: parseInt(formData.get('mood')),
-            energy: parseInt(formData.get('energy')),
-            focus: parseInt(formData.get('focus'))
-        };
-        endpoint = `/sessions/${currentSessionId}/anchors`;
-    } else {
-        const responses = {};
-        for (let [key, value] of formData.entries()) {
-            responses[key] = parseFloat(value);
-        }
-        reqBody = {
-            responses: responses,
-            parent_instance_id: currentFormPayload.parent_instance_id
-        };
-        endpoint = `/sessions/${currentSessionId}/assessments/${currentFormPayload.instrument_id}/submit`;
-    }
-    
-    dom.debugReq.textContent = JSON.stringify(reqBody, null, 2);
-    
-    const { ok, data } = await api(endpoint, {
-        method: 'POST',
-        body: JSON.stringify(reqBody)
-    });
-    
-    dom.debugRes.textContent = JSON.stringify(data, null, 2);
-    
-    if (ok) {
-        lastSubmitResponse = data;
-        
-        // Show results
-        dom.resultDisplay.style.display = 'block';
-        if (data.score) {
-            document.getElementById('res-score').textContent = data.score.total_score;
-            document.getElementById('res-band').textContent = data.score.band || 'N/A';
-            document.getElementById('res-routing').textContent = `${data.routing.action} ${data.routing.next_instrument_id ? '(' + data.routing.next_instrument_id + ')' : ''}`;
-        } else {
-            document.getElementById('res-score').textContent = "N/A";
-            document.getElementById('res-band').textContent = "N/A";
-            document.getElementById('res-routing').textContent = "N/A";
-        }
-        
-        // Hide form contents
-        dom.formItems.innerHTML = '<p style="color:var(--success); font-weight:bold;">Submitted successfully.</p>';
-        dom.btnSubmit.style.display = 'none';
-        
-        // Refresh session
-        await refreshSession();
-    } else {
-        alert("Submit failed. See debug response.");
-        // We might need to refresh session anyway to see if safety paused us
-        await refreshSession();
-    }
-};
-
-dom.btnCreateSession.onclick = createSession;
-dom.btnLoadSession.onclick = () => {
-    const val = dom.sessionIdInput.value.trim();
-    if (val) {
-        currentSessionId = val;
-        refreshSession();
-    }
-};
-
-dom.btnAckSafety.onclick = async () => {
-    if (!currentSessionId) return;
-    const { ok, data } = await api(`/sessions/${currentSessionId}/acknowledge-safety`, { method: 'POST' });
-    if (ok) {
-        updateSessionUI(data);
-    } else {
-        alert("Failed to acknowledge safety: " + JSON.stringify(data));
-    }
-};
-
-</script>
+<script src="/dev-assets/js/api.js?v=2"></script>
+<script src="/dev-assets/js/dictionary.js?v=2"></script>
+<script src="/dev-assets/js/state.js?v=2"></script>
+<script src="/dev-assets/js/ui_core.js?v=2"></script>
+<script src="/dev-assets/js/ui_forms.js?v=2"></script>
 </body>
 </html>

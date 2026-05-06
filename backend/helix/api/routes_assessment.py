@@ -8,10 +8,11 @@ the client is never trusted to supply carried values.
 
 from __future__ import annotations
 
+import asyncio
 import json
 import uuid
 from datetime import datetime, timezone
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Union
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
@@ -44,7 +45,7 @@ CRISIS_RESOURCES = {
 # ---------------------------------------------------------------------------
 
 class SubmitRequest(BaseModel):
-    responses: Dict[str, float]
+    responses: Dict[str, Union[float, str]]
     parent_instance_id: Optional[str] = None
     timestamps: Optional[List[float]] = None  # optional, for rapid-response detection
 
@@ -53,7 +54,9 @@ class ScoreOut(BaseModel):
     instrument_id: str
     total_score: float
     band: Optional[str]
+    band_description: Optional[str] = None
     subscale_scores: Optional[dict]
+    subscale_band_descriptions: Optional[dict[str, str]] = None
     safety_flags: list
     validity_warnings: list
 
@@ -71,6 +74,7 @@ class SubmitResponse(BaseModel):
     score: ScoreOut
     routing: RoutingOut
     session_state: str
+    ai_bridge: Optional[dict] = None
 
 
 # ---------------------------------------------------------------------------
@@ -81,11 +85,25 @@ class SubmitResponse(BaseModel):
     "/{session_id}/assessments/{instrument_id}/submit",
     response_model=SubmitResponse,
 )
-def submit_assessment(
+async def submit_assessment(
     session_id: str,
     instrument_id: str,
     body: SubmitRequest,
     db: DBSession = Depends(get_db),
+):
+    try:
+        return await _submit_assessment(session_id, instrument_id, body, db)
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+
+
+async def _submit_assessment(
+    session_id: str,
+    instrument_id: str,
+    body: SubmitRequest,
+    db: DBSession,
 ):
     # 1. Validate session
     session = db.get(Session, session_id)
@@ -181,6 +199,9 @@ def submit_assessment(
     db.add(score_row)
     db.flush()
 
+    # 9. Mark all cached AI narratives as stale (new score changes the context)
+    session.narratives_stale = True
+
     # 9. Handle safety protocol
     if routing.safety_triggered:
         safety_event = {
@@ -209,13 +230,40 @@ def submit_assessment(
             session.state = "EXPLORING"
             session.updated_at = datetime.now(timezone.utc)
 
+    # 11. Best-effort AI bridge narration (2s timeout, never blocks submit)
+    ai_bridge: Optional[dict] = None
+    next_id = routing.next_instrument_id
+    if (
+        next_id
+        and session.state not in ("SAFETY_PAUSED", "CORE_FLOW_IN_PROGRESS")
+    ):
+        from helix.ai.orchestrator import NarrativeOrchestrator
+        from helix.ai.schemas import TaskType
+        try:
+            orchestrator = NarrativeOrchestrator(db)
+            bridge_result = await asyncio.wait_for(
+                orchestrator.generate(
+                    session,
+                    TaskType.INTER_INSTRUMENT_NARRATION,
+                    prev_instrument_id=instrument_id,
+                    next_instrument_id=next_id,
+                ),
+                timeout=2.0,
+            )
+            if bridge_result.ready and bridge_result.narrative:
+                ai_bridge = bridge_result.narrative
+        except Exception:
+            pass  # bridge is best-effort — submit always succeeds
+
     return SubmitResponse(
         assessment_instance_id=instance_id,
         score=ScoreOut(
             instrument_id=score_result.instrument_id,
             total_score=score_result.total_score,
             band=None if definition.get("suppress_band_from_user") else score_result.band,
+            band_description=None if definition.get("suppress_band_from_user") else score_result.band_description,
             subscale_scores=score_result.subscale_scores,
+            subscale_band_descriptions=score_result.subscale_band_descriptions,
             safety_flags=score_result.safety_flags,
             validity_warnings=score_result.validity_warnings,
         ),
@@ -227,4 +275,5 @@ def submit_assessment(
             flags=routing.flags,
         ),
         session_state=session.state,
+        ai_bridge=ai_bridge,
     )
