@@ -29,6 +29,11 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+Documents/config.cfg
+
+# Local helper artifacts
+append_doc.py
+dev_shell_patch.py
 
 # Database
 *.db

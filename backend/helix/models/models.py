@@ -31,6 +31,10 @@ class Session(Base):
     safety_flags: Mapped[Optional[Any]] = mapped_column(JSON, nullable=True)
     intake_data: Mapped[Optional[Any]] = mapped_column(JSON, nullable=True)
     anchors: Mapped[Optional[Any]] = mapped_column(JSON, nullable=True)
+    fatigue_nudge_shown: Mapped[bool] = mapped_column(default=False)
+    fatigue_nudge_dismissed: Mapped[bool] = mapped_column(default=False)
+    # Set True whenever a new score is persisted; cleared when narratives are (re-)generated.
+    narratives_stale: Mapped[bool] = mapped_column(default=False)
     created_at: Mapped[datetime] = mapped_column(
         DateTime, default=datetime.utcnow
     )
@@ -39,6 +43,9 @@ class Session(Base):
     )
 
     assessment_instances: Mapped[list[AssessmentInstance]] = relationship(
+        back_populates="session", cascade="all, delete-orphan"
+    )
+    narratives: Mapped[list[Narrative]] = relationship(
         back_populates="session", cascade="all, delete-orphan"
     )
 
@@ -102,3 +109,31 @@ class Score(Base):
     assessment_instance: Mapped[AssessmentInstance] = relationship(
         back_populates="score"
     )
+
+
+class Narrative(Base):
+    """Cached AI-generated narrative for a session and task.
+
+    Keyed by (session_id, task_type, parameters_hash) where parameters_hash
+    is the sha256 of the sorted task parameters JSON (e.g. {"planet_id": "venus"}).
+    """
+
+    __tablename__ = "narratives"
+
+    id: Mapped[str] = mapped_column(
+        String(36), primary_key=True, default=lambda: str(uuid.uuid4())
+    )
+    session_id: Mapped[str] = mapped_column(
+        String(36), ForeignKey("sessions.id", ondelete="CASCADE")
+    )
+    task_type: Mapped[str] = mapped_column(String(64))
+    parameters_hash: Mapped[str] = mapped_column(String(64))
+    # sha256 of the ContextSerializer payload used to generate this narrative.
+    context_hash: Mapped[Optional[str]] = mapped_column(String(64), nullable=True)
+    output_json: Mapped[Any] = mapped_column(JSON)
+    model_used: Mapped[Optional[str]] = mapped_column(String(64), nullable=True)
+    prompt_tokens: Mapped[Optional[int]] = mapped_column(nullable=True)
+    completion_tokens: Mapped[Optional[int]] = mapped_column(nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+
+    session: Mapped[Session] = relationship(back_populates="narratives")
