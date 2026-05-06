@@ -208,6 +208,7 @@ def test_ai_narrate_ready_mission_control(client, db):
     with patch("helix.ai.orchestrator._build_engine") as mock_build_engine:
         mock_engine = MagicMock()
         mock_engine.llm.model_name = "gemini-1.5-flash"
+        mock_engine.build_context_payload.return_value = {"session_id": session_id}
         mock_engine.generate_mission_control = AsyncMock(return_value=mock_result)
         mock_build_engine.return_value = mock_engine
 
@@ -242,6 +243,7 @@ def test_ai_narrate_returns_cached_on_second_call(client, db):
     with patch("helix.ai.orchestrator._build_engine") as mock_build_engine:
         mock_engine = MagicMock()
         mock_engine.llm.model_name = "gemini-1.5-flash"
+        mock_engine.build_context_payload.return_value = {"session_id": session_id}
         mock_engine.generate_mission_control = AsyncMock(return_value=mock_result)
         mock_build_engine.return_value = mock_engine
 
@@ -289,6 +291,7 @@ def test_list_narratives_after_generation(client, db):
     with patch("helix.ai.orchestrator._build_engine") as mock_build_engine:
         mock_engine = MagicMock()
         mock_engine.llm.model_name = "gemini-1.5-flash"
+        mock_engine.build_context_payload.return_value = {"session_id": session_id}
         mock_engine.generate_mission_control = AsyncMock(return_value=mock_result)
         mock_build_engine.return_value = mock_engine
 
