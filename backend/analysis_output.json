@@ -1,0 +1,1059 @@
+[
+  {
+    "file": "aaq2.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low_inflexibility": "Your responses suggest a high degree of psychological flexibility. This suggests you have strong resources in this area and are able to stay engaged with your values even during difficult experiences.",
+          "moderate": "Your responses indicate moderate psychological inflexibility. Many people find it helpful to monitor this and gently practise acceptance of uncomfortable emotions.",
+          "high_inflexibility": "Your responses suggest high psychological inflexibility. This is worth paying attention to, as avoiding painful thoughts or feelings can sometimes make them harder to manage."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "aq10.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "below_threshold": "Your responses suggest a low level of autistic traits. Most people experience occasional social or sensory differences, and your responses fall within the typical range.",
+          "above_threshold": "Your responses indicate traits consistent with the autism spectrum. Many people with these patterns find that understanding them helps make sense of their experiences, and you may find it helpful to explore this further."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "asrs_a.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low": "Your responses suggest a low level of traits associated with ADHD over the past 6 months. Most people experience occasional distractibility, and your responses fall within the typical range.",
+          "elevated": "Your responses indicate elevated traits consistent with ADHD over the past 6 months. Many people with these patterns find that understanding them helps make sense of their experiences, and it may be worth exploring further."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "asrs_full.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low": "Your responses suggest a low level of traits associated with inattention or hyperactivity over the past 6 months. Most people experience occasional focus issues, and your responses fall within the typical range.",
+          "moderate": "Your responses indicate moderate traits consistent with ADHD over the past 6 months. Many people find it helpful to monitor these patterns to see how they impact daily life.",
+          "high": "Your responses suggest high levels of traits consistent with ADHD over the past 6 months. Many people with these patterns find that understanding them helps make sense of their experiences."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "bdefs_sf.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "normal": "Your responses suggest normal executive functioning over the past six months. Most people experience occasional difficulties with planning or time management, and your responses fall within the typical range.",
+          "elevated": "Your responses indicate elevated difficulties with executive functioning over the past six months. Many people find it helpful to monitor this and explore strategies to support focus and organisation.",
+          "clinical": "Your responses suggest significant difficulties with executive functioning over the past six months. These challenges can be highly frustrating, and speaking with your GP or a neuropsychologist could be a valuable next step."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "bfi_s.json",
+    "changes": [
+      {
+        "field": "root_keys",
+        "added": [
+          "profile_summary_template",
+          "interpretation_mode",
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "brs.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low": "Your responses suggest a low ability to bounce back from stress. This is worth paying attention to, and exploring what supports your recovery could be very beneficial.",
+          "normal": "Your responses indicate a normal level of resilience. Most people experience occasional difficulty recovering from stress, and your responses fall within the typical range.",
+          "high": "Your responses suggest a high level of resilience. This suggests you have strong resources in this area and can effectively recover from stressful events."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "catq.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low": "Your responses suggest a low level of social camouflaging. Most people adapt their behaviour in social settings occasionally, and your responses fall within the typical range.",
+          "moderate": "Your responses indicate a moderate level of social camouflaging. Many people find it helpful to monitor how often they mask their natural behaviours to fit in.",
+          "high_camouflaging": "Your responses suggest high levels of traits consistent with social camouflaging or masking. Many people with these patterns find that understanding them helps make sense of their experiences and social fatigue."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "cfq25.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low": "Your responses suggest a low frequency of everyday cognitive slips over the past six months. Most people experience occasional forgetfulness, and your responses fall within the typical range.",
+          "average": "Your responses indicate an average frequency of cognitive failures over the past six months. Most people experience this occasionally, and your responses fall within the typical range.",
+          "elevated": "Your responses suggest an elevated frequency of cognitive slips over the past six months. Many people find it helpful to monitor this, as stress or fatigue can often increase these occurrences.",
+          "high": "Your responses indicate a high frequency of cognitive failures over the past six months. This is worth paying attention to, and exploring the impact of mental load or sleep on your cognition could be beneficial."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "compact.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low_flexibility": "Your responses suggest low psychological flexibility. This is worth paying attention to, and exploring ways to stay open to your experiences while pursuing your values could be beneficial.",
+          "moderate": "Your responses indicate moderate psychological flexibility. Many people find it helpful to monitor this and practise engaging fully with the present moment.",
+          "high_flexibility": "Your responses suggest high psychological flexibility. This suggests you have strong resources in this area and can effectively align your actions with your values."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "cpq.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low": "Your responses suggest a low level of clinical perfectionism over the past month. Most people experience occasional self-criticism, and your responses fall within the typical range.",
+          "moderate": "Your responses indicate a moderate level of perfectionism over the past month. Many people find it helpful to monitor this and practise self-compassion when standards aren't met.",
+          "high": "Your responses suggest a high level of clinical perfectionism over the past month. This is worth paying attention to, as linking your self-worth entirely to achievement can be exhausting."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "dejong.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "not_lonely": "Your responses suggest you are not experiencing significant loneliness. Most people experience occasional feelings of isolation, but your responses fall within the typical range.",
+          "moderate": "Your responses indicate moderate loneliness. Many people find it helpful to monitor this and explore ways to build meaningful social connections.",
+          "severe": "Your responses suggest severe loneliness. This level of isolation can be deeply painful, and seeking out supportive communities or professional help is highly recommended."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "ders16.json",
+    "changes": [
+      {
+        "field": "scoring.bands",
+        "old": null,
+        "new": [
+          {
+            "min": 16,
+            "max": 24,
+            "label": "very_low"
+          },
+          {
+            "min": 25,
+            "max": 36,
+            "label": "low"
+          },
+          {
+            "min": 37,
+            "max": 47,
+            "label": "average"
+          },
+          {
+            "min": 48,
+            "max": 60,
+            "label": "high"
+          },
+          {
+            "min": 61,
+            "max": 80,
+            "label": "very_high"
+          }
+        ]
+      },
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "very_low": "Your responses suggest very low difficulty with emotion regulation. Your ability to manage and respond to your emotions falls within a highly typical and adaptive range.",
+          "low": "Your responses indicate low difficulty with emotion regulation. Most people experience occasional emotional challenges, but your responses fall within the typical range.",
+          "average": "Your responses suggest average emotional regulation patterns. Most people experience this, and your responses fall within the typical range.",
+          "high": "Your responses indicate high difficulty with emotion regulation. This is worth paying attention to, and many people find it helpful to monitor these emotional responses.",
+          "very_high": "Your responses suggest very high difficulty with emotion regulation. This pattern can be distressing to navigate, and speaking with a professional could be very beneficial."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "des_b.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "normal": "Your responses suggest a normal range of dissociative experiences over the past 7 days. Most people experience occasional spacing out, and your responses fall within the typical range.",
+          "mild": "Your responses indicate mild dissociative experiences over the past 7 days. Most people experience this occasionally, but it is worth paying attention to.",
+          "moderate": "Your responses suggest moderate dissociative experiences over the past 7 days. Many people find it helpful to monitor this and explore grounding techniques.",
+          "clinical": "Your responses indicate a high level of dissociative experiences over the past 7 days. This level of detachment is significant, and speaking with a mental health professional is strongly recommended."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "dts.json",
+    "changes": [
+      {
+        "field": "scoring.bands",
+        "old": null,
+        "new": [
+          {
+            "min": 15,
+            "max": 30,
+            "label": "low"
+          },
+          {
+            "min": 31,
+            "max": 50,
+            "label": "moderate"
+          },
+          {
+            "min": 51,
+            "max": 75,
+            "label": "high"
+          }
+        ]
+      },
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low": "Your responses suggest a low tolerance for emotional distress. This is worth paying attention to, as exploring ways to navigate difficult feelings could be very beneficial.",
+          "moderate": "Your responses indicate a moderate tolerance for emotional distress. Many people find it helpful to monitor this and practice sitting with uncomfortable emotions.",
+          "high": "Your responses suggest a high tolerance for emotional distress. This indicates you have strong resources in this area and can effectively navigate aversive emotional states."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "ecr_s.json",
+    "changes": [
+      {
+        "field": "scoring.bands",
+        "old": [],
+        "new": [
+          {
+            "min": 1.0,
+            "max": 2.9,
+            "label": "low"
+          },
+          {
+            "min": 3.0,
+            "max": 5.0,
+            "label": "average"
+          },
+          {
+            "min": 5.1,
+            "max": 7.0,
+            "label": "high"
+          }
+        ]
+      },
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low": "Your responses suggest low levels of attachment-related anxiety or avoidance. Most people experience occasional relationship insecurities, but your responses fall within the typical, secure range.",
+          "average": "Your responses indicate average levels of relationship anxiety or avoidance. Most people experience this, and your responses fall within the typical range.",
+          "high": "Your responses suggest high levels of attachment-related anxiety or avoidance. Many people find it helpful to monitor these patterns to better understand their relationship dynamics."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "erq.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "cognitive_reappraisal": {
+            "very_low": "Your responses suggest very infrequent use of cognitive reappraisal \u00e2\u20ac\u201d reframing how you think about situations to shift their emotional impact. Many people find that practising this strategy can be a helpful tool for navigating difficult experiences.",
+            "low": "Your responses indicate low use of cognitive reappraisal. Most people vary in how often they use this strategy, and it may be worth exploring whether it could be a useful resource for you.",
+            "average": "Your responses suggest an average use of cognitive reappraisal. Your responses fall within the typical range for most people.",
+            "high": "Your responses indicate frequent use of cognitive reappraisal. This is generally considered an adaptive way to manage emotions and suggests strong regulatory resources.",
+            "very_high": "Your responses suggest very frequent use of cognitive reappraisal. This is generally considered an adaptive strategy, and your responses suggest strong emotional regulation resources in this area."
+          },
+          "expressive_suppression": {
+            "very_low": "Your responses suggest very infrequent suppression of emotional expression. Most people vary in how often they hold back their feelings, and your responses fall within the typical range of open expression.",
+            "low": "Your responses indicate low use of expressive suppression. Most people experience this occasionally, and your responses fall within the typical range.",
+            "average": "Your responses suggest an average level of expressive suppression. Your responses fall within the typical range for most people.",
+            "high": "Your responses indicate frequent suppression of emotional expression. Many people find it helpful to monitor this pattern, as habitually holding back feelings can sometimes increase internal emotional load.",
+            "very_high": "Your responses suggest very frequent suppression of emotional expression. This is worth paying attention to, as over-relying on suppression can sometimes make processing emotions more difficult over time."
+          }
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      },
+      {
+        "field": "scoring.subscales",
+        "changed": true
+      }
+    ]
+  },
+  {
+    "file": "ffmq15.json",
+    "changes": [
+      {
+        "field": "scoring.bands",
+        "old": null,
+        "new": [
+          {
+            "min": 15,
+            "max": 35,
+            "label": "low"
+          },
+          {
+            "min": 36,
+            "max": 55,
+            "label": "average"
+          },
+          {
+            "min": 56,
+            "max": 75,
+            "label": "high"
+          }
+        ]
+      },
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low": "Your responses suggest a low level of mindful awareness over the past month. Many people find it helpful to monitor this and gently practice bringing attention to the present moment.",
+          "average": "Your responses indicate an average level of mindfulness over the past month. Most people experience this, and your responses fall within the typical range.",
+          "high": "Your responses suggest a high level of mindfulness over the past month. This suggests you have strong resources in this area and a great capacity for present-moment awareness."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "gad2.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "elevated_symptoms": "Your responses suggest elevated anxiety symptoms over the past two weeks. This is worth paying attention to, as monitoring these feelings can be a helpful first step in understanding them."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "gad7.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "minimal": "Your responses suggest minimal anxiety symptoms over the past two weeks. Most people experience occasional worry, and your responses fall within the typical range.",
+          "mild": "Your responses indicate mild anxiety symptoms over the past two weeks. Most people experience this occasionally, but it is worth paying attention to.",
+          "moderate": "Your responses suggest moderate anxiety symptoms over the past two weeks. Many people find it helpful to monitor this level of worry and explore supportive strategies.",
+          "severe": "Your responses indicate severe anxiety symptoms over the past two weeks. This level of anxiety is highly validating of your distress, and professional support is strongly recommended. If you'd like to talk to someone, Samaritans are available 24/7 on 116 123 (UK)."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "isi.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "no_insomnia": "Your responses suggest no clinically significant insomnia over the past two weeks. Most people experience occasional sleep disruptions, and your responses fall within the typical range.",
+          "subthreshold": "Your responses indicate subthreshold insomnia over the past two weeks. Most people experience this occasionally, but it is worth paying attention to if sleep issues continue.",
+          "moderate": "Your responses suggest moderate clinical insomnia over the past two weeks. Many people find it helpful to monitor this and explore strategies to improve sleep hygiene.",
+          "severe": "Your responses indicate severe clinical insomnia over the past two weeks. This level of sleep disruption is significant, and speaking with your GP or a sleep specialist could be a valuable next step."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "ius12.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low": "Your responses suggest a low intolerance of uncertainty. Most people experience this, and your responses fall within the typical range of comfort with the unknown.",
+          "moderate": "Your responses indicate a moderate intolerance of uncertainty. Many people find it helpful to monitor this and practise accepting ambiguous situations.",
+          "high": "Your responses suggest a high intolerance of uncertainty. This is worth paying attention to, as an intense need for predictability can often drive feelings of anxiety."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "lsas_sr_full.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "none": "Your responses suggest no significant social anxiety. Most people experience occasional nervousness in social settings, and your responses fall within the typical range.",
+          "mild": "Your responses indicate mild social anxiety. Most people experience this occasionally, but it is worth paying attention to if it limits your daily life.",
+          "moderate": "Your responses suggest moderate social anxiety. Many people find it helpful to monitor this and practise gradual engagement with feared situations.",
+          "marked": "Your responses indicate marked social anxiety. This level of fear and avoidance is worth paying attention to, and exploring supportive strategies can be very helpful.",
+          "severe": "Your responses suggest severe social anxiety. The distress you are feeling in social situations is significant, and professional guidance could provide valuable support.",
+          "very_severe": "Your responses indicate very severe social anxiety. This level of difficulty is highly validating of your distress, and professional support is strongly recommended."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "lsas_sr_short.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "none": "Your responses suggest no significant social anxiety. Most people experience occasional nervousness in social situations, and your responses fall within the typical range.",
+          "mild": "Your responses indicate mild social anxiety. Most people experience this occasionally, but it is worth paying attention to if it begins to limit your activities.",
+          "moderate": "Your responses suggest moderate social anxiety. Many people find it helpful to monitor this and gently challenge themselves in social settings.",
+          "severe": "Your responses indicate severe social anxiety. This level of discomfort is significant, and exploring professional support could be highly beneficial."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "maia2_brief.json",
+    "changes": [
+      {
+        "field": "scoring.bands",
+        "old": null,
+        "new": [
+          {
+            "min": 0,
+            "max": 2.0,
+            "label": "below_average"
+          },
+          {
+            "min": 2.1,
+            "max": 3.9,
+            "label": "average"
+          },
+          {
+            "min": 4.0,
+            "max": 5.0,
+            "label": "above_average"
+          }
+        ]
+      },
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "below_average": "Your responses suggest below average interoceptive awareness, indicating some difficulty noticing bodily sensations. Many people find it helpful to monitor this and practice tuning into their physical experiences.",
+          "average": "Your responses indicate an average level of interoceptive awareness. Most people experience this, and your responses fall within the typical range.",
+          "above_average": "Your responses suggest above average interoceptive awareness. This suggests you have strong resources in this area and are highly attuned to your body's signals."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "meq.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "definitely_morning": "Your responses indicate a definite morning chronotype. Your circadian rhythm naturally aligns with waking early and being most active in the morning hours.",
+          "moderately_morning": "Your responses suggest a moderate morning chronotype. You generally prefer earlier hours but retain some flexibility in your daily rhythms.",
+          "intermediate": "Your responses indicate an intermediate chronotype. You likely adapt reasonably well to both morning and evening schedules.",
+          "moderately_evening": "Your responses suggest a moderate evening chronotype. You generally prefer later hours and find your energy peaks later in the day.",
+          "definitely_evening": "Your responses indicate a definite evening chronotype. Your circadian rhythm naturally aligns with staying up later and being most active into the night."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "mlq.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "presence": {
+            "low": "Your responses suggest a low sense of meaning currently present in your life. Many people go through periods where meaning feels elusive, and this can be a valuable area to explore.",
+            "moderate": "Your responses indicate a moderate sense of meaning present in your life. Most people experience fluctuations in how meaningful their daily experiences feel, and your responses fall within the typical range.",
+            "high": "Your responses suggest a strong sense of meaning present in your life. This indicates you have a clear sense of what matters to you and how your daily experiences connect to it."
+          },
+          "search": {
+            "low": "Your responses suggest a low level of active searching for meaning. This may reflect that meaning feels settled for you, or that this is not a current focus of your attention.",
+            "moderate": "Your responses indicate a moderate level of searching for meaning. Many people find themselves actively questioning what matters to them at certain points in life, and your responses fall within the typical range.",
+            "high": "Your responses suggest an active and intense search for meaning. This is a deeply human experience, and exploring your values and what gives you a sense of purpose could be a rich area for reflection."
+          }
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      },
+      {
+        "field": "scoring.subscales",
+        "changed": true
+      }
+    ]
+  },
+  {
+    "file": "oci_r.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "subclinical": "Your responses suggest subclinical obsessive-compulsive traits over the past month. Most people experience occasional intrusive thoughts or urges, and your responses fall within the typical range.",
+          "clinical": "Your responses indicate a clinical level of obsessive-compulsive traits over the past month. The distress associated with these patterns is significant, and professional support is strongly recommended. If you'd like to talk to someone, Samaritans are available 24/7 on 116 123 (UK)."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "paq.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low_alexithymia": "Your responses indicate low levels of difficulty in perceiving and experiencing emotions. Most people experience this occasionally, and your responses fall within the typical, healthy range of emotional awareness.",
+          "moderate_alexithymia": "Your responses suggest moderate challenges with identifying or describing your emotions. Many people find it helpful to monitor this and gently practice tuning into their feelings.",
+          "high_alexithymia": "Your responses indicate a high level of difficulty in identifying and describing emotions. Exploring these patterns further can be very beneficial for understanding how you process emotional experiences."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "paq_s.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low_alexithymia": "Your responses indicate low levels of difficulty in perceiving and experiencing emotions. Most people experience this occasionally, and your responses fall within the typical, healthy range of emotional awareness.",
+          "moderate_alexithymia": "Your responses suggest moderate challenges with identifying or describing your emotions. Many people find it helpful to monitor this and gently practice tuning into their feelings.",
+          "high_alexithymia": "Your responses indicate a high level of difficulty in identifying and describing emotions. Exploring these patterns further can be very beneficial for understanding how you process emotional experiences."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "pcl5.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "subthreshold": "Your responses suggest subthreshold symptoms of post-traumatic stress over the past month. Most people experience occasional distress following difficult events, and your responses fall within the typical range.",
+          "probable_ptsd": "Your responses indicate patterns consistent with probable post- traumatic stress over the past month. This level of distress is highly validating of your experiences, and professional support is strongly recommended. If you'd like to talk to someone, Samaritans are available 24/7 on 116 123 (UK)."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "pcptsd5.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "negative_screen": "Your responses suggest a negative screen for post-traumatic stress symptoms over the past month. Most people experience occasional stress responses, and your responses fall within the typical range.",
+          "positive_screen": "Your responses indicate a positive screen for post-traumatic stress symptoms over the past month. This is worth paying attention to, and exploring supportive professional resources could be highly beneficial."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "phq2.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "elevated_symptoms": "Your responses suggest elevated depressive symptoms over the past two weeks. This is worth paying attention to, and many people find it helpful to monitor this pattern or discuss it with a professional."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "phq9.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "minimal": "Your responses suggest minimal depressive symptoms over the past two weeks. Most people experience occasional low mood, and your responses fall within the typical range.",
+          "mild": "Your responses indicate mild depressive symptoms over the past two weeks. Most people experience this occasionally, but it is worth paying attention to if it persists.",
+          "moderate": "Your responses suggest moderate depressive symptoms over the past two weeks. Many people find it helpful to monitor this and consider speaking with a professional.",
+          "moderately_severe": "Your responses indicate moderately severe depressive symptoms over the past two weeks. This level of distress is significant, and seeking professional guidance can be very beneficial.",
+          "severe": "Your responses suggest severe depressive symptoms over the past two weeks. This level of difficulty is highly validating of your distress, and professional support is strongly recommended. If you'd like to talk to someone, Samaritans are available 24/7 on 116 123 (UK)."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "psqi.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "good_sleep_quality": "Your responses suggest good sleep quality during the past month. Most people experience occasional disrupted nights, but your overall rest falls within the typical range.",
+          "poor_sleep_quality": "Your responses indicate poor sleep quality during the past month. This is worth paying attention to, and many people find it helpful to monitor their sleep patterns and hygiene."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "pss10.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low": "Your responses suggest a low level of perceived stress during the past month. Most people experience occasional stress, and your responses fall within the typical range.",
+          "moderate": "Your responses indicate a moderate level of perceived stress during the past month. Many people find it helpful to monitor this and prioritise time for rest and recovery.",
+          "high": "Your responses suggest a high level of perceived stress during the past month. This level of stress can be genuinely overwhelming, and speaking with your GP or a mental health professional could be a valuable next step."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "pswq.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low": "Your responses suggest a low level of trait worry. Most people experience occasional worries, and your responses fall within the typical range.",
+          "moderate": "Your responses indicate a moderate level of worry. Many people find it helpful to monitor this and explore techniques to manage anxious thoughts.",
+          "high_worry": "Your responses suggest a high level of chronic, uncontrollable worry. This level of anxiety is highly validating of your distress, and professional support is strongly recommended. If you'd like to talk to someone, Samaritans are available 24/7 on 116 123 (UK)."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "ptq10.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low": "Your responses suggest low levels of repetitive negative thinking. Most people experience occasional rumination, and your responses fall within the typical range.",
+          "moderate": "Your responses indicate moderate levels of repetitive negative thinking. Many people find it helpful to monitor this and practise disengaging from unhelpful thought loops.",
+          "high": "Your responses suggest high levels of repetitive negative thinking. This is worth paying attention to, as getting caught in these thought patterns can significantly impact your mood."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "raads_r.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "below_threshold": "Your responses suggest a low level of autistic traits. Most people experience occasional differences in social interaction or sensory processing, and your responses fall within the typical range.",
+          "consistent_with_autism": "Your responses indicate traits consistent with the autism spectrum. Many people with these patterns find that understanding them helps make sense of their lifelong experiences.",
+          "pronounced_traits": "Your responses suggest pronounced traits consistent with the autism spectrum. Many people with these patterns find that understanding them offers deep validation and helps make sense of their experiences."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "rses.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low": "Your responses suggest a low level of self-esteem. Many people find it helpful to monitor these feelings and explore ways to build a more positive self-view.",
+          "normal": "Your responses indicate a normal level of self-esteem. Most people experience occasional self-doubt, but your responses fall within the typical range.",
+          "high": "Your responses suggest a high level of self-esteem. This suggests you have strong resources in this area and generally hold a positive, healthy attitude toward yourself."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "scs_sf.json",
+    "changes": [
+      {
+        "field": "scoring.bands",
+        "old": null,
+        "new": [
+          {
+            "min": 1.0,
+            "max": 2.49,
+            "label": "low"
+          },
+          {
+            "min": 2.5,
+            "max": 3.5,
+            "label": "average"
+          },
+          {
+            "min": 3.51,
+            "max": 5.0,
+            "label": "high"
+          }
+        ]
+      },
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low": "Your responses suggest a low level of self-compassion during difficult times. This is worth paying attention to, as practising self-kindness can be a powerful resource for navigating challenges.",
+          "average": "Your responses indicate an average level of self-compassion. Most people experience fluctuations in how they treat themselves, and your responses fall within the typical range.",
+          "high": "Your responses suggest a high level of self-compassion. This suggests you have strong resources in this area and are adept at treating yourself with warmth and understanding."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "swls.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "extremely_dissatisfied": "Your responses suggest you are extremely dissatisfied with your life. This is worth paying attention to, as these feelings highlight a significant need for change or support.",
+          "dissatisfied": "Your responses indicate you are dissatisfied with your life overall. Many people find it helpful to monitor this and identify specific areas they would like to improve.",
+          "slightly_dissatisfied": "Your responses suggest you are slightly dissatisfied with your life. Most people experience periods of dissatisfaction, and exploring these feelings can be a helpful first step.",
+          "neutral": "Your responses indicate a neutral level of life satisfaction. Your responses fall within the typical range for individuals experiencing a mix of fulfilling and challenging life areas.",
+          "slightly_satisfied": "Your responses suggest you are slightly satisfied with your life. Most people experience this, and your responses fall within the typical, healthy range.",
+          "satisfied": "Your responses indicate you are satisfied with your life. This suggests you have strong resources and are finding fulfilment in most of your daily experiences.",
+          "extremely_satisfied": "Your responses suggest you are extremely satisfied with your life. This suggests you have strong resources in this area and feel highly fulfilled."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "via_is_p.json",
+    "changes": [
+      {
+        "field": "root_keys",
+        "added": [
+          "profile_summary_template",
+          "interpretation_mode",
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "wemwbs.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "very_low": "Your responses suggest a very low level of mental wellbeing over the past two weeks. This is worth paying attention to, and exploring additional support could be beneficial.",
+          "below_average": "Your responses indicate below average mental wellbeing over the past two weeks. Many people find it helpful to monitor this and focus on nurturing their protective resources.",
+          "average": "Your responses suggest an average level of mental wellbeing over the past two weeks. Most people experience this, and your responses fall within the typical range.",
+          "above_average": "Your responses indicate above average mental wellbeing over the past two weeks. This suggests you have strong resources in this area and are currently flourishing."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "wsas.json",
+    "changes": [
+      {
+        "field": "band_descriptions",
+        "old": null,
+        "new": {
+          "low": "Your responses suggest a low level of functional impairment over the past two weeks. Most people experience occasional difficulties managing daily tasks, and your responses fall within the typical range.",
+          "moderate": "Your responses indicate moderate functional impairment over the past two weeks. Many people find it helpful to monitor this and prioritise strategies to support their routines.",
+          "severe": "Your responses suggest severe functional impairment over the past two weeks. This level of disruption is significant, and speaking with your GP or a mental health professional could be a valuable next step."
+        }
+      },
+      {
+        "field": "root_keys",
+        "added": [
+          "band_descriptions"
+        ]
+      }
+    ]
+  }
+]

@@ -9,7 +9,7 @@ Non-obvious decisions and gotchas. Read before modifying scoring or instrument l
 - **Instrument item text is verbatim from published sources.** Never rephrase, simplify, or localise. This is a locked architectural decision — changing validated wording invalidates psychometric properties.
 - **`response_option_sets` is a top-level key**, not inline per item. Items reference sets by key (`response_options_key`). This keeps definitions DRY when all items share the same scale.
 - **CPQ licence is restrictive.** The PDF copyright reads "permission to photocopy granted to purchasers of this book for personal use only" (Fairburn, Cooper & Shafran 2003, Guilford Press). This covers personal/clinical photocopying, not digital deployment. Explicit permission from the authors or Guilford Press is required before Helix can present CPQ items to users.
-- **DSS-B is the DSM-5 Level 2 Cross-Cutting Symptom Measure for Dissociation** (not the Brief DES-B). 10 items, 0–4 Likert, free from APA. Replaces "Brief DES-B" throughout the spec. Instrument ID: `dss_b`.
+- **DES-B replaces DSS-B.** The 8-item Brief Dissociative Experiences Scale (DES-B) is used instead of the DSM-5 Level 2 Cross-Cutting Measure (DSS-B). Instrument ID: `des_b`.
 - **DTS scoring: item 6 is the only reverse-scored item.** Scale is 1=Strongly agree → 5=Strongly disagree. All items are negatively worded (agreement = low tolerance) *except* item 6 ("I can tolerate being distressed or upset as well as most people"), which must be reversed (5-x+1). Sum after reversal, range 15–75. Higher = greater distress tolerance. Sign-invert for composite contributions where higher z = worse outcome.
 - **CPQ scoring: items 2 and 8 are reverse-scored.** Forward items (1,3,4,5,6,7,9,10,11,12): 1=not at all → 4=all of the time. Reverse items (2,8): 4=not at all → 1=all of the time. Total = sum, range 12–48. No published clinical cut-off; higher = more clinical perfectionism.
 
@@ -49,3 +49,11 @@ Non-obvious decisions and gotchas. Read before modifying scoring or instrument l
 - **VLQ scoring is custom.** The `total_score` is the mean gap (importance - consistency) across domains where importance >= 7. The composite score (mean of importance * consistency) is stored in `metadata["composite_score"]`. The `valued_living_gap` composite in `composites.json` uses `computation: "custom"` and delegates to the VLQ scorer output rather than z-standardising.
 - **BDEFS-SF item text is verbatim.** Text was extracted from the proprietary PDF (Guilford Press). Structural definition (subscales, scoring, range) and verbatim items are complete.
 - **CompACT is the full 23-item version** (Francis et al. 2016), not a 10-item brief. The implementation state spec explicitly says "Full 23-item version used — no validated brief form exists."
+
+## Development
+
+## Interpretation Models & Qualitative Feedback
+
+- **Migration to Profile-Based Interpretation.** Instruments like BFI-S (Personality) and VIA-IS-P (Strengths) use `interpretation_mode: "trait_profile"` or `"strength_profile"`. These modes suppress root-level aggregate bands (`scoring.bands: null`) to prevent misleading "overall severity" scores for non-clinical constructs.
+- **Subscale-Level Narratives.** Complex instruments (ERQ, MLQ) moved from aggregate total scores to subscale-specific banding. `band_descriptions` in the JSON definition are now nested by subscale ID. `GenericScorer` automatically detects this structure and populates `ScoreResult.subscale_band_descriptions`.
+- **`suppress_band_from_user` Flag.** Used for instruments where internal clinical banding is required for routing or AI context but should be hidden from the user interface (e.g., to reduce stigma or diagnostic over-interpretation).

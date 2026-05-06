@@ -56,7 +56,9 @@ These decisions are finalised across planning. They are not open for re-evaluati
 
 ## 2. Current Build Status
 
-Phase 2 Core Engine & All Instrument Slices complete. API is runnable with `uvicorn helix.main:app --reload` from `backend/`.
+Phase 1 & Phase 2 Complete. The scoring engine, custom instruments, API routing, SQLite persistence, safety protocols, and Dev Shell UX overhaul are fully functional. The system correctly evaluates state transitions and composite rules.
+
+Phase 3 (AI Pipeline) Core Implemented.
 
 | Component | Status |
 |---|---|
@@ -74,9 +76,9 @@ Phase 2 Core Engine & All Instrument Slices complete. API is runnable with `uvic
 | Session management API | COMPLETE — `POST /sessions`, `GET /sessions/{id}`, `POST /sessions/{id}/acknowledge-safety`. Enforces CORE_FLOW_IN_PROGRESS state before EXPLORING. |
 | Safety protocol | COMPLETE — PHQ-9 item 9 > 0 or PC-PTSD-5 ≥ 3 → SAFETY_PAUSED state. 409 on all further submissions. Structured safety flag. |
 | Test suite | COMPLETE — All instruments covered (definitions, scoring, routing, API integration). |
-| Planet state calculator | NOT STARTED — designed, not coded |
+| Planet state calculator | COMPLETE — `scoring/planet_state.py`. |
 | Intake flow | COMPLETE — `POST /sessions/{id}/intake` and `POST /sessions/{id}/anchors`. Captures presenting concerns and session anchors. |
-| AI pipeline (prompt builder, LLM wrapper) | NOT STARTED |
+| AI pipeline (prompt builder, LLM wrapper) | COMPLETE — `ai/prompt_builder.py` and `ai/llm.py` |
 | Formulation narrative engine | NOT STARTED |
 | Report engine (PDF/JSON export) | NOT STARTED |
 | Next.js frontend | NOT STARTED |
@@ -108,7 +110,7 @@ helix/
 │       │   ├── registry.py                  ✓ Scorer registry, auto-discovery
 │       │   ├── generic.py                   ✓ GenericScorer (sum/mean)
 │       │   ├── composite.py                   Composite index engine (mean_z)
-│       │   ├── planet_state.py                Planet state calculator
+│       │   ├── planet_state.py              ✓ Planet state calculator
 │       │   └── instruments/
 │       │       ├── __init__.py              ✓ Exposes _DEFINITIONS_DIR
 │       │       ├── definitions/
@@ -165,7 +167,7 @@ helix/
 │           └── test_composite.py              Composite index tests
 ├── frontend/                                  Next.js — Phase 5, not started
 ├── Documents/
-│   └── helix-implementation-state-7.md      ✓ This document
+│   └── helix-implementation-state-8.md      ✓ This document
 ├── LEARNINGS.md                             ✓ Non-obvious decisions and gotchas
 ├── GEMINI.md                                ✓ Agent context
 ├── .gitignore                               ✓
@@ -201,7 +203,7 @@ Backend-first. Each phase produces a testable, working vertical slice.
 | 1.14 Build custom scorers | PAQ, PBAT, VLQ, MSS-YSQ, LSAS-SR, ECR-RS, MEQ, PSQI. | **✓ DONE** |
 | 1.15 Build composite index engine | mean_z computation, required_core and required_minimum enforcement, partial composite labelling. Custom delegation for VLQ gap. | **✓ DONE** |
 | 1.16 Build routing engine | Deterministic rule evaluation. Expansion triggers. Safety protocols. Deep dive unlock triggers. `unlock_planet` action. | **✓ DONE** |
-| 1.17 Build planet state calculator | Derives planet opacity, moon unlocks, ring assignments from completion state. | Not started |
+| 1.17 Build planet state calculator | Derives planet opacity, moon unlocks, ring assignments from completion state. | **✓ DONE** |
 | 1.18 Full test suite | Every instrument scored against known test vectors. Edge cases for routing, carry-forward, safety. | **✓ DONE** |
 
 ### Phase 2: Data Layer + API Shell
@@ -218,20 +220,20 @@ Backend-first. Each phase produces a testable, working vertical slice.
 | 2.6 Intake flow endpoints | Captures presenting concerns, red-thread question, cultural background, state anchors, exclusion screen. | **✓ DONE** — Implemented `/intake` and `/anchors`. |
 | 2.7 Safety protocol handler | PHQ-9 item 9 > 0 or PC-PTSD-5 ≥ 3 → SAFETY_PAUSED. 409 on all further submissions. Structured safety flags. `POST /sessions/{id}/acknowledge-safety` resumes EXPLORING. | **✓ DONE** |
 | 2.8 Integration tests | Full flow: create session → submit PHQ-2 → expansion to PHQ-9 → carry-forward → score → safety pause → acknowledge → resume. | **✓ DONE** — `tests/test_api.py` |
-| 2.9 Dev Shell | Vanilla HTML/JS thin client to drive session testing locally without Swagger. Includes `GET /sessions/{id}/instruments/{id}` session-aware render payload to enforce zero-logic frontend. | **✓ DONE** — `dev_shell.html` + `api/routes_session.py` |
+| 2.9 Dev Shell | Vanilla HTML/JS thin client to drive session testing locally without Swagger. Includes `GET /sessions/{id}/instruments/{id}` session-aware render payload to enforce zero-logic frontend. Overhauled with responsive grids, Likert box rendering, resizable components, and ranking chips. | **✓ DONE** — `dev_shell.html` + `api/routes_session.py` |
 
 ### Phase 3: AI Pipeline
 
 **Goal:** LLM abstraction layer working. Prompt builder assembling context from scored JSON. Formulation engine producing themed narratives. Mission control suggesting next destinations.
 
-| Task | Detail | Depends On |
+| Task | Detail | Status |
 |---|---|---|
-| 3.1 LLM client abstraction | `LLMClient` class with `generate()` method. Ollama adapter for local dev. Cloud adapter (Anthropic/OpenAI) for production. Config-switchable. | Nothing |
-| 3.2 Prompt builder | Assembles system prompt (role + safety rules + epistemic constraints) + context block (current scores JSON, flags, red-thread question, cultural context) + task instruction. | 3.1 |
-| 3.3 Formulation engine | `FormulationEngine.generate(session_scores)` → 5-theme narrative output. | 3.2, Phase 2 |
-| 3.4 Mission control logic | Given current completion state + scores + routing rules, suggest next planet/instrument. Natural language framing. | 3.2, Phase 2 |
-| 3.5 Inter-instrument narration | AI generates brief contextual bridging text between instruments. References red-thread question. | 3.2 |
-| 3.6 Prompt quality testing | Test formulation output against known score profiles. Verify AI never computes, never diagnoses, always cites uncertainty. | 3.3–3.5 |
+| 3.1 LLM client abstraction | `LLMClientAdapter` class with Pydantic schema validation. Ollama and Gemini adapters. Config-switchable. | **✓ DONE** |
+| 3.2 Prompt builder | `UnifiedPromptBuilder` assembling strict system rules, context, and XML task instructions. | **✓ DONE** |
+| 3.3 Formulation engine | `FormulationEngine.generate(session_scores)` → 5-theme narrative output. | NOT STARTED |
+| 3.4 Mission control logic | Given current completion state + scores + routing rules, suggest next planet/instrument. Natural language framing. | NOT STARTED |
+| 3.5 Inter-instrument narration | AI generates brief contextual bridging text between instruments. References red-thread question. | NOT STARTED |
+| 3.6 Prompt quality testing | Test formulation output against known score profiles. Verify AI never computes, never diagnoses, always cites uncertainty. | **✓ DONE** (Baseline schema, safety, and hedging tests implemented) |
 
 ### Phase 4: Auth + Session Persistence
 
@@ -336,18 +338,7 @@ This is the contract that every instrument definition file must conform to. The 
   },
 
   "composite_contributions": ["distress_index"],
-  "consistency_pairs": [],
-
-  "band_descriptions": {
-    "minimal": "Your responses suggest minimal depressive symptoms...",
-    "mild": "Your responses indicate mild depressive symptoms...",
-    "subscale_id": {
-      "low": "Subscale-specific feedback..."
-    }
-  },
-  "interpretation_mode": "aggregate_severity",
-  "profile_summary_template": "Optional template for AI narrative synthesis",
-  "suppress_band_from_user": false
+  "consistency_pairs": []
 }
 ```
 
@@ -382,10 +373,6 @@ This is the contract that every instrument definition file must conform to. The 
 | `routing.on_completion` | array | Post-scoring routing rules (conditions + actions). |
 | `composite_contributions` | string[] | Which composite indices this instrument feeds into. |
 | `consistency_pairs` | array | Semantic consistency pair definitions (v2). |
-| `band_descriptions` | object | Qualitative narratives keyed by band label or subscale ID. |
-| `interpretation_mode` | enum | `aggregate_severity` (default), `trait_profile`, or `strength_profile`. |
-| `profile_summary_template` | string? | Guiding template for AI narrative synthesis in profile modes. |
-| `suppress_band_from_user` | bool | If true, clinical band label and description are hidden from the user. |
 | `sensitive_content` | bool | If true, instrument requires opt-in screen before first item and persistent pause button during administration (e.g. ACEs). |
 | `sensitive_content_warning` | string? | Text shown on the opt-in screen. Required if sensitive_content is true. |
 | `min_trials_for_scoring` | int? | Required for cognitive task definitions (Layer 5). Minimum trial count for valid scoring. Null for all non-cognitive instruments. |
@@ -715,7 +702,7 @@ All users complete this regardless of intent. Total core flow: ~32 items + intak
    - Also captures: presenting concerns, cultural background, existing reports.
 2. **PBAT Section 1** (18 items — process profile, first routing signal)
 3. **Session state anchors** (mood / energy / focus VAS, 3 items)
-4. **WSAS** (5 items — functional impairment baseline, IAPT standard, cross-domain context)
+4. **WSAS** (5 items — Functional impairment. Non-pathologizing variation ("Because of how I have been feeling lately" replaces "[problem]"). Administered every session to capture within-person variance over time.)
 5. **PC-PTSD-5** (5 items) — minimally framed pre-exploration screen. No clinical label shown. Items presented verbatim under framing: "Before your first exploration, a few brief questions about recent experiences." Score < 3: session continues, result stored as context. Score >= 3: SAFETY_PROTOCOL fires before solar system opens.
 6. **AI recommends 2-3 planets** based on PBAT profile and intake categories. User visits 2-3 planets in Session 1. Remaining planets available from Session 2+.
 
@@ -898,8 +885,6 @@ This is the definitive instrument list incorporating all planning decisions, red
 | Deep dive | SCS-SF | 12 | 1-5 Likert | Self-compassion (6 subscales) | Moderate licence |
 | Deep dive | BRS | 6 | 1-5 Likert | Resilience (bounce-back capacity) | Moderate licence |
 | Deep dive | RSES | 10 | 0-3 Likert | Global self-esteem | Public domain |
-
-**Interpretation Note (Earth):** BFI-S and VIA-IS-P utilize `interpretation_mode: "trait_profile"` and `"strength_profile"` respectively. Top-level severity bands are suppressed (`scoring.bands: null`) to emphasize relative trait strengths rather than clinical pathology.
 
 **Rationale for RSES addition:** Self-esteem is distinct from self-compassion (SCS-SF) and schema-level defectiveness (MSS-YSQ). The Rosenberg is the most widely validated measure in psychology, 10 items, public domain. Fills a gap between trait-level (Big Five) and schema-level (MSS-YSQ) self-concept.
 
@@ -2132,3 +2117,33 @@ AASPIRE is a research evaluation toolkit for measuring service outcomes in autis
 AASPIRE domains Helix already covers: anxiety, depression, suicidality, emotional wellbeing, quality of life, activities of daily living, self-determination, social support.
 
 AASPIRE domains outside Helix scope: healthcare service satisfaction, communication access, disability service satisfaction. These are system-level outcomes, not individual psychological processes.
+
+## 38. Sprint B Implementation Details (Dev Shell AI Tooling)
+
+**Goal:** Extend the dev shell to call new DEBUG AI endpoints and act as a thin developer console for Phase 3 AI inspection, without adding business logic to the frontend.
+
+### 38.1 Added UI Components (Right Panel + Modal)
+
+- **AI Debug Controls:** Added an `ai-debug-section` to the right panel, below the Composites area.
+- **Controls Included:**
+  - `Context Payload` button (calls `GET /debug/sessions/{session_id}/ai/context`)
+  - `Full Formulation` button (calls `POST /debug/sessions/{session_id}/ai/full-formulation`)
+  - `Mission Control` button (calls `POST /debug/sessions/{session_id}/ai/mission-control`)
+  - `Prompt Preview` section with a dropdown for `task_type` (`formulation`, `mission_control`, `planet_summary`, `inter_instrument_narration`) and a `Preview` button (calls `POST /debug/sessions/{session_id}/ai/prompt-preview`).
+  - `Planet Summary` section with a `planet_id` text input and `Gen` button (calls `POST /debug/sessions/{session_id}/ai/planet-summary`).
+  - `Inter-instrument Narration` section with `prev_instrument_id` and `next_instrument_id` text inputs and a `Gen Narration` button (calls `POST /debug/sessions/{session_id}/ai/inter-instrument-narration`).
+- **AI Debug Modal:** Added an `ai-debug-overlay` that displays large JSON/text outputs in a scrollable `<pre>` block to preserve formatting and readability.
+
+### 38.2 Client-Side Logic
+
+- Implemented `fetchAIDebug(action)` function to orchestrate API calls based on the requested action, using the active `session_id`.
+- Added loading state indicator ("Loading... This may take several seconds for LLM generation.") in the modal during API calls.
+- Enforced session validation (alerts if no `session_id` is active).
+- Error handling catches non-200 responses and displays them clearly in the modal.
+
+### 38.3 Constraints Maintained
+
+- Kept as a thin client: No scoring, routing, availability, or prompt-construction logic moved to the frontend.
+- Preserved existing assessment flow, safety overlay behavior, and composites display.
+- Minimal layout changes, ensuring the right panel remains scrollable and the main content area is undisturbed.
+- Strict adherence to the exact backend endpoint paths defined in Sprint A.
