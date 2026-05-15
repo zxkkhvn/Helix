@@ -788,8 +788,13 @@
     "bands": [
       {
         "min": 0,
-        "max": 105,
+        "max": 64,
         "label": "below_threshold"
+      },
+      {
+        "min": 65,
+        "max": 105,
+        "label": "gray_zone"
       },
       {
         "min": 106,
@@ -923,9 +928,10 @@
   },
   "routing": {},
   "band_descriptions": {
-    "below_threshold": "Your total score falls below the standard clinical threshold (65). This suggest a low level of autistic traits. Please note: this is a screening tool to help you understand your traits, not a clinical diagnosis.",
-    "consistent_with_autism": "Your total score is above the clinical threshold (65), which is consistent with patterns seen on the autism spectrum. This screening aid suggests that further exploration may be valuable. It is not a formal diagnosis.",
-    "pronounced_traits": "Your total score is significantly above the clinical threshold, suggesting pronounced traits consistent with the autism spectrum. This screening aid is designed for self-exploration and is not a clinical diagnosis.",
+    "below_threshold": "Your total score falls below the clinical screening threshold (65). This suggests a low likelihood of autistic traits. Please note: this is a screening tool, not a clinical diagnosis.",
+    "gray_zone": "Your total score falls within a 'gray zone' (65–105). While this is above the traditional screening threshold, research suggests scores in this range can also reflect other conditions (such as ADHD or anxiety). This indicates some autistic traits are present but further clinical exploration is needed for clarity.",
+    "consistent_with_autism": "Your total score (106–139) is consistent with patterns seen on the autism spectrum. This screening aid suggests that a formal diagnostic assessment may be valuable. It is not a diagnosis.",
+    "pronounced_traits": "Your total score (140+) suggests a pronounced alignment with autistic traits. This screening aid is designed for self-exploration and should be discussed with a qualified professional if you are seeking a diagnosis.",
     "language": {
       "typical": "Your responses regarding language and communication fall within the typical range.",
       "elevated": "Your responses suggest some differences in how you use and process language, such as a preference for verbatim phrases or literal interpretation."
