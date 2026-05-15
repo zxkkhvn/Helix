@@ -98,6 +98,10 @@ def _phq9_responses(item9_value=0):
     return {f"phq9_0{i}": 0 for i in range(3, 10)} | {"phq9_09": item9_value}
 
 
+def _aces_zero_responses():
+    return {f"aces_{i:02d}": 0 for i in range(1, 11)}
+
+
 # ---------------------------------------------------------------------------
 # Health check
 # ---------------------------------------------------------------------------
@@ -130,6 +134,33 @@ class TestSessionLifecycle:
         assert body["state"] == "CORE_FLOW_IN_PROGRESS"
         assert body["completed"] == []
         assert body["available"] == ["intake"]
+        assert body["intake"] is None
+        assert body["anchors"] is None
+
+    def test_get_session_includes_intake_and_anchors(self, client):
+        sid = _create_session(client)
+
+        r = client.post(
+            f"/sessions/{sid}/intake",
+            json={
+                "red_thread_question": "I want to understand my sleep.",
+                "categories": ["sleep_energy"],
+                "top3_ranked": ["sleep_energy"],
+            },
+        )
+        assert r.status_code == 200
+
+        r = client.post(
+            f"/sessions/{sid}/anchors",
+            json={"mood": 4, "energy": 3, "focus": 5},
+        )
+        assert r.status_code == 200
+
+        r = client.get(f"/sessions/{sid}")
+        body = r.json()
+        assert body["intake"]["red_thread_question"] == "I want to understand my sleep."
+        assert body["intake"]["categories"] == ["sleep_energy"]
+        assert body["anchors"] == {"mood": 4, "energy": 3, "focus": 5}
 
     def test_get_session_not_found(self, client):
         r = client.get("/sessions/00000000-0000-0000-0000-000000000000")
@@ -181,6 +212,24 @@ class TestSubmitAssessment:
         assert "phq9_02" in cf
         assert cf["phq9_01"] == 2
         assert cf["phq9_02"] == 2
+
+    def test_suppressed_band_stays_hidden_in_session_state(self, client):
+        sid = _create_session(client)
+        _force_exploring(sid)
+
+        r = client.post(
+            f"/sessions/{sid}/assessments/aces/submit",
+            json={"responses": _aces_zero_responses()},
+        )
+        assert r.status_code == 200
+        assert r.json()["score"]["band"] is None
+
+        session_r = client.get(f"/sessions/{sid}")
+        completed = {
+            item["instrument_id"]: item for item in session_r.json()["completed"]
+        }
+        assert completed["aces"]["band"] is None
+        assert completed["aces"]["band_description"] is None
 
     def test_session_shows_phq2_completed(self, client):
         sid = _create_session(client)

@@ -4,14 +4,14 @@ from __future__ import annotations
 
 import uuid
 from datetime import datetime, timezone
-from typing import List, Optional
+from typing import Any, List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field, constr
 from sqlalchemy.orm import Session as DBSession
 
 from helix.db.database import get_db
-from helix.models.models import AssessmentInstance, Score, Session
+from helix.models.models import AssessmentInstance, Narrative, Score, Session
 from helix.routing.engine import compute_available_instruments
 from helix.scoring import registry
 from helix.scoring.composite import compute_all_composites
@@ -59,23 +59,32 @@ class CompletedInstrument(BaseModel):
     band: Optional[str]
     band_description: Optional[str] = None
 
+
 def _build_completed_instruments(scores: List[Score]) -> List[CompletedInstrument]:
-    from helix.scoring import registry
     completed = []
     for s in scores:
+        band = s.band
         band_desc = None
-        if s.band:
-            try:
-                scorer = registry.get_scorer(s.instrument_id)
-                band_desc = scorer._def.get("band_descriptions", {}).get(s.band)
-            except Exception:
-                pass
+        try:
+            scorer = registry.get_scorer(s.instrument_id)
+        except KeyError:
+            scorer = None
+
+        if scorer is not None:
+            definition = scorer._def
+            if definition.get("suppress_band_from_user"):
+                band = None
+            elif band:
+                candidate = definition.get("band_descriptions", {}).get(band)
+                if isinstance(candidate, str):
+                    band_desc = candidate
+
         completed.append(
             CompletedInstrument(
                 instrument_id=s.instrument_id,
                 assessment_instance_id=s.assessment_instance_id,
                 total_score=s.total_score,
-                band=s.band,
+                band=band,
                 band_description=band_desc,
             )
         )
@@ -88,9 +97,12 @@ class SessionStateResponse(BaseModel):
     completed: List[CompletedInstrument]
     available: List[str]
     safety_flags: Optional[list]
-    composites: List[dict] = []
-    planet_states: List[dict] = []
-    fatigue_nudge: Optional[bool] = False
+    intake: Optional[dict[str, Any]] = None
+    anchors: Optional[dict[str, Any]] = None
+    composites: List[dict] = Field(default_factory=list)
+    planet_states: List[dict] = Field(default_factory=list)
+    narratives: List[dict[str, Any]] = Field(default_factory=list)
+    fatigue_nudge: bool = False
     ai_readiness: Optional[dict] = None
 
 
@@ -110,6 +122,72 @@ class InstrumentFormPayload(BaseModel):
     parent_instance_id: Optional[str]
     session_state: str
     is_submittable: bool
+
+
+def _compute_fatigue_nudge(
+    session: Session,
+    scores: List[Score],
+    *,
+    db: DBSession | None = None,
+    mark_shown: bool = False,
+) -> bool:
+    total_items_scored = sum(
+        s.score_metadata.get("n_items_scored", 0) if s.score_metadata else 0
+        for s in scores
+    )
+    fatigue_nudge = total_items_scored >= 150 and not session.fatigue_nudge_dismissed
+    if fatigue_nudge and mark_shown and not session.fatigue_nudge_shown:
+        session.fatigue_nudge_shown = True
+        if db is not None:
+            db.flush()
+    return fatigue_nudge
+
+
+def _build_session_state_response(
+    session: Session,
+    scores: List[Score],
+    *,
+    db: DBSession | None = None,
+    mark_fatigue_shown: bool = False,
+) -> SessionStateResponse:
+    narratives: List[dict[str, Any]] = []
+    if db is not None:
+        rows = (
+            db.query(Narrative)
+            .filter(Narrative.session_id == session.id)
+            .order_by(Narrative.created_at.desc())
+            .all()
+        )
+        narratives = [
+            {
+                "id": row.id,
+                "task_type": row.task_type,
+                "parameters_hash": row.parameters_hash,
+                "model_used": row.model_used,
+                "prompt_tokens": row.prompt_tokens,
+                "completion_tokens": row.completion_tokens,
+                "created_at": row.created_at.isoformat() if row.created_at else None,
+                "output_json": row.output_json,
+            }
+            for row in rows
+        ]
+
+    return SessionStateResponse(
+        session_id=session.id,
+        state=session.state,
+        completed=_build_completed_instruments(scores),
+        available=compute_available_instruments(session, scores),
+        safety_flags=session.safety_flags,
+        intake=session.intake_data,
+        anchors=session.anchors,
+        composites=compute_all_composites(scores),
+        planet_states=compute_planet_states(session, scores),
+        narratives=narratives,
+        fatigue_nudge=_compute_fatigue_nudge(
+            session, scores, db=db, mark_shown=mark_fatigue_shown
+        ),
+        ai_readiness=_readiness_engine.check_all(session),
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -212,21 +290,7 @@ def create_quick_start_session(db: DBSession = Depends(get_db)):
         .filter(AssessmentInstance.session_id == session.id)
         .all()
     )
-    completed = _build_completed_instruments(scores)
-    
-    total_items_scored = sum(s.score_metadata.get("n_items_scored", 0) if s.score_metadata else 0 for s in scores)
-    fatigue_nudge = total_items_scored >= 150 and not session.fatigue_nudge_dismissed
-
-    return SessionStateResponse(
-        session_id=session.id,
-        state=session.state,
-        completed=completed,
-        available=compute_available_instruments(session, scores),
-        safety_flags=session.safety_flags,
-        composites=compute_all_composites(scores),
-        planet_states=compute_planet_states(session, scores),
-        fatigue_nudge=fatigue_nudge,
-    )
+    return _build_session_state_response(session, scores, db=db)
 
 
 
@@ -244,27 +308,8 @@ def get_session(session_id: str, db: DBSession = Depends(get_db)):
         .all()
     )
 
-    completed = _build_completed_instruments(scores)
-    
-    total_items_scored = sum(s.score_metadata.get("n_items_scored", 0) if s.score_metadata else 0 for s in scores)
-    
-    if total_items_scored >= 150 and not session.fatigue_nudge_dismissed:
-        session.fatigue_nudge_shown = True
-        db.flush()
-        fatigue_nudge = True
-    else:
-        fatigue_nudge = False
-
-    return SessionStateResponse(
-        session_id=session.id,
-        state=session.state,
-        completed=completed,
-        available=compute_available_instruments(session, scores),
-        safety_flags=session.safety_flags,
-        composites=compute_all_composites(scores),
-        planet_states=compute_planet_states(session, scores),
-        fatigue_nudge=fatigue_nudge,
-        ai_readiness=_readiness_engine.check_all(session),
+    return _build_session_state_response(
+        session, scores, db=db, mark_fatigue_shown=True
     )
 
 
@@ -286,18 +331,7 @@ def dismiss_fatigue(session_id: str, db: DBSession = Depends(get_db)):
         .filter(AssessmentInstance.session_id == session_id)
         .all()
     )
-    completed = _build_completed_instruments(scores)
-    
-    return SessionStateResponse(
-        session_id=session.id,
-        state=session.state,
-        completed=completed,
-        available=compute_available_instruments(session, scores),
-        safety_flags=session.safety_flags,
-        composites=compute_all_composites(scores),
-        planet_states=compute_planet_states(session, scores),
-        fatigue_nudge=False,
-    )
+    return _build_session_state_response(session, scores, db=db)
 
 @router.post("/{session_id}/acknowledge-safety", response_model=SessionStateResponse)
 def acknowledge_safety(session_id: str, db: DBSession = Depends(get_db)):
@@ -326,21 +360,7 @@ def acknowledge_safety(session_id: str, db: DBSession = Depends(get_db)):
         .filter(AssessmentInstance.session_id == session_id)
         .all()
     )
-    completed = _build_completed_instruments(scores)
-
-    total_items_scored = sum(s.score_metadata.get("n_items_scored", 0) if s.score_metadata else 0 for s in scores)
-    fatigue_nudge = total_items_scored >= 150 and not session.fatigue_nudge_dismissed
-
-    return SessionStateResponse(
-        session_id=session.id,
-        state=session.state,
-        completed=completed,
-        available=compute_available_instruments(session, scores),
-        safety_flags=None,
-        composites=compute_all_composites(scores),
-        planet_states=compute_planet_states(session, scores),
-        fatigue_nudge=fatigue_nudge,
-    )
+    return _build_session_state_response(session, scores, db=db)
 
 @router.post("/{session_id}/intake", response_model=SessionStateResponse)
 def submit_intake(session_id: str, body: IntakeRequest, db: DBSession = Depends(get_db)):
@@ -382,21 +402,7 @@ def submit_intake(session_id: str, body: IntakeRequest, db: DBSession = Depends(
         .filter(AssessmentInstance.session_id == session_id)
         .all()
     )
-    completed = _build_completed_instruments(scores)
-    
-    total_items_scored = sum(s.score_metadata.get("n_items_scored", 0) if s.score_metadata else 0 for s in scores)
-    fatigue_nudge = total_items_scored >= 150 and not session.fatigue_nudge_dismissed
-
-    return SessionStateResponse(
-        session_id=session.id,
-        state=session.state,
-        completed=completed,
-        available=compute_available_instruments(session, scores),
-        safety_flags=session.safety_flags,
-        composites=compute_all_composites(scores),
-        planet_states=compute_planet_states(session, scores),
-        fatigue_nudge=fatigue_nudge,
-    )
+    return _build_session_state_response(session, scores, db=db)
 
 @router.post("/{session_id}/anchors", response_model=SessionStateResponse)
 def submit_anchors(session_id: str, body: AnchorsRequest, db: DBSession = Depends(get_db)):
@@ -405,9 +411,10 @@ def submit_anchors(session_id: str, body: AnchorsRequest, db: DBSession = Depend
     if session is None:
         raise HTTPException(status_code=404, detail="Session not found")
     if session.state != "CORE_FLOW_IN_PROGRESS":
-        # Anchors could theoretically be submitted at start of any session later, 
-        # but for Phase 1 they are part of CORE_FLOW_IN_PROGRESS.
-        pass # Allow for now
+        raise HTTPException(
+            status_code=409,
+            detail="Anchors can only be submitted during CORE_FLOW_IN_PROGRESS",
+        )
     if session.anchors is not None:
         raise HTTPException(status_code=409, detail="Anchors already submitted for this session")
 
@@ -430,21 +437,7 @@ def submit_anchors(session_id: str, body: AnchorsRequest, db: DBSession = Depend
         .filter(AssessmentInstance.session_id == session_id)
         .all()
     )
-    completed = _build_completed_instruments(scores)
-    
-    total_items_scored = sum(s.score_metadata.get("n_items_scored", 0) if s.score_metadata else 0 for s in scores)
-    fatigue_nudge = total_items_scored >= 150 and not session.fatigue_nudge_dismissed
-
-    return SessionStateResponse(
-        session_id=session.id,
-        state=session.state,
-        completed=completed,
-        available=compute_available_instruments(session, scores),
-        safety_flags=session.safety_flags,
-        composites=compute_all_composites(scores),
-        planet_states=compute_planet_states(session, scores),
-        fatigue_nudge=fatigue_nudge,
-    )
+    return _build_session_state_response(session, scores, db=db)
 
 
 @router.get("/{session_id}/instruments/{instrument_id}", response_model=InstrumentFormPayload)

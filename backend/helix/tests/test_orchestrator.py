@@ -5,11 +5,14 @@ Uses in-memory SQLite + StaticPool. LLM is always mocked — no real API calls.
 
 from __future__ import annotations
 
+import hashlib
+import json
 import uuid
 from datetime import datetime, timezone
 from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
+from helix.ai.context import ContextSerializer
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session as DBSession, sessionmaker
 from sqlalchemy.pool import StaticPool
@@ -90,6 +93,11 @@ def _make_session_in_db(db: DBSession, *, scored: list[str] | None = None) -> Se
     return session
 
 
+def _context_hash_for_session(session: Session) -> str:
+    payload = ContextSerializer.build_payload(session)
+    return hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
+
+
 # ---------------------------------------------------------------------------
 # _build_parameters_hash
 # ---------------------------------------------------------------------------
@@ -150,6 +158,7 @@ async def test_generate_returns_cached_when_fresh(db_session):
         session_id=session.id,
         task_type=TaskType.MISSION_CONTROL.value,
         parameters_hash=params_hash,
+        context_hash=_context_hash_for_session(session),
         output_json=cached_output,
         model_used="gemini-1.5-flash",
         created_at=datetime.now(timezone.utc),
@@ -199,6 +208,7 @@ async def test_generate_bypasses_cache_when_stale(db_session):
     with patch("helix.ai.orchestrator._build_engine") as mock_build_engine:
         mock_engine = MagicMock()
         mock_engine.llm.model_name = "gemini-1.5-flash"
+        mock_engine.build_context_payload.return_value = {"session_id": session.id}
         mock_engine.generate_mission_control = AsyncMock(return_value=fresh_output)
         mock_build_engine.return_value = mock_engine
 
@@ -244,6 +254,7 @@ async def test_generate_force_regenerate_bypasses_cache(db_session):
     with patch("helix.ai.orchestrator._build_engine") as mock_build_engine:
         mock_engine = MagicMock()
         mock_engine.llm.model_name = "gemini-1.5-flash"
+        mock_engine.build_context_payload.return_value = {"session_id": session.id}
         mock_engine.generate_mission_control = AsyncMock(return_value=fresh_output)
         mock_build_engine.return_value = mock_engine
 
@@ -274,6 +285,7 @@ async def test_generate_persists_narrative(db_session):
     with patch("helix.ai.orchestrator._build_engine") as mock_build_engine:
         mock_engine = MagicMock()
         mock_engine.llm.model_name = "gemini-2.0-flash"
+        mock_engine.build_context_payload.return_value = {"session_id": session.id}
         mock_engine.generate_mission_control = AsyncMock(return_value=fresh_output)
         mock_build_engine.return_value = mock_engine
 
@@ -309,6 +321,7 @@ async def test_generate_surfaces_llm_error(db_session):
     with patch("helix.ai.orchestrator._build_engine") as mock_build_engine:
         mock_engine = MagicMock()
         mock_engine.llm.model_name = "gemini-1.5-flash"
+        mock_engine.build_context_payload.return_value = {"session_id": session.id}
         mock_engine.generate_mission_control = AsyncMock(side_effect=RuntimeError("LLM exploded"))
         mock_build_engine.return_value = mock_engine
 
@@ -318,6 +331,53 @@ async def test_generate_surfaces_llm_error(db_session):
     assert result.narrative is None
     assert result.error is not None
     assert "LLM exploded" in result.error
+
+
+@pytest.mark.asyncio
+async def test_generate_ignores_cached_row_when_context_hash_differs(db_session):
+    session = _make_session_in_db(db_session, scored=["phq2", "gad2"])
+    orchestrator = NarrativeOrchestrator(db_session)
+
+    params_hash = _build_parameters_hash(TaskType.MISSION_CONTROL)
+    db_session.add(
+        Narrative(
+            id=str(uuid.uuid4()),
+            session_id=session.id,
+            task_type=TaskType.MISSION_CONTROL.value,
+            parameters_hash=params_hash,
+            context_hash="outdated-context-hash",
+            output_json={
+                "cognitive_reflection": "stale",
+                "behavioral_observation": "stale",
+                "integration_prompt": "stale",
+                "safety_triggered": False,
+                "safety_protocol": None,
+            },
+            model_used="gemini-1.5-flash",
+            created_at=datetime.now(timezone.utc),
+        )
+    )
+    db_session.flush()
+
+    fresh_output = MissionControlSuggestion(
+        safety_triggered=False,
+        cognitive_reflection="fresh via context hash",
+        behavioral_observation="b",
+        integration_prompt="c",
+        safety_protocol=None,
+    )
+
+    with patch("helix.ai.orchestrator._build_engine") as mock_build_engine:
+        mock_engine = MagicMock()
+        mock_engine.llm.model_name = "gemini-1.5-flash"
+        mock_engine.build_context_payload.return_value = {"session_id": session.id, "version": 2}
+        mock_engine.generate_mission_control = AsyncMock(return_value=fresh_output)
+        mock_build_engine.return_value = mock_engine
+
+        result = await orchestrator.generate(session, TaskType.MISSION_CONTROL)
+
+    assert result.cached is False
+    assert result.narrative["cognitive_reflection"] == "fresh via context hash"
 
 
 # ---------------------------------------------------------------------------

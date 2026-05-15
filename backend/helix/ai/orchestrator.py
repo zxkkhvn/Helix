@@ -10,7 +10,7 @@ import hashlib
 import json
 import time
 import uuid
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any
 
@@ -93,7 +93,7 @@ class NarrativeOrchestrator:
         """
         Pipeline:
           1. Readiness check (deterministic — no LLM)
-          2. Cache lookup (unless force_regenerate or narratives_stale)
+          2. Context-hash cache lookup (unless force_regenerate)
           3. Generate + validate + persist
         """
         readiness = self.readiness.check(
@@ -119,9 +119,32 @@ class NarrativeOrchestrator:
             next_instrument_id=next_instrument_id,
         )
 
-        # Cache lookup
-        if not force_regenerate and not session.narratives_stale:
-            cached = self._find_cached(session.id, task_type, params_hash)
+        # Build context hash from the actual payload data to allow "smart reloads"
+        engine = _build_engine(task_type)
+        context_payload = engine.build_context_payload(session)
+        
+        # SCOPED CACHING: Prevent unrelated test completions from invalidating specific caches.
+        if task_type == TaskType.PLANET_SUMMARY and planet_id:
+            from helix.scoring.planets import PLANET_INSTRUMENT_MAP
+            relevant_insts = PLANET_INSTRUMENT_MAP.get(planet_id, [])
+            context_payload["base_scores"] = [
+                s for s in context_payload.get("base_scores", [])
+                if s["instrument_id"] in relevant_insts
+            ]
+        elif task_type in (TaskType.INTER_INSTRUMENT, TaskType.INTER_INSTRUMENT_NARRATION):
+            relevant_insts = [prev_instrument_id, next_instrument_id]
+            context_payload["base_scores"] = [
+                s for s in context_payload.get("base_scores", [])
+                if s["instrument_id"] in relevant_insts
+            ]
+
+        context_json = json.dumps(context_payload, sort_keys=True)
+        current_context_hash = hashlib.sha256(context_json.encode()).hexdigest()
+
+        if not force_regenerate:
+            cached = self._find_context_cached(
+                session.id, task_type, params_hash, current_context_hash
+            )
             if cached is not None:
                 return OrchestratorResult(
                     ready=True,
@@ -132,27 +155,7 @@ class NarrativeOrchestrator:
                     model_used=cached.model_used,
                 )
 
-        # Generate
-        engine = _build_engine(task_type)
         start_ms = int(time.monotonic() * 1000)
-
-        # Build context hash from the actual payload data to allow "smart reloads"
-        context_payload = engine.build_context_payload(session)
-        context_json = json.dumps(context_payload, sort_keys=True)
-        current_context_hash = hashlib.sha256(context_json.encode()).hexdigest()
-
-        # Smart Cache Lookup: Even if the session is "stale", if we have a narrative 
-        # for this EXACT data state and parameters, we reload it from memory.
-        smart_cached = self._find_smart_cached(session.id, task_type, params_hash, current_context_hash)
-        if smart_cached is not None:
-            return OrchestratorResult(
-                ready=True,
-                cached=True,
-                task_type=task_type,
-                readiness=readiness,
-                narrative=smart_cached.output_json,
-                model_used=smart_cached.model_used,
-            )
 
         try:
             result = await self._dispatch(
@@ -256,24 +259,10 @@ class NarrativeOrchestrator:
     # Private helpers
     # ------------------------------------------------------------------
 
-    def _find_cached(
-        self, session_id: str, task_type: TaskType, parameters_hash: str
-    ) -> Narrative | None:
-        return (
-            self.db.query(Narrative)
-            .filter(
-                Narrative.session_id == session_id,
-                Narrative.task_type == task_type.value,
-                Narrative.parameters_hash == parameters_hash,
-            )
-            .order_by(Narrative.created_at.desc())
-            .first()
-        )
-
-    def _find_smart_cached(
+    def _find_context_cached(
         self, session_id: str, task_type: TaskType, parameters_hash: str, context_hash: str
     ) -> Narrative | None:
-        """Find a cached narrative that matches both task parameters AND exact session context."""
+        """Find a cached narrative that matches both task parameters and exact session context."""
         return (
             self.db.query(Narrative)
             .filter(
