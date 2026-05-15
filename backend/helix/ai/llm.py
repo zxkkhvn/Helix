@@ -43,8 +43,18 @@ async def _post_with_retry(
             if response.status_code not in _RETRY_STATUS_CODES:
                 response.raise_for_status()
                 return response
+            
+            # Try to extract a descriptive error message from the response body
+            detail = ""
+            try:
+                body = response.json()
+                if "error" in body:
+                    detail = f" - {body['error'].get('message', '')} ({body['error'].get('status', '')})"
+            except:
+                detail = f" - {response.text[:200]}"
+
             last_exc = httpx.HTTPStatusError(
-                f"HTTP {response.status_code}",
+                f"HTTP {response.status_code}{detail}",
                 request=response.request,
                 response=response,
             )

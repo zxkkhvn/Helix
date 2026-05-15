@@ -9,6 +9,7 @@ let currentPlanetId = null;
 let lastResultData = null;
 let autoNarrate = localStorage.getItem('helix_auto_narrate') === 'true';
 let aiReadiness = null;
+window.lastCompletedPlanetCount = 0;
 
 const INTAKE_CATS = [
     {id: 'mood_anxiety', label: 'Mood and anxiety'},

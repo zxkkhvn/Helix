@@ -35,7 +35,7 @@ class Settings:
                     key, val = line.split('=', 1)
                     key = key.strip()
                     val = val.strip().strip("'").strip('"')
-                    if key in ("GOOGLE_API_KEY", "API_KEY"):
+                    if key in ("GOOGLE_API_KEY", "API_KEY", "GEMINI_API_KEY_2"):
                         self.google_api_key = val
                     elif key == "OLLAMA_BASE_URL":
                         self.ollama_base_url = val

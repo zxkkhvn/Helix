@@ -453,10 +453,10 @@ async function fetchAIDebug(action) {
     }
 }
 
-async function narrateTask(taskType, extraBody = {}, silent = false) {
+async function narrateTask(taskType, extraBody = {}, silent = false, targetOutputId = null) {
     if (!sessionState) { alert('Load a session first.'); return; }
     const sid = sessionState.session_id || sessionState.id;
-    const outId = 'out-' + taskType.replace('_', '-');
+    const outId = targetOutputId || ('out-' + taskType.replace('_', '-'));
     const outEl = document.getElementById(outId);
     if (!outEl) return;
 
@@ -493,16 +493,12 @@ async function narrateTask(taskType, extraBody = {}, silent = false) {
 
 async function narratePlanet(planetId) {
     if (!sessionState) return;
-    const outEl = document.getElementById(`out-planet-summary-${planetId}`);
-    if (outEl) { outEl.classList.add('open'); outEl.innerHTML = '<div class="narrative-card"><p style="color:var(--text-light);">Generating…</p></div>'; }
-    
-    const oldId = document.getElementById('out-planet-summary');
-    if (oldId) oldId.id = 'out-planet-summary-old';
-    if (outEl) outEl.id = 'out-planet-summary';
-    
-    await narrateTask('planet_summary', { planet_id: planetId });
-    
-    if (outEl) outEl.id = `out-planet-summary-${planetId}`;
+    await narrateTask(
+        'planet_summary',
+        { planet_id: planetId },
+        false,
+        `out-planet-summary-${planetId}`
+    );
 }
 
 function renderNarrativeCard(taskType, res, extraParams = {}) {

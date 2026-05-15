@@ -216,16 +216,51 @@ function renderDashboard() {
     
     html += '</div>';
     area.innerHTML = html;
+
+    // IMMEDIATE RESTORATION: If we have cached narratives in the session state, show them now
+    if (sessionState.narratives && sessionState.narratives.length > 0) {
+        const tasks = ['mission_control', 'red_thread', 'full_formulation'];
+        tasks.forEach(task => {
+            const latest = sessionState.narratives.find(n => n.task_type === task);
+            if (latest) {
+                const outId = 'out-' + task.replace('_', '-');
+                const el = document.getElementById(outId);
+                if (el) {
+                    el.classList.add('open');
+                    // Use the proper renderer
+                    el.innerHTML = renderNarrativeCard(task, {
+                        ready: true,
+                        cached: true,
+                        narrative: latest.output_json,
+                        model_used: latest.model_used,
+                        generation_time_ms: null
+                    });
+                }
+            }
+        });
+    }
     
     if (autoNarrate && aiReadiness) {
+        const completedPlanets = (sessionState.planet_states || []).filter(p => p.completion_pct >= 1.0).length;
+        const reachedMilestone = completedPlanets > window.lastCompletedPlanetCount;
+        
         (async () => {
-            const tasks = ['mission_control', 'red_thread', 'full_formulation'];
+            // High-frequency task
+            const tasks = ['mission_control'];
+            
+            // Low-frequency tasks (only auto-run on milestone or manual click)
+            if (reachedMilestone) {
+                tasks.push('red_thread', 'full_formulation');
+                window.lastCompletedPlanetCount = completedPlanets;
+            }
+
             for (const task of tasks) {
                 if (aiReadiness[task] && aiReadiness[task].ready) {
                     const el = document.getElementById('out-' + task.replace('_', '-'));
                     if (el) el.classList.add('open');
                     await narrateTask(task, {}, true);
-                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    // Add delay between tasks to avoid burst rate limits if doing a full synthesis
+                    if (tasks.length > 1) await new Promise(resolve => setTimeout(resolve, 2000));
                 }
             }
         })();
@@ -325,9 +360,6 @@ function renderPlanetDetail(planetId) {
     if (autoNarrate && aiReadiness && aiReadiness.planet_summary && aiReadiness.planet_summary[planetId]) {
         if (aiReadiness.planet_summary[planetId].ready) {
             document.getElementById(`out-planet-summary-${planetId}`).classList.add('open');
-            const oldId = document.getElementById('out-planet-summary');
-            if (oldId) oldId.id = 'out-planet-summary-old';
-            document.getElementById(`out-planet-summary-${planetId}`).id = 'out-planet-summary';
             narratePlanet(planetId);
         }
     }
