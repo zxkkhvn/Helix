@@ -17,7 +17,7 @@ class HelixAISchema(BaseModel):
 class InterInstrumentNarration(HelixAISchema):
     convergent_narrative: str
     divergent_narrative: str
-    composite_reflection: str
+    composite_reflection: Optional[str] = None
 
 class MissionControlSuggestion(HelixAISchema):
     safety_triggered: bool

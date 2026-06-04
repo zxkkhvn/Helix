@@ -194,6 +194,10 @@ class NarrativeOrchestrator:
 
         output_dict = result.model_dump() if hasattr(result, "model_dump") else dict(result)
 
+        # Inject planet_id so the client can filter by planet when restoring from cache
+        if task_type == TaskType.PLANET_SUMMARY and planet_id:
+            output_dict["planet_id"] = planet_id
+
         # Extract token usage if available and ensure they are ints (handles mocks in tests safely)
         pt = getattr(engine.llm, "_last_prompt_tokens", None)
         ct = getattr(engine.llm, "_last_completion_tokens", None)

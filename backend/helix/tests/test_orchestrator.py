@@ -308,6 +308,46 @@ async def test_generate_persists_narrative(db_session):
     assert row.model_used == "gemini-2.0-flash"
 
 
+@pytest.mark.asyncio
+async def test_planet_summary_injects_planet_id_into_output_json(db_session):
+    """planet_id must be persisted in output_json so the client can filter by planet."""
+    from helix.ai.schemas import PlanetSummary
+
+    session = _make_session_in_db(db_session, scored=["phq2", "gad2"])
+    orchestrator = NarrativeOrchestrator(db_session)
+
+    planet_output = PlanetSummary(
+        core_tendencies="Elevated distress patterns.",
+        environmental_interaction="These tendencies appear most pronounced under social pressure.",
+        data_sufficiency_met=True,
+    )
+
+    with patch("helix.ai.orchestrator._build_engine") as mock_build_engine:
+        mock_engine = MagicMock()
+        mock_engine.llm.model_name = "test-model"
+        mock_engine.build_context_payload.return_value = {"session_id": session.id, "base_scores": []}
+        mock_engine.generate_planet_summary = AsyncMock(return_value=planet_output)
+        mock_build_engine.return_value = mock_engine
+
+        result = await orchestrator.generate(
+            session, TaskType.PLANET_SUMMARY, planet_id="venus"
+        )
+
+    assert result.ready is True
+    assert result.narrative["planet_id"] == "venus"
+
+    row = (
+        db_session.query(Narrative)
+        .filter(
+            Narrative.session_id == session.id,
+            Narrative.task_type == TaskType.PLANET_SUMMARY.value,
+        )
+        .first()
+    )
+    assert row is not None
+    assert row.output_json["planet_id"] == "venus"
+
+
 # ---------------------------------------------------------------------------
 # LLM error passthrough
 # ---------------------------------------------------------------------------

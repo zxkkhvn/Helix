@@ -250,10 +250,32 @@ async def test_generate_inter_instrument_narration_payload_and_response():
     assert injected_payload["inter_instrument_metadata"]["next"]["name"] == "Generalized Anxiety Disorder-2"
     assert result.convergent_narrative
     assert result.divergent_narrative
-    assert result.composite_reflection
+    assert result.composite_reflection == "Composite indicators broadly reflect this mixed pattern."
     mock_builder.build_xml_payload.assert_called_once_with(TaskType.INTER_INSTRUMENT_NARRATION)
     mock_llm.execute.assert_called_once_with(fake_prompt, response_schema=InterInstrumentNarration)
     mock_serializer.build_payload.assert_called_once_with(mock_session)
+
+
+@pytest.mark.asyncio
+async def test_generate_inter_instrument_narration_composite_reflection_optional():
+    """composite_reflection is optional — LLM may omit it."""
+    mock_session = MagicMock(spec=Session)
+    payload = {
+        "session_id": "session-4",
+        "base_scores": [{"instrument_id": "phq2", "total": 3}],
+        "theme_states": {},
+        "completion_state": [],
+        "safety_markers": {"self_harm": False, "acute_trauma": False, "severe_distress": False},
+    }
+    llm_response = InterInstrumentNarration(
+        convergent_narrative="Low mood suggested.",
+        divergent_narrative="Moving to anxiety screen.",
+        composite_reflection=None,
+    )
+    engine, mock_llm, _, _, _ = _build_engine(payload, llm_response)
+    result = await engine.generate_inter_instrument_narration(mock_session, "phq2", "gad2")
+    assert result.convergent_narrative == "Low mood suggested."
+    assert result.composite_reflection is None
 
 
 @pytest.mark.asyncio
